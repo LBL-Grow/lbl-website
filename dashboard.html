@@ -578,6 +578,11 @@
 
 <script src="shared.js"></script>
 <script>
+  /* Redirect file:// → server */
+  if (window.location.protocol === 'file:') {
+    window.location.replace('http://localhost:3000/dashboard.html');
+  }
+
   /* Auth */
   var PASS = 'lbl_admin_2026';
 
@@ -691,6 +696,7 @@
   }
 
   async function fetchDashboardData() {
+    var notice = document.getElementById('data-error-notice');
     try {
       var [stats, clients, posts, activity] = await Promise.all([
         fetch(API + '/api/stats').then(function(r){ return r.json(); }),
@@ -698,15 +704,15 @@
         fetch(API + '/api/posts').then(function(r){ return r.json(); }),
         fetch(API + '/api/activity').then(function(r){ return r.json(); }),
       ]);
-      renderStats(stats);
-      renderClients(clients);
-      renderPosts(posts);
-      renderActivity(activity);
-      renderBilling(stats, clients);
+      if (notice) notice.style.display = 'none';
+      try { renderStats(stats); }    catch(e) { console.error('renderStats:', e); }
+      try { renderClients(clients); } catch(e) { console.error('renderClients:', e); }
+      try { renderPosts(posts); }    catch(e) { console.error('renderPosts:', e); }
+      try { renderActivity(activity); } catch(e) { console.error('renderActivity:', e); }
+      try { renderBilling(stats, clients); } catch(e) { console.error('renderBilling:', e); }
     } catch(e) {
       console.error('Dashboard fetch error:', e);
-      var notice = document.getElementById('data-error-notice');
-      if (notice) { notice.style.display = 'block'; notice.textContent = 'API error: ' + e.message + ' — make sure server is running at localhost:3000'; }
+      if (notice) { notice.style.display = 'block'; notice.textContent = 'Cannot reach server — open this page at http://localhost:3000/dashboard.html (not as a file)'; }
     }
   }
 
