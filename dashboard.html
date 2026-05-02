@@ -578,15 +578,13 @@
 
 <script src="shared.js"></script>
 <script>
-  /* Redirect file:// → server */
-  if (window.location.protocol === 'file:') {
-    window.location.replace('http://localhost:3000/dashboard.html');
-  }
-
   /* Auth */
   var PASS = 'lbl_admin_2026';
 
-  if (localStorage.getItem('lbl_authed') === PASS) {
+  /* Redirect file:// → server (must happen before any fetch) */
+  if (window.location.protocol === 'file:') {
+    window.location.replace('http://localhost:3000/dashboard.html');
+  } else if (localStorage.getItem('lbl_authed') === PASS) {
     showDashboard();
   }
 
