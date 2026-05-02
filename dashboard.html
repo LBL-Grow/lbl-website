@@ -581,9 +581,11 @@
   /* Auth */
   var PASS = 'lbl_admin_2026';
 
-  /* Redirect file:// → Railway server (must happen before any fetch) */
-  if (window.location.protocol === 'file:') {
-    window.location.replace('https://powerful-balance-production-971d.up.railway.app/dashboard.html');
+  var RAILWAY = 'https://powerful-balance-production-971d.up.railway.app';
+
+  /* Redirect to Railway from anywhere except Railway itself */
+  if (window.location.hostname !== 'powerful-balance-production-971d.up.railway.app') {
+    window.location.replace(RAILWAY + '/dashboard.html');
   } else if (localStorage.getItem('lbl_authed') === PASS) {
     showDashboard();
   }
@@ -680,7 +682,7 @@
   }
 
   /* ── Live data ─────────────────────────────────────────── */
-  var API = window.location.protocol === 'file:' ? 'https://powerful-balance-production-971d.up.railway.app' : '';
+  var API = ''; /* always same-origin on Railway */
 
   var PLAN_LABEL = { reviews: 'Reviews', presence: 'Presence', complete: 'Complete' };
   var PLAN_BADGE = { reviews: 'badge--green', presence: 'badge--blue', complete: 'badge--amber' };
@@ -710,7 +712,7 @@
       try { renderBilling(stats, clients); } catch(e) { console.error('renderBilling:', e); }
     } catch(e) {
       console.error('Dashboard fetch error:', e);
-      if (notice) { notice.style.display = 'block'; notice.textContent = 'Cannot reach server — open this page at https://powerful-balance-production-971d.up.railway.app/dashboard.html'; }
+      if (notice) { notice.style.display = 'block'; notice.textContent = 'Could not load data — check your connection or try refreshing.'; }
     }
   }
 
