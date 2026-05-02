@@ -648,24 +648,37 @@ p { line-height: 1.7; }
 
 /* Strikethrough list */
 .strikethrough-list {
-  background: #F59E0B;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(26,58,92,0.1);
   border-radius: 16px;
   padding: 32px 40px;
   max-width: 680px;
   margin: 48px auto 0;
+  box-shadow: 0 4px 24px rgba(26,58,92,0.06);
+}
+.strikethrough-list__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--authority-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
 }
 .strikethrough-list li {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(26,58,92,0.07);
   font-size: 0.95rem;
-  color: #0F172A;
+  color: var(--slate-core);
   font-weight: 500;
 }
 .strikethrough-list li:last-child { border-bottom: none; }
-.strikethrough-list .x-mark { color: var(--warning-red); font-size: 1rem; flex-shrink: 0; }
+.strikethrough-list svg { flex-shrink: 0; margin-top: 2px; }
 
 /* ─── Forms ──────────────────────────────────────────── */
 .form-group { margin-bottom: 20px; }
