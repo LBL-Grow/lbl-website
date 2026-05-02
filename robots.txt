@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /onboarding.html
+
+Sitemap: https://www.localboostlab.com/sitemap.xml
