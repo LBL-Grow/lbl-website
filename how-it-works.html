@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works | Local Boost Lab: Automated GBP Management</title>
+  <meta name="description" content="See exactly how Local Boost Lab manages your Google Business Profile: automated review responses, weekly posts, and monthly reports. Setup takes 5–7 minutes.">
+  <link rel="canonical" href="https://www.localpresenceai.com/how-it-works">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="How It Works | Local Boost Lab">
+  <meta property="og:description" content="Three steps. Ten minutes. Done. See exactly how we manage your Google Business Profile automatically.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.localpresenceai.com/how-it-works">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .timeline-section { padding: var(--section-pad) 0; }
+    .process-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .process-block:last-child { margin-bottom: 0; }
+    .process-block--reverse { direction: rtl; }
+    .process-block--reverse > * { direction: ltr; }
+    .process-block__visual {
+      background: var(--surface-mid);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-color);
+    }
+    .process-block__content h3 {
+      font-size: 1.65rem;
+      margin-bottom: 16px;
+    }
+    .process-block__content p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .process-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--signal-amber);
+      color: var(--authority-blue-dark);
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .sla-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .sla-table th {
+      text-align: left;
+      padding: 10px 16px;
+      background: var(--authority-blue);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .sla-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--surface-mid);
+      font-size: 0.875rem;
+    }
+    .sla-table tr:last-child td { border-bottom: none; }
+    .sla-table tr:nth-child(even) td { background: var(--surface-light); }
+    .sla-stars { color: #FCD34D; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+    }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 20px 0;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--authority-blue);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+    }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 200ms; flex-shrink: 0; }
+    .faq-item.open .faq-question .icon { transform: rotate(45deg); }
+    .faq-answer {
+      display: none;
+      padding: 0 0 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    @media (max-width: 768px) {
+      .process-block { grid-template-columns: 1fr; gap: 32px; }
+      .process-block--reverse { direction: ltr; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-nav">Skip to main content</a>
+
+<nav class="nav nav--scrolled">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="Local Boost Lab - Home"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</a>
+    <div class="nav__links">
+      <a href="how-it-works.html" class="nav__active">How It Works</a>
+      <a href="industries.html">Industries</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="pricing.html" class="btn btn-primary nav__cta">See Plans →</a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile-overlay">
+  <a href="how-it-works.html">How It Works</a>
+  <a href="industries.html">Industries</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog/index.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="pricing.html" class="btn btn-primary btn-lg">See Plans →</a>
+</div>
+
+<main id="main" role="main">
+
+<!-- Page Hero -->
+<section style="background:var(--authority-blue);padding:120px 0 64px;">
+  <div class="container" style="text-align:center;">
+    <span class="process-tag" style="margin-bottom:20px;">The Process</span>
+    <h1 style="color:white;margin-bottom:16px;">How Local Boost Lab Works</h1>
+    <p style="color:var(--text-light);font-size:1.2rem;max-width:600px;margin:0 auto;">From signup to first post: everything we do, exactly how we do it. No black boxes.</p>
+  </div>
+</section>
+
+<!-- Setup Steps -->
+<section class="section section--white timeline-section" aria-labelledby="setup-heading">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2 id="setup-heading">Getting Started: Three Steps</h2>
+      <p>Your end of the setup takes under 10 minutes. Ours takes 48 hours.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;text-align:center;" class="fade-up">
+      <div style="background:var(--surface-light);border-radius:12px;padding:20px;border:1px solid var(--border-color);">
+        <div style="font-family:var(--font-mono);font-size:1.8rem;font-weight:700;color:var(--authority-blue);">88%</div>
+        <div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">of consumers trust online reviews as much as a personal recommendation</div>
+      </div>
+      <div style="background:var(--surface-light);border-radius:12px;padding:20px;border:1px solid var(--border-color);">
+        <div style="font-family:var(--font-mono);font-size:1.8rem;font-weight:700;color:var(--signal-amber);">76%</div>
+        <div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">of local searchers visit a business within 24 hours of searching</div>
+      </div>
+      <div style="background:var(--surface-light);border-radius:12px;padding:20px;border:1px solid var(--border-color);">
+        <div style="font-family:var(--font-mono);font-size:1.8rem;font-weight:700;color:var(--authority-blue);">5x</div>
+        <div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">more profile views for businesses that post consistently every week</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="steps__list">
+        <div class="step fade-up">
+          <div class="step__number">1</div>
+          <div class="step__title">Choose Your Plan &amp; Pay</div>
+          <p class="step__body">Pick your plan on our pricing page. Stripe checkout. Under 60 seconds. You'll receive a receipt immediately. No hidden fees, no setup charges, no contract.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step__number">2</div>
+          <div class="step__title">Complete Your Setup Form</div>
+          <p class="step__body">You'll get a link to your onboarding form right after payment. Tell us about your business, your brand voice, your services. Upload photos if you have them. Takes 4–7 minutes.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step__number">3</div>
+          <div class="step__title">We Go Live in 48 Hours</div>
+          <p class="step__body">We configure your profile management, load your voice settings, and queue your first post. You'll get a confirmation email. From there, everything is automatic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What We Do Every Day -->
+<section class="section section--mid" aria-labelledby="daily-heading">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2 id="daily-heading">What Happens After You Onboard</h2>
+      <p>This is what runs in the background while you're running your business.</p>
+    </div>
+
+    <div class="process-block fade-up">
+      <div class="process-block__content">
+        <span class="process-tag">Review Management</span>
+        <h3>Every review, handled within minutes.</h3>
+        <p>Our system monitors your Google Business Profile 24/7. The moment a new review appears:</p>
+        <ul style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;padding-left:20px;list-style:disc;">
+          <li><strong>4–5 star reviews:</strong> Auto-responded in your voice within 30 minutes</li>
+          <li><strong>3-star reviews:</strong> You get an email alert with a draft response within 15 minutes. You approve or edit.</li>
+          <li><strong>1–2 star reviews:</strong> Urgent alert within 5 minutes. We draft a response but never post without your explicit approval</li>
+        </ul>
+        <p style="margin-top:12px;font-size:0.875rem;color:var(--success-green);font-weight:600;">✓ We NEVER auto-respond to anything below 4 stars.</p>
+      </div>
+      <div class="process-block__visual">
+        <div style="width:100%;max-width:320px;">
+          <div style="background:white;border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow-card);margin-bottom:12px;">
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">★★★★★ New review · 4 min ago</div>
+            <div style="font-size:0.85rem;margin-bottom:10px;">"Incredible service, showed up same day!"</div>
+            <div style="background:#EFF6FF;border-left:3px solid var(--authority-blue);padding:10px 12px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:0.8rem;">
+              <span style="font-size:0.7rem;font-weight:700;color:var(--success-green);">✓ Auto-responded · just now</span><br>
+              "Thank you so much for the kind words!..."
+            </div>
+          </div>
+          <div style="background:white;border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow-card);border-left:4px solid var(--signal-amber);">
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">★★★ Alert sent · 12 min ago</div>
+            <div style="font-size:0.85rem;margin-bottom:10px;">"Good work but took longer than quoted."</div>
+            <div style="display:flex;gap:8px;">
+              <span style="font-size:0.72rem;background:#FEF3C7;color:#92400E;padding:3px 10px;border-radius:20px;font-weight:700;">Awaiting your approval</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-block process-block--reverse fade-up">
+      <div class="process-block__content">
+        <span class="process-tag">Content Publishing</span>
+        <h3>Three posts a week. Every week. Without you.</h3>
+        <p>Every Tuesday, Thursday, and Saturday at 9 AM your local time, a new post goes live on your Google Business Profile.</p>
+        <p>Each post is:</p>
+        <ul style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;padding-left:20px;list-style:disc;">
+          <li>Written specifically for your business and services</li>
+          <li>Optimized for local SEO keywords in your area</li>
+          <li>Using your photos (when available) or AI-generated images</li>
+          <li>Never repeating the same topic within 30 days</li>
+          <li>Formatted for maximum GBP engagement (proper length, CTA, hashtags)</li>
+        </ul>
+      </div>
+      <div class="process-block__visual">
+        <div style="width:100%;max-width:300px;">
+          <div style="background:white;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-card);">
+            <div style="background:var(--authority-blue);padding:10px 14px;font-size:0.8rem;color:white;font-weight:600;">This Week's Posts</div>
+            <div style="padding:16px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
+                <span>Tuesday 9 AM</span>
+                <span style="color:var(--success-green);font-weight:600;font-size:0.75rem;">✓ Published</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
+                <span>Thursday 9 AM</span>
+                <span style="color:var(--success-green);font-weight:600;font-size:0.75rem;">✓ Published</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:0.85rem;">
+                <span>Saturday 9 AM</span>
+                <span style="color:var(--authority-blue);font-weight:600;font-size:0.75rem;">Scheduled</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-block fade-up">
+      <div class="process-block__content">
+        <span class="process-tag">Monthly Reports</span>
+        <h3>A real report on the 3rd of every month.</h3>
+        <p>On the 3rd of each month, you'll receive a clear performance report by email. No dashboards to log into. No 47-slide decks. Just the numbers you actually care about:</p>
+        <ul style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;padding-left:20px;list-style:disc;">
+          <li>Total reviews received and your current rating</li>
+          <li>Review response rate and average response time</li>
+          <li>Posts published and engagement data</li>
+          <li>Profile views, clicks, and direction requests</li>
+          <li>Month-over-month comparison</li>
+        </ul>
+      </div>
+      <div class="process-block__visual">
+        <div style="width:100%;max-width:300px;">
+          <div style="background:white;border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow-card);">
+            <div style="font-family:var(--font-heading);font-size:0.95rem;font-weight:700;color:var(--authority-blue);margin-bottom:16px;">April Report</div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
+              <span style="color:var(--text-muted);">New Reviews</span>
+              <strong style="font-family:var(--font-mono);">12</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
+              <span style="color:var(--text-muted);">Current Rating</span>
+              <strong style="font-family:var(--font-mono);">4.8 ★</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
+              <span style="color:var(--text-muted);">Response Rate</span>
+              <strong style="font-family:var(--font-mono);color:var(--success-green);">97%</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
+              <span style="color:var(--text-muted);">Posts Published</span>
+              <strong style="font-family:var(--font-mono);">13</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:0.85rem;">
+              <span style="color:var(--text-muted);">Profile Views</span>
+              <strong style="font-family:var(--font-mono);">+34%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLA Table -->
+<section class="section section--white" aria-labelledby="sla-heading">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2 id="sla-heading">Our Response Commitments</h2>
+      <p>These aren't aspirational targets. They're what we actually do.</p>
+    </div>
+
+    <div style="overflow-x:auto;" class="fade-up">
+      <table class="sla-table" style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-card);">
+        <thead>
+          <tr>
+            <th>Review Type</th>
+            <th>Alert Sent Within</th>
+            <th>Auto-Response</th>
+            <th>Client Approval Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="sla-stars">★★★★★</span> 5-star review</td>
+            <td>—</td>
+            <td style="color:var(--success-green);font-weight:600;">✓ Within 30 minutes</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><span class="sla-stars">★★★★</span> 4-star review</td>
+            <td>—</td>
+            <td style="color:var(--success-green);font-weight:600;">✓ Within 30 minutes</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><span class="sla-stars">★★★</span> 3-star review</td>
+            <td style="color:var(--signal-amber);font-weight:600;">15 minutes</td>
+            <td style="color:var(--warning-red);">✗ Never</td>
+            <td style="font-weight:600;">Yes, draft provided</td>
+          </tr>
+          <tr>
+            <td><span class="sla-stars">★★</span><span style="color:#D1D5DB;">★★★</span> 2-star review</td>
+            <td style="color:var(--warning-red);font-weight:600;">5 minutes (Urgent)</td>
+            <td style="color:var(--warning-red);">✗ Never</td>
+            <td style="font-weight:600;">Yes, draft provided</td>
+          </tr>
+          <tr>
+            <td><span class="sla-stars">★</span><span style="color:#D1D5DB;">★★★★</span> 1-star review</td>
+            <td style="color:var(--warning-red);font-weight:600;">5 minutes (Urgent)</td>
+            <td style="color:var(--warning-red);">✗ Never</td>
+            <td style="font-weight:600;">Yes, draft provided</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--mid" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2 id="faq-heading">Common Questions</h2>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;" class="fade-up">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Do I need to give you my Google password? <span class="icon">+</span></button>
+        <div class="faq-answer">No. We use Google OAuth. You authorize our access with one click, using Google's own secure system. We never see or store your Google password. Alternatively, you can add our email as a Manager to your GBP manually.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What if I want to approve posts before they go live? <span class="icon">+</span></button>
+        <div class="faq-answer">Currently, posts are published automatically on schedule. If you'd like to review content before publishing, you can email us at any time and we'll set you up on a preview workflow (available on Complete plan).</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Can I request custom posts for promotions or events? <span class="icon">+</span></button>
+        <div class="faq-answer">Absolutely. Email us at grow@localboostlab.com with the details and we'll create and schedule a custom post. On the Complete plan, urgent custom posts are handled within 4 hours.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What happens if my profile gets flagged by Google? <span class="icon">+</span></button>
+        <div class="faq-answer">We follow Google's GBP content policies strictly. All content is reviewed against current guidelines before publishing. On the Complete plan, you also get monthly health audits and suspension risk alerts. In the unlikely event of a flag, we immediately pause posting and help you respond to Google's process.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What if I don't have any photos to upload? <span class="icon">+</span></button>
+        <div class="faq-answer">No problem. We use AI-generated images that are appropriate for your industry and services. We'll always use your real photos when you have them, they perform better, but we can keep your profile active with generated imagery in the meantime.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How do I cancel? <span class="icon">+</span></button>
+        <div class="faq-answer">Email grow@localboostlab.com and we'll process your cancellation within 24 hours. No questions asked. Your service continues through the end of your current billing period. We remove GBP access immediately upon cancellation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--authority-blue);padding:80px 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:white;margin-bottom:16px;" class="fade-up">Ready to stop thinking about your GBP?</h2>
+    <p style="color:var(--text-light);margin-bottom:32px;font-size:1.1rem;" class="fade-up">No contract required. Start for $97/month and see results within 30 days.</p>
+    <a href="pricing.html" class="btn btn-primary btn-xl fade-up">See Plans →</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</div>
+        <div class="footer__tagline">Your Google Profile. Finally handled.</div>
+        <div class="footer__email"><a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
+      </div>
+      <div>
+        <div class="footer__col-title">Product</div>
+        <nav class="footer__links">
+          <a href="how-it-works.html">How It Works</a>
+          <a href="industries.html">Industries</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="blog/index.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer__col-title">Legal</div>
+        <nav class="footer__links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:0;flex-wrap:wrap;">
+      <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Payments secured by</span>
+      <svg width="50" height="21" viewBox="0 0 50 21" fill="none" aria-label="Stripe" role="img"><path d="M4.03 7.64c0-.57.47-.79 1.24-.79 1.11 0 2.51.34 3.62.94V4.34C7.78 3.87 6.69 3.7 5.61 3.7 2.76 3.7 1 5.12 1 7.8c0 4.19 5.77 3.52 5.77 5.32 0 .67-.58.89-1.39.89-1.2 0-2.74-.49-3.96-1.16v3.5c1.35.58 2.71.82 3.96.82 2.92 0 4.92-1.45 4.92-4.16-.02-4.52-5.77-3.71-5.77-5.37zM18.23 1.55l-3.38.72-.01 11.1c0 2.05 1.54 3.56 3.59 3.56 1.14 0 1.97-.21 2.43-.46v-2.8c-.44.18-2.63.82-2.63-1.23V7.15h2.63V4.1h-2.63l.01-2.55zm6.66 3.33l-.22-1.06H21.6v13.11h3.5V9.2c.83-1.08 2.23-.88 2.67-.73V5.11c-.46-.17-2.13-.5-2.88 1.77zm4.68-1.06H33V16.93h-3.43V4.82zm0-3.64l3.43-.73V3.7l-3.43.73V1.18zm11.35 2.87c-1.36 0-2.23.64-2.72 1.08l-.18-.86h-3.05v17.2l3.46-.73.01-4.18c.51.37 1.25.9 2.47.9 2.5 0 4.78-2.01 4.78-6.44-.01-4.07-2.31-5.97-4.77-5.97zm-.84 9.19c-.82 0-1.3-.29-1.64-.65l-.02-5.13c.36-.4.86-.68 1.66-.68 1.27 0 2.15 1.42 2.15 3.22 0 1.84-.86 3.24-2.15 3.24z" fill="rgba(255,255,255,0.6)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" rx="4" aria-label="Visa" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><path d="M14.5 16h-2.1l1.3-8H16l-1.5 8zm8.4-7.8c-.4-.2-1.1-.4-1.9-.4-2.1 0-3.6 1.1-3.6 2.7 0 1.2 1.1 1.8 1.9 2.2.8.4 1.1.7 1.1 1 0 .6-.7.8-1.3.8-.8 0-1.3-.1-2-.4l-.3-.1-.3 1.7c.5.2 1.4.4 2.3.4 2.2 0 3.7-1.1 3.7-2.8 0-.9-.6-1.6-1.9-2.2-.8-.4-1.3-.6-1.3-1 0-.3.4-.7 1.3-.7.7 0 1.2.1 1.6.3l.2.1.3-1.6zm5.5-.2h-1.6c-.5 0-.9.1-1.1.7L23.2 16h2.2l.4-1.2h2.7l.2 1.2h2L28.4 8zm-2.6 5.1l.8-2.3.5 2.3h-1.3zM13 8l-2.1 5.5-.2-1.1c-.4-1.3-1.6-2.7-2.9-3.4l1.9 7h2.2L15.2 8H13z" fill="rgba(255,255,255,0.7)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Mastercard" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="15" cy="12" r="6" fill="rgba(235,0,27,0.6)"/><circle cx="23" cy="12" r="6" fill="rgba(255,163,0,0.6)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="American Express" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><text x="5" y="16" font-family="Arial" font-size="9" font-weight="700" fill="rgba(255,255,255,0.7)">AMEX</text></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Discover" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="23" cy="12" r="7" fill="rgba(245,158,11,0.5)"/><text x="4" y="16" font-family="Arial" font-size="7" font-weight="700" fill="rgba(255,255,255,0.7)">DISC</text></svg>
+    </div>
+    <div class="footer__bottom">
+      <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
+      <span>This site uses only essential cookies. <a href="#" data-cookie-prefs>Manage Cookies</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="chat-widget">
+  <div class="chat-window">
+    <div class="chat-header">
+      <div class="chat-header__info">
+        <div class="chat-header__avatar">LP</div>
+        <div>
+          <div class="chat-header__name">Local Boost Lab Support</div>
+          <div class="chat-header__status">Online · replies in minutes</div>
+        </div>
+      </div>
+      <button class="chat-header__close" aria-label="Close chat">×</button>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email grow@localboostlab.com and we'll respond within 24 hours.</div>
+      <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" placeholder="Ask a question..." aria-label="Chat message">
+      <button class="chat-send">Send</button>
+    </div>
+  </div>
+  <div class="chat-bubble" role="button" aria-label="Chat with support" tabindex="0">
+    <span class="chat-bubble__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="white" stroke-width="2"/></svg></span>
+    <span class="chat-bubble__online"></span>
+  </div>
+</div>
+
+<div class="cookie-bar">
+  <p class="cookie-bar__text">This site uses essential cookies for checkout and onboarding. <a href="privacy.html">Learn more →</a></p>
+  <div class="cookie-bar__actions">
+    <button class="btn btn-primary" data-cookie-accept>Accept</button>
+    <button class="btn btn-ghost" data-cookie-prefs>Preferences</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+      this.setAttribute('aria-expanded', !wasOpen);
+    });
+  });
+</script>
+</body>
+</html>

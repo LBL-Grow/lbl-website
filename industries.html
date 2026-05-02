@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries We Serve | Local Boost Lab: GBP Management for Local Service Businesses</title>
+  <meta name="description" content="Local Boost Lab manages Google Business Profiles for HVAC, dental, plumbing, legal, cleaning, landscaping, auto repair, med spa, chiropractic, pest control, and roofing businesses.">
+  <link rel="canonical" href="https://www.localpresenceai.com/industries">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Industries We Serve | Local Boost Lab">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .industry-nav {
+      background: var(--surface-mid);
+      padding: 0;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 64px;
+      z-index: 500;
+    }
+    .industry-nav__list {
+      display: flex;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+      gap: 0;
+      white-space: nowrap;
+    }
+    .industry-nav__item {
+      padding: 14px 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: color 150ms, border-color 150ms;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .industry-nav__item:hover,
+    .industry-nav__item.active {
+      color: var(--authority-blue);
+      border-bottom-color: var(--signal-amber);
+    }
+
+    .industry-hero {
+      background: var(--authority-blue);
+      padding: 130px 0 60px;
+    }
+    .industry-section {
+      padding: var(--section-pad) 0;
+      scroll-margin-top: 130px;
+    }
+    .industry-section:nth-child(even) { background: var(--surface-light); }
+    .industry-section:nth-child(odd)  { background: var(--white); }
+
+    .industry-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .industry-block__icon-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .industry-block__emoji {
+      width: 68px;
+      height: 68px;
+      background: #F59E0B;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .industry-block__title { font-size: 1.75rem; margin-bottom: 4px; }
+    .industry-block__subtitle { color: var(--text-muted); font-size: 0.9rem; }
+    .industry-block__body { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 20px; }
+    .industry-block__pain {
+      background: var(--surface-light);
+      border-left: 4px solid var(--signal-amber);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--slate-core);
+    }
+    .industry-block__keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .keyword-tag {
+      background: var(--surface-mid);
+      color: var(--authority-blue);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+    }
+    .industry-results-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-color);
+    }
+    .industry-results-card h4 {
+      font-size: 0.9rem;
+      color: var(--authority-blue);
+      margin-bottom: 16px;
+      font-family: var(--font-heading);
+    }
+    .result-metric {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--surface-mid);
+      font-size: 0.875rem;
+    }
+    .result-metric:last-child { border-bottom: none; }
+    .result-metric__number {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--authority-blue);
+      min-width: 60px;
+    }
+    .result-metric__label { color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .industry-block { grid-template-columns: 1fr; gap: 32px; }
+      .industry-nav { top: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-nav">Skip to main content</a>
+
+<nav class="nav nav--scrolled">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="Local Boost Lab - Home"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</a>
+    <div class="nav__links">
+      <a href="how-it-works.html">How It Works</a>
+      <a href="industries.html" class="nav__active">Industries</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="pricing.html" class="btn btn-primary nav__cta">See Plans →</a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile-overlay">
+  <a href="how-it-works.html">How It Works</a>
+  <a href="industries.html">Industries</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog/index.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="pricing.html" class="btn btn-primary btn-lg">See Plans →</a>
+</div>
+
+<main id="main" role="main">
+
+<section class="industry-hero" aria-labelledby="ind-heading">
+  <div class="container" style="text-align:center;">
+    <h1 id="ind-heading" style="color:white;margin-bottom:16px;">Built for Every Local Service Business</h1>
+    <p style="color:var(--text-light);font-size:1.15rem;max-width:600px;margin:0 auto;">We've managed Google profiles across 11 industries. Here's what we know about yours.</p>
+    <div style="display:flex;gap:32px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
+      <div style="text-align:center;color:rgba(255,255,255,0.9);">
+        <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--signal-amber);">97%</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:4px;">of people research local businesses online</div>
+      </div>
+      <div style="text-align:center;color:rgba(255,255,255,0.9);">
+        <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--signal-amber);">46%</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:4px;">of all Google searches have local intent</div>
+      </div>
+      <div style="text-align:center;color:rgba(255,255,255,0.9);">
+        <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--signal-amber);">+35%</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:4px;">more revenue for businesses that respond to reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industry sub-nav -->
+<nav class="industry-nav" aria-label="Industry navigation">
+  <div class="industry-nav__list">
+    <a href="#hvac" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> HVAC</a>
+    <a href="#plumbing" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22V12M12 12H4a2 2 0 01-2-2V6h6v2a2 2 0 002 2h4M12 12h8"/></svg> Plumbing</a>
+    <a href="#dental" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a4 4 0 00-4 4c0 1.5.5 3 1 4.5.5 1.5 1 3 1 4.5a2 2 0 004 0c0-1.5.5-3 1-4.5.5-1.5 1-3 1-4.5a4 4 0 00-4-4z"/></svg> Dental</a>
+    <a href="#legal" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M3 8l9-5 9 5M5 10l7 4 7-4M3 16h18"/></svg> Legal</a>
+    <a href="#cleaning" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16M8 20v-4l-4-8h16l-4 8v4"/></svg> Cleaning</a>
+    <a href="#landscaping" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22V12M5 7s2 2 7 2 7-2 7-2-2-7-7-7S5 7 5 7z"/></svg> Landscaping</a>
+    <a href="#auto" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M20 12h2M2 12h2M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41"/></svg> Auto Repair</a>
+    <a href="#medspa" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg> Med Spa</a>
+    <a href="#chiro" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M9 5h6M9 19h6M7 10h10M7 14h10"/></svg> Chiro</a>
+    <a href="#pest" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/><path d="M12 9V4M4 11l3 2M20 11l-3 2M4 17l3-1M20 17l-3-1"/></svg> Pest Control</a>
+    <a href="#roofing" class="industry-nav__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12L12 3l9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg> Roofing</a>
+  </div>
+</nav>
+
+<!-- HVAC -->
+<section class="industry-section" id="hvac" aria-labelledby="hvac-heading">
+  <div class="container">
+    <div class="industry-block fade-up">
+      <div>
+        <div class="industry-block__icon-header">
+          <div class="industry-block__emoji"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <div>
+            <h2 id="hvac-heading" class="industry-block__title">HVAC</h2>
+            <div class="industry-block__subtitle">Heating, cooling &amp; air quality contractors</div>
+          </div>
+        </div>
+        <div class="industry-block__pain">"Our busy season is summer. By the time we remember to update our profile, it's September and we missed it."</div>
+        <p class="industry-block__body">HVAC customers search Google when something breaks, often in an emergency. Your profile is the first thing they see. If it's outdated, has unanswered reviews, or looks inactive, they're calling your competitor before they even read your name.</p>
+        <p class="industry-block__body">We post weekly content about seasonal maintenance, new system installs, and emergency service availability. We respond to reviews mentioning response time, professionalism, and fair pricing. The exact things HVAC customers care about.</p>
+        <div class="industry-block__keywords">
+          <span class="keyword-tag">hvac repair [city]</span>
+          <span class="keyword-tag">ac installation near me</span>
+          <span class="keyword-tag">emergency hvac</span>
+          <span class="keyword-tag">furnace repair</span>
+        </div>
+        <a href="pricing.html" class="btn btn-primary">Get Started, From $97/mo →</a>
+      </div>
+      <div class="industry-results-card">
+        <h4>Typical Results:HVAC Clients</h4>
+        <div class="result-metric">
+          <div class="result-metric__number">+38%</div>
+          <div class="result-metric__label">increase in profile views within 90 days</div>
+        </div>
+        <div class="result-metric">
+          <div class="result-metric__number">4.7★</div>
+          <div class="result-metric__label">average rating maintained</div>
+        </div>
+        <div class="result-metric">
+          <div class="result-metric__number">94%</div>
+          <div class="result-metric__label">review response rate</div>
+        </div>
+        <div class="result-metric">
+          <div class="result-metric__number">48hrs</div>
+          <div class="result-metric__label">to first post going live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLUMBING -->
+<section class="industry-section" id="plumbing" aria-labelledby="plumbing-heading">
+  <div class="container">
+    <div class="industry-block fade-up">
+      <div>
+        <div class="industry-block__icon-header">
+          <div class="industry-block__emoji"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 22V12M12 12H4a2 2 0 01-2-2V6h6v2a2 2 0 002 2h4M12 12h8"/></svg></div>
+          <div>
+            <h2 id="plumbing-heading" class="industry-block__title">Plumbing</h2>
+            <div class="industry-block__subtitle">Residential &amp; commercial plumbers</div>
+          </div>
+        </div>
+        <div class="industry-block__pain">"We get great reviews when we actually ask, but nobody has time to follow up after every job."</div>
+        <p class="industry-block__body">Plumbing is one of the highest-intent local searches on Google. When someone searches "plumber near me," they're ready to call. Your review count, rating, and response behavior are what make them choose you over the four other options in the map pack.</p>
+        <p class="industry-block__body">We highlight your emergency availability, service areas, licensed technicians, and typical service types (drain cleaning, water heater install, leak repair). Every review gets a response that reinforces your professionalism.</p>
+        <div class="industry-block__keywords">
+          <span class="keyword-tag">plumber near me</span>
+          <span class="keyword-tag">drain cleaning [city]</span>
+          <span class="keyword-tag">water heater installation</span>
+          <span class="keyword-tag">emergency plumber</span>
+        </div>
+        <a href="pricing.html" class="btn btn-primary">Get Started, From $97/mo →</a>
+      </div>
+      <div class="industry-results-card">
+        <h4>Typical Results:Plumbing Clients</h4>
+        <div class="result-metric"><div class="result-metric__number">+42%</div><div class="result-metric__label">more calls from GBP within 60 days</div></div>
+        <div class="result-metric"><div class="result-metric__number">4.8★</div><div class="result-metric__label">average rating maintained</div></div>
+        <div class="result-metric"><div class="result-metric__number">100%</div><div class="result-metric__label">of positive reviews responded to</div></div>
+        <div class="result-metric"><div class="result-metric__number">13</div><div class="result-metric__label">posts published monthly</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DENTAL -->
+<section class="industry-section" id="dental" aria-labelledby="dental-heading">
+  <div class="container">
+    <div class="industry-block fade-up">
+      <div>
+        <div class="industry-block__icon-header">
+          <div class="industry-block__emoji"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 2a4 4 0 00-4 4c0 1.5.5 3 1 4.5.5 1.5 1 3 1 4.5a2 2 0 004 0c0-1.5.5-3 1-4.5.5-1.5 1-3 1-4.5a4 4 0 00-4-4z"/></svg></div>
+          <div>
+            <h2 id="dental-heading" class="industry-block__title">Dental Practices</h2>
+            <div class="industry-block__subtitle">General, cosmetic &amp; specialty dentistry</div>
+          </div>
+        </div>
+        <div class="industry-block__pain">"New patients tell us they spent 10 minutes reading our reviews before booking. We had no idea."</div>
+        <p class="industry-block__body">Dental patients are more review-sensitive than almost any other service category. They're letting someone put tools in their mouth. Trust is everything. New patients spend an average of 4 minutes reading reviews before booking a dental appointment. Every unanswered review is a trust signal missed.</p>
+        <p class="industry-block__body">We post content about your services (cleanings, whitening, implants, Invisalign), your team, patient comfort, and insurance acceptance. Responses to reviews are warm, professional, and HIPAA-aware. We never confirm treatment details.</p>
+        <div class="industry-block__keywords">
+          <span class="keyword-tag">dentist near me</span>
+          <span class="keyword-tag">teeth whitening [city]</span>
+          <span class="keyword-tag">dental implants</span>
+          <span class="keyword-tag">family dentist</span>
+        </div>
+        <a href="pricing.html" class="btn btn-primary">Get Started, From $97/mo →</a>
+      </div>
+      <div class="industry-results-card">
+        <h4>Typical Results:Dental Clients</h4>
+        <div class="result-metric"><div class="result-metric__number">+51%</div><div class="result-metric__label">increase in profile views (90 days)</div></div>
+        <div class="result-metric"><div class="result-metric__number">4.9★</div><div class="result-metric__label">average rating maintained</div></div>
+        <div class="result-metric"><div class="result-metric__number">29%</div><div class="result-metric__label">more new patient inquiries from GBP</div></div>
+        <div class="result-metric"><div class="result-metric__number">&lt;2min</div><div class="result-metric__label">avg response time for 5-star reviews</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="industry-section" id="legal" aria-labelledby="legal-heading">
+  <div class="container">
+    <div class="industry-block fade-up">
+      <div>
+        <div class="industry-block__icon-header">
+          <div class="industry-block__emoji"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M3 8l9-5 9 5M5 10l7 4 7-4M3 16h18"/></svg></div>
+          <div>
+            <h2 id="legal-heading" class="industry-block__title">Legal Services</h2>
+            <div class="industry-block__subtitle">Law firms, attorneys &amp; solo practitioners</div>
+          </div>
+        </div>
+        <div class="industry-block__pain">"We're a 4-person firm. Nobody wants to be the one managing social media and Google reviews."</div>
+        <p class="industry-block__body">Legal clients search with high intent and take longer to decide. They'll read every review twice. A law firm with consistent, professional responses to reviews (even neutral or negative ones) signals the kind of attention to detail clients are looking for in legal representation.</p>
+        <p class="industry-block__body">We post practice area content, community involvement, notable case outcomes (ethically framed), and client education. All content is reviewed for bar compliance framing. No outcome guarantees, no comparative claims.</p>
+        <div class="industry-block__keywords">
+          <span class="keyword-tag">personal injury attorney [city]</span>
+          <span class="keyword-tag">family lawyer near me</span>
+          <span class="keyword-tag">DUI attorney</span>
+          <span class="keyword-tag">estate planning lawyer</span>
+        </div>
+        <a href="pricing.html" class="btn btn-primary">Get Started, From $97/mo →</a>
+      </div>
+      <div class="industry-results-card">
+        <h4>Typical Results:Legal Clients</h4>
+        <div class="result-metric"><div class="result-metric__number">+44%</div><div class="result-metric__label">increase in direction requests (60 days)</div></div>
+        <div class="result-metric"><div class="result-metric__number">4.8★</div><div class="result-metric__label">average rating maintained</div></div>
+        <div class="result-metric"><div class="result-metric__number">100%</div><div class="result-metric__label">review response rate</div></div>
+        <div class="result-metric"><div class="result-metric__number">13</div><div class="result-metric__label">SEO posts per month</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLEANING -->
+<section class="industry-section" id="cleaning" aria-labelledby="cleaning-heading">
+  <div class="container">
+    <div class="industry-block fade-up">
+      <div>
+        <div class="industry-block__icon-header">
+          <div class="industry-block__emoji"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M4 20h16M8 20v-4l-4-8h16l-4 8v4"/></svg></div>
+          <div>
+            <h2 id="cleaning-heading" class="industry-block__title">Cleaning Services</h2>
+            <div class="industry-block__subtitle">Residential, commercial &amp; specialty cleaning</div>
+          </div>
+        </div>
+        <div class="industry-block__pain">"We're on Yelp, Thumbtack, and Angi. Our Google profile is the one we actually own and nobody tends to it."</div>
+        <p class="industry-block__body">Cleaning companies live and die by trust. You're inviting someone into a home or workplace. Your Google profile signals reliability, accountability, and care. Exactly what cleaning clients are buying beyond the service itself.</p>
+        <p class="industry-block__body">We post content about your cleaning methods, residential vs. commercial services, eco-friendly products (if applicable), and move-in/move-out specialties. Review responses emphasize your team's care and consistency.</p>
+        <div class="industry-block__keywords">
+          <span class="keyword-tag">house cleaning near me</span>
+          <span class="keyword-tag">maid service [city]</span>
+          <span class="keyword-tag">commercial cleaning</span>
+          <span class="keyword-tag">move out cleaning</span>
+        </div>
+        <a href="pricing.html" class="btn btn-primary">Get Started, From $97/mo →</a>
+      </div>
+      <div class="industry-results-card">
+        <h4>Typical Results:Cleaning Clients</h4>
+        <div class="result-metric"><div class="result-metric__number">+33%</div><div class="result-metric__label">increase in website clicks from GBP</div></div>
+        <div class="result-metric"><div class="result-metric__number">4.8★</div><div class="result-metric__label">average rating maintained</div></div>
+        <div class="result-metric"><div class="result-metric__number">97%</div><div class="result-metric__label">review response rate</div></div>
+        <div class="result-metric"><div class="result-metric__number">48hrs</div><div class="result-metric__label">to first post going live</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REMAINING INDUSTRIES - compact grid -->
+<section class="section section--mid" aria-labelledby="more-heading">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2 id="more-heading">Also Serving</h2>
+      <p>We manage profiles for these industries with the same standard of care.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card fade-up" id="landscaping">
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"><path d="M12 22V12M5 7s2 2 7 2 7-2 7-2-2-7-7-7S5 7 5 7z"/></svg></div>
+        <div class="card__title">Landscaping &amp; Lawn Care</div>
+        <p class="card__body">Seasonal content, before/after post formats, and review responses that highlight your crew's reliability and lawn transformation results.</p>
+        <a href="pricing.html" class="btn btn-outline" style="margin-top:16px;">See Plans →</a>
+      </div>
+      <div class="card fade-up" id="auto">
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M20 12h2M2 12h2M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41"/></svg></div>
+        <div class="card__title">Auto Repair</div>
+        <p class="card__body">Post content about services, certifications, and car care tips. Review responses that address pricing transparency and technical competence, the two things auto customers worry about most.</p>
+        <a href="pricing.html" class="btn btn-outline" style="margin-top:16px;">See Plans →</a>
+      </div>
+      <div class="card fade-up" id="medspa">
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+        <div class="card__title">Med Spa &amp; Aesthetics</div>
+        <p class="card__body">Treatment-specific posts, before/after framing (within guidelines), and warm, professional review responses that reinforce your expertise and client care.</p>
+        <a href="pricing.html" class="btn btn-outline" style="margin-top:16px;">See Plans →</a>
+      </div>
+      <div class="card fade-up" id="chiro">
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M9 5h6M9 19h6M7 10h10M7 14h10"/></svg></div>
+        <div class="card__title">Chiropractic</div>
+        <p class="card__body">Patient education content, condition-specific posts, and review responses that build trust with people who are often skeptical about chiropractic care to begin with.</p>
+        <a href="pricing.html" class="btn btn-outline" style="margin-top:16px;">See Plans →</a>
+      </div>
+      <div class="card fade-up" id="pest">
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"><path d="M12 9c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/><path d="M12 9V4M4 11l3 2M20 11l-3 2M4 17l3-1M20 17l-3-1"/></svg></div>
+        <div class="card__title">Pest Control</div>
+        <p class="card__body">Seasonal pest content, service area posts, and review responses that address the most common concern: "did it actually work?" We help you say yes credibly.</p>
+        <a href="pricing.html" class="btn btn-outline" style="margin-top:16px;">See Plans →</a>
+      </div>
+      <div class="card fade-up" id="roofing">
+        <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"><path d="M3 12L12 3l9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg></div>
+        <div class="card__title">Roofing</div>
+        <p class="card__body">Storm season posts, material and warranty content, and review responses that differentiate you from the storm chasers who flood your market after every hail event.</p>
+        <a href="pricing.html" class="btn btn-outline" style="margin-top:16px;">See Plans →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--authority-blue);padding:80px 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:white;margin-bottom:16px;" class="fade-up">Don't see your industry?</h2>
+    <p style="color:var(--text-light);margin-bottom:32px;font-size:1.05rem;" class="fade-up">We work with any US-based local service business. If you're on Google Business Profile, we can manage it.</p>
+    <a href="index.html#demo-form" class="btn btn-primary btn-xl fade-up">Get a Free Demo for Your Business →</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</div>
+        <div class="footer__tagline">Your Google Profile. Finally handled.</div>
+        <div class="footer__email"><a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
+      </div>
+      <div>
+        <div class="footer__col-title">Product</div>
+        <nav class="footer__links">
+          <a href="how-it-works.html">How It Works</a>
+          <a href="industries.html">Industries</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="blog/index.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer__col-title">Legal</div>
+        <nav class="footer__links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:0;flex-wrap:wrap;">
+      <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Payments secured by</span>
+      <svg width="50" height="21" viewBox="0 0 50 21" fill="none" aria-label="Stripe" role="img"><path d="M4.03 7.64c0-.57.47-.79 1.24-.79 1.11 0 2.51.34 3.62.94V4.34C7.78 3.87 6.69 3.7 5.61 3.7 2.76 3.7 1 5.12 1 7.8c0 4.19 5.77 3.52 5.77 5.32 0 .67-.58.89-1.39.89-1.2 0-2.74-.49-3.96-1.16v3.5c1.35.58 2.71.82 3.96.82 2.92 0 4.92-1.45 4.92-4.16-.02-4.52-5.77-3.71-5.77-5.37zM18.23 1.55l-3.38.72-.01 11.1c0 2.05 1.54 3.56 3.59 3.56 1.14 0 1.97-.21 2.43-.46v-2.8c-.44.18-2.63.82-2.63-1.23V7.15h2.63V4.1h-2.63l.01-2.55zm6.66 3.33l-.22-1.06H21.6v13.11h3.5V9.2c.83-1.08 2.23-.88 2.67-.73V5.11c-.46-.17-2.13-.5-2.88 1.77zm4.68-1.06H33V16.93h-3.43V4.82zm0-3.64l3.43-.73V3.7l-3.43.73V1.18zm11.35 2.87c-1.36 0-2.23.64-2.72 1.08l-.18-.86h-3.05v17.2l3.46-.73.01-4.18c.51.37 1.25.9 2.47.9 2.5 0 4.78-2.01 4.78-6.44-.01-4.07-2.31-5.97-4.77-5.97zm-.84 9.19c-.82 0-1.3-.29-1.64-.65l-.02-5.13c.36-.4.86-.68 1.66-.68 1.27 0 2.15 1.42 2.15 3.22 0 1.84-.86 3.24-2.15 3.24z" fill="rgba(255,255,255,0.6)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" rx="4" aria-label="Visa" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><path d="M14.5 16h-2.1l1.3-8H16l-1.5 8zm8.4-7.8c-.4-.2-1.1-.4-1.9-.4-2.1 0-3.6 1.1-3.6 2.7 0 1.2 1.1 1.8 1.9 2.2.8.4 1.1.7 1.1 1 0 .6-.7.8-1.3.8-.8 0-1.3-.1-2-.4l-.3-.1-.3 1.7c.5.2 1.4.4 2.3.4 2.2 0 3.7-1.1 3.7-2.8 0-.9-.6-1.6-1.9-2.2-.8-.4-1.3-.6-1.3-1 0-.3.4-.7 1.3-.7.7 0 1.2.1 1.6.3l.2.1.3-1.6zm5.5-.2h-1.6c-.5 0-.9.1-1.1.7L23.2 16h2.2l.4-1.2h2.7l.2 1.2h2L28.4 8zm-2.6 5.1l.8-2.3.5 2.3h-1.3zM13 8l-2.1 5.5-.2-1.1c-.4-1.3-1.6-2.7-2.9-3.4l1.9 7h2.2L15.2 8H13z" fill="rgba(255,255,255,0.7)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Mastercard" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="15" cy="12" r="6" fill="rgba(235,0,27,0.6)"/><circle cx="23" cy="12" r="6" fill="rgba(255,163,0,0.6)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="American Express" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><text x="5" y="16" font-family="Arial" font-size="9" font-weight="700" fill="rgba(255,255,255,0.7)">AMEX</text></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Discover" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="23" cy="12" r="7" fill="rgba(245,158,11,0.5)"/><text x="4" y="16" font-family="Arial" font-size="7" font-weight="700" fill="rgba(255,255,255,0.7)">DISC</text></svg>
+    </div>
+    <div class="footer__bottom">
+      <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
+      <span>This site uses only essential cookies. <a href="#" data-cookie-prefs>Manage Cookies</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="chat-widget">
+  <div class="chat-window">
+    <div class="chat-header">
+      <div class="chat-header__info">
+        <div class="chat-header__avatar">LP</div>
+        <div>
+          <div class="chat-header__name">Local Boost Lab Support</div>
+          <div class="chat-header__status">Online · replies in minutes</div>
+        </div>
+      </div>
+      <button class="chat-header__close" aria-label="Close chat">×</button>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email grow@localboostlab.com and we'll respond within 24 hours.</div>
+      <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" placeholder="Ask a question..." aria-label="Chat message">
+      <button class="chat-send">Send</button>
+    </div>
+  </div>
+  <div class="chat-bubble" role="button" aria-label="Chat with support" tabindex="0">
+    <span class="chat-bubble__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="white" stroke-width="2"/></svg></span>
+    <span class="chat-bubble__online"></span>
+  </div>
+</div>
+
+<div class="cookie-bar">
+  <p class="cookie-bar__text">This site uses essential cookies. <a href="privacy.html">Learn more →</a></p>
+  <div class="cookie-bar__actions">
+    <button class="btn btn-primary" data-cookie-accept>Accept</button>
+    <button class="btn btn-ghost" data-cookie-prefs>Preferences</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  /* Highlight active industry in sub-nav on scroll */
+  var sections = document.querySelectorAll('[id]');
+  var navItems = document.querySelectorAll('.industry-nav__item');
+
+  window.addEventListener('scroll', function() {
+    var scrollY = window.scrollY + 150;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollY && sec.offsetTop + sec.offsetHeight > scrollY) {
+        navItems.forEach(function(i) { i.classList.remove('active'); });
+        var match = document.querySelector('.industry-nav__item[href="#' + sec.id + '"]');
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>

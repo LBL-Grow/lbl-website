@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Local Boost Lab — Set Up Your Profile</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--surface-light); }
+
+    .onboarding-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .onboarding-header {
+      background: var(--authority-blue);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .onboarding-header__logo {
+      font-family: var(--font-logo);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: white;
+    }
+    .onboarding-header__logo { display: flex; align-items: center; gap: 10px; }
+    .onboarding-header__help { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .onboarding-header__help a { color: rgba(255,255,255,0.8); text-decoration: underline; }
+
+    .onboarding-main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 24px 80px;
+    }
+    .onboarding-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-elevated);
+      padding: 48px;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .onboarding-progress {
+      margin-bottom: 36px;
+    }
+    .progress-steps { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .progress-step { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .progress-step.active { color: var(--authority-blue); }
+    .progress-step.done   { color: var(--signal-amber); }
+
+    .step-form { display: none; }
+    .step-form.active { display: block; animation: fadeIn 200ms ease; }
+
+    .step-heading { margin-bottom: 8px; }
+    .step-subheading { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 32px; }
+
+    .onboarding-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--surface-mid);
+    }
+    .onboarding-nav .back-btn {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px 0;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .onboarding-nav .back-btn:hover { color: var(--authority-blue); }
+
+    /* Photo upload */
+    .upload-area { position: relative; }
+    .upload-input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .upload-status {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      min-height: 20px;
+    }
+    .upload-status.success { color: var(--authority-blue); font-weight: 600; }
+    .upload-status.error   { color: var(--warning-red); }
+
+    /* Success screen */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 24px 0;
+    }
+    .success-screen.show { display: block; }
+    .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+    }
+    .success-screen h2 { color: var(--authority-blue); margin-bottom: 12px; }
+    .success-screen p  { color: var(--text-muted); margin-bottom: 24px; }
+    .success-screen__list {
+      background: var(--surface-light);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      text-align: left;
+      margin: 0 auto 24px;
+      max-width: 400px;
+    }
+    .success-screen__list li {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.875rem;
+      color: var(--slate-core);
+    }
+    .success-screen__list li:last-child { border-bottom: none; }
+    .success-screen__list .check { color: var(--success-green); }
+
+    @media (max-width: 768px) {
+      .onboarding-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="onboarding-wrap">
+  <header class="onboarding-header">
+    <div class="onboarding-header__logo"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</div>
+    <div class="onboarding-header__help">Questions? <a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
+  </header>
+
+  <div class="onboarding-main">
+    <div class="onboarding-card">
+
+      <!-- Progress -->
+      <div class="onboarding-progress" id="progress-bar-wrap">
+        <div class="progress-steps">
+          <span class="progress-step active" id="step-label-1">1. Your Business</span>
+          <span class="progress-step"       id="step-label-2">2. Brand Voice</span>
+          <span class="progress-step"       id="step-label-3">3. Photos</span>
+          <span class="progress-step"       id="step-label-4">4. Finish Up</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-bar__fill" id="progress-fill" style="width:25%;"></div>
+        </div>
+      </div>
+
+      <!-- STEP 1: Your Business -->
+      <div class="step-form active" id="step-1">
+        <h2 class="step-heading">Welcome to Local Boost Lab.</h2>
+        <p class="step-subheading">Let's set up your profile. This takes 5–7 minutes. After you submit, we go live within 48 hours.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="s1-biz-name">Business Name <span class="req">*</span></label>
+          <input id="s1-biz-name" type="text" class="form-control" placeholder="Martinez HVAC" required>
+          <div class="form-error">Please enter your business name.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="s1-biz-type">Business Type <span class="req">*</span></label>
+          <select id="s1-biz-type" class="form-control" required>
+            <option value="">Select your industry...</option>
+            <option>HVAC</option><option>Plumbing</option><option>Dental</option>
+            <option>Legal</option><option>Cleaning</option><option>Landscaping</option>
+            <option>Auto Repair</option><option>Med Spa</option><option>Chiropractic</option>
+            <option>Pest Control</option><option>Roofing</option><option>Other</option>
+          </select>
+          <div class="form-error">Please select your business type.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="s1-city">Primary City &amp; State <span class="req">*</span></label>
+          <input id="s1-city" type="text" class="form-control" placeholder="Austin, TX" required>
+          <div class="form-error">Please enter your city and state.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="s1-service-areas">Service Areas <span class="req">*</span></label>
+          <textarea id="s1-service-areas" class="form-control" placeholder="List the neighborhoods, cities, or zip codes you serve..." required style="min-height:80px;"></textarea>
+          <div class="form-error">Please list your service areas.</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="s1-website">Business Website</label>
+            <input id="s1-website" type="url" class="form-control" placeholder="https://yourbusiness.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="s1-years">Years in Operation <span class="req">*</span></label>
+            <select id="s1-years" class="form-control" required>
+              <option value="">Select...</option>
+              <option>Less than 1 year</option>
+              <option>1–3 years</option>
+              <option>3–10 years</option>
+              <option>10+ years</option>
+            </select>
+            <div class="form-error">Please select.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="s1-gbp-url">Google Business Profile URL <span class="req">*</span></label>
+          <input id="s1-gbp-url" type="text" class="form-control" placeholder="https://g.page/yourbusiness" required>
+          <div class="form-error">Please enter your GBP URL.</div>
+        </div>
+
+        <div class="onboarding-nav">
+          <span></span>
+          <button class="btn btn-primary btn-lg" onclick="nextStep(1)">Continue to Brand Voice →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Brand Voice -->
+      <div class="step-form" id="step-2">
+        <h2 class="step-heading">Tell us how your business talks.</h2>
+        <p class="step-subheading">We use this to write review responses and posts that sound like YOU, not like a marketing agency.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="s2-owner-name">Business Owner / Contact Name <span class="req">*</span></label>
+            <input id="s2-owner-name" type="text" class="form-control" placeholder="Mike Martinez" required>
+            <div class="form-error">Please enter the owner's name.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="s2-email">Email Address <span class="req">*</span></label>
+            <input id="s2-email" type="email" class="form-control" placeholder="mike@martinezhvac.com" required>
+            <div class="form-error">Please enter a valid email.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="s2-tone">Tone Description <span class="req">*</span></label>
+          <select id="s2-tone" class="form-control" required>
+            <option value="">Select a tone...</option>
+            <option>Friendly &amp; Warm</option>
+            <option>Professional &amp; Formal</option>
+            <option>Direct &amp; No-Nonsense</option>
+            <option>Casual &amp; Conversational</option>
+            <option>Witty &amp; Playful</option>
+            <option>Bold &amp; Confident</option>
+            <option>Empathetic &amp; Caring</option>
+          </select>
+          <div class="form-error">Please select a tone.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="s2-always">Things we should ALWAYS mention:</label>
+          <textarea id="s2-always" class="form-control" placeholder="e.g. We're family-owned. 20 years in business. Emergency service available." style="min-height:80px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="s2-never">Things we should NEVER mention:</label>
+          <textarea id="s2-never" class="form-control" placeholder="e.g. Never mention competitors. Don't use the word 'cheap.'" style="min-height:80px;"></textarea>
+        </div>
+
+        <p class="form-label" style="margin-bottom:12px;">Your top 3 services <span class="req">*</span></p>
+        <div class="form-row" style="margin-bottom:16px;">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Service 1 (e.g. AC Installation)" required id="s2-service1">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Service 2 (e.g. Furnace Repair)" required id="s2-service2">
+          </div>
+        </div>
+        <div class="form-group" style="max-width:calc(50% - 8px);">
+          <input type="text" class="form-control" placeholder="Service 3 (e.g. Emergency HVAC)" required id="s2-service3">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="s2-compliment">Typical customer compliment <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+          <textarea id="s2-compliment" class="form-control" placeholder="How do your best customers usually describe you? e.g. 'Fast, clean, and honest.'" style="min-height:80px;"></textarea>
+        </div>
+
+        <div class="onboarding-nav">
+          <button class="back-btn" onclick="prevStep(2)">← Back</button>
+          <button class="btn btn-primary btn-lg" onclick="nextStep(2)">Continue to Photos →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Photos -->
+      <div class="step-form" id="step-3">
+        <h2 class="step-heading">Upload your business photos.</h2>
+        <p class="step-subheading">We use your real photos in your posts. The more you give us, the more authentic your content looks. If you don't have any, we'll use AI-generated images.</p>
+
+        <div class="upload-area" id="upload-area">
+          <input type="file" class="upload-input" id="photo-input" multiple accept="image/jpeg,image/png,image/webp,image/heic" aria-label="Upload photos">
+          <div class="upload-zone" id="upload-zone">
+            <div class="upload-zone__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+            <p class="upload-zone__text"><strong>Drag and drop photos here</strong><br>or tap to add photos</p>
+            <p class="upload-zone__hint">JPG, PNG, WEBP, HEIC · Max 15MB per photo · Up to 30 photos · Min 5 recommended</p>
+          </div>
+        </div>
+
+        <div class="upload-status" id="upload-status"></div>
+        <div class="photo-grid" id="photo-grid"></div>
+
+        <div style="margin-top:24px;padding:16px;background:var(--surface-light);border-radius:var(--radius-sm);border:1px solid var(--border-color);">
+          <div class="form-check">
+            <input type="checkbox" id="no-photos-check">
+            <label for="no-photos-check">I don't have photos right now. Use AI-generated images for my posts</label>
+          </div>
+        </div>
+
+        <div class="onboarding-nav">
+          <button class="back-btn" onclick="prevStep(3)">← Back</button>
+          <button class="btn btn-primary btn-lg" onclick="nextStep(3)">Continue to Final Step →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Final Configuration -->
+      <div class="step-form" id="step-4">
+        <h2 class="step-heading">Almost done. A few last details.</h2>
+        <p class="step-subheading">These settings control how we access your profile and respond to reviews.</p>
+
+        <div class="form-group">
+          <label class="form-label">GBP Access Method <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option" for="access-oauth">
+              <input type="radio" id="access-oauth" name="access-method" value="oauth" required checked>
+              <div>
+                <div class="radio-option__label">Connect via Google OAuth <span style="background:var(--signal-amber);color:var(--authority-blue);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
+                <div class="radio-option__desc">One click, done. Google's own secure authorization system.</div>
+              </div>
+            </label>
+            <label class="radio-option" for="access-manual">
+              <input type="radio" id="access-manual" name="access-method" value="manual">
+              <div>
+                <div class="radio-option__label">I'll add grow@localboostlab.com as a Manager manually</div>
+                <div class="radio-option__desc">Go to your GBP, add our email as Manager (not Owner). We'll confirm once connected.</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:28px;">
+          <label class="form-label">Review Response Preference <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option" for="resp-auto">
+              <input type="radio" id="resp-auto" name="review-pref" value="auto" required checked>
+              <div>
+                <div class="radio-option__label">Auto-respond to all 4–5 star reviews <span style="background:var(--signal-amber);color:var(--authority-blue-dark);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
+                <div class="radio-option__desc">Fastest response time. We respond in your voice within 30 minutes.</div>
+              </div>
+            </label>
+            <label class="radio-option" for="resp-preview">
+              <input type="radio" id="resp-preview" name="review-pref" value="preview">
+              <div>
+                <div class="radio-option__label">Send me a preview before posting</div>
+                <div class="radio-option__desc">Adds 2–4 hours to response time but you see each draft before it goes live.</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:28px;">
+          <label class="form-label" for="s4-notes">Anything else we should know? <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+          <textarea id="s4-notes" class="form-control" placeholder="Any specific instructions, sensitivities, or things we should be aware of..." style="min-height:80px;"></textarea>
+        </div>
+
+        <div style="background:var(--surface-light);border-radius:var(--radius-md);padding:20px 24px;margin:28px 0;">
+          <div class="form-check" style="margin-bottom:10px;">
+            <input type="checkbox" id="confirm-gbp" required>
+            <label for="confirm-gbp">I confirm I own or am authorized to manage this Google Business Profile <span class="req">*</span></label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="confirm-tos" required>
+            <label for="confirm-tos">I have read and agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a> <span class="req">*</span></label>
+          </div>
+        </div>
+
+        <div id="submit-error" style="display:none;background:#FEE2E2;border:1px solid #FCA5A5;border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:16px;font-size:0.875rem;color:#991B1B;"></div>
+
+        <button type="button" class="btn btn-primary btn-xl btn-full" id="submit-btn" onclick="submitOnboarding()">
+          Complete Setup &amp; Go Live →
+        </button>
+        <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:12px;">
+          After submitting, you'll receive a confirmation email. Your first post will go live within 48 hours.
+        </p>
+
+        <div class="onboarding-nav" style="border-top:none;padding-top:0;margin-top:8px;">
+          <button class="back-btn" onclick="prevStep(4)">← Back</button>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Success Screen -->
+      <div class="success-screen" id="success-screen">
+        <div class="success-icon"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#F59E0B" opacity="0.12"/><circle cx="28" cy="28" r="20" fill="#F59E0B" opacity="0.2"/><path d="M18 28l7 7 13-14" stroke="#1B4FD8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2>You're all set!</h2>
+        <p>Your setup is complete. Here's what happens next:</p>
+        <ul class="success-screen__list">
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Confirmation email on its way to your inbox</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> We'll configure your profile management within 24 hours</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first post goes live within 48 hours</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Review monitoring starts immediately</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first monthly report arrives on the 3rd of next month</li>
+        </ul>
+        <p style="font-size:0.875rem;color:var(--text-muted);">Questions? Email <a href="mailto:grow@localboostlab.com" style="color:var(--authority-blue);">grow@localboostlab.com</a>. We respond within 24 hours.</p>
+        <a href="index.html" class="btn btn-outline" style="margin-top:8px;">Return to Homepage</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  var currentStep = 1;
+  var photos = [];
+
+  function updateProgress(step) {
+    var pct = [25, 50, 75, 100];
+    document.getElementById('progress-fill').style.width = pct[step - 1] + '%';
+    for (var i = 1; i <= 4; i++) {
+      var label = document.getElementById('step-label-' + i);
+      label.className = 'progress-step';
+      if (i < step)  label.classList.add('done');
+      if (i === step) label.classList.add('active');
+    }
+  }
+
+  function validateStep(step) {
+    var stepEl = document.getElementById('step-' + step);
+    var required = stepEl.querySelectorAll('[required]');
+    var valid = true;
+    required.forEach(function(f) {
+      if (!f.value.trim() || (f.type === 'checkbox' && !f.checked)) {
+        f.classList.add('invalid');
+        var err = f.parentElement.querySelector('.form-error');
+        if (err) err.classList.add('show');
+        valid = false;
+      } else {
+        f.classList.remove('invalid');
+        f.classList.add('valid');
+        var err = f.parentElement.querySelector('.form-error');
+        if (err) err.classList.remove('show');
+      }
+    });
+    return valid;
+  }
+
+  function nextStep(from) {
+    if (!validateStep(from)) return;
+    document.getElementById('step-' + from).classList.remove('active');
+    currentStep = from + 1;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress(currentStep);
+    document.querySelector('.onboarding-main').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function prevStep(from) {
+    document.getElementById('step-' + from).classList.remove('active');
+    currentStep = from - 1;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress(currentStep);
+  }
+
+  function submitOnboarding() {
+    var confirmGbp = document.getElementById('confirm-gbp');
+    var confirmTos = document.getElementById('confirm-tos');
+    var errEl = document.getElementById('submit-error');
+
+    if (!confirmGbp.checked || !confirmTos.checked) {
+      errEl.style.display = 'block';
+      errEl.textContent = 'Please check both confirmation boxes before submitting.';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Activating your profile...';
+
+    /* Simulate async submission */
+    setTimeout(function() {
+      document.getElementById('progress-bar-wrap').style.display = 'none';
+      document.getElementById('step-4').classList.remove('active');
+      document.getElementById('success-screen').classList.add('show');
+
+      /* In production, POST to /api/onboarding/complete with form data */
+    }, 1800);
+  }
+
+  /* Photo upload */
+  var photoInput = document.getElementById('photo-input');
+  var photoGrid  = document.getElementById('photo-grid');
+  var uploadStatus = document.getElementById('upload-status');
+  var uploadZone = document.getElementById('upload-zone');
+
+  photoInput.addEventListener('change', function() {
+    handleFiles(this.files);
+  });
+
+  uploadZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    uploadZone.classList.add('dragover');
+  });
+  uploadZone.addEventListener('dragleave', function() {
+    uploadZone.classList.remove('dragover');
+  });
+  uploadZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    uploadZone.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+
+  function handleFiles(fileList) {
+    var allowed = Array.from(fileList).filter(function(f) {
+      return f.type.match(/image\/(jpeg|png|webp|heic)/) && f.size <= 15 * 1024 * 1024;
+    });
+
+    if (photos.length + allowed.length > 30) {
+      uploadStatus.className = 'upload-status error';
+      uploadStatus.textContent = 'Maximum 30 photos allowed.';
+      return;
+    }
+
+    uploadStatus.className = 'upload-status';
+    uploadStatus.textContent = 'Uploading... ' + allowed.length + ' photo' + (allowed.length !== 1 ? 's' : '') + '...';
+
+    var loaded = 0;
+    allowed.forEach(function(file) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        photos.push({ name: file.name, src: e.target.result });
+        loaded++;
+        addThumb(e.target.result, photos.length - 1);
+        if (loaded === allowed.length) {
+          uploadStatus.className = 'upload-status success';
+          uploadStatus.textContent = photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' uploaded successfully ✓';
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function addThumb(src, idx) {
+    var div = document.createElement('div');
+    div.className = 'photo-thumb';
+    div.innerHTML = '<img src="' + src + '" alt="Photo ' + (idx + 1) + '" loading="lazy">' +
+      '<div class="photo-thumb__success">✓</div>' +
+      '<div class="photo-thumb__remove" onclick="removePhoto(' + idx + ')" aria-label="Remove photo">×</div>';
+    photoGrid.appendChild(div);
+  }
+
+  function removePhoto(idx) {
+    photos.splice(idx, 1);
+    photoGrid.innerHTML = '';
+    photos.forEach(function(p, i) { addThumb(p.src, i); });
+    uploadStatus.className = 'upload-status' + (photos.length > 0 ? ' success' : '');
+    uploadStatus.textContent = photos.length > 0 ? photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' ✓' : '';
+  }
+
+  /* No-photos checkbox */
+  document.getElementById('no-photos-check').addEventListener('change', function() {
+    var zone = document.getElementById('upload-zone');
+    var input = document.getElementById('photo-input');
+    if (this.checked) {
+      zone.style.opacity = '0.4';
+      zone.style.pointerEvents = 'none';
+      input.disabled = true;
+      uploadStatus.className = 'upload-status';
+      uploadStatus.textContent = 'AI-generated images will be used for your posts.';
+    } else {
+      zone.style.opacity = '';
+      zone.style.pointerEvents = '';
+      input.disabled = false;
+      uploadStatus.textContent = '';
+    }
+  });
+</script>
+</body>
+</html>
