@@ -363,6 +363,74 @@ p { line-height: 1.7; }
 .hero__mockup {
   position: relative;
 }
+
+/* Hero illustration */
+.hero__illustration {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.1);
+  display: block;
+  margin: 0 auto;
+  background: #fff;
+}
+.hero__illustration-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__illustration-wrap .hero__illustration-card {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  width: 280px;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  font-size: 0.82rem;
+}
+.hero__illustration-card__badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--authority-blue);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.hero__illustration-card__badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success-green);
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.hero__illustration-card__text {
+  color: var(--slate-core);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.hero__illustration-card__stat {
+  margin-top: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.hero__illustration-card__stat strong {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--success-green);
+  font-family: var(--font-mono);
+}
+.hero__illustration-card__stat span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
 .gbp-card {
   background: white;
   border-radius: var(--radius-md);
