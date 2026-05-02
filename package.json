@@ -1,0 +1,12 @@
+{
+  "name": "lbl-website",
+  "version": "1.0.0",
+  "description": "Local Boost Lab website",
+  "private": true,
+  "scripts": {
+    "install-insights": "npm install"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.3.1"
+  }
+}
