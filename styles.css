@@ -1662,6 +1662,17 @@ select.form-control { background-image: url("data:image/svg+xml,%3Csvg xmlns='ht
 .bento-cell--light h4 { color: var(--authority-blue); }
 .bento-cell--light p  { color: var(--text-muted); }
 
+/* Step card illustration — full-bleed top image */
+.bento-step-img {
+  display: block;
+  width: calc(100% + 64px);
+  margin: -32px -32px 24px -32px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
 /* Bento cell step number */
 .bento-step-num {
   font-family: var(--font-mono);
