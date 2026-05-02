@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Article | Local Boost Lab Blog</title>
+  <meta name="description" id="page-desc" content="Local Boost Lab Blog">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="../Fav-Icon_Blue.png">
+  <link rel="apple-touch-icon" href="../Fav-Icon_Blue.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    .article-header {
+      background: var(--authority-blue);
+      padding: 120px 0 64px;
+    }
+    .article-header__inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .article-header h1 { color: white; font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 16px; line-height: 1.2; }
+    .article-header__meta { color: rgba(255,255,255,0.6); font-size: 0.875rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+    .article-header__meta .dot { width: 3px; height: 3px; background: rgba(255,255,255,0.3); border-radius: 50%; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--authority-blue);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .tag-chip {
+      display: inline-block;
+      background: var(--surface-mid);
+      color: var(--authority-blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* Prose styles */
+    .prose { font-family: var(--font-body); font-size: 1rem; line-height: 1.85; color: var(--slate-core); max-width: 720px; }
+    .prose h1, .prose h2 { font-family: var(--font-heading); color: var(--authority-blue); margin: 1.5em 0 0.5em; }
+    .prose h2 { font-size: 1.5rem; padding-top: 8px; border-top: 2px solid var(--surface-mid); }
+    .prose h2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+    .prose h3 { font-size: 1.15rem; color: var(--authority-blue); margin: 1.2em 0 0.4em; }
+    .prose p { margin: 0 0 1.1em; }
+    .prose ul, .prose ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    .prose li { margin-bottom: 0.4em; }
+    .prose ul li { list-style: disc; }
+    .prose ol li { list-style: decimal; }
+    .prose strong { color: var(--authority-blue); }
+    .prose blockquote { border-left: 4px solid var(--signal-amber); margin: 1.5em 0; padding: 12px 20px; background: var(--surface-light); color: var(--text-muted); font-style: italic; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .prose code { font-family: var(--font-mono); font-size: 0.85em; background: var(--surface-mid); padding: 2px 6px; border-radius: 4px; }
+    .prose pre { background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 1.5em 0; }
+    .prose pre code { background: none; padding: 0; font-size: 0.875em; }
+    .prose hr { border: none; border-top: 2px solid var(--border-color); margin: 2.5em 0; }
+    .prose a { color: var(--authority-blue); text-decoration: underline; text-underline-offset: 3px; }
+    .prose img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+
+    /* Share bar */
+    .share-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+    .share-btn { padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; border: 1.5px solid var(--border-color); color: var(--text-muted); transition: all 150ms; text-decoration: none; background: none; font-family: var(--font-body); }
+    .share-btn:hover { border-color: var(--authority-blue); color: var(--authority-blue); }
+
+    /* Author card */
+    .author-card { display: flex; align-items: center; gap: 16px; background: var(--surface-light); border-radius: var(--radius-md); padding: 24px; margin-top: 48px; border: 1px solid var(--border-color); }
+    .author-avatar { width: 56px; height: 56px; background: var(--authority-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+    .author-name { font-weight: 700; font-size: 0.95rem; color: var(--authority-blue); margin-bottom: 4px; }
+    .author-bio { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CTA box */
+    .article-cta-box { background: var(--authority-blue); border-radius: var(--radius-md); padding: 28px 32px; margin: 40px 0; color: white; }
+    .article-cta-box p { color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 16px; }
+    .article-cta-box .btn { background: var(--signal-amber); color: var(--authority-blue); font-weight: 700; }
+
+    /* Skeleton loader */
+    .skeleton { background: linear-gradient(90deg, #e8edf3 25%, #d0d9e5 50%, #e8edf3 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .skeleton-header { background: var(--authority-blue); padding: 120px 0 64px; }
+    .skeleton-header__inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    /* 404 state */
+    .not-found { text-align: center; padding: 80px 24px; }
+    .not-found h2 { color: var(--authority-blue); font-size: 2rem; margin-bottom: 16px; }
+    .not-found p { color: var(--text-muted); margin-bottom: 24px; }
+
+    @media (max-width: 768px) {
+      .article-container { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-nav">Skip to main content</a>
+
+<nav class="nav nav--scrolled">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="Local Boost Lab - Home"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</a>
+    <div class="nav__links">
+      <a href="../how-it-works.html">How It Works</a>
+      <a href="../industries.html">Industries</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="index.html" class="nav__active">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <a href="../pricing.html" class="btn btn-primary nav__cta">See Plans →</a>
+    <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile-overlay">
+  <a href="../how-it-works.html">How It Works</a>
+  <a href="../industries.html">Industries</a>
+  <a href="../pricing.html">Pricing</a>
+  <a href="index.html">Blog</a>
+  <a href="../about.html">About</a>
+  <a href="../contact.html">Contact</a>
+  <a href="../pricing.html" class="btn btn-primary btn-lg">See Plans →</a>
+</div>
+
+<!-- Loading skeleton header -->
+<div id="header-skeleton" class="skeleton-header">
+  <div class="skeleton-header__inner">
+    <div class="skeleton" style="height:16px;width:120px;margin-bottom:20px;background:rgba(255,255,255,0.15);"></div>
+    <div class="skeleton" style="height:40px;width:80%;margin-bottom:16px;background:rgba(255,255,255,0.15);"></div>
+    <div class="skeleton" style="height:28px;width:60%;margin-bottom:20px;background:rgba(255,255,255,0.15);"></div>
+    <div class="skeleton" style="height:16px;width:200px;background:rgba(255,255,255,0.1);"></div>
+  </div>
+</div>
+
+<!-- Real article header (shown after load) -->
+<header id="article-header" class="article-header" style="display:none;">
+  <div class="article-header__inner">
+    <div id="header-tags" style="margin-bottom:16px;"></div>
+    <h1 id="article-title"></h1>
+    <div class="article-header__meta">
+      <span>By Local Boost Lab Team</span>
+      <span class="dot"></span>
+      <span id="article-date"></span>
+    </div>
+  </div>
+</header>
+
+<!-- 404 state -->
+<div id="state-404" style="display:none;">
+  <div style="background:var(--authority-blue);padding:120px 0 64px;">
+    <div style="max-width:760px;margin:0 auto;padding:0 24px;">
+      <h1 style="color:white;">Article not found</h1>
+    </div>
+  </div>
+</div>
+
+<main id="main" role="main">
+
+  <!-- Loading body skeleton -->
+  <div id="body-skeleton" class="article-container">
+    <div class="skeleton" style="height:16px;width:100px;margin-bottom:32px;"></div>
+    <div class="skeleton" style="height:14px;width:100%;margin-bottom:12px;"></div>
+    <div class="skeleton" style="height:14px;width:92%;margin-bottom:12px;"></div>
+    <div class="skeleton" style="height:14px;width:97%;margin-bottom:12px;"></div>
+    <div class="skeleton" style="height:14px;width:85%;margin-bottom:32px;"></div>
+    <div class="skeleton" style="height:14px;width:100%;margin-bottom:12px;"></div>
+    <div class="skeleton" style="height:14px;width:88%;margin-bottom:12px;"></div>
+    <div class="skeleton" style="height:14px;width:94%;margin-bottom:12px;"></div>
+  </div>
+
+  <!-- 404 body -->
+  <div id="body-404" style="display:none;" class="article-container">
+    <div class="not-found">
+      <h2>Post not found</h2>
+      <p>This article may have been moved or removed.</p>
+      <a href="index.html" class="btn btn-primary">← Back to Blog</a>
+    </div>
+  </div>
+
+  <!-- Article body -->
+  <div id="article-body" style="display:none;" class="article-container">
+    <a href="index.html" class="back-link">← Back to Blog</a>
+
+    <div class="share-bar">
+      <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Share:</span>
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link';}.bind(this),2000)">Copy Link</button>
+      <a id="share-twitter" href="#" target="_blank" rel="noopener" class="share-btn">X / Twitter</a>
+      <a id="share-linkedin" href="#" target="_blank" rel="noopener" class="share-btn">LinkedIn</a>
+    </div>
+
+    <div id="article-content" class="prose"></div>
+
+    <div class="author-card">
+      <div class="author-avatar">LP</div>
+      <div>
+        <div class="author-name">Local Boost Lab Team</div>
+        <div class="author-bio">We manage 147+ Google Business Profiles for US local service businesses. Everything we write is based on real data from real managed profiles, not general SEO theory.</div>
+      </div>
+    </div>
+
+    <div class="article-cta-box" style="margin-top:40px;">
+      <p>Stop managing your Google Business Profile manually. Local Boost Lab automates posts, review responses, and monthly reports — starting at $97/month.</p>
+      <a href="../pricing.html" class="btn">See Plans →</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</div>
+        <div class="footer__tagline">Your Google Profile. Finally handled.</div>
+        <div class="footer__email"><a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
+      </div>
+      <div>
+        <div class="footer__col-title">Product</div>
+        <nav class="footer__links">
+          <a href="../how-it-works.html">How It Works</a>
+          <a href="../industries.html">Industries</a>
+          <a href="../pricing.html">Pricing</a>
+          <a href="index.html">Blog</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer__col-title">Legal</div>
+        <nav class="footer__links">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:0;flex-wrap:wrap;">
+      <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Payments secured by</span>
+      <svg width="50" height="21" viewBox="0 0 50 21" fill="none" aria-label="Stripe" role="img"><path d="M4.03 7.64c0-.57.47-.79 1.24-.79 1.11 0 2.51.34 3.62.94V4.34C7.78 3.87 6.69 3.7 5.61 3.7 2.76 3.7 1 5.12 1 7.8c0 4.19 5.77 3.52 5.77 5.32 0 .67-.58.89-1.39.89-1.2 0-2.74-.49-3.96-1.16v3.5c1.35.58 2.71.82 3.96.82 2.92 0 4.92-1.45 4.92-4.16-.02-4.52-5.77-3.71-5.77-5.37zM18.23 1.55l-3.38.72-.01 11.1c0 2.05 1.54 3.56 3.59 3.56 1.14 0 1.97-.21 2.43-.46v-2.8c-.44.18-2.63.82-2.63-1.23V7.15h2.63V4.1h-2.63l.01-2.55zm6.66 3.33l-.22-1.06H21.6v13.11h3.5V9.2c.83-1.08 2.23-.88 2.67-.73V5.11c-.46-.17-2.13-.5-2.88 1.77zm4.68-1.06H33V16.93h-3.43V4.82zm0-3.64l3.43-.73V3.7l-3.43.73V1.18zm11.35 2.87c-1.36 0-2.23.64-2.72 1.08l-.18-.86h-3.05v17.2l3.46-.73.01-4.18c.51.37 1.25.9 2.47.9 2.5 0 4.78-2.01 4.78-6.44-.01-4.07-2.31-5.97-4.77-5.97zm-.84 9.19c-.82 0-1.3-.29-1.64-.65l-.02-5.13c.36-.4.86-.68 1.66-.68 1.27 0 2.15 1.42 2.15 3.22 0 1.84-.86 3.24-2.15 3.24z" fill="rgba(255,255,255,0.6)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" rx="4" aria-label="Visa" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><path d="M14.5 16h-2.1l1.3-8H16l-1.5 8zm8.4-7.8c-.4-.2-1.1-.4-1.9-.4-2.1 0-3.6 1.1-3.6 2.7 0 1.2 1.1 1.8 1.9 2.2.8.4 1.1.7 1.1 1 0 .6-.7.8-1.3.8-.8 0-1.3-.1-2-.4l-.3-.1-.3 1.7c.5.2 1.4.4 2.3.4 2.2 0 3.7-1.1 3.7-2.8 0-.9-.6-1.6-1.9-2.2-.8-.4-1.3-.6-1.3-1 0-.3.4-.7 1.3-.7.7 0 1.2.1 1.6.3l.2.1.3-1.6zm5.5-.2h-1.6c-.5 0-.9.1-1.1.7L23.2 16h2.2l.4-1.2h2.7l.2 1.2h2L28.4 8zm-2.6 5.1l.8-2.3.5 2.3h-1.3zM13 8l-2.1 5.5-.2-1.1c-.4-1.3-1.6-2.7-2.9-3.4l1.9 7h2.2L15.2 8H13z" fill="rgba(255,255,255,0.7)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Mastercard" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="15" cy="12" r="6" fill="rgba(235,0,27,0.6)"/><circle cx="23" cy="12" r="6" fill="rgba(255,163,0,0.6)"/></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="American Express" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><text x="5" y="16" font-family="Arial" font-size="9" font-weight="700" fill="rgba(255,255,255,0.7)">AMEX</text></svg>
+      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Discover" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="23" cy="12" r="7" fill="rgba(245,158,11,0.5)"/><text x="4" y="16" font-family="Arial" font-size="7" font-weight="700" fill="rgba(255,255,255,0.7)">DISC</text></svg>
+    </div>
+    <div class="footer__bottom">
+      <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
+    </div>
+  </div>
+</footer>
+
+<div class="chat-widget">
+  <div class="chat-window">
+    <div class="chat-header">
+      <div class="chat-header__info">
+        <div class="chat-header__avatar">LP</div>
+        <div>
+          <div class="chat-header__name">Local Boost Lab Support</div>
+          <div class="chat-header__status">Online · replies in minutes</div>
+        </div>
+      </div>
+      <button class="chat-header__close" aria-label="Close chat">×</button>
+    </div>
+    <div class="chat-messages">
+      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email grow@localboostlab.com and we'll respond within 24 hours.</div>
+      <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" placeholder="Ask a question..." aria-label="Chat message">
+      <button class="chat-send">Send</button>
+    </div>
+  </div>
+  <div class="chat-bubble" role="button" aria-label="Chat with support" tabindex="0">
+    <span class="chat-bubble__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="white" stroke-width="2"/></svg></span>
+    <span class="chat-bubble__online"></span>
+  </div>
+</div>
+
+<div class="cookie-bar">
+  <p class="cookie-bar__text">This site uses essential cookies. <a href="../privacy.html">Learn more →</a></p>
+  <div class="cookie-bar__actions">
+    <button class="btn btn-primary" data-cookie-accept>Accept</button>
+    <button class="btn btn-ghost" data-cookie-prefs>Preferences</button>
+  </div>
+</div>
+
+<script src="../shared.js"></script>
+<script>
+  var API = 'https://powerful-balance-production-971d.up.railway.app';
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  function showSkeleton() {
+    document.getElementById('header-skeleton').style.display = '';
+    document.getElementById('body-skeleton').style.display = '';
+    document.getElementById('article-header').style.display = 'none';
+    document.getElementById('article-body').style.display = 'none';
+    document.getElementById('state-404').style.display = 'none';
+    document.getElementById('body-404').style.display = 'none';
+  }
+
+  function show404() {
+    document.getElementById('header-skeleton').style.display = 'none';
+    document.getElementById('body-skeleton').style.display = 'none';
+    document.getElementById('article-header').style.display = 'none';
+    document.getElementById('article-body').style.display = 'none';
+    document.getElementById('state-404').style.display = '';
+    document.getElementById('body-404').style.display = '';
+    document.title = 'Post Not Found | Local Boost Lab Blog';
+  }
+
+  function showPost(post) {
+    // Update page metadata
+    document.title = (post.title || 'Article') + ' | Local Boost Lab Blog';
+    var metaDesc = document.getElementById('page-desc');
+    if (metaDesc) metaDesc.setAttribute('content', post.excerpt || post.title || '');
+
+    // Header tags
+    var tagsEl = document.getElementById('header-tags');
+    if (post.tags && post.tags.length) {
+      tagsEl.innerHTML = post.tags.map(function(t) {
+        return '<span style="display:inline-block;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-right:6px;">' + escHtml(t) + '</span>';
+      }).join('');
+    }
+
+    document.getElementById('article-title').textContent = post.title || '';
+    document.getElementById('article-date').textContent = formatDate(post.published_at);
+
+    // Share links
+    var url = window.location.href;
+    var title = encodeURIComponent(post.title || '');
+    document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + title;
+    document.getElementById('share-linkedin').href = 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + title;
+
+    // Render body markdown
+    document.getElementById('article-content').innerHTML = marked.parse(post.body || '');
+
+    // Show/hide elements
+    document.getElementById('header-skeleton').style.display = 'none';
+    document.getElementById('body-skeleton').style.display = 'none';
+    document.getElementById('article-header').style.display = '';
+    document.getElementById('article-body').style.display = '';
+    document.getElementById('state-404').style.display = 'none';
+    document.getElementById('body-404').style.display = 'none';
+  }
+
+  function escHtml(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function loadPost() {
+    var params = new URLSearchParams(window.location.search);
+    var slug = params.get('slug');
+    if (!slug) { show404(); return; }
+
+    showSkeleton();
+
+    fetch(API + '/api/blog/' + encodeURIComponent(slug))
+      .then(function(r) {
+        if (r.status === 404) { show404(); return null; }
+        if (!r.ok) throw new Error('Server error');
+        return r.json();
+      })
+      .then(function(post) {
+        if (!post) return;
+        if (post.status && post.status !== 'published') { show404(); return; }
+        showPost(post);
+      })
+      .catch(function() { show404(); });
+  }
+
+  loadPost();
+</script>
+</body>
+</html>

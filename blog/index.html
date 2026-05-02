@@ -192,113 +192,24 @@
     <div class="blog-grid">
       <div>
         <!-- Featured Post -->
-        <div class="featured-post fade-up">
+        <div id="featured-post" class="featured-post fade-up" style="display:none;">
           <div class="featured-post__img"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div class="featured-post__content">
+          <div class="featured-post__content" id="featured-post-content">
             <span class="featured-post__label">★ Featured</span>
-            <div class="featured-post__title">How to Respond to Negative Google Reviews Without Making Things Worse</div>
-            <p class="featured-post__excerpt">The wrong response to a 1-star review can do more damage than the review itself. Here's the exact framework we use.</p>
+            <div class="featured-post__title" id="featured-title"></div>
+            <p class="featured-post__excerpt" id="featured-excerpt"></p>
             <div class="featured-post__meta">
-              <span>April 2026</span>
+              <span id="featured-date"></span>
               <span class="dot"></span>
-              <span>6 min read</span>
-              <span class="dot"></span>
-              <span class="badge badge--red">Review Management</span>
+              <span id="featured-tags"></span>
             </div>
-            <a href="post-template.html" class="btn btn-primary">Read Article →</a>
+            <a id="featured-link" href="#" class="btn btn-primary">Read Article →</a>
           </div>
         </div>
 
         <!-- Post grid -->
-        <div class="post-grid">
-          <article class="post-card fade-up">
-            <div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-            <div class="post-card__body">
-              <span class="post-card__category cat--industry">Industry Guide: HVAC</span>
-              <div class="post-card__title">Why Your HVAC Business Isn't Showing Up on Google (And How to Fix It)</div>
-              <p class="post-card__excerpt">If your GBP hasn't been updated in 30 days, Google has already deprioritized you. Here's what to fix this week.</p>
-              <div class="post-card__meta">
-                <div class="post-card__author">
-                  <span style="font-size:0.8rem;background:var(--authority-blue);color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;">L</span>
-                  Local Boost Lab Team
-                </div>
-                <span>8 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="post-card fade-up">
-            <div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"><path d="M3 20h18M6 20V14h4v6M14 20V8h4v12"/></svg></div>
-            <div class="post-card__body">
-              <span class="post-card__category cat--gbp-tips">GBP Tips</span>
-              <div class="post-card__title">Google Business Profile Posts: What Actually Works in 2026</div>
-              <p class="post-card__excerpt">Tuesday morning posts outperform Friday afternoon posts by 38%. We tracked this across 100+ profiles.</p>
-              <div class="post-card__meta">
-                <div class="post-card__author">
-                  <span style="font-size:0.8rem;background:var(--authority-blue);color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;">L</span>
-                  Local Boost Lab Team
-                </div>
-                <span>5 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="post-card fade-up">
-            <div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-            <div class="post-card__body">
-              <span class="post-card__category cat--local-seo">Local SEO</span>
-              <div class="post-card__title">The 5-Minute Weekly GBP Audit Every Local Business Should Run</div>
-              <p class="post-card__excerpt">Five checks that take less time than your morning coffee and catch 80% of profile problems before Google flags them.</p>
-              <div class="post-card__meta">
-                <div class="post-card__author">
-                  <span style="font-size:0.8rem;background:var(--authority-blue);color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;">L</span>
-                  Local Boost Lab Team
-                </div>
-                <span>4 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="post-card fade-up">
-            <div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a4 4 0 00-4 4c0 1.5.5 3 1 4.5.5 1.5 1 3 1 4.5a2 2 0 004 0c0-1.5.5-3 1-4.5.5-1.5 1-3 1-4.5a4 4 0 00-4-4z"/></svg></div>
-            <div class="post-card__body">
-              <span class="post-card__category cat--industry">Industry Guide: Dental</span>
-              <div class="post-card__title">Dental Practice Google Reviews: Why Patients Screenshot Everything</div>
-              <p class="post-card__excerpt">New patients spend an average of 4 minutes reading reviews before booking a dental appointment. Here's what they're actually looking at.</p>
-              <div class="post-card__meta">
-                <div class="post-card__author">
-                  <span style="font-size:0.8rem;background:var(--authority-blue);color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;">L</span>
-                  Local Boost Lab Team
-                </div>
-                <span>7 min read</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="post-card fade-up">
-            <div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"><path d="M8 21h8M12 17v4M17 3H7l-1 7a5 5 0 0010 0l-1-7z"/><path d="M7 7H4a2 2 0 000 4h2M17 7h3a2 2 0 010 4h-2"/></svg></div>
-            <div class="post-card__body">
-              <span class="post-card__category cat--local-seo">Local SEO</span>
-              <div class="post-card__title">How Local Service Businesses Can Compete With Franchises on Google</div>
-              <p class="post-card__excerpt">The franchise down the street has a marketing team. You have a business to run. Here's how the algorithm actually decides who shows up first.</p>
-              <div class="post-card__meta">
-                <div class="post-card__author">
-                  <span style="font-size:0.8rem;background:var(--authority-blue);color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;">L</span>
-                  Local Boost Lab Team
-                </div>
-                <span>9 min read</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination fade-up" role="navigation" aria-label="Blog pagination">
-          <button class="page-btn page-btn--prev">← Previous</button>
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">3</button>
-          <button class="page-btn page-btn--next">Next →</button>
+        <div id="post-grid" class="post-grid">
+          <!-- Posts loaded dynamically -->
         </div>
       </div>
 
@@ -420,5 +331,78 @@
 </div>
 
 <script src="../shared.js"></script>
+<script>
+  var API = 'https://powerful-balance-production-971d.up.railway.app';
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  }
+
+  function renderFeatured(post) {
+    document.getElementById('featured-title').textContent = post.title || '';
+    document.getElementById('featured-excerpt').textContent = post.excerpt || '';
+    document.getElementById('featured-date').textContent = formatDate(post.published_at);
+    var tags = (post.tags || []).join(', ');
+    document.getElementById('featured-tags').textContent = tags;
+    document.getElementById('featured-link').href = 'post.html?slug=' + encodeURIComponent(post.slug);
+    document.getElementById('featured-post').style.display = '';
+  }
+
+  function renderPostCard(post) {
+    var tags = (post.tags || []);
+    var catLabel = tags.length ? tags[0] : 'Article';
+    var article = document.createElement('article');
+    article.className = 'post-card fade-up';
+    article.style.cursor = 'pointer';
+    article.addEventListener('click', function() {
+      window.location.href = 'post.html?slug=' + encodeURIComponent(post.slug);
+    });
+    article.innerHTML =
+      '<div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/></svg></div>' +
+      '<div class="post-card__body">' +
+        '<span class="post-card__category">' + escHtml(catLabel) + '</span>' +
+        '<div class="post-card__title">' + escHtml(post.title) + '</div>' +
+        '<p class="post-card__excerpt">' + escHtml(post.excerpt || '') + '</p>' +
+        '<div class="post-card__meta">' +
+          '<div class="post-card__author">' +
+            '<span style="font-size:0.8rem;background:var(--authority-blue);color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;">L</span>' +
+            'Local Boost Lab Team' +
+          '</div>' +
+          '<span>' + formatDate(post.published_at) + '</span>' +
+        '</div>' +
+      '</div>';
+    return article;
+  }
+
+  function escHtml(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function loadBlog() {
+    fetch(API + '/api/blog?status=published')
+      .then(function(r) { return r.json(); })
+      .then(function(posts) {
+        var grid = document.getElementById('post-grid');
+        grid.innerHTML = '';
+        if (!posts || !posts.length) {
+          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--text-muted);font-size:0.95rem;">Coming soon — our first posts are on the way. Check back shortly.</div>';
+          return;
+        }
+        renderFeatured(posts[0]);
+        var rest = posts.slice(1);
+        if (!rest.length) return;
+        rest.forEach(function(post) {
+          grid.appendChild(renderPostCard(post));
+        });
+      })
+      .catch(function() {
+        document.getElementById('post-grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--text-muted);">Coming soon — check back shortly.</div>';
+      });
+  }
+
+  loadBlog();
+</script>
 </body>
 </html>
