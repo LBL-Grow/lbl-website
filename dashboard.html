@@ -183,6 +183,7 @@
       <div class="sidebar__nav-item" data-tab="performance"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17l5-5 4 4 7-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 8h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Performance</div>
       <div class="sidebar__nav-item" data-tab="billing"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg></span> Billing</div>
       <div class="sidebar__nav-item" data-tab="health"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> System Health</div>
+      <div class="sidebar__nav-item" data-tab="accounting"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="none"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Accounting</div>
     </div>
     <div class="sidebar__user">
       <div class="sidebar__user-dot"></div>
@@ -564,6 +565,92 @@
         </div>
       </div>
 
+      <!-- ── ACCOUNTING TAB ─────── -->
+      <div class="dashboard-tab-content" id="tab-accounting">
+
+        <div class="kpi-bar" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;">
+          <div class="kpi-card" style="border-top:3px solid var(--success-green);">
+            <div class="kpi-card__label">Monthly Revenue</div>
+            <div class="kpi-card__value" id="acct-mrr">—</div>
+            <div class="kpi-card__change" id="acct-arr">ARR: —</div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid #EF4444;">
+            <div class="kpi-card__label">Monthly Expenses</div>
+            <div class="kpi-card__value" id="acct-exp">—</div>
+            <div class="kpi-card__change" id="acct-exp-ann">Annual: —</div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid var(--authority-blue);">
+            <div class="kpi-card__label">Net Profit</div>
+            <div class="kpi-card__value" id="acct-profit">—</div>
+            <div class="kpi-card__change" id="acct-profit-ann">Annual: —</div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid var(--signal-amber);">
+            <div class="kpi-card__label">Profit Margin</div>
+            <div class="kpi-card__value" id="acct-margin">—</div>
+            <div class="kpi-card__change">After all costs</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="section-card">
+            <div class="section-card__header"><h3>Revenue by Client</h3></div>
+            <table class="data-table">
+              <thead><tr><th>Client</th><th>Plan</th><th>MRR</th><th>% of Revenue</th></tr></thead>
+              <tbody id="acct-revenue-tbody">
+                <tr><td colspan="4" style="text-align:center;padding:24px;color:var(--text-muted);">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="section-card">
+            <div class="section-card__header">
+              <h3>Expense Breakdown</h3>
+              <span style="font-size:0.72rem;color:var(--text-muted);">* API costs estimated</span>
+            </div>
+            <table class="data-table">
+              <thead><tr><th>Category</th><th>Item</th><th>Monthly</th><th>Annual</th></tr></thead>
+              <tbody id="acct-expense-tbody">
+                <tr><td colspan="4" style="text-align:center;padding:24px;color:var(--text-muted);">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card__header"><h3>Per-Client Profitability</h3></div>
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead><tr>
+                <th>Client</th><th>Plan</th><th>Revenue</th>
+                <th>Stripe Fees</th><th>API Costs *</th><th>Net Profit</th><th>Margin</th>
+              </tr></thead>
+              <tbody id="acct-client-tbody">
+                <tr><td colspan="7" style="text-align:center;padding:24px;color:var(--text-muted);">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card__header"><h3>Annual Projection — at current MRR</h3></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);">
+            <div style="padding:28px;border-right:1px solid var(--border-color);text-align:center;">
+              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Annual Revenue</div>
+              <div style="font-size:2.2rem;font-weight:800;color:var(--success-green);" id="acct-arr-big">—</div>
+            </div>
+            <div style="padding:28px;border-right:1px solid var(--border-color);text-align:center;">
+              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Annual Expenses</div>
+              <div style="font-size:2.2rem;font-weight:800;color:#EF4444;" id="acct-ann-exp-big">—</div>
+            </div>
+            <div style="padding:28px;text-align:center;">
+              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Annual Net Profit</div>
+              <div style="font-size:2.2rem;font-weight:800;color:var(--authority-blue);" id="acct-ann-profit-big">—</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>
@@ -614,7 +701,7 @@
   }
 
   /* Tabs */
-  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', billing:'Billing', health:'System Health' };
+  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', billing:'Billing', health:'System Health', accounting:'Accounting' };
 
   document.querySelectorAll('.sidebar__nav-item').forEach(function(item) {
     item.addEventListener('click', function() {
@@ -709,11 +796,12 @@
   async function fetchDashboardData() {
     var notice = document.getElementById('data-error-notice');
     try {
-      var [stats, clients, posts, activity] = await Promise.all([
+      var [stats, clients, posts, activity, accounting] = await Promise.all([
         apiFetch('/api/stats'),
         apiFetch('/api/clients'),
         apiFetch('/api/posts'),
         apiFetch('/api/activity'),
+        apiFetch('/api/accounting'),
       ]);
       if (notice) notice.style.display = 'none';
       try { renderStats(stats); }    catch(e) { console.error('renderStats:', e); }
@@ -721,6 +809,7 @@
       try { renderPosts(posts); }    catch(e) { console.error('renderPosts:', e); }
       try { renderActivity(activity); } catch(e) { console.error('renderActivity:', e); }
       try { renderBilling(stats, clients); } catch(e) { console.error('renderBilling:', e); }
+      try { renderAccounting(accounting); } catch(e) { console.error('renderAccounting:', e); }
     } catch(e) {
       console.error('Dashboard fetch error:', e);
       if (notice) { notice.style.display = 'block'; notice.textContent = 'Could not load data — ' + (e && e.message ? e.message : String(e)); }
@@ -858,6 +947,114 @@
           '<td><span class="status-dot status-dot--active">Active</span></td>' +
           '</tr>';
       }).join('') : '<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--text-muted);">No active clients.</td></tr>';
+    }
+  }
+
+  function renderAccounting(a) {
+    var fmt = function(n) { return '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); };
+    var fmtInt = function(n) { return '$' + Math.round(n).toLocaleString(); };
+
+    var mrrEl        = document.getElementById('acct-mrr');
+    var arrEl        = document.getElementById('acct-arr');
+    var expEl        = document.getElementById('acct-exp');
+    var expAnnEl     = document.getElementById('acct-exp-ann');
+    var profitEl     = document.getElementById('acct-profit');
+    var profitAnnEl  = document.getElementById('acct-profit-ann');
+    var marginEl     = document.getElementById('acct-margin');
+    var arrBig       = document.getElementById('acct-arr-big');
+    var annExpBig    = document.getElementById('acct-ann-exp-big');
+    var annProfitBig = document.getElementById('acct-ann-profit-big');
+
+    if (mrrEl)       mrrEl.textContent       = fmtInt(a.mrr);
+    if (arrEl)       arrEl.textContent       = 'ARR: ' + fmtInt(a.arr);
+    if (expEl)       expEl.textContent       = fmt(a.expenses.total);
+    if (expAnnEl)    expAnnEl.textContent    = 'Annual: ' + fmtInt(a.expenses.total * 12);
+    if (profitEl) {
+      profitEl.textContent = fmt(a.netProfit);
+      profitEl.style.color = a.netProfit >= 0 ? 'var(--success-green)' : '#EF4444';
+    }
+    if (profitAnnEl) profitAnnEl.textContent = 'Annual: ' + fmtInt(a.netProfit * 12);
+    if (marginEl) {
+      marginEl.textContent = a.margin + '%';
+      marginEl.style.color = a.margin >= 70 ? 'var(--success-green)' : a.margin >= 40 ? 'var(--signal-amber)' : '#EF4444';
+    }
+    if (arrBig)       arrBig.textContent       = fmtInt(a.arr);
+    if (annExpBig)    annExpBig.textContent    = fmtInt(a.expenses.total * 12);
+    if (annProfitBig) {
+      annProfitBig.textContent = fmtInt(a.netProfit * 12);
+      annProfitBig.style.color = a.netProfit >= 0 ? 'var(--authority-blue)' : '#EF4444';
+    }
+
+    /* Revenue by client */
+    var revTbody = document.getElementById('acct-revenue-tbody');
+    if (revTbody && a.perClient) {
+      var rows = a.perClient.map(function(c) {
+        var pct = a.mrr > 0 ? (c.mrr / a.mrr * 100).toFixed(1) : '0';
+        var badge = PLAN_BADGE[c.plan] || 'badge--blue';
+        var label = PLAN_LABEL[c.plan] || c.plan;
+        return '<tr>' +
+          '<td><strong>' + esc(c.name) + '</strong></td>' +
+          '<td><span class="badge ' + badge + '">' + label + '</span></td>' +
+          '<td style="font-family:var(--font-mono);color:var(--success-green);font-weight:600;">' + fmtInt(c.mrr) + '</td>' +
+          '<td><div style="display:flex;align-items:center;gap:8px;">' +
+            '<div style="flex:1;height:6px;background:var(--surface-mid);border-radius:3px;overflow:hidden;">' +
+              '<div style="height:100%;width:' + pct + '%;background:var(--authority-blue);border-radius:3px;"></div></div>' +
+            '<span style="font-size:0.8rem;color:var(--text-muted);min-width:36px;">' + pct + '%</span>' +
+          '</div></td></tr>';
+      });
+      rows.push('<tr style="border-top:2px solid var(--border-color);background:var(--surface-light);">' +
+        '<td><strong>Total</strong></td><td></td>' +
+        '<td style="font-family:var(--font-mono);font-weight:800;color:var(--success-green);">' + fmtInt(a.mrr) + '</td>' +
+        '<td></td></tr>');
+      revTbody.innerHTML = rows.join('');
+    }
+
+    /* Expense breakdown */
+    var expTbody = document.getElementById('acct-expense-tbody');
+    if (expTbody && a.expenses) {
+      var expRows = [];
+      expRows.push('<tr>' +
+        '<td style="color:var(--text-muted);font-size:0.8rem;">Payment Processing</td>' +
+        '<td>Stripe (2.9% + $0.30 × ' + a.activeClients + ' clients)</td>' +
+        '<td style="font-family:var(--font-mono);color:#EF4444;">' + fmt(a.expenses.stripe) + '</td>' +
+        '<td style="font-family:var(--font-mono);color:var(--text-muted);">' + fmt(a.expenses.stripe * 12) + '</td></tr>');
+      a.expenses.infra.forEach(function(item) {
+        expRows.push('<tr>' +
+          '<td style="color:var(--text-muted);font-size:0.8rem;">Infrastructure</td>' +
+          '<td>' + esc(item.name) + '</td>' +
+          '<td style="font-family:var(--font-mono);' + (item.cost > 0 ? 'color:#EF4444;' : 'color:var(--success-green);') + '">' +
+            (item.cost > 0 ? fmt(item.cost) : 'Free') + '</td>' +
+          '<td style="font-family:var(--font-mono);color:var(--text-muted);">' +
+            (item.cost > 0 ? fmt(item.cost * 12) : '—') + '</td></tr>');
+      });
+      expRows.push('<tr>' +
+        '<td style="color:var(--text-muted);font-size:0.8rem;">API Costs *</td>' +
+        '<td>Claude + Google APIs (' + a.activeClients + ' clients)</td>' +
+        '<td style="font-family:var(--font-mono);color:#EF4444;">~' + fmt(a.expenses.api) + '</td>' +
+        '<td style="font-family:var(--font-mono);color:var(--text-muted);">~' + fmt(a.expenses.api * 12) + '</td></tr>');
+      expRows.push('<tr style="border-top:2px solid var(--border-color);background:var(--surface-light);">' +
+        '<td><strong>Total</strong></td><td></td>' +
+        '<td style="font-family:var(--font-mono);font-weight:800;color:#EF4444;">' + fmt(a.expenses.total) + '</td>' +
+        '<td style="font-family:var(--font-mono);font-weight:700;color:var(--text-muted);">' + fmt(a.expenses.total * 12) + '</td></tr>');
+      expTbody.innerHTML = expRows.join('');
+    }
+
+    /* Per-client P&L */
+    var clientTbody = document.getElementById('acct-client-tbody');
+    if (clientTbody && a.perClient) {
+      clientTbody.innerHTML = a.perClient.map(function(c) {
+        var badge = PLAN_BADGE[c.plan] || 'badge--blue';
+        var label = PLAN_LABEL[c.plan] || c.plan;
+        var mc = c.margin >= 90 ? 'var(--success-green)' : c.margin >= 70 ? 'var(--signal-amber)' : '#EF4444';
+        return '<tr>' +
+          '<td><strong>' + esc(c.name) + '</strong></td>' +
+          '<td><span class="badge ' + badge + '">' + label + '</span></td>' +
+          '<td style="font-family:var(--font-mono);color:var(--success-green);font-weight:600;">' + fmtInt(c.mrr) + '</td>' +
+          '<td style="font-family:var(--font-mono);color:#EF4444;">−' + fmt(c.stripe) + '</td>' +
+          '<td style="font-family:var(--font-mono);color:#EF4444;">~−' + fmt(c.api) + '</td>' +
+          '<td style="font-family:var(--font-mono);font-weight:700;color:' + (c.net >= 0 ? 'var(--success-green)' : '#EF4444') + ';">' + fmt(c.net) + '</td>' +
+          '<td><span style="font-weight:700;color:' + mc + ';">' + c.margin + '%</span></td></tr>';
+      }).join('');
     }
   }
 
