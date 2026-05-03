@@ -2367,6 +2367,21 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
 #problem-cards > .bento-cell { display: flex; flex-direction: column; }
 #problem-cards > .bento-cell > p { flex: 1; }
 
+/* Problem cards: small circle icon, left-aligned */
+#problem-cards .bento-icon {
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  padding: 8px;
+  align-self: flex-start;
+  margin-bottom: 14px;
+}
+#problem-cards .bento-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 768px) {
   /* 1. GBP 4-stat → 2×2 grid, centered text */
   .bento-grid--4stat {
