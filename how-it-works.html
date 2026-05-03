@@ -197,7 +197,8 @@
       </div>
     </div>
 
-    <div class="bento-grid bento-grid--3col steps-centered fade-up" style="margin-bottom:40px;">
+    <div class="m-carousel">
+    <div class="bento-grid bento-grid--3col m-carousel__track fade-up" style="margin-bottom:40px;">
       <div class="bento-cell bento-cell--light bento-cell--has-img">
         <img src="01_Choose_plan.png" alt="Choose your plan and pay" class="bento-step-img">
         <div class="bento-step-content">
@@ -222,6 +223,7 @@
           <p class="bento-step-body">We configure your profile, load your voice settings, and queue your first post. From there, everything is automatic.</p>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -534,6 +536,73 @@
       this.setAttribute('aria-expanded', !wasOpen);
     });
   });
+</script>
+<script>
+(function () {
+  function initCarousel(wrapper) {
+    var track = wrapper.querySelector('.m-carousel__track');
+    if (!track) return;
+    var items = Array.from(track.children);
+    var n = items.length;
+    var idx = 0;
+
+    var nav = document.createElement('div');
+    nav.className = 'm-carousel__nav';
+
+    var prev = document.createElement('button');
+    prev.type = 'button';
+    prev.className = 'm-carousel__btn';
+    prev.innerHTML = '&#8592;';
+    prev.setAttribute('aria-label', 'Previous slide');
+
+    var dotsEl = document.createElement('div');
+    dotsEl.className = 'm-carousel__dots';
+    var dots = [];
+    for (var i = 0; i < n; i++) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'm-carousel__dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dotsEl.appendChild(dot);
+      dots.push(dot);
+    }
+
+    var next = document.createElement('button');
+    next.type = 'button';
+    next.className = 'm-carousel__btn';
+    next.innerHTML = '&#8594;';
+    next.setAttribute('aria-label', 'Next slide');
+
+    nav.appendChild(prev);
+    nav.appendChild(dotsEl);
+    nav.appendChild(next);
+    wrapper.parentNode.insertBefore(nav, wrapper.nextSibling);
+
+    function goTo(i) {
+      idx = ((i % n) + n) % n;
+      if (window.innerWidth <= 768) {
+        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      }
+      dots.forEach(function (d, j) { d.classList.toggle('active', j === idx); });
+    }
+
+    dots.forEach(function (dot, j) { dot.addEventListener('click', function () { goTo(j); }); });
+    prev.addEventListener('click', function () { goTo(idx - 1); });
+    next.addEventListener('click', function () { goTo(idx + 1); });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) {
+        track.style.transform = '';
+      } else {
+        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.m-carousel').forEach(initCarousel);
+  });
+}());
 </script>
 </body>
 </html>
