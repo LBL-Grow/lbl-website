@@ -346,7 +346,7 @@
     document.getElementById('featured-date').textContent = formatDate(post.published_at);
     var tags = (post.tags || []).join(', ');
     document.getElementById('featured-tags').textContent = tags;
-    document.getElementById('featured-link').href = 'post.html?slug=' + encodeURIComponent(post.slug);
+    document.getElementById('featured-link').href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     document.getElementById('featured-post').style.display = '';
   }
 
@@ -357,7 +357,7 @@
     article.className = 'post-card fade-up';
     article.style.cursor = 'pointer';
     article.addEventListener('click', function() {
-      window.location.href = 'post.html?slug=' + encodeURIComponent(post.slug);
+      window.location.href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     });
     article.innerHTML =
       '<div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/></svg></div>' +

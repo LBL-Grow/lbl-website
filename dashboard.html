@@ -182,7 +182,7 @@
       <div class="sidebar__nav-item" data-tab="posts"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Posts</div>
       <div class="sidebar__nav-item" data-tab="performance"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17l5-5 4 4 7-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 8h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Performance</div>
       <div class="sidebar__nav-item" data-tab="billing"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg></span> Billing</div>
-      <div class="sidebar__nav-item" data-tab="health"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> System Health</div>
+      <div class="sidebar__nav-item" data-tab="health"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Agents</div>
       <div class="sidebar__nav-item" data-tab="accounting"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="none"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Accounting</div>
     </div>
     <div class="sidebar__user">
@@ -526,40 +526,18 @@
 
       <!-- ── SYSTEM HEALTH TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-health">
-        <div class="grid-2">
-          <div class="section-card">
-            <div class="section-card__header"><h3>API Usage (This Month)</h3></div>
-            <table class="data-table">
-              <thead><tr><th>Service</th><th>Calls</th><th>Cost</th></tr></thead>
-              <tbody>
-                <tr><td>Claude API (Anthropic)</td><td>1,247</td><td style="font-family:var(--font-mono);">$4.12</td></tr>
-                <tr><td>Google GBP API</td><td>892</td><td style="font-family:var(--font-mono);">$0.00</td></tr>
-                <tr><td>Resend (Email)</td><td>34</td><td style="font-family:var(--font-mono);">$0.00</td></tr>
-                <tr><td>AI Image Generation</td><td>156</td><td style="font-family:var(--font-mono);">$1.87</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="section-card">
-            <div class="section-card__header"><h3>BullMQ Queue Stats</h3></div>
-            <table class="data-table">
-              <thead><tr><th>Queue</th><th>Pending</th><th>Active</th><th>Failed</th></tr></thead>
-              <tbody>
-                <tr><td>review-response</td><td>0</td><td>2</td><td style="color:var(--warning-red);">1</td></tr>
-                <tr><td>post-publish</td><td>6</td><td>0</td><td>0</td></tr>
-                <tr><td>monthly-reports</td><td>0</td><td>0</td><td>0</td></tr>
-                <tr><td>email-notifications</td><td>1</td><td>0</td><td>0</td></tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="kpi-bar" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;" id="agent-cards">
+          <div class="kpi-card"><div class="kpi-card__label">Review Agent</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
+          <div class="kpi-card"><div class="kpi-card__label">Posting Agent</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
+          <div class="kpi-card"><div class="kpi-card__label">Health Monitor</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
+          <div class="kpi-card"><div class="kpi-card__label">Monthly Reports</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
         </div>
         <div class="section-card">
-          <div class="section-card__header"><h3>Cost Per Client (This Month)</h3></div>
+          <div class="section-card__header"><h3>Recent Agent Runs</h3></div>
           <table class="data-table">
-            <thead><tr><th>Client</th><th>API Costs</th><th>MRR</th><th>Margin</th></tr></thead>
-            <tbody>
-              <tr><td>Martinez HVAC</td><td style="font-family:var(--font-mono);">$2.14</td><td style="font-family:var(--font-mono);">$157</td><td style="color:var(--success-green);font-weight:600;">98.6%</td></tr>
-              <tr><td>Sunrise Dental</td><td style="font-family:var(--font-mono);">$2.47</td><td style="font-family:var(--font-mono);">$217</td><td style="color:var(--success-green);font-weight:600;">98.9%</td></tr>
-              <tr><td>Clean Sweep Chicago</td><td style="font-family:var(--font-mono);">$1.38</td><td style="font-family:var(--font-mono);">$97</td><td style="color:var(--success-green);font-weight:600;">98.6%</td></tr>
+            <thead><tr><th>Agent</th><th>Status</th><th>Clients</th><th>Items</th><th>Duration</th><th>Time</th></tr></thead>
+            <tbody id="agent-runs-tbody">
+              <tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">Loading…</td></tr>
             </tbody>
           </table>
         </div>
@@ -701,7 +679,7 @@
   }
 
   /* Tabs */
-  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', billing:'Billing', health:'System Health', accounting:'Accounting' };
+  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', billing:'Billing', health:'Agents', accounting:'Accounting' };
 
   document.querySelectorAll('.sidebar__nav-item').forEach(function(item) {
     item.addEventListener('click', function() {
@@ -796,12 +774,13 @@
   async function fetchDashboardData() {
     var notice = document.getElementById('data-error-notice');
     try {
-      var [stats, clients, posts, activity, accounting] = await Promise.all([
+      var [stats, clients, posts, activity, accounting, agentStatus] = await Promise.all([
         apiFetch('/api/stats'),
         apiFetch('/api/clients'),
         apiFetch('/api/posts'),
         apiFetch('/api/activity'),
         apiFetch('/api/accounting'),
+        apiFetch('/api/agent-status'),
       ]);
       if (notice) notice.style.display = 'none';
       try { renderStats(stats); }    catch(e) { console.error('renderStats:', e); }
@@ -810,6 +789,7 @@
       try { renderActivity(activity); } catch(e) { console.error('renderActivity:', e); }
       try { renderBilling(stats, clients); } catch(e) { console.error('renderBilling:', e); }
       try { renderAccounting(accounting); } catch(e) { console.error('renderAccounting:', e); }
+      try { renderAgents(agentStatus); } catch(e) { console.error('renderAgents:', e); }
     } catch(e) {
       console.error('Dashboard fetch error:', e);
       if (notice) { notice.style.display = 'block'; notice.textContent = 'Could not load data — ' + (e && e.message ? e.message : String(e)); }
@@ -1054,6 +1034,58 @@
           '<td style="font-family:var(--font-mono);color:#EF4444;">~−' + fmt(c.api) + '</td>' +
           '<td style="font-family:var(--font-mono);font-weight:700;color:' + (c.net >= 0 ? 'var(--success-green)' : '#EF4444') + ';">' + fmt(c.net) + '</td>' +
           '<td><span style="font-weight:700;color:' + mc + ';">' + c.margin + '%</span></td></tr>';
+      }).join('');
+    }
+  }
+
+  function renderAgents(d) {
+    var statusColor = { success:'var(--success-green)', error:'var(--warning-red)', running:'var(--signal-amber)' };
+    var agentLabel  = { reviewer:'Review Agent', poster:'Posting Agent', 'health-monitor':'Health Monitor', tracker:'Monthly Reports' };
+
+    function ago(ts) {
+      if (!ts) return '—';
+      var diff = Date.now() - new Date(ts).getTime();
+      var min = Math.floor(diff / 60000), hrs = Math.floor(diff / 3600000), days = Math.floor(diff / 86400000);
+      if (min < 1) return 'just now';
+      if (min < 60) return min + 'm ago';
+      if (hrs < 24) return hrs + 'h ago';
+      return days + 'd ago';
+    }
+
+    var cardsEl = document.getElementById('agent-cards');
+    if (cardsEl && d.agents) {
+      cardsEl.innerHTML = d.agents.map(function(a) {
+        var s  = a.last ? a.last.status : 'never';
+        var c  = statusColor[s] || 'var(--text-muted)';
+        var t  = a.last ? ago(a.last.started_at) : '—';
+        var items = a.last ? ' · ' + a.last.items_processed + ' items' : '';
+        return '<div class="kpi-card" style="border-top:3px solid ' + c + ';">' +
+          '<div class="kpi-card__label">' + (agentLabel[a.name] || a.name) + '</div>' +
+          '<div class="kpi-card__value" style="color:' + c + ';font-size:1.1rem;text-transform:capitalize;">' + esc(s) + '</div>' +
+          '<div class="kpi-card__change">' + t + items + '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    var tbodyEl = document.getElementById('agent-runs-tbody');
+    if (tbodyEl) {
+      if (!d.recent || d.recent.length === 0) {
+        tbodyEl.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);">No runs yet — deploy and wait for first cron fire</td></tr>';
+        return;
+      }
+      tbodyEl.innerHTML = d.recent.map(function(r) {
+        var dur = r.finished_at
+          ? ((new Date(r.finished_at) - new Date(r.started_at)) / 1000).toFixed(1) + 's'
+          : '—';
+        var c = statusColor[r.status] || 'var(--text-muted)';
+        return '<tr>' +
+          '<td>' + esc(agentLabel[r.agent] || r.agent) + '</td>' +
+          '<td style="color:' + c + ';font-weight:600;text-transform:capitalize;">' + esc(r.status) + '</td>' +
+          '<td style="font-family:var(--font-mono);">' + (r.clients_processed != null ? r.clients_processed : '—') + '</td>' +
+          '<td style="font-family:var(--font-mono);">' + (r.items_processed != null ? r.items_processed : '—') + '</td>' +
+          '<td style="font-family:var(--font-mono);">' + dur + '</td>' +
+          '<td style="color:var(--text-muted);">' + ago(r.started_at) + '</td>' +
+          '</tr>';
       }).join('');
     }
   }

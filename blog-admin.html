@@ -340,7 +340,10 @@
   }
 
   function editPost(post) {
-    showEditor(post);
+    fetch(API + '/api/blog/' + post.slug)
+      .then(function(r) { return r.json(); })
+      .then(function(full) { showEditor(full); })
+      .catch(function() { showEditor(post); });
   }
 
   /* ── Show List ────────────────────────────────────── */
