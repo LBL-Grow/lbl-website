@@ -2357,3 +2357,109 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ═══════════════════════════════════════════════════════
+   Mobile layout improvements
+   ═══════════════════════════════════════════════════════ */
+
+/* Desktop: problem cards equal height + flex column */
+#problem-cards { align-items: stretch; }
+#problem-cards > .bento-cell { display: flex; flex-direction: column; }
+#problem-cards > .bento-cell > p { flex: 1; }
+
+@media (max-width: 768px) {
+  /* 1. GBP 4-stat → 2×2 grid, centered text */
+  .bento-grid--4stat {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .bento-grid--4stat .bento-cell { text-align: center; }
+
+  /* 2. Proof 3-stat → horizontal scroll row */
+  .bento-grid--3stat {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 12px;
+    padding: 0 4px 8px;
+  }
+  .bento-grid--3stat::-webkit-scrollbar { display: none; }
+  .bento-grid--3stat > .bento-cell {
+    flex: 0 0 74%;
+    scroll-snap-align: center;
+    text-align: center;
+  }
+
+  /* Carousel: clip overflow on mobile */
+  .m-carousel { overflow: hidden; }
+
+  /* Carousel track → flex row on mobile */
+  .m-carousel__track {
+    display: flex !important;
+    transition: transform 0.36s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .m-carousel__track > * {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+
+  /* Carousel nav */
+  .m-carousel__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .m-carousel__btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(13,17,23,0.15);
+    background: #fff;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; line-height: 1;
+    color: var(--slate-core);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .m-carousel__btn:hover,
+  .m-carousel__btn:focus { border-color: var(--authority-blue); color: var(--authority-blue); outline: none; }
+  .m-carousel__dots { display: flex; gap: 8px; align-items: center; }
+  .m-carousel__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: none; padding: 0;
+    background: rgba(13,17,23,0.15);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .m-carousel__dot.active {
+    background: var(--authority-blue);
+    transform: scale(1.35);
+  }
+
+  /* 4. How-it-works step cards: center each card on mobile */
+  .steps-centered {
+    display: block !important;
+  }
+  .steps-centered > .bento-cell {
+    margin: 0 auto 20px;
+    max-width: 360px;
+  }
+
+  /* 5. Onboarding submit: centered on mobile */
+  .onboarding-submit-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .onboarding-submit-wrap .btn-full {
+    max-width: 320px;
+  }
+}
+
+/* Desktop: hide carousel nav */
+@media (min-width: 769px) {
+  .m-carousel__nav { display: none !important; }
+}
