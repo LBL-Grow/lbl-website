@@ -193,7 +193,7 @@
       <div>
         <!-- Featured Post -->
         <div id="featured-post" class="featured-post fade-up" style="display:none;">
-          <div class="featured-post__img"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="featured-post__img" id="featured-cover"></div>
           <div class="featured-post__content" id="featured-post-content">
             <span class="featured-post__label">★ Featured</span>
             <div class="featured-post__title" id="featured-title"></div>
@@ -258,7 +258,7 @@
   <div class="footer__inner">
     <div class="footer__grid">
       <div>
-        <div class="footer__logo"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</div>
+        <a href="../index.html" class="footer__logo"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</a>
         <div class="footer__tagline">Your Google Profile. Finally handled.</div>
         <div class="footer__email"><a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
       </div>
@@ -283,11 +283,7 @@
     </div>
     <div style="display:flex;align-items:center;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:0;flex-wrap:wrap;">
       <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Payments secured by</span>
-      <svg width="50" height="21" viewBox="0 0 50 21" fill="none" aria-label="Stripe" role="img"><path d="M4.03 7.64c0-.57.47-.79 1.24-.79 1.11 0 2.51.34 3.62.94V4.34C7.78 3.87 6.69 3.7 5.61 3.7 2.76 3.7 1 5.12 1 7.8c0 4.19 5.77 3.52 5.77 5.32 0 .67-.58.89-1.39.89-1.2 0-2.74-.49-3.96-1.16v3.5c1.35.58 2.71.82 3.96.82 2.92 0 4.92-1.45 4.92-4.16-.02-4.52-5.77-3.71-5.77-5.37zM18.23 1.55l-3.38.72-.01 11.1c0 2.05 1.54 3.56 3.59 3.56 1.14 0 1.97-.21 2.43-.46v-2.8c-.44.18-2.63.82-2.63-1.23V7.15h2.63V4.1h-2.63l.01-2.55zm6.66 3.33l-.22-1.06H21.6v13.11h3.5V9.2c.83-1.08 2.23-.88 2.67-.73V5.11c-.46-.17-2.13-.5-2.88 1.77zm4.68-1.06H33V16.93h-3.43V4.82zm0-3.64l3.43-.73V3.7l-3.43.73V1.18zm11.35 2.87c-1.36 0-2.23.64-2.72 1.08l-.18-.86h-3.05v17.2l3.46-.73.01-4.18c.51.37 1.25.9 2.47.9 2.5 0 4.78-2.01 4.78-6.44-.01-4.07-2.31-5.97-4.77-5.97zm-.84 9.19c-.82 0-1.3-.29-1.64-.65l-.02-5.13c.36-.4.86-.68 1.66-.68 1.27 0 2.15 1.42 2.15 3.22 0 1.84-.86 3.24-2.15 3.24z" fill="rgba(255,255,255,0.6)"/></svg>
-      <svg width="38" height="24" viewBox="0 0 38 24" rx="4" aria-label="Visa" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><path d="M14.5 16h-2.1l1.3-8H16l-1.5 8zm8.4-7.8c-.4-.2-1.1-.4-1.9-.4-2.1 0-3.6 1.1-3.6 2.7 0 1.2 1.1 1.8 1.9 2.2.8.4 1.1.7 1.1 1 0 .6-.7.8-1.3.8-.8 0-1.3-.1-2-.4l-.3-.1-.3 1.7c.5.2 1.4.4 2.3.4 2.2 0 3.7-1.1 3.7-2.8 0-.9-.6-1.6-1.9-2.2-.8-.4-1.3-.6-1.3-1 0-.3.4-.7 1.3-.7.7 0 1.2.1 1.6.3l.2.1.3-1.6zm5.5-.2h-1.6c-.5 0-.9.1-1.1.7L23.2 16h2.2l.4-1.2h2.7l.2 1.2h2L28.4 8zm-2.6 5.1l.8-2.3.5 2.3h-1.3zM13 8l-2.1 5.5-.2-1.1c-.4-1.3-1.6-2.7-2.9-3.4l1.9 7h2.2L15.2 8H13z" fill="rgba(255,255,255,0.7)"/></svg>
-      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Mastercard" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="15" cy="12" r="6" fill="rgba(235,0,27,0.6)"/><circle cx="23" cy="12" r="6" fill="rgba(255,163,0,0.6)"/></svg>
-      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="American Express" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><text x="5" y="16" font-family="Arial" font-size="9" font-weight="700" fill="rgba(255,255,255,0.7)">AMEX</text></svg>
-      <svg width="38" height="24" viewBox="0 0 38 24" aria-label="Discover" role="img" style="opacity:0.55;"><rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.1)"/><circle cx="23" cy="12" r="7" fill="rgba(245,158,11,0.5)"/><text x="4" y="16" font-family="Arial" font-size="7" font-weight="700" fill="rgba(255,255,255,0.7)">DISC</text></svg>
+      <img src="/stripe-logo-white.png" alt="Stripe" height="21" style="opacity:0.7;">
     </div>
     <div class="footer__bottom">
       <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
@@ -344,9 +340,12 @@
     document.getElementById('featured-title').textContent = post.title || '';
     document.getElementById('featured-excerpt').textContent = post.excerpt || '';
     document.getElementById('featured-date').textContent = formatDate(post.published_at);
-    var tags = (post.tags || []).join(', ');
-    document.getElementById('featured-tags').textContent = tags;
+    var tags = (post.tags || []);
+    document.getElementById('featured-tags').textContent = tags.join(', ');
     document.getElementById('featured-link').href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
+    var catLabel = tags.length ? tags[0] : 'Article';
+    var cover = document.getElementById('featured-cover');
+    cover.innerHTML = '<span class="post-card__cover-tag" style="font-size:0.75rem;">' + escHtml(catLabel) + '</span>';
     document.getElementById('featured-post').style.display = '';
   }
 
@@ -360,7 +359,10 @@
       window.location.href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     });
     article.innerHTML =
-      '<div class="post-card__img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/></svg></div>' +
+      '<div class="post-card__cover">' +
+        '<span class="post-card__cover-tag">' + escHtml(catLabel) + '</span>' +
+        '<div class="post-card__cover-title">' + escHtml(post.title) + '</div>' +
+      '</div>' +
       '<div class="post-card__body">' +
         '<span class="post-card__category">' + escHtml(catLabel) + '</span>' +
         '<div class="post-card__title">' + escHtml(post.title) + '</div>' +
