@@ -283,7 +283,7 @@
     </div>
     <div style="display:flex;align-items:center;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:0;flex-wrap:wrap;">
       <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Payments secured by</span>
-      <img src="/stripe-logo-white.png" alt="Stripe" height="21" style="opacity:0.7;">
+      <img src="/stripe-logo-white.png" alt="Stripe" height="14" style="opacity:0.55;">
     </div>
     <div class="footer__bottom">
       <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
@@ -345,7 +345,14 @@
     document.getElementById('featured-link').href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     var catLabel = tags.length ? tags[0] : 'Article';
     var cover = document.getElementById('featured-cover');
-    cover.innerHTML = '<span class="post-card__cover-tag" style="font-size:0.75rem;">' + escHtml(catLabel) + '</span>';
+    if (post.cover_image_url) {
+      cover.style.backgroundImage = 'url(' + escHtml(post.cover_image_url) + ')';
+      cover.style.backgroundSize = 'cover';
+      cover.style.backgroundPosition = 'center';
+      cover.innerHTML = '';
+    } else {
+      cover.innerHTML = '<span class="post-card__cover-tag" style="font-size:0.75rem;">' + escHtml(catLabel) + '</span>';
+    }
     document.getElementById('featured-post').style.display = '';
   }
 
@@ -358,11 +365,17 @@
     article.addEventListener('click', function() {
       window.location.href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     });
-    article.innerHTML =
-      '<div class="post-card__cover">' +
+    var coverHtml;
+    if (post.cover_image_url) {
+      coverHtml = '<div class="post-card__cover" style="background-image:url(' + escHtml(post.cover_image_url) + ');background-size:cover;background-position:center;"></div>';
+    } else {
+      coverHtml = '<div class="post-card__cover">' +
         '<span class="post-card__cover-tag">' + escHtml(catLabel) + '</span>' +
         '<div class="post-card__cover-title">' + escHtml(post.title) + '</div>' +
-      '</div>' +
+      '</div>';
+    }
+    article.innerHTML =
+      coverHtml +
       '<div class="post-card__body">' +
         '<span class="post-card__category">' + escHtml(catLabel) + '</span>' +
         '<div class="post-card__title">' + escHtml(post.title) + '</div>' +

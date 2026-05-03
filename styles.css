@@ -1532,6 +1532,13 @@ select.form-control { background-image: url("data:image/svg+xml,%3Csvg xmlns='ht
   border-bottom-color: rgba(255,255,255,0.06);
 }
 
+/* ─── Frost Section ──────────────────────────────────── */
+.section--frost {
+  background: linear-gradient(135deg, #EEF4FF 0%, #F8FAFF 100%);
+  border-top: 1px solid rgba(26,58,92,0.08);
+  border-bottom: 1px solid rgba(26,58,92,0.08);
+}
+
 /* ─── Dark Ink Section ───────────────────────────────── */
 .section--ink {
   background: #0D1117;
@@ -2298,9 +2305,9 @@ img[loading="lazy"].loaded { opacity: 1; }
   .form-row { grid-template-columns: 1fr; }
 }
 
-/* ─── Hide chat widget on mobile (overlaps CTAs) ─────── */
+/* ─── Chat widget mobile — white stroke to separate from amber CTAs ── */
 @media (max-width: 767px) {
-  .chat-widget { display: none !important; }
+  .chat-bubble { border: 1px solid rgba(255,255,255,0.9); }
 }
 
 /* ─── Footer logo as link ──────────────────────────────── */
