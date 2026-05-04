@@ -150,7 +150,54 @@
       .kpi-bar { grid-template-columns: 1fr 1fr; }
       .client-drawer { width: 100%; right: -100%; }
       .client-drawer.open { right: 0; }
+      .pipeline-board { grid-template-columns: 1fr 1fr; }
     }
+
+    /* Pipeline / Prospects */
+    .pipeline-board {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+    .pipeline-col {
+      background: var(--surface-light);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+    .pipeline-col__header {
+      padding: 10px 12px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pipeline-col__body {
+      padding: 8px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .prospect-card {
+      background: white;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: box-shadow 150ms, border-color 150ms;
+    }
+    .prospect-card:hover { box-shadow: var(--shadow-card); border-color: var(--authority-blue); }
+    .prospect-card__name { font-weight: 700; font-size: 0.82rem; margin-bottom: 2px; }
+    .prospect-card__company { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px; }
+    .prospect-card__meta { font-size: 0.68rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 2px; }
+    .badge--internal { background: #F0FDF4; color: #166534; border: 1px dashed #86EFAC; }
   </style>
 </head>
 <body>
@@ -184,6 +231,7 @@
       <div class="sidebar__nav-item" data-tab="billing"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg></span> Billing</div>
       <div class="sidebar__nav-item" data-tab="health"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Agents</div>
       <div class="sidebar__nav-item" data-tab="accounting"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="none"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Accounting</div>
+      <div class="sidebar__nav-item" data-tab="prospects"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Prospects</div>
     </div>
     <div class="sidebar__user">
       <div class="sidebar__user-dot"></div>
@@ -526,11 +574,14 @@
 
       <!-- ── SYSTEM HEALTH TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-health">
-        <div class="kpi-bar" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;" id="agent-cards">
+        <div class="kpi-bar" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr));margin-bottom:24px;" id="agent-cards">
+          <div class="kpi-card" style="border-top:3px solid var(--success-green);position:relative;"><div style="position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--success-green);border-radius:50%;"></div><div class="kpi-card__label">Summer (AI Chat)</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--success-green);">Always On</div><div class="kpi-card__change">24/7 · AI support</div></div>
           <div class="kpi-card"><div class="kpi-card__label">Review Agent</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
           <div class="kpi-card"><div class="kpi-card__label">Posting Agent</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
           <div class="kpi-card"><div class="kpi-card__label">Health Monitor</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
           <div class="kpi-card"><div class="kpi-card__label">Monthly Reports</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
+          <div class="kpi-card"><div class="kpi-card__label">Patrick Digest</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
+          <div class="kpi-card"><div class="kpi-card__label">Lisa</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
         </div>
         <div class="section-card">
           <div class="section-card__header"><h3>Recent Agent Runs</h3></div>
@@ -609,6 +660,17 @@
           </div>
         </div>
 
+      <!-- ── PROSPECTS TAB ─────── -->
+      <div class="dashboard-tab-content" id="tab-prospects">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <p style="color:var(--text-muted);font-size:0.875rem;margin:0;">Sales pipeline — track every potential client from first touch to close.</p>
+          <button class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;" onclick="openProspectForm()">+ Add Prospect</button>
+        </div>
+        <div class="pipeline-board" id="pipeline-board">
+          <div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--text-muted);font-size:0.875rem;">Loading pipeline…</div>
+        </div>
+      </div>
+
         <div class="section-card">
           <div class="section-card__header"><h3>Annual Projection — at current MRR</h3></div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);">
@@ -676,10 +738,11 @@
     document.getElementById('auth-gate').classList.add('hidden');
     document.getElementById('dashboard').classList.add('show');
     fetchDashboardData();
+    renderPipeline();
   }
 
   /* Tabs */
-  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', billing:'Billing', health:'Agents', accounting:'Accounting' };
+  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', billing:'Billing', health:'Agents', accounting:'Accounting', prospects:'Prospects — CRM Pipeline' };
 
   document.querySelectorAll('.sidebar__nav-item').forEach(function(item) {
     item.addEventListener('click', function() {
@@ -831,7 +894,7 @@
         '<td>' + status + '</td>' +
         '<td>' + c.postCount + ' posts</td>' +
         '<td>' + lastPost + '</td>' +
-        '<td style="font-family:var(--font-mono);">$' + c.mrr + '</td>' +
+        '<td style="font-family:var(--font-mono);">' + (c.mrr === 0 ? '<span class="badge badge--internal">Internal</span>' : '$' + c.mrr) + '</td>' +
         '<td>—</td>' +
         '<td><button class="btn btn-outline" style="padding:6px 12px;font-size:0.75rem;" ' +
           'onclick=\'openClientDrawer(' + JSON.stringify(c).replace(/'/g,"&#39;") + ')\'>View</button></td>' +
@@ -922,7 +985,7 @@
         return '<tr>' +
           '<td>' + esc(c.name) + '</td>' +
           '<td><span class="badge ' + badge + '">' + label + '</span></td>' +
-          '<td style="font-family:var(--font-mono);">$' + c.mrr + '</td>' +
+          '<td style="font-family:var(--font-mono);">' + (c.mrr === 0 ? '<span class="badge badge--internal">Internal</span>' : '$' + c.mrr) + '</td>' +
           '<td style="font-size:0.82rem;color:var(--text-muted);">' + esc(services) + '</td>' +
           '<td><span class="status-dot status-dot--active">Active</span></td>' +
           '</tr>';
@@ -1040,7 +1103,7 @@
 
   function renderAgents(d) {
     var statusColor = { success:'var(--success-green)', error:'var(--warning-red)', running:'var(--signal-amber)' };
-    var agentLabel  = { reviewer:'Review Agent', poster:'Posting Agent', 'health-monitor':'Health Monitor', tracker:'Monthly Reports' };
+    var agentLabel  = { reviewer:'Review Agent', poster:'Posting Agent', 'health-monitor':'Health Monitor', tracker:'Monthly Reports', patrick:'Patrick Digest', lisa:'Lisa' };
 
     function ago(ts) {
       if (!ts) return '—';
@@ -1054,7 +1117,12 @@
 
     var cardsEl = document.getElementById('agent-cards');
     if (cardsEl && d.agents) {
-      cardsEl.innerHTML = d.agents.map(function(a) {
+      var summerCard = '<div class="kpi-card" style="border-top:3px solid var(--success-green);position:relative;">' +
+        '<div style="position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--success-green);border-radius:50%;"></div>' +
+        '<div class="kpi-card__label">Summer (AI Chat)</div>' +
+        '<div class="kpi-card__value" style="color:var(--success-green);font-size:1.1rem;">Always On</div>' +
+        '<div class="kpi-card__change">24/7 · AI support</div></div>';
+      cardsEl.innerHTML = summerCard + d.agents.map(function(a) {
         var s  = a.last ? a.last.status : 'never';
         var c  = statusColor[s] || 'var(--text-muted)';
         var t  = a.last ? ago(a.last.started_at) : '—';
@@ -1088,6 +1156,153 @@
           '</tr>';
       }).join('');
     }
+  }
+
+  /* ── Prospects / CRM Pipeline ──────────────────────────── */
+  var STAGES = ['lead','contacted','interested','proposal','closed_won','closed_lost'];
+  var STAGE_LABELS = { lead:'Lead', contacted:'Contacted', interested:'Interested', proposal:'Proposal', closed_won:'Closed Won', closed_lost:'Closed Lost' };
+  var STAGE_COLORS = { lead:'#94A3B8', contacted:'var(--authority-blue)', interested:'var(--signal-amber)', proposal:'#8B5CF6', closed_won:'var(--success-green)', closed_lost:'#EF4444' };
+
+  var prospects = JSON.parse(localStorage.getItem('lbl_prospects') || 'null') || [
+    { id:'p1', name:'Chase', company:'', role:'Business Owner', stage:'contacted', email:'', phone:'',
+      notes:'Reached out via Instagram DM. Interested in GBP management.',
+      interactions:[
+        { date:'2026-04-20', type:'DM', note:'Initial outreach on Instagram.' },
+        { date:'2026-04-28', type:'Call', note:'15 min intro call. Showed interest, wants to see pricing.' }
+      ],
+      nextAction:'Send pricing deck', nextActionDate:'2026-05-06' },
+    { id:'p2', name:'Elsa', company:'', role:'Business Owner', stage:'interested', email:'', phone:'',
+      notes:'Referral from existing client. Runs a local service business in Miami.',
+      interactions:[
+        { date:'2026-04-25', type:'Email', note:'Intro email sent via referral.' },
+        { date:'2026-05-01', type:'Call', note:'Discovery call. Interested in Complete plan. Budget confirmed.' }
+      ],
+      nextAction:'Send proposal', nextActionDate:'2026-05-05' }
+  ];
+
+  function saveProspects() { localStorage.setItem('lbl_prospects', JSON.stringify(prospects)); }
+
+  function renderPipeline() {
+    var board = document.getElementById('pipeline-board');
+    if (!board) return;
+    board.innerHTML = STAGES.map(function(stage) {
+      var cards = prospects.filter(function(p){ return p.stage === stage; });
+      var color = STAGE_COLORS[stage];
+      return '<div class="pipeline-col">' +
+        '<div class="pipeline-col__header" style="border-top:3px solid ' + color + ';">' +
+          '<span>' + STAGE_LABELS[stage] + '</span>' +
+          '<span style="background:var(--surface-mid);padding:2px 8px;border-radius:10px;font-size:0.65rem;">' + cards.length + '</span>' +
+        '</div>' +
+        '<div class="pipeline-col__body">' +
+          (cards.length ? cards.map(function(p) {
+            return '<div class="prospect-card" onclick=\'openProspectDrawer("' + p.id + '")\'>' +
+              '<div class="prospect-card__name">' + esc(p.name) + '</div>' +
+              (p.company ? '<div class="prospect-card__company">' + esc(p.company) + '</div>' : '') +
+              '<div class="prospect-card__meta">' +
+                (p.nextAction ? '<span>→ ' + esc(p.nextAction) + '</span>' : '') +
+                (p.nextActionDate ? '<span style="color:var(--text-muted);">' + esc(p.nextActionDate) + '</span>' : '') +
+                '<span>' + p.interactions.length + ' interaction' + (p.interactions.length !== 1 ? 's' : '') + '</span>' +
+              '</div>' +
+            '</div>';
+          }).join('') :
+          '<div style="font-size:0.75rem;color:var(--text-muted);text-align:center;padding:20px 8px;">—</div>') +
+          '<button onclick="addProspectToStage(\'' + stage + '\')" style="width:100%;padding:6px;font-size:0.7rem;color:var(--text-muted);border:1px dashed var(--border-color);border-radius:var(--radius-sm);background:none;cursor:pointer;margin-top:4px;">+ Add</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function openProspectDrawer(id) {
+    var p = prospects.find(function(x){ return x.id === id; });
+    if (!p) return;
+    document.getElementById('drawer-title').textContent = p.name || 'Prospect';
+    var stageOpts = STAGES.map(function(s) {
+      return '<option value="' + s + '"' + (p.stage === s ? ' selected' : '') + '>' + STAGE_LABELS[s] + '</option>';
+    }).join('');
+    var interactionRows = (p.interactions || []).slice().reverse().map(function(i) {
+      return '<div style="padding:8px 12px;border-left:3px solid var(--authority-blue);margin-bottom:8px;background:var(--surface-light);border-radius:0 var(--radius-sm) var(--radius-sm) 0;">' +
+        '<div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;">' + esc(i.date) + ' · ' + esc(i.type) + '</div>' +
+        '<div style="font-size:0.875rem;margin-top:4px;">' + esc(i.note) + '</div>' +
+      '</div>';
+    }).join('');
+    document.getElementById('drawer-body').innerHTML =
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">' +
+        '<div><div class="form-label" style="margin-bottom:4px;">Stage</div>' +
+          '<select id="pd-stage" class="form-control" style="padding:8px 10px;" onchange="updateProspectStage(\'' + id + '\',this.value)">' + stageOpts + '</select></div>' +
+        '<div><div class="form-label" style="margin-bottom:4px;">Role / Industry</div>' +
+          '<input class="form-control" style="padding:8px 10px;" value="' + esc(p.role || '') + '" onblur="updateProspectField(\'' + id + '\',\'role\',this.value)" placeholder="e.g. HVAC Owner"></div>' +
+      '</div>' +
+      '<div style="margin-bottom:14px;"><div class="form-label" style="margin-bottom:4px;">Company</div>' +
+        '<input class="form-control" style="padding:8px 10px;" value="' + esc(p.company || '') + '" onblur="updateProspectField(\'' + id + '\',\'company\',this.value)" placeholder="Business name"></div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">' +
+        '<div><div class="form-label" style="margin-bottom:4px;">Email</div><input class="form-control" style="padding:8px 10px;" value="' + esc(p.email || '') + '" onblur="updateProspectField(\'' + id + '\',\'email\',this.value)" placeholder="email@example.com"></div>' +
+        '<div><div class="form-label" style="margin-bottom:4px;">Phone</div><input class="form-control" style="padding:8px 10px;" value="' + esc(p.phone || '') + '" onblur="updateProspectField(\'' + id + '\',\'phone\',this.value)" placeholder="+1 (305) ..."></div>' +
+      '</div>' +
+      '<div style="margin-bottom:14px;"><div class="form-label" style="margin-bottom:4px;">Notes</div>' +
+        '<textarea class="form-control" style="padding:8px 10px;min-height:72px;" onblur="updateProspectField(\'' + id + '\',\'notes\',this.value)" placeholder="Context about this prospect...">' + esc(p.notes || '') + '</textarea></div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">' +
+        '<div><div class="form-label" style="margin-bottom:4px;">Next Action</div><input class="form-control" style="padding:8px 10px;" value="' + esc(p.nextAction || '') + '" onblur="updateProspectField(\'' + id + '\',\'nextAction\',this.value)" placeholder="e.g. Send proposal"></div>' +
+        '<div><div class="form-label" style="margin-bottom:4px;">Due Date</div><input type="date" class="form-control" style="padding:8px 10px;" value="' + esc(p.nextActionDate || '') + '" onchange="updateProspectField(\'' + id + '\',\'nextActionDate\',this.value)"></div>' +
+      '</div>' +
+      '<hr class="divider">' +
+      '<div style="font-weight:700;font-size:0.875rem;margin-bottom:10px;">Interaction Log (' + p.interactions.length + ')</div>' +
+      '<div style="margin-bottom:14px;">' + (interactionRows || '<div style="font-size:0.82rem;color:var(--text-muted);padding:8px 0;">No interactions yet.</div>') + '</div>' +
+      '<div style="display:flex;gap:8px;margin-bottom:20px;">' +
+        '<select id="pd-int-type" class="form-control" style="padding:8px;flex:0 0 110px;"><option>Call</option><option>Email</option><option>DM</option><option>Meeting</option><option>Note</option></select>' +
+        '<input id="pd-int-note" class="form-control" style="padding:8px;" placeholder="Add interaction note...">' +
+        '<button class="btn btn-primary" style="padding:8px 14px;font-size:0.8rem;white-space:nowrap;" onclick="addInteraction(\'' + id + '\')">Log It</button>' +
+      '</div>' +
+      '<hr class="divider">' +
+      '<button class="btn btn-danger" style="padding:10px 16px;font-size:0.8rem;" onclick="deleteProspect(\'' + id + '\')">Delete Prospect</button>';
+    document.getElementById('client-drawer').classList.add('open');
+    document.getElementById('drawer-overlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateProspectStage(id, stage) {
+    var p = prospects.find(function(x){ return x.id === id; });
+    if (!p) return;
+    p.stage = stage;
+    saveProspects();
+    renderPipeline();
+  }
+
+  function updateProspectField(id, field, value) {
+    var p = prospects.find(function(x){ return x.id === id; });
+    if (!p) return;
+    p[field] = value;
+    saveProspects();
+    renderPipeline();
+  }
+
+  function addInteraction(id) {
+    var p = prospects.find(function(x){ return x.id === id; });
+    if (!p) return;
+    var type = document.getElementById('pd-int-type').value;
+    var note = document.getElementById('pd-int-note').value.trim();
+    if (!note) return;
+    p.interactions.push({ date: new Date().toISOString().split('T')[0], type: type, note: note });
+    saveProspects();
+    openProspectDrawer(id);
+    renderPipeline();
+  }
+
+  function addProspectToStage(stage) {
+    var name = prompt('Prospect name:');
+    if (!name || !name.trim()) return;
+    prospects.push({ id: 'p' + Date.now(), name: name.trim(), company: '', role: '', stage: stage, email: '', phone: '', notes: '', interactions: [], nextAction: '', nextActionDate: '' });
+    saveProspects();
+    renderPipeline();
+  }
+
+  function openProspectForm() { addProspectToStage('lead'); }
+
+  function deleteProspect(id) {
+    if (!confirm('Delete this prospect? This cannot be undone.')) return;
+    prospects = prospects.filter(function(p){ return p.id !== id; });
+    saveProspects();
+    closeDrawer();
+    renderPipeline();
   }
 
   function showPostModal(text) {
