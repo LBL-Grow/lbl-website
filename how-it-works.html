@@ -163,6 +163,13 @@
   <a href="pricing.html" class="btn btn-primary btn-lg">See Plans →</a>
 </div>
 
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" style="background:var(--surface-mid);padding:10px 0;border-bottom:1px solid var(--border-color);">
+  <div class="container" style="font-size:0.8rem;color:var(--text-muted);">
+    <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a><span style="margin:0 8px;opacity:0.45;">›</span><span style="color:var(--authority-blue);font-weight:600;">How It Works</span>
+  </div>
+</nav>
+
 <main id="main" role="main">
 
 <!-- Page Hero -->
@@ -293,15 +300,15 @@
             <div style="background:var(--authority-blue);padding:10px 14px;font-size:0.8rem;color:white;font-weight:600;">This Week's Posts</div>
             <div style="padding:16px;">
               <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
-                <span>Tuesday 9 AM</span>
+                <span>Monday 9 AM</span>
                 <span style="color:var(--success-green);font-weight:600;font-size:0.75rem;">✓ Published</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--surface-mid);font-size:0.85rem;">
-                <span>Thursday 9 AM</span>
+                <span>Wednesday 9 AM</span>
                 <span style="color:var(--success-green);font-weight:600;font-size:0.75rem;">✓ Published</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:0.85rem;">
-                <span>Saturday 9 AM</span>
+                <span>Friday 9 AM</span>
                 <span style="color:var(--authority-blue);font-weight:600;font-size:0.75rem;">Scheduled</span>
               </div>
             </div>
@@ -498,10 +505,10 @@
   <div class="chat-window">
     <div class="chat-header">
       <div class="chat-header__info">
-        <div class="chat-header__avatar">LP</div>
+        <img src="/summer.png" alt="Summer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;">
         <div>
-          <div class="chat-header__name">Local Boost Lab Support</div>
-          <div class="chat-header__status">Online · replies in minutes</div>
+          <div class="chat-header__name">Summer</div>
+          <div class="chat-header__status">Online 24/7 · AI support</div>
         </div>
       </div>
       <button class="chat-header__close" aria-label="Close chat">×</button>
@@ -607,6 +614,61 @@
     document.querySelectorAll('.m-carousel').forEach(initCarousel);
   });
 }());
+</script>
+
+<!-- Exit-intent popup -->
+<div class="exit-overlay" id="exit-overlay" role="dialog" aria-modal="true" aria-label="Free checklist offer">
+  <div class="exit-modal">
+    <button class="exit-modal__close" id="exit-close" aria-label="Close">×</button>
+    <span class="exit-modal__emoji">📋</span>
+    <h3>Grab your free GBP audit checklist</h3>
+    <p>A 12-point checklist of what's hurting your Google Business Profile ranking — and what to fix first.</p>
+    <div class="exit-modal__form" id="exit-form">
+      <input type="email" id="exit-email" placeholder="Your email address" autocomplete="email">
+      <button id="exit-submit">Send my free checklist →</button>
+    </div>
+    <span class="exit-modal__skip" id="exit-skip">No thanks, I don't need more leads</span>
+  </div>
+</div>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-sticky-cta" id="mobile-cta" style="display:none;">
+  <a href="onboarding.html" class="btn btn-primary btn-lg">Start free month →</a>
+</div>
+<script>
+  var mobileCta = document.getElementById('mobile-cta');
+  if (mobileCta && window.innerWidth <= 768) {
+    window.addEventListener('scroll', function() {
+      mobileCta.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    }, { passive: true });
+  }
+  (function () {
+    var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+      ? 'http://localhost:3000' : 'https://gbp-agent-production.up.railway.app';
+    var exitShown = false;
+    var exitOverlay = document.getElementById('exit-overlay');
+    if (exitOverlay && window.innerWidth > 768) {
+      document.addEventListener('mouseleave', function (e) {
+        if (e.clientY < 5 && !exitShown) { exitShown = true; exitOverlay.classList.add('active'); }
+      });
+    }
+    function closeExit() { if (exitOverlay) exitOverlay.classList.remove('active'); }
+    var ec = document.getElementById('exit-close'); var es = document.getElementById('exit-skip');
+    if (ec) ec.addEventListener('click', closeExit);
+    if (es) es.addEventListener('click', closeExit);
+    if (exitOverlay) exitOverlay.addEventListener('click', function(e){ if(e.target===exitOverlay) closeExit(); });
+    var exitSubmit = document.getElementById('exit-submit');
+    if (exitSubmit) {
+      exitSubmit.addEventListener('click', function () {
+        var email = (document.getElementById('exit-email').value || '').trim();
+        if (!email) { document.getElementById('exit-email').focus(); return; }
+        exitSubmit.textContent = 'Sending…'; exitSubmit.disabled = true;
+        fetch(API + '/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email,source:'exit-intent-hiw'}) })
+          .then(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; })
+          .catch(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; });
+      });
+    }
+  }());
 </script>
 </body>
 </html>

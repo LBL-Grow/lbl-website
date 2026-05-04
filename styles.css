@@ -1812,6 +1812,21 @@ select.form-control { background-image: url("data:image/svg+xml,%3Csvg xmlns='ht
   padding-bottom: 32px;
   opacity: 1;
 }
+
+/* On desktop: all accordion items are open by default, arrow hidden */
+@media (min-width: 769px) {
+  .service-accordion__item .service-accordion__body {
+    max-height: 400px !important;
+    padding-bottom: 32px !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .service-accordion__item .service-accordion__title { color: var(--authority-blue) !important; }
+  .service-accordion__arrow { display: none !important; }
+  .service-accordion__trigger { cursor: default; pointer-events: none; }
+  .section--ink .service-accordion__item .service-accordion__title,
+  .section--dark .service-accordion__item .service-accordion__title { color: white !important; }
+}
 .service-accordion__desc {
   font-size: 1rem;
   color: var(--text-muted);

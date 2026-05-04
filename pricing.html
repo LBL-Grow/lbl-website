@@ -59,6 +59,91 @@
     ]
   }
   </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does Local Boost Lab cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Plans start at $97/month for the Reviews plan (review management only), $157/month for Presence (posts + content), and $217/month for Complete (reviews + posts + priority support). Annual billing saves 15% and includes a free first month."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a contract or setup fee?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No contract. No setup fee. Cancel anytime — your account is deactivated within 24 hours of your request, no questions asked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the Reviews plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Reviews plan ($97/mo) includes: automated replies to all 4-5 star reviews in your brand voice, email alerts with AI-drafted responses for 3-star reviews (you approve before posting), urgent escalation for 1-2 star reviews, and a monthly performance report on the 5th of each month."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the Presence plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Presence plan ($157/mo) includes 3 SEO-optimized Google Business Profile posts per week (Monday, Wednesday, Friday at 9 AM local time), a client photo library of up to 30 images on rotation, AI-generated images when the library runs low, brand voice applied to all content, and a monthly report. Review replies are not included in this plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Complete plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Complete plan ($217/mo) includes everything in both the Reviews and Presence plans, plus priority email support with a 12-hour first response, quarterly strategy review by email, monthly GBP profile health audit with suspension risk alerts, and first access to new features."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you auto-respond to negative reviews?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Never. Local Boost Lab does not auto-respond to reviews rated 3 stars or below. For 3-star reviews, you receive an email alert with an AI-drafted response within 15 minutes — you approve before it posts. For 1-2 star reviews, you receive an urgent escalation alert. You always control the response to negative reviews."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Product with aggregate offers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Local Boost Lab — GBP Management Service",
+    "description": "Automated Google Business Profile management for US local businesses. Review responses, weekly posts, and monthly performance reports.",
+    "brand": { "@type": "Brand", "name": "Local Boost Lab" },
+    "url": "https://www.localboostlab.com/pricing",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "97",
+      "highPrice": "217",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "47",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="styles.css">
   <style>
     .pricing-hero {
@@ -164,6 +249,13 @@
   <a href="contact.html">Contact</a>
   <a href="pricing.html" class="btn btn-primary btn-lg">See Plans &#x2192;</a>
 </div>
+
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" style="background:var(--surface-mid);padding:10px 0;border-bottom:1px solid var(--border-color);">
+  <div class="container" style="font-size:0.8rem;color:var(--text-muted);">
+    <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a><span style="margin:0 8px;opacity:0.45;">›</span><span style="color:var(--authority-blue);font-weight:600;">Pricing</span>
+  </div>
+</nav>
 
 <main id="main" role="main">
 
@@ -496,10 +588,10 @@
   <div class="chat-window">
     <div class="chat-header">
       <div class="chat-header__info">
-        <div class="chat-header__avatar">LP</div>
+        <img src="/summer.png" alt="Summer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;">
         <div>
-          <div class="chat-header__name">Local Boost Lab Support</div>
-          <div class="chat-header__status">Online · replies in minutes</div>
+          <div class="chat-header__name">Summer</div>
+          <div class="chat-header__status">Online 24/7 · AI support</div>
         </div>
       </div>
       <button class="chat-header__close" aria-label="Close chat">×</button>
@@ -557,6 +649,61 @@
       this.setAttribute('aria-expanded', !wasOpen);
     });
   });
+</script>
+
+<!-- Exit-intent popup -->
+<div class="exit-overlay" id="exit-overlay" role="dialog" aria-modal="true" aria-label="Free checklist offer">
+  <div class="exit-modal">
+    <button class="exit-modal__close" id="exit-close" aria-label="Close">×</button>
+    <span class="exit-modal__emoji">📋</span>
+    <h3>Wait — grab your free GBP checklist</h3>
+    <p>Before you go, get a free 12-point audit of your Google Business Profile. Sent to your inbox instantly.</p>
+    <div class="exit-modal__form" id="exit-form">
+      <input type="email" id="exit-email" placeholder="Your email address" autocomplete="email">
+      <button id="exit-submit">Send my free checklist →</button>
+    </div>
+    <span class="exit-modal__skip" id="exit-skip">No thanks, I'll pass on free leads</span>
+  </div>
+</div>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-sticky-cta" id="mobile-cta" style="display:none;">
+  <a href="onboarding.html" class="btn btn-primary btn-lg">Start free month →</a>
+</div>
+<script>
+  var mobileCta = document.getElementById('mobile-cta');
+  if (mobileCta && window.innerWidth <= 768) {
+    window.addEventListener('scroll', function() {
+      mobileCta.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    }, { passive: true });
+  }
+  (function () {
+    var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+      ? 'http://localhost:3000' : 'https://gbp-agent-production.up.railway.app';
+    var exitShown = false;
+    var exitOverlay = document.getElementById('exit-overlay');
+    if (exitOverlay && window.innerWidth > 768) {
+      document.addEventListener('mouseleave', function (e) {
+        if (e.clientY < 5 && !exitShown) { exitShown = true; exitOverlay.classList.add('active'); }
+      });
+    }
+    function closeExit() { if (exitOverlay) exitOverlay.classList.remove('active'); }
+    var ec = document.getElementById('exit-close'); var es = document.getElementById('exit-skip');
+    if (ec) ec.addEventListener('click', closeExit);
+    if (es) es.addEventListener('click', closeExit);
+    if (exitOverlay) exitOverlay.addEventListener('click', function(e){ if(e.target===exitOverlay) closeExit(); });
+    var exitSubmit = document.getElementById('exit-submit');
+    if (exitSubmit) {
+      exitSubmit.addEventListener('click', function () {
+        var email = (document.getElementById('exit-email').value || '').trim();
+        if (!email) { document.getElementById('exit-email').focus(); return; }
+        exitSubmit.textContent = 'Sending…'; exitSubmit.disabled = true;
+        fetch(API + '/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email,source:'exit-intent-pricing'}) })
+          .then(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; })
+          .catch(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; });
+      });
+    }
+  }());
 </script>
 </body>
 </html>
