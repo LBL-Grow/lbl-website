@@ -127,6 +127,13 @@
 
 <a href="#main" class="skip-nav">Skip to main content</a>
 
+<!-- ── PROMO BAR ──────────────────────────────────────── -->
+<div class="promo-bar" id="promo-bar">
+  <span>First month free — start free, cancel anytime. Available on any annual plan.</span>
+  <a href="onboarding.html?promo=first-month-free" class="promo-bar__cta">Claim free month →</a>
+  <button class="promo-bar__close" aria-label="Close offer" onclick="this.parentNode.style.display='none'">×</button>
+</div>
+
 <!-- ── NAV ─────────────────────────────────────────────── -->
 <nav class="nav nav--frosted" aria-label="Main navigation">
   <div class="nav__inner">
@@ -166,14 +173,39 @@
       <h1 id="hero-heading"><span class="display-xl">Your GBP is a <em class="gradient-underline" style="font-style:normal;">leaking faucet.</em></span></h1>
       <p class="hero__subheadline">Reviews replied within 30 minutes. Posts published 3× a week. Monthly report on the 5th. Nothing for you to touch.</p>
       <div class="hero__ctas">
-        <a href="pricing.html" class="btn btn-primary btn-lg">Start for $97/mo →</a>
+        <a href="onboarding.html" class="btn btn-primary btn-lg">Start for $97/mo →</a>
+        <a href="pricing.html" class="btn btn-ghost" style="font-size:0.9rem;">View pricing →</a>
+      </div>
+
+      <div class="hero-lead-form" id="hero-lead-form">
+        <div class="hero-lead-form__title">Free GBP Audit Checklist</div>
+        <div class="hero-lead-form__row">
+          <input type="text" id="lead-name" placeholder="Your name" autocomplete="name">
+          <select id="lead-industry">
+            <option value="" disabled selected>Industry</option>
+            <option value="hvac">HVAC</option>
+            <option value="dental">Dental</option>
+            <option value="legal">Legal</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="roofing">Roofing</option>
+            <option value="landscaping">Landscaping</option>
+            <option value="auto">Auto Repair</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="hero-lead-form__row">
+          <input type="email" id="lead-email" placeholder="Email address" autocomplete="email">
+        </div>
+        <button class="hero-lead-form__submit" id="lead-submit">Send me the checklist →</button>
+        <div class="hero-lead-form__note">No spam. Unsubscribe anytime.</div>
       </div>
     </div>
 
     <div class="hero__mockup" aria-hidden="true">
       <div class="gbp-card">
         <div class="gbp-card__header">
-          <img src="https://placehold.co/48x48/EFF6FF/1B4FD8?text=M" alt="" class="gbp-card__avatar" style="border-radius:50%;width:48px;height:48px;" loading="eager">
+          <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="gbp-card__avatar" style="border-radius:50%;flex-shrink:0;" aria-hidden="true"><rect width="48" height="48" rx="24" fill="#EFF6FF"/><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" fill="#1B4FD8" font-family="system-ui,sans-serif" font-size="20" font-weight="700">M</text></svg>
           <div>
             <div class="gbp-card__name">Martinez HVAC</div>
             <div class="gbp-card__rating">
@@ -520,7 +552,7 @@
         <div class="toggle-switch__thumb"></div>
       </label>
       <span class="pricing-toggle__label" id="annual-label">Annual</span>
-      <span class="pricing-badge">Save 15%</span>
+      <span class="pricing-badge">Save 15% + 1st month free</span>
     </div>
 
     <div class="grid-3">
@@ -599,8 +631,8 @@
   <div class="container">
     <div class="lbl-cta-block fade-up">
       <h2 id="cta-heading">Your Google Profile is your best free salesperson.<br>Right now, it's invisible.</h2>
-      <p>Every quiet day is a customer who found someone else first. Let's fix that today.</p>
-      <a href="pricing.html" class="btn btn-amber btn-xl">Start Your Profile Takeover. From $97/mo →</a>
+      <p>Every quiet day is a customer who found someone else first. Start free — your first month on us with any annual plan.</p>
+      <a href="onboarding.html" class="btn btn-amber btn-xl">Claim Your Free Month →</a>
       <div class="lbl-cta-trust">
         <span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="rgba(255,255,255,0.6)"/><path d="M8 11V7a4 4 0 018 0v4" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"/></svg>
@@ -731,9 +763,24 @@
   </div>
 </div>
 
+<!-- Exit-intent popup -->
+<div class="exit-overlay" id="exit-overlay" role="dialog" aria-modal="true" aria-label="Free checklist offer">
+  <div class="exit-modal">
+    <button class="exit-modal__close" id="exit-close" aria-label="Close">×</button>
+    <span class="exit-modal__emoji">📋</span>
+    <h3>Grab your free GBP audit checklist</h3>
+    <p>A 12-point checklist of what's hurting your Google Business Profile ranking — and what to fix first. Takes 5 minutes to work through.</p>
+    <div class="exit-modal__form" id="exit-form">
+      <input type="email" id="exit-email" placeholder="Your email address" autocomplete="email">
+      <button id="exit-submit">Send my free checklist →</button>
+    </div>
+    <span class="exit-modal__skip" id="exit-skip">No thanks, I don't need more leads</span>
+  </div>
+</div>
+
 <!-- Mobile sticky CTA -->
 <div class="mobile-sticky-cta" id="mobile-cta" style="display:none;">
-  <a href="pricing.html" class="btn btn-primary btn-lg">Start for $97/mo →</a>
+  <a href="onboarding.html" class="btn btn-primary btn-lg">Claim your free month →</a>
 </div>
 <script>
   /* Show sticky CTA after scrolling past hero */
@@ -850,6 +897,78 @@
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.m-carousel').forEach(initCarousel);
   });
+}());
+</script>
+<script>
+/* ── Lead capture + exit intent ─────────────────────────── */
+(function () {
+  var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? 'http://localhost:3000'
+    : 'https://gbp-agent-production.up.railway.app';
+
+  function submitLead(name, email, industry, source, cb) {
+    fetch(API + '/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, industry: industry, source: source })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function () { cb(null); })
+    .catch(function (e) { cb(e); });
+  }
+
+  /* Hero form */
+  var heroForm = document.getElementById('hero-lead-form');
+  var heroSubmit = document.getElementById('lead-submit');
+  if (heroSubmit) {
+    heroSubmit.addEventListener('click', function () {
+      var name = (document.getElementById('lead-name').value || '').trim();
+      var email = (document.getElementById('lead-email').value || '').trim();
+      var industry = document.getElementById('lead-industry').value || '';
+      if (!email) { document.getElementById('lead-email').focus(); return; }
+      heroSubmit.textContent = 'Sending…';
+      heroSubmit.disabled = true;
+      submitLead(name, email, industry, 'hero-form', function () {
+        heroForm.innerHTML = '<div class="hero-lead-form__success">✓ Check your inbox — checklist on its way!</div>';
+      });
+    });
+  }
+
+  /* Exit intent — desktop only (mouseleave from top) */
+  var exitShown = false;
+  var exitOverlay = document.getElementById('exit-overlay');
+  if (exitOverlay && window.innerWidth > 768) {
+    document.addEventListener('mouseleave', function (e) {
+      if (e.clientY < 5 && !exitShown) {
+        exitShown = true;
+        exitOverlay.classList.add('active');
+      }
+    });
+  }
+  var exitClose = document.getElementById('exit-close');
+  var exitSkip  = document.getElementById('exit-skip');
+  function closeExit() { if (exitOverlay) exitOverlay.classList.remove('active'); }
+  if (exitClose) exitClose.addEventListener('click', closeExit);
+  if (exitSkip)  exitSkip.addEventListener('click', closeExit);
+  if (exitOverlay) {
+    exitOverlay.addEventListener('click', function (e) {
+      if (e.target === exitOverlay) closeExit();
+    });
+  }
+
+  var exitSubmit = document.getElementById('exit-submit');
+  if (exitSubmit) {
+    exitSubmit.addEventListener('click', function () {
+      var email = (document.getElementById('exit-email').value || '').trim();
+      if (!email) { document.getElementById('exit-email').focus(); return; }
+      exitSubmit.textContent = 'Sending…';
+      exitSubmit.disabled = true;
+      submitLead('', email, '', 'exit-intent', function () {
+        document.getElementById('exit-form').innerHTML =
+          '<p style="color:var(--authority-blue);font-weight:700;font-size:0.95rem;padding:8px 0 4px;">✓ Check your inbox — it\'s on its way!</p>';
+      });
+    });
+  }
 }());
 </script>
 </body>
