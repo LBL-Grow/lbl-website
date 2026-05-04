@@ -396,23 +396,25 @@
   }
 
   function loadBlog() {
-    fetch(API + '/api/blog?status=published')
-      .then(function(r) { return r.json(); })
+    fetch(API + '/api/blog')
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function(posts) {
         var grid = document.getElementById('post-grid');
-        grid.innerHTML = '';
         if (!posts || !posts.length) {
           grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--text-muted);font-size:0.95rem;">Coming soon — our first posts are on the way. Check back shortly.</div>';
           return;
         }
-        renderFeatured(posts[0]);
-        var rest = posts.slice(1);
-        if (!rest.length) return;
-        rest.forEach(function(post) {
-          grid.appendChild(renderPostCard(post));
+        try { renderFeatured(posts[0]); } catch(e) { /* featured section error — continue */ }
+        grid.innerHTML = '';
+        posts.slice(1).forEach(function(post) {
+          try { grid.appendChild(renderPostCard(post)); } catch(e) { /* skip bad card */ }
         });
       })
-      .catch(function() {
+      .catch(function(err) {
+        console.error('Blog load failed:', err);
         document.getElementById('post-grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--text-muted);">Coming soon — check back shortly.</div>';
       });
   }
