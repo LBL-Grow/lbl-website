@@ -1,6 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/dashboard",
+      "destination": "https://powerful-balance-production-971d.up.railway.app/dashboard.html",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard.html",
+      "destination": "https://powerful-balance-production-971d.up.railway.app/dashboard.html",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

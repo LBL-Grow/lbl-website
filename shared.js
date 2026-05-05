@@ -103,32 +103,11 @@
       return div;
     }
 
-    function autoReply(userText) {
-      var lower = userText.toLowerCase();
-      var reply = 'Thanks for reaching out! I\'ll connect you with a real human shortly. In the meantime, you can also email us at grow@localboostlab.com — we respond within 24 hours.';
-
-      if (lower.includes('pricing') || lower.includes('price') || lower.includes('cost') || lower.includes('plan')) {
-        reply = 'Great question! We have 3 plans:\n• Reviews — $97/mo (reputation management)\n• Presence — $157/mo (posts + reviews, most popular)\n• Complete — $217/mo (everything + priority support)\nAnnual billing saves you 15%. See full details at our pricing page!';
-      } else if (lower.includes('cancel') || lower.includes('stop') || lower.includes('quit')) {
-        reply = 'No problem — you can cancel anytime by emailing grow@localboostlab.com. We process cancellations within 24 hours, no questions asked. Service continues through your current billing period.';
-      } else if (lower.includes('negative') || lower.includes('bad review') || lower.includes('1 star') || lower.includes('2 star')) {
-        reply = 'We NEVER auto-respond to negative reviews. For 1–2 star reviews, you\'ll get an urgent alert within 5 minutes. For 3-star, an alert within 15 minutes with a draft you can approve or edit.';
-      } else if (lower.includes('setup') || lower.includes('start') || lower.includes('how long') || lower.includes('onboard')) {
-        reply = 'Setup takes 5–7 minutes — just fill out our onboarding form after payment. Your first post goes live within 48 hours. You\'ll get a notification when we go live!';
-      } else if (lower.includes('google') || lower.includes('gbp') || lower.includes('profile')) {
-        reply = 'We manage your Google Business Profile — review responses, weekly posts, monthly reports. You grant us Manager access (never Owner), and we handle everything from there.';
-      }
-
-      if (typing) {
-        typing.classList.add('show');
-        msgs.scrollTop = msgs.scrollHeight;
-      }
-
-      setTimeout(function () {
-        if (typing) typing.classList.remove('show');
-        appendMsg(reply, 'agent');
-      }, 2000);
-    }
+    var chatHistory = [];
+    var chatSessionId = null;
+    var API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'http://localhost:3000'
+      : '';
 
     function sendMessage() {
       if (!input) return;
@@ -136,7 +115,41 @@
       if (!text) return;
       appendMsg(text, 'user');
       input.value = '';
-      autoReply(text);
+      input.disabled = true;
+      if (sendBtn) sendBtn.disabled = true;
+
+      if (typing) {
+        typing.classList.add('show');
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+
+      fetch(API_BASE + '/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message:   text,
+          history:   chatHistory,
+          sessionId: chatSessionId,
+        }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          chatSessionId = data.sessionId;
+          chatHistory.push({ role: 'user', content: text });
+          chatHistory.push({ role: 'assistant', content: data.reply });
+          if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+          if (typing) typing.classList.remove('show');
+          appendMsg(data.reply, 'agent');
+        })
+        .catch(function () {
+          if (typing) typing.classList.remove('show');
+          appendMsg("I'm having a quick digital hiccup — email us at grow@localboostlab.com and we'll reply within 2 hours.", 'agent');
+        })
+        .finally(function () {
+          input.disabled = false;
+          if (sendBtn) sendBtn.disabled = false;
+          input.focus();
+        });
     }
 
     if (sendBtn) sendBtn.addEventListener('click', sendMessage);
