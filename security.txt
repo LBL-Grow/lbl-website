@@ -1,4 +1,0 @@
-Contact: mailto:ops@localboostlab.com
-Preferred-Languages: en
-Canonical: https://www.localboostlab.com/security.txt
-Policy: https://www.localboostlab.com/privacy.html

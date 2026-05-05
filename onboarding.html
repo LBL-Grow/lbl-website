@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NCBWF3MH');</script>
-<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" href="Fav-Icon_Blue.png">
-  <link rel="apple-touch-icon" href="Fav-Icon_Blue.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Local Boost Lab — Set Up Your Profile</title>
   <meta name="robots" content="noindex, nofollow">
@@ -90,23 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .onboarding-nav .back-btn:hover { color: var(--authority-blue); }
 
-  
-  // Auto-select plan from URL param
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    var plan = params.get('plan');
-    var labels = { reviews: 'Reviews — $97/mo', presence: 'Presence — $157/mo', complete: 'Complete — $217/mo' };
-    if (plan && labels[plan]) {
-      var banner = document.getElementById('plan-banner');
-      var name = document.getElementById('plan-banner-name');
-      if (banner && name) {
-        banner.style.display = 'flex';
-        name.textContent = labels[plan];
-      }
-    }
-  })();
-
-  /* Photo upload */
+    /* Photo upload */
     .upload-area { position: relative; }
     .upload-input {
       position: absolute;
@@ -162,14 +137,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCBWF3MH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <div class="onboarding-wrap">
   <header class="onboarding-header">
-    <a href="index.html" class="onboarding-header__logo"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" style="height:21px;display:block;"></a>
+    <div class="onboarding-header__logo"><svg class="nav__logo-icon" width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>LOCAL BOOST LAB.</div>
     <div class="onboarding-header__help">Questions? <a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
   </header>
 
@@ -189,17 +160,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-
-      <!-- Plan Banner (auto-set from URL param) -->
-      <div id="plan-banner" style="display:none;background:var(--surface-light);border:1px solid var(--authority-blue);border-radius:var(--radius-sm);padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;">
-        <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">Selected plan:</span>
-        <span id="plan-banner-name" style="font-weight:700;color:var(--authority-blue);"></span>
-        <a href="pricing.html" style="font-size:0.78rem;color:var(--text-muted);margin-left:auto;">Change plan →</a>
-      </div>
       <!-- STEP 1: Your Business -->
       <div class="step-form active" id="step-1">
         <h2 class="step-heading">Welcome to Local Boost Lab.</h2>
-        <p class="step-subheading">Let's set up your profile. This takes 5–7 minutes. After you submit, we go live within 24 hours.</p>
+        <p class="step-subheading">Let's set up your profile. This takes 5–7 minutes. After you submit, we go live within 48 hours.</p>
 
         <div class="form-group">
           <label class="form-label" for="s1-biz-name">Business Name <span class="req">*</span></label>
@@ -221,10 +185,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label class="form-label" for="s1-city">Primary City &amp; State <span class="req">*</span></label>
           <input id="s1-city" type="text" class="form-control" placeholder="Austin, TX" required>
           <div class="form-error">Please enter your city and state.</div>
-
-          <div style="background:rgba(26,58,92,0.05);border-left:3px solid var(--authority-blue);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:10px 14px;margin-top:12px;font-size:0.82rem;color:var(--text-muted);line-height:1.6;">
-            <strong style="color:var(--authority-blue);">Manager access only.</strong> We can never transfer ownership, delete your listing, or access any other part of your Google account. You can revoke access at any time from your GBP settings.
-          </div>
         </div>
         <div class="form-group">
           <label class="form-label" for="s1-service-areas">Service Areas <span class="req">*</span></label>
@@ -419,13 +379,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div id="submit-error" style="display:none;background:#FEE2E2;border:1px solid #FCA5A5;border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:16px;font-size:0.875rem;color:#991B1B;"></div>
 
-        <div class="onboarding-submit-wrap">
         <button type="button" class="btn btn-primary btn-xl btn-full" id="submit-btn" onclick="submitOnboarding()">
           Complete Setup &amp; Go Live →
         </button>
-        </div>
         <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:12px;">
-          After submitting, you'll receive a confirmation email. Your first post will go live within 24 hours.
+          After submitting, you'll receive a confirmation email. Your first post will go live within 48 hours.
         </p>
 
         <div class="onboarding-nav" style="border-top:none;padding-top:0;margin-top:8px;">
@@ -442,7 +400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="success-screen__list">
           <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Confirmation email on its way to your inbox</li>
           <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> We'll configure your profile management within 24 hours</li>
-          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first post goes live within 24 hours</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first post goes live within 48 hours</li>
           <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Review monitoring starts immediately</li>
           <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first monthly report arrives on the 5th of next month</li>
         </ul>
@@ -531,22 +489,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       /* In production, POST to /api/onboarding/complete with form data */
     }, 1800);
   }
-
-
-  // Auto-select plan from URL param
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    var plan = params.get('plan');
-    var labels = { reviews: 'Reviews — $97/mo', presence: 'Presence — $157/mo', complete: 'Complete — $217/mo' };
-    if (plan && labels[plan]) {
-      var banner = document.getElementById('plan-banner');
-      var name = document.getElementById('plan-banner-name');
-      if (banner && name) {
-        banner.style.display = 'flex';
-        name.textContent = labels[plan];
-      }
-    }
-  })();
 
   /* Photo upload */
   var photoInput = document.getElementById('photo-input');
