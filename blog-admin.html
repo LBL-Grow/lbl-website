@@ -167,10 +167,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="slug-prefix">Slug: /blog/<span id="slug-display"></span></div>
           </div>
           <div>
-            <input type="text" id="post-tags" placeholder="review-management, gbp-tips, local-seo">
+            <input type="text" id="post-tags" placeholder="Tags: review-management, gbp-tips">
+          </div>
+          <div>
+            <input type="url" id="post-cover-url" placeholder="Cover image URL (https://…)">
           </div>
           <div style="grid-column: 1 / -1;">
-            <textarea id="post-excerpt" rows="2" placeholder="Short excerpt shown in blog listings…"></textarea>
+            <textarea id="post-excerpt" rows="2" placeholder="Excerpt — shown in blog card listings…"></textarea>
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <textarea id="post-meta-desc" rows="2" maxlength="160" placeholder="Meta description (max 160 chars — appears in Google search results)…"></textarea>
+            <div class="slug-prefix" id="meta-desc-count">0 / 160</div>
           </div>
         </div>
 
@@ -192,6 +199,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <button onclick="insertAtCursor('\n- ', '')" title="List">• List</button>
                 <button onclick="insertAtCursor('![alt](', ')')" title="Image">Image</button>
                 <button onclick="insertAtCursor('\n---\n', '')" title="Horizontal Rule">─ HR</button>
+                <div class="sep"></div>
+                <button onclick="insertCtaButton()" title="CTA Button">⬛ Button</button>
+                <button onclick="insertSnippet()" title="Info callout block">❝ Snippet</button>
               </div>
             </div>
             <textarea id="post-body" placeholder="Write your post in Markdown…" oninput="updatePreview()"></textarea>
@@ -338,6 +348,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('slug-display').textContent = post ? (post.slug || '') : '';
     document.getElementById('post-excerpt').value = post ? (post.excerpt || '') : '';
     document.getElementById('post-tags').value = post ? (post.tags || []).join(', ') : '';
+    document.getElementById('post-cover-url').value = post ? (post.cover_image_url || '') : '';
+    document.getElementById('post-meta-desc').value = post ? (post.meta_description || '') : '';
+    document.getElementById('meta-desc-count').textContent = (post && post.meta_description ? post.meta_description.length : 0) + ' / 160';
     document.getElementById('post-body').value = post ? (post.body || '') : '';
     document.getElementById('post-status').value = post ? (post.status || 'draft') : 'draft';
     document.getElementById('save-indicator').textContent = '';
@@ -376,7 +389,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       excerpt: document.getElementById('post-excerpt').value.trim(),
       body: document.getElementById('post-body').value,
       tags: document.getElementById('post-tags').value,
-      status: document.getElementById('post-status').value
+      status: document.getElementById('post-status').value,
+      cover_image_url: document.getElementById('post-cover-url').value.trim() || null,
+      meta_description: document.getElementById('post-meta-desc').value.trim() || null
     };
 
     if (!payload.title) { indicator.textContent = 'Title required'; indicator.className = 'save-indicator error'; return; }
@@ -446,6 +461,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     ta.focus();
     updatePreview();
   }
+
+  function insertCtaButton() {
+    var text = prompt('Button label:', 'Get Started →');
+    if (!text) return;
+    var url = prompt('Button URL:', 'https://www.localboostlab.com/pricing.html');
+    if (!url) return;
+    insertAtCursor('\n<a href="' + url + '" style="display:inline-block;background:#1A3A5C;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.9rem;margin:8px 0;">' + text + '</a>\n', '');
+  }
+
+  function insertSnippet() {
+    var placeholder = document.getElementById('post-body').selectionStart !== document.getElementById('post-body').selectionEnd
+      ? '' : 'Your key insight or callout text here.';
+    insertAtCursor('\n<div style="background:#EFF6FF;border-left:4px solid #1A3A5C;padding:16px 20px;border-radius:0 8px 8px 0;margin:1.5em 0;font-size:0.95rem;">\n\n', '\n\n</div>\n');
+  }
+
+  /* ── Meta description char counter ───────────────── */
+  document.getElementById('post-meta-desc').addEventListener('input', function() {
+    document.getElementById('meta-desc-count').textContent = this.value.length + ' / 160';
+  });
 </script>
 </body>
 </html>

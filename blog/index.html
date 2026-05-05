@@ -371,7 +371,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var tags = (post.tags || []);
     var catLabel = tags.length ? tags[0] : 'Article';
     var article = document.createElement('article');
-    article.className = 'post-card fade-up';
+    article.className = 'post-card';
     article.style.cursor = 'pointer';
     article.addEventListener('click', function() {
       window.location.href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
