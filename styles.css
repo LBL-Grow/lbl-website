@@ -2488,10 +2488,32 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
     max-width: 320px;
   }
 
-  /* 6. About founder grid: keep 2 columns on mobile, image centered */
+  /* 6. About founder: single column on mobile, image floats to top */
   .about-founder-grid {
-    grid-template-columns: 1fr 120px !important;
+    grid-template-columns: 1fr !important;
     gap: 24px !important;
+  }
+  .about-founder-img-col {
+    order: -1;
+    margin-bottom: 4px;
+  }
+  .about-founder-img-col img {
+    width: 120px !important;
+    height: 120px !important;
+    display: block;
+    margin: 0 auto 10px;
+  }
+
+  /* 7. Founder story last 2 paragraphs: side-by-side on mobile */
+  .about-para-cols {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .about-para-cols p {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0 !important;
   }
 }
 
