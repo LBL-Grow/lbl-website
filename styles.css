@@ -287,7 +287,7 @@ p { line-height: 1.7; }
 /* ─── Hero ───────────────────────────────────────────── */
 .hero {
   background: var(--authority-blue);
-  padding: 140px 0 100px;
+  padding: 140px 0 0;
   position: relative;
   overflow: hidden;
 }
@@ -334,7 +334,7 @@ p { line-height: 1.7; }
   background: rgba(255,255,255,0.07);
   border-top: 1px solid rgba(255,255,255,0.1);
   margin-top: 0;
-  padding: 24px 0 32px;
+  padding: 24px 0 10px;
 }
 .hero__trust-inner {
   display: flex;
@@ -2486,6 +2486,12 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
   }
   .onboarding-submit-wrap .btn-full {
     max-width: 320px;
+  }
+
+  /* 6. About founder grid: keep 2 columns on mobile, image centered */
+  .about-founder-grid {
+    grid-template-columns: 1fr 120px !important;
+    gap: 24px !important;
   }
 }
 
