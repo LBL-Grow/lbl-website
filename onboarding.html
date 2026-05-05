@@ -90,7 +90,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .onboarding-nav .back-btn:hover { color: var(--authority-blue); }
 
-    /* Photo upload */
+  
+  // Auto-select plan from URL param
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var plan = params.get('plan');
+    var labels = { reviews: 'Reviews — $97/mo', presence: 'Presence — $157/mo', complete: 'Complete — $217/mo' };
+    if (plan && labels[plan]) {
+      var banner = document.getElementById('plan-banner');
+      var name = document.getElementById('plan-banner-name');
+      if (banner && name) {
+        banner.style.display = 'flex';
+        name.textContent = labels[plan];
+      }
+    }
+  })();
+
+  /* Photo upload */
     .upload-area { position: relative; }
     .upload-input {
       position: absolute;
@@ -173,6 +189,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
+
+      <!-- Plan Banner (auto-set from URL param) -->
+      <div id="plan-banner" style="display:none;background:var(--surface-light);border:1px solid var(--authority-blue);border-radius:var(--radius-sm);padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;">
+        <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">Selected plan:</span>
+        <span id="plan-banner-name" style="font-weight:700;color:var(--authority-blue);"></span>
+        <a href="pricing.html" style="font-size:0.78rem;color:var(--text-muted);margin-left:auto;">Change plan →</a>
+      </div>
       <!-- STEP 1: Your Business -->
       <div class="step-form active" id="step-1">
         <h2 class="step-heading">Welcome to Local Boost Lab.</h2>
@@ -198,6 +221,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label class="form-label" for="s1-city">Primary City &amp; State <span class="req">*</span></label>
           <input id="s1-city" type="text" class="form-control" placeholder="Austin, TX" required>
           <div class="form-error">Please enter your city and state.</div>
+
+          <div style="background:rgba(26,58,92,0.05);border-left:3px solid var(--authority-blue);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:10px 14px;margin-top:12px;font-size:0.82rem;color:var(--text-muted);line-height:1.6;">
+            <strong style="color:var(--authority-blue);">Manager access only.</strong> We can never transfer ownership, delete your listing, or access any other part of your Google account. You can revoke access at any time from your GBP settings.
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label" for="s1-service-areas">Service Areas <span class="req">*</span></label>
@@ -417,7 +444,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> We'll configure your profile management within 24 hours</li>
           <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first post goes live within 48 hours</li>
           <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Review monitoring starts immediately</li>
-          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first monthly report arrives on the 5th of next month</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first monthly report arrives on the 3rd of next month</li>
         </ul>
         <p style="font-size:0.875rem;color:var(--text-muted);">Questions? Email <a href="mailto:grow@localboostlab.com" style="color:var(--authority-blue);">grow@localboostlab.com</a>. We respond within 24 hours.</p>
         <a href="index.html" class="btn btn-outline" style="margin-top:8px;">Return to Homepage</a>
@@ -504,6 +531,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       /* In production, POST to /api/onboarding/complete with form data */
     }, 1800);
   }
+
+
+  // Auto-select plan from URL param
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var plan = params.get('plan');
+    var labels = { reviews: 'Reviews — $97/mo', presence: 'Presence — $157/mo', complete: 'Complete — $217/mo' };
+    if (plan && labels[plan]) {
+      var banner = document.getElementById('plan-banner');
+      var name = document.getElementById('plan-banner-name');
+      if (banner && name) {
+        banner.style.display = 'flex';
+        name.textContent = labels[plan];
+      }
+    }
+  })();
 
   /* Photo upload */
   var photoInput = document.getElementById('photo-input');
