@@ -620,17 +620,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   /* No-photos checkbox */
   document.getElementById('no-photos-check').addEventListener('change', function() {
-    var zone = document.getElementById('upload-zone');
+    var area  = document.getElementById('upload-area');
     var input = document.getElementById('photo-input');
     if (this.checked) {
-      zone.style.opacity = '0.4';
-      zone.style.pointerEvents = 'none';
+      area.style.display = 'none';
       input.disabled = true;
       uploadStatus.className = 'upload-status';
-      uploadStatus.textContent = 'AI-generated images will be used for your posts.';
+      uploadStatus.textContent = '✓ Got it — AI-generated images will be used for your posts.';
     } else {
-      zone.style.opacity = '';
-      zone.style.pointerEvents = '';
+      area.style.display = '';
       input.disabled = false;
       uploadStatus.textContent = '';
     }
