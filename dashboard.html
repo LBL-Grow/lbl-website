@@ -548,61 +548,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- ── PERFORMANCE TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-performance">
+
+        <!-- Real client data cards -->
         <div class="grid-2">
           <div class="section-card">
-            <div class="section-card__header"><h3>MRR Growth (Last 6 Months)</h3></div>
-            <div style="padding:16px;">
-              <div class="chart-placeholder">
-                <div class="chart-bar" style="height:20%;"></div>
-                <div class="chart-bar" style="height:20%;"></div>
-                <div class="chart-bar" style="height:20%;"></div>
-                <div class="chart-bar" style="height:40%;"></div>
-                <div class="chart-bar" style="height:60%;"></div>
-                <div class="chart-bar" style="height:100%;background:var(--signal-amber);opacity:0.9;"></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-top:8px;">
-                <span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
-              </div>
+            <div class="section-card__header"><h3>MRR by Client</h3></div>
+            <div style="padding:20px;" id="perf-mrr-bars">
+              <div style="text-align:center;color:var(--text-muted);font-size:0.875rem;padding:20px 0;">Loading…</div>
             </div>
           </div>
           <div class="section-card">
-            <div class="section-card__header"><h3>Active Clients (Last 6 Months)</h3></div>
-            <div style="padding:16px;">
-              <div class="chart-placeholder">
-                <div class="chart-bar" style="height:0%;"></div>
-                <div class="chart-bar" style="height:0%;"></div>
-                <div class="chart-bar" style="height:0%;"></div>
-                <div class="chart-bar" style="height:33%;"></div>
-                <div class="chart-bar" style="height:66%;"></div>
-                <div class="chart-bar" style="height:100%;background:var(--success-green);opacity:0.8;"></div>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-top:8px;">
-                <span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
-              </div>
+            <div class="section-card__header"><h3>Posts Published by Client</h3></div>
+            <div style="padding:20px;" id="perf-posts-bars">
+              <div style="text-align:center;color:var(--text-muted);font-size:0.875rem;padding:20px 0;">Loading…</div>
             </div>
           </div>
         </div>
 
         <div class="section-card">
-          <div class="section-card__header"><h3>Review Response Rate by Client</h3></div>
-          <div style="padding:20px;">
-            <div style="margin-bottom:16px;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.875rem;"><span>Martinez HVAC</span><strong>97%</strong></div>
-              <div style="height:8px;background:var(--surface-mid);border-radius:4px;overflow:hidden;"><div style="height:100%;width:97%;background:var(--success-green);border-radius:4px;"></div></div>
-            </div>
-            <div style="margin-bottom:16px;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.875rem;"><span>Sunrise Dental</span><strong>88%</strong></div>
-              <div style="height:8px;background:var(--surface-mid);border-radius:4px;overflow:hidden;"><div style="height:100%;width:88%;background:var(--signal-amber);border-radius:4px;"></div></div>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.875rem;"><span>Clean Sweep Chicago</span><strong>100%</strong></div>
-              <div style="height:8px;background:var(--surface-mid);border-radius:4px;overflow:hidden;"><div style="height:100%;width:100%;background:var(--success-green);border-radius:4px;"></div></div>
-            </div>
-          </div>
+          <div class="section-card__header"><h3>Client Activity Overview</h3></div>
+          <table class="data-table">
+            <thead><tr><th>Client</th><th>Plan</th><th>MRR</th><th>Posts</th><th>Last Post</th><th>Services</th><th>Status</th></tr></thead>
+            <tbody id="perf-clients-tbody">
+              <tr><td colspan="7" style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.875rem;">Loading…</td></tr>
+            </tbody>
+          </table>
         </div>
-      </div>
 
-        <!-- ── WEBSITE PERFORMANCE ── -->
+        <!-- ── WEBSITE PERFORMANCE (inside tab) ── -->
         <div class="section-card" style="margin-top:24px;">
           <div class="section-card__header">
             <h3>Website Performance · localboostlab.com</h3>
@@ -614,7 +587,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <button class="btn btn-primary" id="psi-run-btn" onclick="runPSI()" style="padding:7px 14px;font-size:0.8rem;">Run Audit</button>
             </div>
           </div>
-          <!-- Scores -->
           <div class="psi-scores" id="psi-scores">
             <div class="psi-score-cell">
               <div class="psi-ring"><svg width="72" height="72" viewBox="0 0 72 72"><circle class="psi-ring__bg" cx="36" cy="36" r="30"/><circle class="psi-ring__fill" id="psi-ring-perf" cx="36" cy="36" r="30" stroke="#D1D5DB" stroke-dasharray="0 188.5"/></svg><div class="psi-ring__num" id="psi-num-perf">—</div></div>
@@ -633,14 +605,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="psi-score-label">SEO</div>
             </div>
           </div>
-          <!-- Core Web Vitals -->
           <div style="padding:12px 20px 4px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);">Core Web Vitals</div>
           <div class="psi-cwv" id="psi-cwv">
             <div class="psi-cwv-cell" id="psi-cwv-lcp"><div class="psi-cwv-label">LCP · Largest Contentful Paint</div><div class="psi-cwv-val">—</div><div class="psi-cwv-badge">—</div></div>
             <div class="psi-cwv-cell" id="psi-cwv-cls"><div class="psi-cwv-label">CLS · Cumulative Layout Shift</div><div class="psi-cwv-val">—</div><div class="psi-cwv-badge">—</div></div>
             <div class="psi-cwv-cell" id="psi-cwv-tbt"><div class="psi-cwv-label">TBT · Total Blocking Time</div><div class="psi-cwv-val">—</div><div class="psi-cwv-badge">—</div></div>
           </div>
-          <!-- Detailed metrics -->
           <div style="padding:12px 20px 4px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);">Diagnostics</div>
           <div class="psi-metrics" id="psi-metrics">
             <div class="psi-metric"><div class="psi-metric-label">First Contentful Paint</div><div class="psi-metric-val" id="psi-fcp">—</div></div>
@@ -655,6 +625,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fwww.localboostlab.com" target="_blank" rel="noopener" style="color:var(--authority-blue);font-size:0.72rem;text-decoration:none;">View full report ↗</a>
           </div>
         </div>
+
+      </div><!-- /tab-performance -->
 
       <!-- ── BILLING TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-billing">
@@ -957,6 +929,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       try { renderPosts(posts); }    catch(e) { console.error('renderPosts:', e); }
       try { renderActivity(activity); } catch(e) { console.error('renderActivity:', e); }
       try { renderBilling(stats, clients); } catch(e) { console.error('renderBilling:', e); }
+      try { renderPerformanceTab(clients, stats); } catch(e) { console.error('renderPerformanceTab:', e); }
       try { renderAccounting(accounting); } catch(e) { console.error('renderAccounting:', e); }
       try { renderAgents(agentStatus); } catch(e) { console.error('renderAgents:', e); }
     } catch(e) {
@@ -1072,6 +1045,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('client-drawer').classList.add('open');
     document.getElementById('drawer-overlay').classList.add('show');
     document.body.style.overflow = 'hidden';
+  }
+
+  function renderPerformanceTab(clients, stats) {
+    var realClients = clients.filter(function(c) { return c.mrr > 0; });
+    var maxMrr  = Math.max.apply(null, realClients.map(function(c) { return c.mrr; })) || 1;
+    var maxPost = Math.max.apply(null, clients.map(function(c) { return c.postCount; })) || 1;
+
+    var mrrEl = document.getElementById('perf-mrr-bars');
+    if (mrrEl) {
+      mrrEl.innerHTML = realClients.length ? realClients.map(function(c) {
+        var pct = Math.round(c.mrr / maxMrr * 100);
+        var color = c.plan === 'complete' ? 'var(--signal-amber)' : c.plan === 'presence' ? 'var(--authority-blue)' : 'var(--success-green)';
+        return '<div style="margin-bottom:14px;">' +
+          '<div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:0.875rem;"><span>' + esc(c.name) + '</span><strong>$' + c.mrr + '/mo</strong></div>' +
+          '<div style="height:8px;background:var(--surface-mid);border-radius:4px;overflow:hidden;"><div style="height:100%;width:' + pct + '%;background:' + color + ';border-radius:4px;transition:width 0.5s ease;"></div></div>' +
+          '</div>';
+      }).join('') : '<div style="color:var(--text-muted);font-size:0.875rem;">No paying clients yet.</div>';
+    }
+
+    var postsEl = document.getElementById('perf-posts-bars');
+    if (postsEl) {
+      postsEl.innerHTML = clients.length ? clients.map(function(c) {
+        var pct = Math.round(c.postCount / maxPost * 100);
+        var lastPost = c.lastPostAgo
+          ? '<span style="font-size:0.72rem;color:var(--success-green);">Last: ' + esc(c.lastPostAgo) + '</span>'
+          : '<span style="font-size:0.72rem;color:var(--text-muted);">No posts yet</span>';
+        return '<div style="margin-bottom:14px;">' +
+          '<div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:0.875rem;"><span>' + esc(c.name) + '</span><strong>' + c.postCount + ' posts</strong></div>' +
+          '<div style="height:8px;background:var(--surface-mid);border-radius:4px;overflow:hidden;"><div style="height:100%;width:' + pct + '%;background:var(--authority-blue);border-radius:4px;transition:width 0.5s ease;"></div></div>' +
+          '<div style="margin-top:3px;">' + lastPost + '</div>' +
+          '</div>';
+      }).join('') : '<div style="color:var(--text-muted);font-size:0.875rem;">No client data.</div>';
+    }
+
+    var tbody = document.getElementById('perf-clients-tbody');
+    if (tbody) {
+      tbody.innerHTML = clients.map(function(c) {
+        var badge = PLAN_BADGE[c.plan] || 'badge--blue';
+        var label = PLAN_LABEL[c.plan] || c.plan;
+        var lastPost = c.lastPostAgo
+          ? '<span style="color:var(--success-green);">' + esc(c.lastPostAgo) + '</span>'
+          : '<span style="color:var(--text-muted);">—</span>';
+        var status = c.active
+          ? '<span class="status-dot status-dot--active">Active</span>'
+          : '<span class="status-dot" style="background:var(--text-muted);">Inactive</span>';
+        var services = [c.reviewAgent && SVG_CHECK + ' Reviews', c.postingAgent && SVG_POST + ' Posts'].filter(Boolean).join(' ');
+        var mrr = c.mrr === 0 ? '<span class="badge badge--internal">Internal</span>' : '<span style="font-family:var(--font-mono);">$' + c.mrr + '</span>';
+        return '<tr><td><strong>' + esc(c.name) + '</strong><div style="font-size:0.72rem;color:var(--text-muted);">' + esc(c.city) + '</div></td>' +
+          '<td><span class="badge ' + badge + '">' + label + '</span></td>' +
+          '<td>' + mrr + '</td>' +
+          '<td style="font-family:var(--font-mono);">' + c.postCount + '</td>' +
+          '<td>' + lastPost + '</td>' +
+          '<td>' + services + '</td>' +
+          '<td>' + status + '</td></tr>';
+      }).join('') || '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--text-muted);">No clients.</td></tr>';
+    }
   }
 
   function renderBilling(s, clients) {
