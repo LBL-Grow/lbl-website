@@ -280,6 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar__nav-item" data-tab="reviews"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.7 8.3H23l-7.1 5.1 2.7 8.4L12 18.7l-6.6 5.1 2.7-8.4L1 9.3h8.3L12 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Reviews</div>
       <div class="sidebar__nav-item" data-tab="posts"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Posts</div>
       <div class="sidebar__nav-item" data-tab="performance"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17l5-5 4 4 7-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 8h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Performance</div>
+      <div class="sidebar__nav-item" data-tab="website"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="1.5"/></svg></span> Website</div>
       <div class="sidebar__nav-item" data-tab="billing"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg></span> Billing</div>
       <div class="sidebar__nav-item" data-tab="health"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Agents</div>
       <div class="sidebar__nav-item" data-tab="accounting"><span class="icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="none"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> Accounting</div>
@@ -575,16 +576,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </table>
         </div>
 
-        <!-- ── WEBSITE PERFORMANCE (inside tab) ── -->
-        <div class="section-card" style="margin-top:24px;">
+      </div><!-- /tab-performance -->
+
+      <!-- ── WEBSITE TAB ─────── -->
+      <div class="dashboard-tab-content" id="tab-website">
+        <div class="section-card">
           <div class="section-card__header">
             <h3>Website Performance · localboostlab.com</h3>
             <div style="display:flex;align-items:center;gap:10px;">
               <div style="display:flex;border:1px solid var(--border-color);border-radius:6px;overflow:hidden;">
-                <button class="psi-strategy-btn active" id="psi-btn-mobile" onclick="switchPSI('mobile')">Mobile</button>
-                <button class="psi-strategy-btn" id="psi-btn-desktop" onclick="switchPSI('desktop')">Desktop</button>
+                <button class="psi-strategy-btn active" id="psi-btn-mobile">Mobile</button>
+                <button class="psi-strategy-btn" id="psi-btn-desktop">Desktop</button>
               </div>
-              <button class="btn btn-primary" id="psi-run-btn" onclick="runPSI()" style="padding:7px 14px;font-size:0.8rem;">Run Audit</button>
+              <button class="btn btn-primary" id="psi-run-btn" style="padding:7px 14px;font-size:0.8rem;">Run Audit</button>
             </div>
           </div>
           <div class="psi-scores" id="psi-scores">
@@ -625,8 +629,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fwww.localboostlab.com" target="_blank" rel="noopener" style="color:var(--authority-blue);font-size:0.72rem;text-decoration:none;">View full report ↗</a>
           </div>
         </div>
-
-      </div><!-- /tab-performance -->
+      </div><!-- /tab-website -->
 
       <!-- ── BILLING TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-billing">
@@ -820,7 +823,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* Tabs */
-  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', billing:'Billing', health:'Agents', accounting:'Accounting', prospects:'Prospects — CRM Pipeline' };
+  var tabTitles = { overview:'Overview', clients:'Clients', reviews:'Reviews', posts:'Posts', performance:'Performance', website:'Website Performance', billing:'Billing', health:'Agents', accounting:'Accounting', prospects:'Prospects — CRM Pipeline' };
+  var _allClients = [];
 
   document.querySelectorAll('.sidebar__nav-item').forEach(function(item) {
     item.addEventListener('click', function() {
@@ -954,6 +958,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function renderClients(clients) {
+    _allClients = clients;
+    renderClientsTable(clients);
+  }
+
+  function renderClientsTable(clients) {
     var tbody = document.getElementById('clients-tbody');
     if (!tbody) return;
     tbody.innerHTML = clients.map(function(c) {
@@ -978,7 +987,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         '<td><button class="btn btn-outline" style="padding:6px 12px;font-size:0.75rem;" ' +
           'onclick=\'openClientDrawer(' + JSON.stringify(c).replace(/'/g,"&#39;") + ')\'>View</button></td>' +
         '</tr>';
-    }).join('');
+    }).join('') || '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text-muted);">No clients found.</td></tr>';
   }
 
   function renderPosts(posts) {
@@ -1523,42 +1532,79 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('psi-btn-desktop').classList.toggle('active', strategy === 'desktop');
     var cached = localStorage.getItem('psi_' + strategy);
     if (cached) {
-      try { renderPSIData(JSON.parse(cached)); var ts = localStorage.getItem('psi_ts_' + strategy); if (ts) document.getElementById('psi-last').textContent = 'Last audited: ' + ts + ' · ' + strategy; }
-      catch(e) {}
+      try {
+        renderPSIData(JSON.parse(cached));
+        var ts = localStorage.getItem('psi_ts_' + strategy);
+        if (ts) document.getElementById('psi-last').textContent = 'Last audited: ' + ts + ' · ' + strategy;
+      } catch(e) {}
     } else {
-      document.getElementById('psi-last').textContent = 'No audit for ' + strategy + ' yet.';
+      document.getElementById('psi-last').textContent = 'No audit for ' + strategy + ' yet. Click "Run Audit".';
     }
   }
 
-  async function runPSI() {
+  function runPSI() {
     var btn = document.getElementById('psi-run-btn');
     var last = document.getElementById('psi-last');
     btn.disabled = true;
     btn.innerHTML = '<span class="psi-spinner"></span>Running…';
-    last.innerHTML = '<span class="psi-spinner"></span>Fetching PageSpeed data — takes 10–30 seconds…';
-    try {
-      var endpoint = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' +
-        encodeURIComponent(PSI_URL) + '&strategy=' + psiStrategy +
-        '&fields=lighthouseResult(categories,audits)';
-      var res = await fetch(endpoint);
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      var data = await res.json();
-      renderPSIData(data);
-      var ts = new Date().toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
-      localStorage.setItem('psi_' + psiStrategy, JSON.stringify(data));
-      localStorage.setItem('psi_ts_' + psiStrategy, ts);
-      last.textContent = 'Last audited: ' + ts + ' · ' + psiStrategy;
-    } catch(e) {
-      last.textContent = 'Audit failed: ' + (e.message || String(e));
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Run Audit';
-    }
+    last.innerHTML = '<span class="psi-spinner"></span>Fetching PageSpeed data — takes 10–30 s…';
+    var endpoint = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' +
+      encodeURIComponent(PSI_URL) + '&strategy=' + psiStrategy +
+      '&fields=lighthouseResult(categories,audits)';
+    fetch(endpoint)
+      .then(function(res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        renderPSIData(data);
+        var ts = new Date().toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+        localStorage.setItem('psi_' + psiStrategy, JSON.stringify(data));
+        localStorage.setItem('psi_ts_' + psiStrategy, ts);
+        document.getElementById('psi-last').textContent = 'Last audited: ' + ts + ' · ' + psiStrategy;
+      })
+      .catch(function(e) {
+        document.getElementById('psi-last').textContent = 'Audit failed: ' + (e.message || String(e));
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Run Audit';
+      });
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    /* PSI buttons */
+    var btnMobile  = document.getElementById('psi-btn-mobile');
+    var btnDesktop = document.getElementById('psi-btn-desktop');
+    var btnRun     = document.getElementById('psi-run-btn');
+    if (btnMobile)  btnMobile.addEventListener('click',  function() { switchPSI('mobile'); });
+    if (btnDesktop) btnDesktop.addEventListener('click', function() { switchPSI('desktop'); });
+    if (btnRun)     btnRun.addEventListener('click', runPSI);
+
+    /* Load cached PSI data for mobile */
     var cached = localStorage.getItem('psi_mobile');
-    if (cached) { try { renderPSIData(JSON.parse(cached)); var ts = localStorage.getItem('psi_ts_mobile'); if (ts) document.getElementById('psi-last').textContent = 'Last audited: ' + ts + ' · mobile'; } catch(e) {} }
+    if (cached) {
+      try {
+        renderPSIData(JSON.parse(cached));
+        var ts = localStorage.getItem('psi_ts_mobile');
+        var lastEl = document.getElementById('psi-last');
+        if (ts && lastEl) lastEl.textContent = 'Last audited: ' + ts + ' · mobile';
+      } catch(e) {}
+    }
+
+    /* Client filter buttons */
+    var btnAll    = document.getElementById('filter-all');
+    var btnActive = document.getElementById('filter-active');
+    function setClientFilter(showActive) {
+      btnAll.classList.toggle('btn-primary', !showActive);
+      btnAll.classList.toggle('btn-outline',  showActive);
+      btnActive.classList.toggle('btn-primary',  showActive);
+      btnActive.classList.toggle('btn-outline',  !showActive);
+      var list = showActive ? _allClients.filter(function(c) { return c.active; }) : _allClients;
+      renderClientsTable(list);
+    }
+    if (btnAll)    btnAll.addEventListener('click',    function() { setClientFilter(false); });
+    if (btnActive) btnActive.addEventListener('click', function() { setClientFilter(true); });
   });
 
     var overlay = document.createElement('div');
