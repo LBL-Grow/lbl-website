@@ -107,7 +107,7 @@
     var chatSessionId = null;
     var API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
       ? 'http://localhost:3000'
-      : 'https://powerful-balance-production-971d.up.railway.app';
+      : '';
 
     function sendMessage() {
       if (!input) return;
