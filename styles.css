@@ -2327,9 +2327,24 @@ img[loading="lazy"].loaded { opacity: 1; }
   .form-row { grid-template-columns: 1fr; }
 }
 
-/* ─── Chat widget mobile — white stroke to separate from amber CTAs ── */
+/* ─── Chat widget mobile ─────────────────────────────── */
 @media (max-width: 767px) {
+  .chat-widget {
+    bottom: 16px;
+    right: 16px;
+  }
   .chat-bubble { border: 1px solid rgba(255,255,255,0.9); }
+  .chat-window {
+    position: fixed;
+    bottom: 88px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-height: 55vh;
+    min-height: 0;
+  }
+  .chat-messages { max-height: calc(55vh - 120px); }
+  .chat-input { font-size: 1rem; }
 }
 
 /* ─── Footer logo as link ──────────────────────────────── */
