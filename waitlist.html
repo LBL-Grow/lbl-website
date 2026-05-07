@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/Fav-Icon_Blue.png">
+  <link rel="apple-touch-icon" href="/Fav-Icon_Blue.png">
+  <title>Coming Soon — Local Boost Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --wl-amber:      #F59E0B;
+      --wl-amber-dark: #D97706;
+      --wl-navy:       #1A3A5C;
+      --wl-bg:         #0D1117;
+      --wl-green:      #10B981;
+      --wl-muted:      #6B7280;
+      --wl-radius:     12px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--wl-bg);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .wl-header {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .wl-header img { height: 36px; display: block; }
+
+    /* ── Hero ── */
+    .wl-hero {
+      text-align: center;
+      padding: 56px 24px 40px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .wl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245,158,11,0.15);
+      border: 1px solid rgba(245,158,11,0.35);
+      color: var(--wl-amber);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 99px;
+      margin-bottom: 24px;
+    }
+    .wl-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--wl-amber);
+      animation: wl-pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes wl-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    .wl-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      font-family: 'DM Serif Display', Georgia, serif;
+    }
+    .wl-hero h1 span { color: var(--wl-amber); }
+
+    .wl-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      max-width: 540px;
+      margin: 0 auto 32px;
+    }
+
+    /* ── Offer banner ── */
+    .wl-offer {
+      background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(245,158,11,0.08));
+      border: 1px solid rgba(245,158,11,0.4);
+      border-radius: var(--wl-radius);
+      padding: 20px 24px;
+      margin: 0 auto 40px;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
+    }
+    .wl-offer__icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--wl-amber);
+    }
+    .wl-offer__text strong {
+      display: block;
+      color: var(--wl-amber);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .wl-offer__text span {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ── Form card ── */
+    .wl-card {
+      background: #fff;
+      color: #0D1117;
+      border-radius: var(--wl-radius);
+      padding: 36px 32px;
+      max-width: 520px;
+      margin: 0 auto 56px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+    }
+
+    .wl-card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--wl-navy);
+    }
+    .wl-card > p {
+      font-size: 0.88rem;
+      color: var(--wl-muted);
+      margin-bottom: 24px;
+    }
+
+    .wl-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .wl-form-row.single { grid-template-columns: 1fr; }
+
+    .wl-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .wl-field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      letter-spacing: 0.02em;
+    }
+    .wl-field label .req { color: var(--wl-navy); }
+
+    .wl-field input,
+    .wl-field select {
+      padding: 10px 13px;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-family: 'Inter', sans-serif;
+      color: #0D1117;
+      background: #F9FAFB;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      width: 100%;
+    }
+    .wl-field input:focus,
+    .wl-field select:focus {
+      border-color: var(--wl-navy);
+      box-shadow: 0 0 0 3px rgba(26,58,92,0.12);
+      background: #fff;
+    }
+    .wl-field select { cursor: pointer; }
+
+    .wl-plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .wl-plan-option input[type="radio"] { display: none; }
+    .wl-plan-option label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 8px;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #374151;
+      text-align: center;
+      transition: border-color 0.15s, background 0.15s;
+      line-height: 1.3;
+      gap: 4px;
+    }
+    .wl-plan-option label span { font-size: 0.72rem; font-weight: 400; color: var(--wl-muted); }
+    .wl-plan-option input:checked + label {
+      border-color: var(--wl-amber);
+      background: #FFFBEB;
+      color: #92400E;
+    }
+    .wl-plan-option input:checked + label span { color: #B45309; }
+
+    .wl-submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--wl-amber);
+      color: #0D1117;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+    .wl-submit-btn:hover { background: var(--wl-amber-dark); box-shadow: 0 4px 16px rgba(245,158,11,0.4); }
+    .wl-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .wl-form-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--wl-muted);
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* ── Success state ── */
+    .wl-success {
+      display: none;
+      text-align: center;
+      padding: 16px 0;
+    }
+    .wl-success__icon {
+      width: 56px; height: 56px;
+      background: #ECFDF5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .wl-success__icon svg { display: block; }
+    .wl-success h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--wl-navy);
+      margin-bottom: 8px;
+    }
+    .wl-success p {
+      font-size: 0.9rem;
+      color: var(--wl-muted);
+      margin: 0;
+    }
+    .wl-success p strong { color: var(--wl-green); }
+
+    /* ── Perks ── */
+    .wl-perks {
+      max-width: 520px;
+      margin: 0 auto 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .wl-perk {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--wl-radius);
+      padding: 18px 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .wl-perk__icon {
+      flex-shrink: 0;
+      margin-top: 1px;
+      width: 22px; height: 22px;
+      color: var(--wl-amber);
+    }
+    .wl-perk__body strong { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 3px; }
+    .wl-perk__body span { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+
+    /* ── Footer ── */
+    .wl-footer {
+      text-align: center;
+      padding: 20px 24px 40px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .wl-footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    .wl-footer a:hover { color: rgba(255,255,255,0.7); }
+
+    @media (max-width: 540px) {
+      .wl-card { padding: 24px 18px; }
+      .wl-form-row { grid-template-columns: 1fr; }
+      .wl-plan-grid { grid-template-columns: 1fr; }
+      .wl-perks { grid-template-columns: 1fr; }
+      .wl-offer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="wl-header">
+    <a href="/index.html">
+      <img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" style="height:36px;display:block;">
+    </a>
+  </header>
+
+  <main>
+    <section class="wl-hero">
+      <div class="wl-badge">Launching Soon</div>
+      <h1>Your Google Profile.<br><span>Done for you.</span></h1>
+      <p>We're putting the finishing touches on the platform. Leave your info below and we'll contact you the moment we go live — with a deal you won't find on the site.</p>
+    </section>
+
+    <div class="wl-offer">
+      <div class="wl-offer__icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 12 20 22 4 22 4 12"/>
+          <rect x="2" y="7" width="20" height="5"/>
+          <line x1="12" y1="22" x2="12" y2="7"/>
+          <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
+          <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+        </svg>
+      </div>
+      <div class="wl-offer__text">
+        <strong>50% off your first month — for early signups only</strong>
+        <span>No credit card. No commitment. We reach out when we're live and apply the discount automatically to your first invoice.</span>
+      </div>
+    </div>
+
+    <div class="wl-card">
+      <h2>Reserve your spot</h2>
+      <p>Takes 60 seconds. We'll reach out personally when we're ready.</p>
+
+      <form id="waitlist-form">
+        <div class="wl-form-row">
+          <div class="wl-field">
+            <label for="wl-first">First name <span class="req">*</span></label>
+            <input type="text" id="wl-first" name="firstName" placeholder="Alex" required autocomplete="given-name">
+          </div>
+          <div class="wl-field">
+            <label for="wl-last">Last name</label>
+            <input type="text" id="wl-last" name="lastName" placeholder="Rivera" autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="wl-form-row">
+          <div class="wl-field">
+            <label for="wl-email">Email <span class="req">*</span></label>
+            <input type="email" id="wl-email" name="email" placeholder="you@yourbusiness.com" required autocomplete="email">
+          </div>
+          <div class="wl-field">
+            <label for="wl-phone">Phone</label>
+            <input type="tel" id="wl-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="wl-form-row single">
+          <div class="wl-field">
+            <label for="wl-business">Business name <span class="req">*</span></label>
+            <input type="text" id="wl-business" name="business" placeholder="Sunrise HVAC" required>
+          </div>
+        </div>
+
+        <div class="wl-form-row">
+          <div class="wl-field">
+            <label for="wl-industry">Industry <span class="req">*</span></label>
+            <select id="wl-industry" name="industry" required>
+              <option value="" disabled selected>Select industry</option>
+              <option value="hvac">HVAC</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="dental">Dental</option>
+              <option value="legal">Legal</option>
+              <option value="cleaning">Cleaning</option>
+              <option value="landscaping">Landscaping</option>
+              <option value="auto">Auto Repair</option>
+              <option value="medspa">Med Spa</option>
+              <option value="chiropractic">Chiropractic</option>
+              <option value="pest">Pest Control</option>
+              <option value="roofing">Roofing</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="wl-field">
+            <label for="wl-city">City <span class="req">*</span></label>
+            <input type="text" id="wl-city" name="city" placeholder="Miami, FL" required>
+          </div>
+        </div>
+
+        <div class="wl-field" style="margin-bottom:8px;">
+          <label>Which plan interests you?</label>
+        </div>
+        <div class="wl-plan-grid" style="margin-bottom:20px;">
+          <div class="wl-plan-option">
+            <input type="radio" name="plan" id="plan-reviews" value="Reviews — $97/mo">
+            <label for="plan-reviews">Reviews<span>$97/mo</span></label>
+          </div>
+          <div class="wl-plan-option">
+            <input type="radio" name="plan" id="plan-presence" value="Presence — $157/mo">
+            <label for="plan-presence">Presence<span>$157/mo</span></label>
+          </div>
+          <div class="wl-plan-option">
+            <input type="radio" name="plan" id="plan-complete" value="Complete — $217/mo" checked>
+            <label for="plan-complete">Complete<span>$217/mo</span></label>
+          </div>
+        </div>
+
+        <button type="submit" class="wl-submit-btn" id="wl-submit">Claim my 50% off →</button>
+        <p class="wl-form-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+          No spam. No credit card. We reach out once — when we're live.
+        </p>
+      </form>
+
+      <div class="wl-success" id="wl-success">
+        <div class="wl-success__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M5 13l5 5L20 7" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>You're on the list.</h3>
+        <p>We'll reach out to <strong id="wl-confirm-email"></strong> personally when we go live — with your 50% discount ready to apply.</p>
+      </div>
+    </div>
+
+    <div class="wl-perks">
+      <div class="wl-perk">
+        <div class="wl-perk__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+        </div>
+        <div class="wl-perk__body">
+          <strong>3 posts/week</strong>
+          <span>Mon, Wed, Fri at 9 AM. Written in your voice, published automatically.</span>
+        </div>
+      </div>
+      <div class="wl-perk">
+        <div class="wl-perk__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            <polyline points="9 10 12 13 17 8" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="wl-perk__body">
+          <strong>Reviews handled</strong>
+          <span>Auto-replied in 15 minutes for 4–5★. 1–2★ escalated to you immediately.</span>
+        </div>
+      </div>
+      <div class="wl-perk">
+        <div class="wl-perk__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <div class="wl-perk__body">
+          <strong>Monthly reports</strong>
+          <span>Calls, views, direction requests — sent on the 3rd of every month.</span>
+        </div>
+      </div>
+      <div class="wl-perk">
+        <div class="wl-perk__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div class="wl-perk__body">
+          <strong>Live in 24 hours</strong>
+          <span>From payment to first post live. No setup calls. No waiting around.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wl-footer">
+    <p>Local Boost Lab · <a href="mailto:hello@localboostlab.com">hello@localboostlab.com</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  </footer>
+
+  <script>
+    var API = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+
+    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('wl-submit');
+      btn.disabled = true;
+      btn.textContent = 'Saving…';
+
+      var firstName = document.getElementById('wl-first').value.trim();
+      var lastName  = document.getElementById('wl-last').value.trim();
+      var email     = document.getElementById('wl-email').value.trim();
+      var phone     = document.getElementById('wl-phone').value.trim();
+      var business  = document.getElementById('wl-business').value.trim();
+      var industry  = document.getElementById('wl-industry').value;
+      var city      = document.getElementById('wl-city').value.trim();
+      var plan      = document.querySelector('input[name="plan"]:checked');
+      var planVal   = plan ? plan.value : 'Not specified';
+
+      fetch(API + '/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: firstName, lastName: lastName, email: email, phone: phone,
+          business: business, industry: industry, city: city, plan: planVal,
+        }),
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.error) throw new Error(data.error);
+        document.getElementById('waitlist-form').style.display = 'none';
+        document.getElementById('wl-confirm-email').textContent = email;
+        document.getElementById('wl-success').style.display = 'block';
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        btn.textContent = 'Claim my 50% off →';
+        alert('Something went wrong. Please try again or email hello@localboostlab.com');
+        console.error(err);
+      });
+    });
+  </script>
+  <script src="/_vercel/speed-insights/script.js" defer></script>
+</body>
+</html>
