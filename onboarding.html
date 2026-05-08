@@ -174,7 +174,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="onboarding-header__help">Questions? <a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
   </header>
 
-  <div class="onboarding-main">
+  <a href="#onboarding-form" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.position='static';this.style.width='auto';this.style.height='auto';">Skip to main content</a>
+  <main id="onboarding-form" class="onboarding-main">
     <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Set Up Your Local Boost Lab Account</h1>
     <div class="onboarding-card">
 
@@ -307,13 +308,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="form-label" style="margin-bottom:12px;">Your top 3 services <span class="req">*</span></p>
         <div class="form-row" style="margin-bottom:16px;">
           <div class="form-group">
+            <label for="s2-service1" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Service 1</label>
             <input type="text" class="form-control" placeholder="Service 1 (e.g. AC Installation)" required id="s2-service1">
           </div>
           <div class="form-group">
+            <label for="s2-service2" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Service 2</label>
             <input type="text" class="form-control" placeholder="Service 2 (e.g. Furnace Repair)" required id="s2-service2">
           </div>
         </div>
         <div class="form-group" style="max-width:calc(50% - 8px);">
+          <label for="s2-service3" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Service 3</label>
           <input type="text" class="form-control" placeholder="Service 3 (e.g. Emergency HVAC)" required id="s2-service3">
         </div>
 
@@ -457,7 +461,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
     </div>
-  </div>
+  </main>
 </div>
 
 <script src="shared.js"></script>
