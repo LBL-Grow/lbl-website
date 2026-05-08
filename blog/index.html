@@ -274,7 +274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <a href="/" class="footer__logo"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
         <div class="footer__tagline">Your Google Profile. Finally handled.</div>
-        <div class="footer__email"><a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a></div>
+        <div class="footer__email"><a href="mailto:hello@localboostlab.com">hello@localboostlab.com</a></div>
       </div>
       <div>
         <div class="footer__col-title">Product</div>
@@ -318,7 +318,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="chat-header__close" aria-label="× Close chat">×</button>
     </div>
     <div class="chat-messages">
-      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email grow@localboostlab.com and we'll respond within 24 hours.</div>
+      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email hello@localboostlab.com and we'll respond within 24 hours.</div>
       <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
     </div>
     <div class="chat-input-area">
@@ -359,14 +359,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('featured-link').href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     var catLabel = tags.length ? tags[0] : 'Article';
     var cover = document.getElementById('featured-cover');
-    if (post.cover_image_url) {
-      cover.style.backgroundImage = 'url(' + escHtml(post.cover_image_url) + ')';
-      cover.style.backgroundSize = 'cover';
-      cover.style.backgroundPosition = 'center';
-      cover.innerHTML = '';
-    } else {
-      cover.innerHTML = '<span class="post-card__cover-tag" style="font-size:0.75rem;">' + escHtml(catLabel) + '</span>';
-    }
+    cover.innerHTML = '<span class="post-card__cover-tag" style="font-size:0.75rem;">' + escHtml(catLabel) + '</span>';
     document.getElementById('featured-post').style.display = '';
   }
 
@@ -379,15 +372,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     article.addEventListener('click', function() {
       window.location.href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     });
-    var coverHtml;
-    if (post.cover_image_url) {
-      coverHtml = '<div class="post-card__cover" style="background-image:url(' + escHtml(post.cover_image_url) + ');background-size:cover;background-position:center;"></div>';
-    } else {
-      coverHtml = '<div class="post-card__cover">' +
-        '<span class="post-card__cover-tag">' + escHtml(catLabel) + '</span>' +
-        '<div class="post-card__cover-title">' + escHtml(post.title) + '</div>' +
-      '</div>';
-    }
+    var coverHtml = '<div class="post-card__cover">' +
+      '<span class="post-card__cover-tag">' + escHtml(catLabel) + '</span>' +
+      '<div class="post-card__cover-title">' + escHtml(post.title) + '</div>' +
+    '</div>';
     article.innerHTML =
       coverHtml +
       '<div class="post-card__body">' +
