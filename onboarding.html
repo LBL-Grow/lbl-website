@@ -175,6 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <div class="onboarding-main">
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Set Up Your Local Boost Lab Account</h1>
     <div class="onboarding-card">
 
       <!-- Progress -->
@@ -363,43 +364,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="step-subheading">These settings control how we access your profile and respond to reviews.</p>
 
         <div class="form-group">
-          <label class="form-label">GBP Access Method <span class="req">*</span></label>
-          <div class="radio-group">
-            <label class="radio-option" for="access-oauth">
-              <input type="radio" id="access-oauth" name="access-method" value="oauth" required checked>
-              <div>
-                <div class="radio-option__label">Connect via Google OAuth <span style="background:var(--signal-amber);color:var(--authority-blue);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
-                <div class="radio-option__desc">One click, done. Google's own secure authorization system.</div>
-              </div>
-            </label>
-            <label class="radio-option" for="access-manual">
-              <input type="radio" id="access-manual" name="access-method" value="manual">
-              <div>
-                <div class="radio-option__label">I'll add grow@localboostlab.com as a Manager manually</div>
-                <div class="radio-option__desc">Go to your GBP, add our email as Manager (not Owner). We'll confirm once connected.</div>
-              </div>
-            </label>
-          </div>
+          <fieldset style="border:none;padding:0;margin:0;">
+            <legend class="form-label">GBP Access Method <span class="req">*</span></legend>
+            <div class="radio-group">
+              <label class="radio-option" for="access-oauth">
+                <input type="radio" id="access-oauth" name="access-method" value="oauth" required checked>
+                <div>
+                  <div class="radio-option__label">Connect via Google OAuth <span style="background:var(--signal-amber);color:var(--authority-blue);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
+                  <div class="radio-option__desc">One click, done. Google's own secure authorization system.</div>
+                </div>
+              </label>
+              <label class="radio-option" for="access-manual">
+                <input type="radio" id="access-manual" name="access-method" value="manual">
+                <div>
+                  <div class="radio-option__label">I'll add grow@localboostlab.com as a Manager manually</div>
+                  <div class="radio-option__desc">Go to your GBP, add our email as Manager (not Owner). We'll confirm once connected.</div>
+                </div>
+              </label>
+            </div>
+          </fieldset>
         </div>
 
         <div class="form-group" style="margin-top:28px;">
-          <label class="form-label">Review Response Preference <span class="req">*</span></label>
-          <div class="radio-group">
-            <label class="radio-option" for="resp-auto">
-              <input type="radio" id="resp-auto" name="review-pref" value="auto" required checked>
-              <div>
-                <div class="radio-option__label">Auto-respond to all 4–5 star reviews <span style="background:var(--signal-amber);color:var(--authority-blue-dark);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
-                <div class="radio-option__desc">Fastest response time. We respond in your voice within 30 minutes.</div>
-              </div>
-            </label>
-            <label class="radio-option" for="resp-preview">
-              <input type="radio" id="resp-preview" name="review-pref" value="preview">
-              <div>
-                <div class="radio-option__label">Send me a preview before posting</div>
-                <div class="radio-option__desc">Adds 2–4 hours to response time but you see each draft before it goes live.</div>
-              </div>
-            </label>
-          </div>
+          <fieldset style="border:none;padding:0;margin:0;">
+            <legend class="form-label">Review Response Preference <span class="req">*</span></legend>
+            <div class="radio-group">
+              <label class="radio-option" for="resp-auto">
+                <input type="radio" id="resp-auto" name="review-pref" value="auto" required checked>
+                <div>
+                  <div class="radio-option__label">Auto-respond to all 4–5 star reviews <span style="background:var(--signal-amber);color:var(--authority-blue-dark);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
+                  <div class="radio-option__desc">Fastest response time. We respond in your voice within 30 minutes.</div>
+                </div>
+              </label>
+              <label class="radio-option" for="resp-preview">
+                <input type="radio" id="resp-preview" name="review-pref" value="preview">
+                <div>
+                  <div class="radio-option__label">Send me a preview before posting</div>
+                  <div class="radio-option__desc">Adds 2–4 hours to response time but you see each draft before it goes live.</div>
+                </div>
+              </label>
+            </div>
+          </fieldset>
         </div>
 
         <div class="form-group" style="margin-top:28px;">
