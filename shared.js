@@ -101,7 +101,7 @@
     var chatHistory = [];
     var chatSessionId = null;
     var API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-      ? 'http:
+      ? 'http://localhost:3000'
       : '';
 
     function sendMessage() {
