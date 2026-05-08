@@ -1,12 +1,7 @@
-/* ============================================================
-   Local Boost Lab — Shared JavaScript
-   shared.js v1.0
-   ============================================================ */
-
 (function () {
   'use strict';
 
-  /* ─── Smart Sticky Nav ──────────────────────────────── */
+
   function initNav() {
     var nav = document.querySelector('.nav');
     if (!nav) return;
@@ -41,7 +36,7 @@
       }
     }, { passive: true });
 
-    /* Mobile hamburger */
+
     var hamburger = document.querySelector('.nav__hamburger');
     var overlay   = document.querySelector('.nav__mobile-overlay');
     if (hamburger && overlay) {
@@ -71,7 +66,7 @@
     }
   }
 
-  /* ─── Chat Widget ───────────────────────────────────── */
+
   function initChat() {
     var bubble  = document.querySelector('.chat-bubble');
     var window_ = document.querySelector('.chat-window');
@@ -106,7 +101,7 @@
     var chatHistory = [];
     var chatSessionId = null;
     var API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-      ? 'http://localhost:3000'
+      ? 'http:
       : '';
 
     function sendMessage() {
@@ -162,7 +157,7 @@
       });
     }
 
-    /* Mobile full-screen */
+
     function checkMobile() {
       if (window.innerWidth <= 768 && window_.classList.contains('open')) {
         window_.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;border-radius:0;bottom:auto;right:auto;';
@@ -173,7 +168,7 @@
     window.addEventListener('resize', checkMobile);
   }
 
-  /* ─── Cookie Consent ────────────────────────────────── */
+
   function initCookies() {
     var bar = document.querySelector('.cookie-bar');
     if (!bar) return;
@@ -220,7 +215,7 @@
     }
   }
 
-  /* ─── Fade-up on Scroll ─────────────────────────────── */
+
   function initFadeUp() {
     var els = document.querySelectorAll('.fade-up');
     if (!els.length || !('IntersectionObserver' in window)) {
@@ -240,7 +235,7 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ─── Form Validation Helpers ───────────────────────── */
+
   window.LBL = window.LBL || {};
 
   window.LBL.validateField = function (field) {
@@ -266,7 +261,7 @@
     return allValid;
   };
 
-  /* ─── Init on DOM ready ─────────────────────────────── */
+
   document.addEventListener('DOMContentLoaded', function () {
     initNav();
     initChat();
