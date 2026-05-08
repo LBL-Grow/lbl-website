@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /onboarding
+Disallow: /waitlist
+Disallow: /dashboard
 
-Sitemap: https://www.localboostlab.com/sitemap.xml
+Sitemap: https://localboostlab.com/sitemap.xml
