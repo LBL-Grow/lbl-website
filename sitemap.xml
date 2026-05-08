@@ -43,6 +43,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localboostlab.com/hvac/miami</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localboostlab.com/hvac/phoenix</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localboostlab.com/dental/austin</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localboostlab.com/plumbing/miami</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localboostlab.com/privacy</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>yearly</changefreq>
@@ -53,11 +77,5 @@
     <lastmod>2026-05-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://localboostlab.com/waitlist</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>
