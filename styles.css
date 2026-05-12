@@ -308,7 +308,7 @@ p { line-height: 1.7; }
 .nav__dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 14px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--slate-core);
@@ -317,7 +317,7 @@ p { line-height: 1.7; }
   box-shadow: var(--shadow-elevated);
   min-width: 168px;
   list-style: none;
-  padding: 6px 0;
+  padding: 14px 0 6px;
   margin: 0;
   z-index: 1001;
 }
