@@ -98,7 +98,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   (function() {
     var params = new URLSearchParams(window.location.search);
     var plan = params.get('plan');
-    var labels = { reviews: 'Reviews — $97/mo', presence: 'Presence — $157/mo', complete: 'Complete — $217/mo' };
+    var labels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
     if (plan && labels[plan]) {
       var banner = document.getElementById('plan-banner');
       var name = document.getElementById('plan-banner-name');
@@ -399,7 +399,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <input type="radio" id="resp-auto" name="review-pref" value="auto" required checked>
                 <div>
                   <div class="radio-option__label">Auto-respond to all 4–5 star reviews <span style="background:var(--signal-amber);color:var(--authority-blue-dark);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
-                  <div class="radio-option__desc">Fastest response time. We respond in your voice within 30 minutes.</div>
+                  <div class="radio-option__desc">Fastest response time. We respond in your voice in under 1 hour.</div>
                 </div>
               </label>
               <label class="radio-option" for="resp-preview">
@@ -549,7 +549,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   (function() {
     var params = new URLSearchParams(window.location.search);
     var plan = params.get('plan');
-    var labels = { reviews: 'Reviews — $97/mo', presence: 'Presence — $157/mo', complete: 'Complete — $217/mo' };
+    var labels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
     if (plan && labels[plan]) {
       var banner = document.getElementById('plan-banner');
       var name = document.getElementById('plan-banner-name');

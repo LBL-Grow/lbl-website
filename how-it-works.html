@@ -138,6 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media (max-width: 768px) {
       .process-block { grid-template-columns: 1fr; gap: 32px; }
       .process-block--reverse { direction: ltr; }
+      .hiw-stat-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -154,7 +155,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works" class="nav__active">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing">Pricing</a>
       <a href="/blog/">Blog</a>
       <a href="/about">About</a>
@@ -166,7 +176,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
   <a href="/blog/">Blog</a>
   <a href="/about">About</a>
@@ -200,7 +219,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Your end of the setup takes under 10 minutes. Ours takes 24 hours.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;text-align:center;" class="fade-up">
+    <div class="hiw-stat-grid fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;text-align:center;">
       <div style="background:var(--surface-light);border-radius:12px;padding:20px;border:1px solid var(--border-color);">
         <div style="font-family:var(--font-mono);font-size:1.8rem;font-weight:700;color:var(--authority-blue);">88%</div>
         <div style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">of consumers trust online reviews as much as a personal recommendation</div>
@@ -263,7 +282,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>Every review, handled within minutes.</h3>
         <p>Our system monitors your Google Business Profile 24/7. The moment a new review appears:</p>
         <ul style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;padding-left:20px;list-style:disc;">
-          <li><strong>4–5 star reviews:</strong> Auto-responded in your voice within 30 minutes</li>
+          <li><strong>4–5 star reviews:</strong> Auto-responded in your voice in under 1 hour</li>
           <li><strong>3-star reviews:</strong> You get an email alert with a draft response within 15 minutes. You approve or edit.</li>
           <li><strong>1–2 star reviews:</strong> Urgent alert within 5 minutes. We draft a response but never post without your explicit approval</li>
         </ul>
@@ -394,13 +413,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <tr>
             <td><span class="sla-stars">★★★★★</span> 5-star review</td>
             <td>—</td>
-            <td style="color:var(--success-green);font-weight:600;">✓ Within 30 minutes</td>
+            <td style="color:var(--success-green);font-weight:600;">✓ Under 1 hour</td>
             <td>No</td>
           </tr>
           <tr>
             <td><span class="sla-stars">★★★★</span> 4-star review</td>
             <td>—</td>
-            <td style="color:var(--success-green);font-weight:600;">✓ Within 30 minutes</td>
+            <td style="color:var(--success-green);font-weight:600;">✓ Under 1 hour</td>
             <td>No</td>
           </tr>
           <tr>
@@ -437,19 +456,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="max-width:720px;margin:0 auto;" class="fade-up">
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Do I need to give you my Google password? <span class="icon">+</span></button>
-        <div class="faq-answer">No. We use Google OAuth. You authorize our access with one click, using Google's own secure system. We never see or store your Google password. Alternatively, you can add <a href="mailto:hello@localboostlab.com">hello@localboostlab.com</a> as a Manager to your GBP manually from your GBP settings.</div>
+        <div class="faq-answer">No. We use Google OAuth. You authorize our access with one click, using Google's own secure system. We never see or store your Google password. Alternatively, you can add <a href="mailto:grow@localboostlab.com">grow@localboostlab.com</a> as a Manager to your GBP manually from your GBP settings.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What if I want to approve posts before they go live? <span class="icon">+</span></button>
-        <div class="faq-answer">Currently, posts are published automatically on schedule. If you'd like to review content before publishing, you can email us at any time and we'll set you up on a preview workflow (available on Complete plan).</div>
+        <div class="faq-answer">Currently, posts are published automatically on schedule. If you'd like to review content before publishing, you can email us at any time and we'll set you up on a preview workflow (available on Authority plan).</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Can I request custom posts for promotions or events? <span class="icon">+</span></button>
-        <div class="faq-answer">Absolutely. Email us at hello@localboostlab.com with the details and we'll create and schedule a custom post. On the Complete plan, urgent custom posts are handled within 4 hours.</div>
+        <div class="faq-answer">Absolutely. Email us at grow@localboostlab.com with the details and we'll create and schedule a custom post. On the Authority plan, urgent custom posts are handled within 4 hours.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What happens if my profile gets flagged by Google? <span class="icon">+</span></button>
-        <div class="faq-answer">We follow Google's GBP content policies strictly. All content is reviewed against current guidelines before publishing. On the Complete plan, you also get monthly health audits and suspension risk alerts. In the unlikely event of a flag, we immediately pause posting and help you respond to Google's process.</div>
+        <div class="faq-answer">We follow Google's GBP content policies strictly. All content is reviewed against current guidelines before publishing. On the Authority plan, you also get monthly health audits and suspension risk alerts. In the unlikely event of a flag, we immediately pause posting and help you respond to Google's process. We never modify your Google Business Profile settings, verification status, or account configuration. Our agents operate only on content and review responses.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What if I don't have any photos to upload? <span class="icon">+</span></button>
@@ -507,7 +526,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer__bottom">
       <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
-      <span>This site uses only essential cookies. <a href="#" data-cookie-prefs>Manage Cookies</a></span>
+      <span>This site uses only essential cookies. <a href="/cookies" data-cookie-prefs>Manage Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -525,7 +544,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="chat-header__close" aria-label="× Close chat">×</button>
     </div>
     <div class="chat-messages">
-      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email hello@localboostlab.com and we'll respond within 24 hours.</div>
       <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
     </div>
     <div class="chat-input-area">
@@ -652,7 +670,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Mobile sticky CTA -->
 <div class="mobile-sticky-cta" id="mobile-cta" style="display:none;">
-  <a href="/onboarding?plan=complete&billing=annual" class="btn btn-primary btn-lg">Start free month →</a>
+  <a href="/onboarding?plan=authority&billing=annual" class="btn btn-primary btn-lg">Start free month →</a>
 </div>
 <script>
   var mobileCta = document.getElementById('mobile-cta');

@@ -125,7 +125,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing">Pricing</a>
       <a href="/" class="nav__active">Blog</a>
       <a href="/about">About</a>
@@ -137,7 +146,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
   <a href="/">Blog</a>
   <a href="/about">About</a>
@@ -279,7 +297,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="chat-header__close" aria-label="× Close chat">×</button>
     </div>
     <div class="chat-messages">
-      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email hello@localboostlab.com and we'll respond within 24 hours.</div>
       <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
     </div>
     <div class="chat-input-area">

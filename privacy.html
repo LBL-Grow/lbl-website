@@ -53,6 +53,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin: 16px 0 24px;
       font-size: 0.875rem;
     }
+    @media (max-width: 640px) {
+      .legal-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
     .legal-body table th {
       background: var(--surface-mid);
       padding: 10px 14px;
@@ -103,7 +106,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing">Pricing</a>
       <a href="/blog/">Blog</a>
     </div>
@@ -113,7 +125,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
   <a href="/blog/">Blog</a>
   <a href="/pricing" class="btn btn-primary btn-lg">See Plans →</a>
@@ -325,7 +346,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <button class="chat-header__close" aria-label="× Close chat">×</button>
     </div>
-    <div class="chat-messages"><div class="chat-msg chat-msg--agent">👋 Questions about our privacy practices? Happy to help.</div><div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
+    <div class="chat-messages"><div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
     <div class="chat-input-area"><input type="text" class="chat-input" placeholder="Ask a question..." aria-label="Chat message"><button class="chat-send">Send</button></div>
   </div>
   <div class="chat-bubble" role="button" aria-label="Chat with support" tabindex="0"><span class="chat-bubble__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="white" stroke-width="2"/></svg></span><span class="chat-bubble__online"></span></div>

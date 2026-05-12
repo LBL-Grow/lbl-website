@@ -70,7 +70,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing">Pricing</a>
       <a href="/blog/">Blog</a>
       <a href="/about" class="nav__active">About</a>
@@ -82,7 +91,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
   <a href="/blog/">Blog</a>
   <a href="/about">About</a>
@@ -211,7 +229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px;">
       <div style="display:flex;align-items:flex-start;gap:10px;"><span style="color:var(--signal-amber);font-size:1.1rem;line-height:1.5;">✓</span><span style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">Negative reviews get your approval first, every time</span></div>
       <div style="display:flex;align-items:flex-start;gap:10px;"><span style="color:var(--signal-amber);font-size:1.1rem;line-height:1.5;">✓</span><span style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">Positive reviews (4–5 stars) auto-publish in your voice</span></div>
-      <div style="display:flex;align-items:flex-start;gap:10px;"><span style="color:var(--signal-amber);font-size:1.1rem;line-height:1.5;">✓</span><span style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">Responses within 30 minutes, not 3 business days</span></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;"><span style="color:var(--signal-amber);font-size:1.1rem;line-height:1.5;">✓</span><span style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">Responses in under 1 hour, not 3 business days</span></div>
       <div style="display:flex;align-items:flex-start;gap:10px;"><span style="color:var(--signal-amber);font-size:1.1rem;line-height:1.5;">✓</span><span style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">Every response reflects your business, not an algorithm</span></div>
     </div>
   </div>
@@ -250,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 id="about-cta-heading">Ready to see what happens when someone who knows the work runs the service?</h2>
       <p>Start free — your first month on us with any annual plan. No calls. No contracts. Just results.</p>
       <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
-        <a href="/onboarding?plan=complete&billing=annual" class="btn btn-amber btn-xl">Claim Your Free Month →</a>
+        <a href="/onboarding?plan=authority&billing=annual" class="btn btn-amber btn-xl">Claim Your Free Month →</a>
         <a href="/pricing" class="btn btn-ghost btn-xl" style="color:rgba(255,255,255,0.8);">View Plans →</a>
       </div>
       <div class="lbl-cta-trust" style="margin-top:24px;">
@@ -297,7 +315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer__bottom">
       <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
-      <span>This site uses only essential cookies. <a href="#" data-cookie-prefs>Manage Cookies</a></span>
+      <span>This site uses only essential cookies. <a href="/cookies" data-cookie-prefs>Manage Cookies</a></span>
     </div>
   </div>
 </footer>

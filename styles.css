@@ -284,6 +284,106 @@ p { line-height: 1.7; }
   font-weight: 700;
 }
 
+/* ─── Nav Dropdown ───────────────────────────────────── */
+.nav__dropdown { position: relative; }
+.nav__dropdown-trigger {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  font-family: inherit;
+  transition: color 150ms ease;
+}
+.nav__dropdown-trigger:hover,
+.nav__dropdown-trigger[aria-expanded="true"] { color: white; }
+.nav__dropdown-trigger svg { transition: transform 200ms ease; }
+.nav__dropdown-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+.nav__dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--slate-core);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  min-width: 168px;
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+  z-index: 1001;
+}
+.nav__dropdown-menu.open { display: block; }
+.nav__dropdown-menu li a {
+  display: block;
+  padding: 8px 16px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 150ms ease, background 150ms ease;
+}
+.nav__dropdown-menu li a:hover,
+.nav__dropdown-menu li a:focus {
+  color: white;
+  background: rgba(255,255,255,0.08);
+  outline: none;
+}
+.nav__dropdown-menu li:last-child a {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 4px;
+  padding-top: 10px;
+}
+
+/* Mobile industries section */
+.nav__mobile-industries {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.nav__mobile-industries-trigger {
+  color: white;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+}
+.nav__mobile-industries-trigger svg { transition: transform 200ms ease; }
+.nav__mobile-industries-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.nav__mobile-industries-items {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+.nav__mobile-industries-items.open { display: flex; }
+.nav__mobile-industries-items a {
+  color: rgba(255,255,255,0.75);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.nav__mobile-industries-items a:last-child {
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
 /* ─── Hero ───────────────────────────────────────────── */
 .hero {
   background: var(--authority-blue);
@@ -1469,19 +1569,30 @@ select.form-control { background-image: url("data:image/svg+xml,%3Csvg xmlns='ht
 }
 
 /* ─── Responsive ─────────────────────────────────────── */
+
+/* Pricing cards: collapse to single column at tablet to avoid 3-up cramping */
+@media (max-width: 960px) {
+  .pricing-card { padding: 28px 24px; }
+}
+@media (max-width: 900px) {
+  /* Only collapse grid-3 in the pricing plans section */
+  [aria-labelledby="plans-heading"] .grid-3 { grid-template-columns: 1fr; }
+  /* Extra top space so the badge doesn't clip when cards stack */
+  [aria-labelledby="plans-heading"] .pricing-card--featured { margin-top: 24px; }
+}
+
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .kpi-bar { grid-template-columns: repeat(2, 1fr); }
   .article-layout, .blog-grid { grid-template-columns: 1fr; }
   .article-sticky-sidebar { position: static; }
   .blog-sidebar__card:not(:first-child) { display: none; }
+  .nav__links, .nav__cta { display: none; }
+  .nav__hamburger { display: flex; }
 }
 
 @media (max-width: 768px) {
   :root { --section-pad: var(--section-pad-mobile); }
-
-  .nav__links, .nav__cta { display: none; }
-  .nav__hamburger { display: flex; }
 
   .hero__inner { grid-template-columns: 1fr; gap: 40px; }
   .hero__mockup { display: none; }
@@ -2150,8 +2261,6 @@ a:focus-visible { outline: 2.5px solid var(--signal-amber); outline-offset: 3px;
 
 /* ─── Smooth image loading ────────────────────────────── */
 img { transition: opacity 300ms ease; }
-img[loading="lazy"] { opacity: 0; }
-img[loading="lazy"].loaded { opacity: 1; }
 
 /* ─── Better scrollbar ─────────────────────────────────── */
 ::-webkit-scrollbar { width: 8px; }

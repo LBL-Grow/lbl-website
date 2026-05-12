@@ -858,8 +858,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* Client drawer */
   var drawerData = {
     martinez: { name: 'Martinez HVAC', plan: 'Presence · $157/mo', joined: 'Apr 1, 2026', status: 'Active', email: 'mike@martinezhvac.com', reviews: '47 total · 12 this month', rating: '4.8 ★' },
-    sunrise:  { name: 'Sunrise Dental', plan: 'Complete · $217/mo', joined: 'Mar 15, 2026', status: 'Active', email: 'admin@sunrisedental.com', reviews: '83 total · 8 this month', rating: '4.9 ★' },
-    cleansweep: { name: 'Clean Sweep Chicago', plan: 'Reviews · $97/mo', joined: 'Apr 10, 2026', status: '⚠️ Alert', email: 'rachel@cleansweepchicago.com', reviews: '22 total · 3 this month', rating: '4.7 ★' }
+    sunrise:  { name: 'Sunrise Dental', plan: 'Authority · $217/mo', joined: 'Mar 15, 2026', status: 'Active', email: 'admin@sunrisedental.com', reviews: '83 total · 8 this month', rating: '4.9 ★' },
+    cleansweep: { name: 'Clean Sweep Chicago', plan: 'Reputation · $97/mo', joined: 'Apr 10, 2026', status: '⚠️ Alert', email: 'rachel@cleansweepchicago.com', reviews: '22 total · 3 this month', rating: '4.7 ★' }
   };
 
   function openDrawer(key) {
@@ -896,7 +896,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ── Live data ─────────────────────────────────────────── */
   var API = 'https://powerful-balance-production-971d.up.railway.app';
 
-  var PLAN_LABEL = { reviews: 'Reviews', presence: 'Presence', complete: 'Complete' };
+  var PLAN_LABEL = { reviews: 'Reputation', reputation: 'Reputation', presence: 'Presence', complete: 'Authority', authority: 'Authority' };
   var PLAN_BADGE = { reviews: 'badge--green', presence: 'badge--blue', complete: 'badge--amber' };
 
   var SVG_CHECK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#10B981"/><path d="M8 12l3 3 5-5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -1319,7 +1319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       notes:'Referral from existing client. Runs a local service business in Miami.',
       interactions:[
         { date:'2026-04-25', type:'Email', note:'Intro email sent via referral.' },
-        { date:'2026-05-01', type:'Call', note:'Discovery call. Interested in Complete plan. Budget confirmed.' }
+        { date:'2026-05-01', type:'Call', note:'Discovery call. Interested in Authority plan. Budget confirmed.' }
       ],
       nextAction:'Send proposal', nextActionDate:'2026-05-05' }
   ];

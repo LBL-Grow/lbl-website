@@ -17,7 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="canonical" href="https://localboostlab.com/plumbing/miami">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="GBP Management for Plumbers in Miami, FL | Local Boost Lab">
-  <meta property="og:description" content="Google Business Profile management for plumbing companies in Miami, FL. Review responses within 30 minutes, 3 posts/week, monthly performance reports. From $97/month.">
+  <meta property="og:description" content="Google Business Profile management for plumbing companies in Miami, FL. Review responses in under 1 hour, 3 posts/week, monthly performance reports. From $97/month.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://localboostlab.com/plumbing/miami">
   <!-- JSON-LD: LocalBusiness + Service -->
@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Local Boost Lab — Plumbing GBP Management in Miami",
-    "description": "Google Business Profile management for plumbing companies in Miami, FL. Review responses within 30 minutes, 3 posts/week, monthly performance reports. From $97/month.",
+    "description": "Google Business Profile management for plumbing companies in Miami, FL. Review responses in under 1 hour, 3 posts/week, monthly performance reports. From $97/month.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Miami",
@@ -79,7 +79,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing">Pricing</a>
       <a href="/blog">Blog</a>
       <a href="/about">About</a>
@@ -91,7 +100,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
   <a href="/blog">Blog</a>
   <a href="/about">About</a>
@@ -142,7 +160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:36px;">
       <div style="background:white;border-radius:var(--radius-md);padding:20px;border:1px solid var(--border-color);">
         <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--signal-amber);margin-bottom:10px;">Review Management</div>
-        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0;">Every 4–5 star review gets a reply within 30 minutes in your voice. Negative reviews come to you with a draft — you approve before anything posts.</p>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0;">Every 4–5 star review gets a reply in under 1 hour in your voice. Negative reviews come to you with a draft — you approve before anything posts.</p>
       </div>
       <div style="background:white;border-radius:var(--radius-md);padding:20px;border:1px solid var(--border-color);">
         <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--signal-amber);margin-bottom:10px;">3 Posts/Week</div>
@@ -240,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer__bottom">
       <span>Local Boost Lab · Not affiliated with Google LLC · Serving Miami, FL and all US local businesses</span>
-      <span>This site uses only essential cookies. <a href="#" data-cookie-prefs>Manage Cookies</a></span>
+      <span>This site uses only essential cookies. <a href="/cookies" data-cookie-prefs>Manage Cookies</a></span>
     </div>
   </div>
 </footer>

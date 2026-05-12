@@ -53,6 +53,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin: 16px 0 24px;
       font-size: 0.875rem;
     }
+    @media (max-width: 640px) {
+      .legal-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
     .legal-body table th {
       background: var(--surface-mid);
       padding: 10px 14px;
@@ -110,7 +113,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing">Pricing</a>
       <a href="/blog/">Blog</a>
     </div>
@@ -120,7 +132,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
   <a href="/blog/">Blog</a>
   <a href="/pricing" class="btn btn-primary btn-lg">See Plans →</a>
@@ -175,10 +196,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ul>
       <li><strong>Review response generation:</strong> AI-generated responses to positive customer reviews, published to your GBP according to your plan.</li>
       <li><strong>Review alerting:</strong> Automated alerts and draft responses for reviews rated 3 stars or below, requiring your approval before publication.</li>
-      <li><strong>Content post publishing:</strong> SEO-optimized posts published to your GBP on a scheduled basis (Presence and Complete plans).</li>
-      <li><strong>AI-generated imagery:</strong> AI-created images for use in GBP posts when client photos are unavailable (Presence and Complete plans).</li>
+      <li><strong>Content post publishing:</strong> SEO-optimized posts published to your GBP on a scheduled basis (Presence and Authority plans).</li>
+      <li><strong>AI-generated imagery:</strong> AI-created images for use in GBP posts when client photos are unavailable (Presence and Authority plans).</li>
       <li><strong>Monthly performance reporting:</strong> Delivered by email on the 5th of each calendar month.</li>
-      <li><strong>Profile health monitoring:</strong> Suspension risk monitoring and alerts (Complete plan only).</li>
+      <li><strong>Profile health monitoring:</strong> Suspension risk monitoring and alerts (Authority plan only).</li>
     </ul>
     <p>Services are delivered on a subscription basis. LBL is an independent service provider and is not affiliated with, endorsed by, or a partner of Google LLC. Use of Google Business Profile is subject to Google's own terms of service.</p>
 
@@ -187,9 +208,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <table aria-label="Subscription plans and pricing">
       <thead><tr><th>Plan</th><th>Monthly Price</th><th>Annual Price (per month)</th></tr></thead>
       <tbody>
-        <tr><td>Reviews</td><td>$97/month</td><td>$82/month ($984/year)</td></tr>
+        <tr><td>Reputation</td><td>$97/month</td><td>$82/month ($984/year)</td></tr>
         <tr><td>Presence</td><td>$157/month</td><td>$133/month ($1,596/year)</td></tr>
-        <tr><td>Complete</td><td>$217/month</td><td>$184/month ($2,208/year)</td></tr>
+        <tr><td>Authority</td><td>$217/month</td><td>$184/month ($2,208/year)</td></tr>
       </tbody>
     </table>
 
@@ -225,11 +246,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <table aria-label="Service delivery commitments and SLAs">
       <thead><tr><th>Service</th><th>Commitment</th></tr></thead>
       <tbody>
-        <tr><td>Auto-response to 4–5 star reviews</td><td>Within 30 minutes of review detection</td></tr>
+        <tr><td>Auto-response to 4–5 star reviews</td><td>Within 1 hour of review detection</td></tr>
         <tr><td>Alert for 3-star reviews</td><td>Within 15 minutes of review detection</td></tr>
         <tr><td>Urgent alert for 1–2 star reviews</td><td>Within 5 minutes of review detection</td></tr>
-        <tr><td>First GBP post after onboarding</td><td>Within 48 hours of completed onboarding form submission</td></tr>
-        <tr><td>Ongoing post schedule (Presence/Complete)</td><td>Monday, Wednesday, Friday at 9:00 AM client local time</td></tr>
+        <tr><td>First GBP post after onboarding</td><td>Within 24 hours of completed onboarding form submission</td></tr>
+        <tr><td>Ongoing post schedule (Presence/Authority)</td><td>Monday, Wednesday, Friday at 9:00 AM client local time</td></tr>
         <tr><td>Monthly performance report</td><td>Delivered by email on the 5th calendar day of each month</td></tr>
       </tbody>
     </table>
@@ -247,9 +268,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>There are no cancellation fees. No questions will be asked.</p>
 
     <h3>7.2 Refund Policy</h3>
-    <p>LBL does not issue prorated refunds for partial billing periods. Exceptions may be granted at LBL's sole discretion in cases of documented service failure. To request a refund consideration, email <a href="mailto:support@localboostlab.com">support@localboostlab.com</a> within 7 days of the billing date in question.</p>
+    <p>LBL does not issue prorated refunds for partial billing periods on monthly plans. Exceptions may be granted at LBL's sole discretion in cases of documented service failure. To request a refund consideration, email <a href="mailto:support@localboostlab.com">support@localboostlab.com</a> within 7 days of the billing date in question.</p>
 
-    <h3>7.3 Cancellation by LBL</h3>
+    <h3>7.3 Annual Plan Cancellations and Refunds</h3>
+    <p>When a client on an annual plan cancels, the plan terminates at the end of the current billing cycle (the next monthly cut-off date after the cancellation request). Local Boost Lab will refund the unused portion of the annual payment on a pro-rated basis, equal to the number of full months remaining after termination. For example: a client who used the service for 4 months will, upon termination at the end of the 4th month, receive a refund equivalent to the 8 remaining months of the annual term, calculated proportionally. Months already consumed are non-refundable.</p>
+
+    <h3>7.4 Cancellation by LBL</h3>
     <p>LBL reserves the right to terminate your subscription immediately, without refund, in the event of: material breach of these Terms, violation of Google's policies causing harm to LBL's API access, or use of the Service for fraudulent or deceptive purposes.</p>
 
     <h2 id="s8">8. Google Business Profile Access</h2>
@@ -327,7 +351,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="legal-contact-box">
       <h3>Questions about these Terms?</h3>
       <p style="color:white;">Email us at <a href="mailto:hello@localboostlab.com" style="color:var(--signal-amber);">hello@localboostlab.com</a>. We respond to all legal inquiries within 5 business days.</p>
-      <p style="margin:0;font-size:0.875rem;color:rgba(255,255,255,0.7);">Local Boost Lab · Local Boost Lab · United States</p>
+      <p style="margin:0;font-size:0.875rem;color:rgba(255,255,255,0.7);">Local Boost Lab · United States · Effective: April 2026</p>
     </div>
 
   </div>
@@ -376,7 +400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <button class="chat-header__close" aria-label="× Close chat">×</button>
     </div>
-    <div class="chat-messages"><div class="chat-msg chat-msg--agent">👋 Questions about our Terms of Service? Happy to clarify.</div><div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
+    <div class="chat-messages"><div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
     <div class="chat-input-area"><input type="text" class="chat-input" placeholder="Ask a question..." aria-label="Chat message"><button class="chat-send">Send</button></div>
   </div>
   <div class="chat-bubble" role="button" aria-label="Chat with support" tabindex="0"><span class="chat-bubble__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="white" stroke-width="2"/></svg></span><span class="chat-bubble__online"></span></div>

@@ -171,9 +171,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing">Pricing</a>
-      <a href="/" class="nav__active">Blog</a>
+      <a href="/blog/" class="nav__active">Blog</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
     </div>
@@ -183,9 +192,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
-  <a href="/">Blog</a>
+  <a href="/blog/">Blog</a>
   <a href="/about">About</a>
   <a href="/contact">Contact</a>
   <a href="/pricing" class="btn btn-primary btn-lg">See Plans →</a>
@@ -196,7 +214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="blog-hero">
   <div class="container">
     <h1 style="color:white;margin-bottom:12px;">The Local Boost Lab Blog</h1>
-    <p style="color:var(--text-light);font-size:1.1rem;max-width:580px;margin:0 auto;">Practical guides for HVAC, dental, legal, and cleaning businesses who want to show up on Google, without the agency.</p>
+    <p style="color:var(--text-light);font-size:1.1rem;max-width:580px;margin:0 auto;">Practical guides for HVAC, dental, legal, and cleaning businesses who want to show up on Google — without the agency.</p>
     <p style="color:rgba(255,255,255,0.55);font-size:0.9rem;max-width:580px;margin:12px auto 0;">We write about Google Business Profile management, local SEO, review strategy, and content posting — based on real results from active client profiles. No filler, no recycled SEO advice. Everything here comes from running GBP for US local service businesses at scale. If it's on this blog, we've tested it in production.</p>
   </div>
 </section>
@@ -206,7 +224,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="blog-grid">
       <div>
         <!-- Featured Post -->
-        <div id="featured-post" <div id="featured-post" class="featured-post fade-up" style="display:none;">
+        <div id="featured-post" class="featured-post fade-up" style="display:none;">
           <div class="featured-post__img" id="featured-cover"></div>
           <div class="featured-post__content" id="featured-post-content">
             <span class="featured-post__label">★ Featured</span>
@@ -282,7 +300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="/how-it-works">How It Works</a>
           <a href="/industries">Industries</a>
           <a href="/pricing">Pricing</a>
-          <a href="/">Blog</a>
+          <a href="/blog/">Blog</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
         </nav>
@@ -318,7 +336,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="chat-header__close" aria-label="× Close chat">×</button>
     </div>
     <div class="chat-messages">
-      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email hello@localboostlab.com and we'll respond within 24 hours.</div>
       <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
     </div>
     <div class="chat-input-area">
@@ -359,6 +376,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('featured-link').href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     var catLabel = tags.length ? tags[0] : 'Article';
     var cover = document.getElementById('featured-cover');
+    if (post.cover_image) {
+      cover.style.backgroundImage = 'url(' + escHtml(post.cover_image) + ')';
+      cover.style.backgroundSize = 'cover';
+      cover.style.backgroundPosition = 'center';
+    }
     cover.innerHTML = '<span class="post-card__cover-tag" style="font-size:0.75rem;">' + escHtml(catLabel) + '</span>';
     document.getElementById('featured-post').style.display = '';
   }
@@ -372,7 +394,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     article.addEventListener('click', function() {
       window.location.href = '/blog/post.html?slug=' + encodeURIComponent(post.slug);
     });
-    var coverHtml = '<div class="post-card__cover">' +
+    var coverStyle = post.cover_image
+      ? 'background-image:url(' + escHtml(post.cover_image) + ');background-size:cover;background-position:center;'
+      : '';
+    var coverHtml = '<div class="post-card__cover" style="' + coverStyle + '">' +
       '<span class="post-card__cover-tag">' + escHtml(catLabel) + '</span>' +
       '<div class="post-card__cover-title">' + escHtml(post.title) + '</div>' +
     '</div>';
@@ -404,8 +429,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return r.json();
       })
       .then(function(posts) {
+        posts = (posts || []).filter(function(p) {
+          return p && p.slug && p.title && (!p.status || p.status === 'published');
+        });
         var grid = document.getElementById('post-grid');
-        if (!posts || !posts.length) {
+        if (!posts.length) {
           grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--text-muted);font-size:0.95rem;">Coming soon — our first posts are on the way. Check back shortly.</div>';
           return;
         }

@@ -77,6 +77,21 @@
     var typing  = document.querySelector('.chat-typing');
     if (!bubble || !window_) return;
 
+    var userLocale = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    var isSpanish  = userLocale.indexOf('es') === 0;
+    var CHAT_INITIAL_MESSAGE = isSpanish
+      ? '¡Hola! Soy Claire, tu agente de soporte disponible 24/7. Pregúntame sobre nuestros planes, cómo manejamos tu perfil de Google, o qué esperar después de registrarte.'
+      : "Hi! I'm Claire, your 24/7 AI support agent. Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after you sign up.";
+    var existingInitMsg = msgs ? msgs.querySelector('.chat-msg--agent') : null;
+    if (existingInitMsg) {
+      existingInitMsg.textContent = CHAT_INITIAL_MESSAGE;
+    } else if (msgs) {
+      var initDiv = document.createElement('div');
+      initDiv.className = 'chat-msg chat-msg--agent';
+      initDiv.textContent = CHAT_INITIAL_MESSAGE;
+      msgs.insertBefore(initDiv, typing);
+    }
+
     function openChat() {
       window_.classList.add('open');
     }
@@ -125,6 +140,7 @@
           message:   text,
           history:   chatHistory,
           sessionId: chatSessionId,
+          locale:    userLocale,
         }),
       })
         .then(function (r) { return r.json(); })
@@ -138,7 +154,10 @@
         })
         .catch(function () {
           if (typing) typing.classList.remove('show');
-          appendMsg("I'm having a quick digital hiccup — email us at grow@localboostlab.com and we'll reply within 2 hours.", 'agent');
+          var errMsg = isSpanish
+            ? 'Tengo un problema técnico — escríbenos a grow@localboostlab.com y te respondemos en menos de 2 horas.'
+            : "I'm having a quick digital hiccup — email us at grow@localboostlab.com and we'll reply within 2 hours.";
+          appendMsg(errMsg, 'agent');
         })
         .finally(function () {
           input.disabled = false;
@@ -262,8 +281,76 @@
   };
 
 
+  function initDropdownNav() {
+    var trigger = document.querySelector('.nav__dropdown-trigger');
+    var menu    = document.querySelector('.nav__dropdown-menu');
+    if (!trigger || !menu) return;
+
+    function openMenu() {
+      menu.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      menu.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      menu.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    var wrapper = trigger.closest('.nav__dropdown');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', openMenu);
+      wrapper.addEventListener('mouseleave', closeMenu);
+    }
+
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openMenu();
+        var first = menu.querySelector('a[role="menuitem"]');
+        if (first) first.focus();
+      }
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    menu.addEventListener('keydown', function (e) {
+      var items = Array.from(menu.querySelectorAll('a[role="menuitem"]'));
+      var idx   = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (idx < items.length - 1) items[idx + 1].focus();
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (idx > 0) items[idx - 1].focus();
+        else { closeMenu(); trigger.focus(); }
+      }
+      if (e.key === 'Escape') { closeMenu(); trigger.focus(); }
+      if (e.key === 'Tab')    closeMenu();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (wrapper && !wrapper.contains(e.target)) closeMenu();
+    });
+
+    var mTrigger = document.querySelector('.nav__mobile-industries-trigger');
+    var mItems   = document.querySelector('.nav__mobile-industries-items');
+    if (mTrigger && mItems) {
+      mTrigger.addEventListener('click', function () {
+        var open = mItems.classList.contains('open');
+        mItems.classList.toggle('open', !open);
+        mTrigger.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+    }
+  }
+
+
   document.addEventListener('DOMContentLoaded', function () {
     initNav();
+    initDropdownNav();
     initChat();
     initCookies();
     initFadeUp();

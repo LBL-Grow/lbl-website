@@ -13,11 +13,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="apple-touch-icon" href="/Fav-Icon_Blue.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing | Local Boost Lab — GBP Management from $97/month</title>
-  <meta name="description" content="GBP management plans from $97/month. Reviews, Presence, and Complete plans. Automated posts, review replies, monthly reports. No contracts.">
+  <meta name="description" content="GBP management plans from $97/month. Reputation, Presence, and Authority plans. Automated posts, review replies, monthly reports. No contracts.">
   <link rel="canonical" href="https://localboostlab.com/pricing">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Pricing | Local Boost Lab — GBP Management from $97/mo">
-  <meta property="og:description" content="Reviews at $97/mo. Reviews + posts at $157/mo. Full management at $217/mo. No contracts, no setup fees, cancel anytime.">
+  <meta property="og:description" content="Reputation at $97/mo. Reputation + posts at $157/mo. Full management at $217/mo. No contracts, no setup fees, cancel anytime.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://localboostlab.com/pricing">
   <meta property="og:image" content="https://localboostlab.com/1200x630_OG_Image.png">
@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "offers": [
       {
         "@type": "Offer",
-        "name": "Reviews Plan",
+        "name": "Reputation Plan",
         "description": "Automated replies to 4-5 star reviews, email alerts for 3-star, urgent escalation for 1-2 star, monthly report.",
         "price": "97",
         "priceCurrency": "USD",
@@ -56,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       },
       {
         "@type": "Offer",
-        "name": "Complete Plan",
+        "name": "Authority Plan",
         "description": "Everything in Presence plus priority 12hr support, monthly GBP health audit, suspension risk alerts, and early feature access.",
         "price": "217",
         "priceCurrency": "USD",
@@ -78,7 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "name": "How much does Local Boost Lab cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Plans start at $97/month for the Reviews plan (review management only), $157/month for Presence (posts + content), and $217/month for Complete (reviews + posts + priority support). Annual billing saves 15% and includes a free first month."
+          "text": "Plans start at $97/month for the Reputation plan (review management only), $157/month for Presence (posts + content), and $217/month for Authority (reviews + posts + priority support). Annual billing saves 15% and includes a free first month."
         }
       },
       {
@@ -91,10 +91,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       },
       {
         "@type": "Question",
-        "name": "What is included in the Reviews plan?",
+        "name": "What is included in the Reputation plan?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Reviews plan ($97/mo) includes: automated replies to all 4-5 star reviews in your brand voice, email alerts with AI-drafted responses for 3-star reviews (you approve before posting), urgent escalation for 1-2 star reviews, and a monthly performance report on the 5th of each month."
+          "text": "The Reputation plan ($97/mo) includes: automated replies to all 4-5 star reviews in your brand voice, email alerts with AI-drafted responses for 3-star reviews (you approve before posting), urgent escalation for 1-2 star reviews, and a monthly performance report on the 5th of each month."
         }
       },
       {
@@ -107,10 +107,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       },
       {
         "@type": "Question",
-        "name": "What is the Complete plan?",
+        "name": "What is the Authority plan?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Complete plan ($217/mo) includes everything in both the Reviews and Presence plans, plus priority email support with a 12-hour first response, monthly GBP profile health audit with suspension risk alerts, and first access to new features."
+          "text": "The Authority plan ($217/mo) includes everything in both the Reputation and Presence plans, plus priority email support with a 12-hour first response, monthly GBP profile health audit with suspension risk alerts, and first access to new features."
         }
       },
       {
@@ -244,7 +244,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/industries">Industries</a>
+      <div class="nav__dropdown">
+        <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav__dropdown-menu" role="menu">
+          <li><a href="/industries/hvac" role="menuitem">HVAC</a></li>
+          <li><a href="/industries/dental" role="menuitem">Dental</a></li>
+          <li><a href="/industries/legal" role="menuitem">Legal</a></li>
+          <li><a href="/industries/cleaning" role="menuitem">Cleaning</a></li>
+          <li><a href="/industries" role="menuitem">All Industries</a></li>
+        </ul>
+      </div>
       <a href="/pricing" class="nav__active">Pricing</a>
       <a href="/blog/">Blog</a>
       <a href="/about">About</a>
@@ -256,7 +265,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <div class="nav__mobile-overlay">
   <a href="/how-it-works">How It Works</a>
-  <a href="/industries">Industries</a>
+  <div class="nav__mobile-industries">
+    <button class="nav__mobile-industries-trigger" aria-expanded="false">Industries <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="nav__mobile-industries-items">
+      <a href="/industries/hvac">HVAC</a>
+      <a href="/industries/dental">Dental</a>
+      <a href="/industries/legal">Legal</a>
+      <a href="/industries/cleaning">Cleaning</a>
+      <a href="/industries">All Industries</a>
+    </div>
+  </div>
   <a href="/pricing">Pricing</a>
   <a href="/blog/">Blog</a>
   <a href="/about">About</a>
@@ -280,7 +298,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="section section--white" aria-labelledby="plans-heading">
   <div class="container">
-    <h2 id="plans-heading" <h2 id="plans-heading" class="text-center mb-48 fade-up" style="margin-bottom:8px;">Choose Your Plan</h2>
+    <h2 id="plans-heading" class="text-center mb-48 fade-up" style="margin-bottom:8px;">Choose Your Plan</h2>
     <p class="text-center text-muted mb-48 fade-up" style="margin-bottom:40px;">Annual billing saves you 2 months (15% discount).</p>
 
     <div class="pricing-toggle fade-up">
@@ -295,9 +313,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="grid-3">
-      <!-- REVIEWS -->
+      <!-- REPUTATION -->
       <div class="pricing-card fade-up">
-        <div class="pricing-card__name">Reviews</div>
+        <div class="pricing-card__name">Reputation</div>
         <div class="pricing-card__subtitle">Reputation protection on autopilot.</div>
         <div class="pricing-card__price">
           <div class="pricing-amount-monthly pricing-card__amount">$97<span style="font-size:1rem;font-weight:400;color:var(--text-muted);">/mo</span></div>
@@ -310,9 +328,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Urgent escalation</strong> for 1–2 star reviews (we NEVER auto-respond)</div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Monthly report</strong> delivered the 5th of each month</div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div>Email support: 48hr first response</div></div>
-          <div class="pricing-card__feature" style="color:var(--text-muted);">No GBP posts included (upgrade to Presence)</div>
+          <div class="pricing-card__feature" style="color:var(--text-muted);">No GBP posts included (upgrade to Authority)</div>
         </div>
-        <a href="/onboarding?plan=reviews" class="btn btn-outline">Start with Reviews →</a>
+        <a href="/onboarding?plan=reputation" class="btn btn-outline">Start with Reputation →</a>
       </div>
 
       <!-- PRESENCE -->
@@ -332,15 +350,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Brand voice</strong> applied to all content</div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Monthly performance report</strong> on the 5th of each month</div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div>Email support: 24hr first response</div></div>
-          <div class="pricing-card__feature" style="color:var(--text-muted);font-size:0.88rem;">✗ Review replies not included in this plan</div>
+          <div class="pricing-card__feature" style="color:var(--text-muted);font-size:0.88rem;">✗ No review replies included — upgrade to Authority</div>
         </div>
         <a href="/onboarding?plan=presence" class="btn btn-outline">Start with Presence →</a>
       </div>
 
-      <!-- COMPLETE (featured) -->
+      <!-- AUTHORITY (featured) -->
       <div class="pricing-card pricing-card--featured fade-up" style="position:relative;">
         <div class="pricing-card__badge">★ Most Popular</div>
-        <div class="pricing-card__name">Complete</div>
+        <div class="pricing-card__name">Authority</div>
         <div class="pricing-card__subtitle">Everything. Priority support. Full coverage.</div>
         <div class="pricing-card__price">
           <div class="pricing-amount-monthly pricing-card__amount">$217<span style="font-size:1rem;font-weight:400;color:var(--text-muted);">/mo</span></div>
@@ -348,13 +366,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="pricing-amount-annual pricing-card__period" style="display:none;margin-bottom:24px;font-size:0.85rem;color:var(--text-muted);">$2,208/year (billed annually)</div>
         <div class="pricing-card__features">
-          <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Everything in Reviews Plan</strong></div></div>
+          <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Everything in Reputation Plan</strong></div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Everything in Presence Plan</strong></div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Priority email support</strong>: 12hr first response</div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>Monthly GBP health audit</strong> + suspension risk alerts</div></div>
           <div class="pricing-card__feature"><span class="pricing-card__check">✓</span><div><strong>First access</strong> to new features and platform expansions</div></div>
         </div>
-        <a href="/onboarding?plan=complete" class="btn btn-primary">Start with Complete →</a>
+        <a href="/onboarding?plan=authority" class="btn btn-primary">Start with Authority →</a>
       </div>
     </div>
 
@@ -386,7 +404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <tr><td>Contract required</td><td>Usually 3–12 months</td><td class="col-featured" style="color:var(--success-green);font-weight:700;">None. Cancel anytime.</td></tr>
           <tr><td>Setup time</td><td>1–3 weeks</td><td class="col-featured" style="color:var(--success-green);font-weight:700;">24 hours</td></tr>
           <tr><td>Account manager calls</td><td>Monthly or more</td><td class="col-featured" style="color:var(--success-green);font-weight:700;">Zero calls. Email only.</td></tr>
-          <tr><td>Review response speed</td><td>1–5 business days</td><td class="col-featured" style="color:var(--success-green);font-weight:700;">Within 30 minutes</td></tr>
+          <tr><td>Review response speed</td><td>1–5 business days</td><td class="col-featured" style="color:var(--success-green);font-weight:700;">Under 1 hour</td></tr>
           <tr><td>Content volume</td><td>1–2 posts/month</td><td class="col-featured" style="color:var(--success-green);font-weight:700;">13 posts/month</td></tr>
           <tr><td>Negative review protocol</td><td>Varies by agency</td><td class="col-featured" style="color:var(--success-green);font-weight:700;">Never auto: always your approval</td></tr>
         </tbody>
@@ -435,7 +453,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <h2 style="color:white;margin-bottom:16px;" class="fade-up">Ready to get started?</h2>
     <p style="color:var(--text-light);margin-bottom:32px;" class="fade-up">No setup fees. No contracts. Cancel anytime. Your profile is live and managed within 24 hours.</p>
-    <a href="/onboarding?plan=complete" class="btn btn-primary btn-xl fade-up">Get Started →</a>
+    <a href="/onboarding?plan=authority" class="btn btn-primary btn-xl fade-up">Get Started →</a>
   </div>
 </section>
 
@@ -474,7 +492,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer__bottom">
       <span>Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses</span>
-      <span>This site uses only essential cookies. <a href="#" data-cookie-prefs>Manage Cookies</a></span>
+      <span>This site uses only essential cookies. <a href="/cookies" data-cookie-prefs>Manage Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -492,7 +510,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="chat-header__close" aria-label="× Close chat">×</button>
     </div>
     <div class="chat-messages">
-      <div class="chat-msg chat-msg--agent">Hi! Ask me anything about our plans, how we manage your Google Business Profile, or what to expect after signup. For direct questions, email hello@localboostlab.com and we'll respond within 24 hours.</div>
       <div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
     </div>
     <div class="chat-input-area">
@@ -564,7 +581,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Mobile sticky CTA -->
 <div class="mobile-sticky-cta" id="mobile-cta" style="display:none;">
-  <a href="/onboarding?plan=complete&billing=annual" class="btn btn-primary btn-lg">Start free month →</a>
+  <a href="/onboarding?plan=authority&billing=annual" class="btn btn-primary btn-lg">Start free month →</a>
 </div>
 <script>
   var mobileCta = document.getElementById('mobile-cta');
