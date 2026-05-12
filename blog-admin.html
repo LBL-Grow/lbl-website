@@ -364,9 +364,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function editPost(post) {
-    fetch(API + '/api/blog/' + post.slug)
+    fetch(API + '/api/blog/' + post.slug, { headers: { 'X-Admin-Key': ADMIN_KEY } })
       .then(function(r) { return r.json(); })
-      .then(function(full) { showEditor(full); })
+      .then(function(full) { showEditor(full.error ? post : full); })
       .catch(function() { showEditor(post); });
   }
 
