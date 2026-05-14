@@ -5,6 +5,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://powerful-balance-production-971d.up.railway.app/api/:path*"
+    },
+    {
+      "source": "/review-approved",
+      "destination": "https://powerful-balance-production-971d.up.railway.app/jake/approve"
     }
   ],
   "redirects": [
