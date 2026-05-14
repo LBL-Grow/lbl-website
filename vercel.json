@@ -9,6 +9,12 @@
   ],
   "redirects": [
     {
+      "source": "/pricing",
+      "has": [{ "type": "query", "key": "plan" }],
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
       "source": "/dashboard",
       "destination": "https://powerful-balance-production-971d.up.railway.app/dashboard.html",
       "permanent": false
