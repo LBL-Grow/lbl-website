@@ -850,7 +850,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('auth-gate').classList.add('hidden');
     document.getElementById('dashboard').classList.add('show');
     fetchDashboardData();
-    renderPipeline();
+    loadProspects();
   }
 
   /* Tabs */
@@ -1338,24 +1338,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var STAGE_LABELS = { lead:'Lead', contacted:'Contacted', interested:'Interested', proposal:'Proposal', closed_won:'Closed Won', closed_lost:'Closed Lost' };
   var STAGE_COLORS = { lead:'#94A3B8', contacted:'var(--authority-blue)', interested:'var(--signal-amber)', proposal:'#8B5CF6', closed_won:'var(--success-green)', closed_lost:'#EF4444' };
 
-  var prospects = JSON.parse(localStorage.getItem('lbl_prospects') || 'null') || [
-    { id:'p1', name:'Chase', company:'', role:'Business Owner', stage:'contacted', email:'', phone:'',
-      notes:'Reached out via Instagram DM. Interested in GBP management.',
-      interactions:[
-        { date:'2026-04-20', type:'DM', note:'Initial outreach on Instagram.' },
-        { date:'2026-04-28', type:'Call', note:'15 min intro call. Showed interest, wants to see pricing.' }
-      ],
-      nextAction:'Send pricing deck', nextActionDate:'2026-05-06' },
-    { id:'p2', name:'Elsa', company:'', role:'Business Owner', stage:'interested', email:'', phone:'',
-      notes:'Referral from existing client. Runs a local service business in Miami.',
-      interactions:[
-        { date:'2026-04-25', type:'Email', note:'Intro email sent via referral.' },
-        { date:'2026-05-01', type:'Call', note:'Discovery call. Interested in Authority plan. Budget confirmed.' }
-      ],
-      nextAction:'Send proposal', nextActionDate:'2026-05-05' }
-  ];
+  var prospects = [];
 
-  function saveProspects() { localStorage.setItem('lbl_prospects', JSON.stringify(prospects)); }
+  function mapProspect(p) {
+    return {
+      id: p.id,
+      name: p.name || '',
+      company: p.company || '',
+      role: p.role || '',
+      stage: p.stage || 'lead',
+      email: p.email || '',
+      phone: p.phone || '',
+      notes: p.notes || '',
+      nextAction: p.next_action || '',
+      nextActionDate: p.next_action_date || '',
+      interactions: (p.prospect_interactions || []).map(function(i) {
+        return { date: i.interaction_date, type: i.type, note: i.note };
+      })
+    };
+  }
+
+  function loadProspects(thenFn) {
+    return fetch('/api/prospects')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        prospects = (data || []).map(mapProspect);
+        renderPipeline();
+        if (thenFn) thenFn();
+      })
+      .catch(function(e) { console.error('loadProspects:', e); });
+  }
+
+  var FIELD_API = { nextAction: 'next_action', nextActionDate: 'next_action_date' };
+  function toApiField(f) { return FIELD_API[f] || f; }
 
   function renderPipeline() {
     var board = document.getElementById('pipeline-board');
@@ -1438,46 +1453,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var p = prospects.find(function(x){ return x.id === id; });
     if (!p) return;
     p.stage = stage;
-    saveProspects();
     renderPipeline();
+    fetch('/api/prospects/' + id, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ stage: stage })
+    }).catch(function(e) { console.error('updateProspectStage:', e); });
   }
 
   function updateProspectField(id, field, value) {
     var p = prospects.find(function(x){ return x.id === id; });
     if (!p) return;
     p[field] = value;
-    saveProspects();
     renderPipeline();
+    var body = {};
+    body[toApiField(field)] = value;
+    fetch('/api/prospects/' + id, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).catch(function(e) { console.error('updateProspectField:', e); });
   }
 
   function addInteraction(id) {
-    var p = prospects.find(function(x){ return x.id === id; });
-    if (!p) return;
     var type = document.getElementById('pd-int-type').value;
     var note = document.getElementById('pd-int-note').value.trim();
     if (!note) return;
-    p.interactions.push({ date: new Date().toISOString().split('T')[0], type: type, note: note });
-    saveProspects();
-    openProspectDrawer(id);
-    renderPipeline();
+    fetch('/api/prospects/' + id + '/interactions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: type, note: note, interaction_date: new Date().toISOString().split('T')[0] })
+    }).then(function() {
+      loadProspects(function() { openProspectDrawer(id); });
+    }).catch(function(e) { console.error('addInteraction:', e); });
   }
 
   function addProspectToStage(stage) {
     var name = prompt('Prospect name:');
     if (!name || !name.trim()) return;
-    prospects.push({ id: 'p' + Date.now(), name: name.trim(), company: '', role: '', stage: stage, email: '', phone: '', notes: '', interactions: [], nextAction: '', nextActionDate: '' });
-    saveProspects();
-    renderPipeline();
+    fetch('/api/prospects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name.trim(), stage: stage })
+    }).then(function() {
+      loadProspects();
+    }).catch(function(e) { console.error('addProspectToStage:', e); });
   }
 
   function openProspectForm() { addProspectToStage('lead'); }
 
   function deleteProspect(id) {
     if (!confirm('Delete this prospect? This cannot be undone.')) return;
-    prospects = prospects.filter(function(p){ return p.id !== id; });
-    saveProspects();
-    closeDrawer();
-    renderPipeline();
+    fetch('/api/prospects/' + id, { method: 'DELETE' })
+      .then(function() {
+        closeDrawer();
+        loadProspects();
+      })
+      .catch(function(e) { console.error('deleteProspect:', e); });
   }
 
   /* ── PageSpeed Insights ─────────────────────────── */
