@@ -152,6 +152,39 @@ a{color:inherit}
 .review-reply{background:var(--blue-light);border-radius:var(--radius-sm);padding:12px 16px;font-size:.82rem;color:var(--slate);line-height:1.6;border-left:3px solid var(--blue);margin-top:10px}
 .review-reply-label{font-size:.68rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
 
+/* ── Rank grid ── */
+.rank-section{margin-bottom:32px}
+.rank-keyword-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.rank-keyword-title{font-size:1rem;font-weight:800;color:var(--slate)}
+.rank-summary-chips{display:flex;gap:8px;flex-wrap:wrap}
+.rank-chip{font-size:.72rem;font-weight:700;border-radius:20px;padding:3px 10px}
+.rank-chip-green{background:#D1FAE5;color:#059669}
+.rank-chip-yellow{background:#FEF3C7;color:#D97706}
+.rank-chip-red{background:#FEE2E2;color:#EF4444}
+.rank-chip-blue{background:var(--blue-light);color:var(--blue)}
+.rank-grid-wrap{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.rank-grid{display:grid;gap:4px;flex-shrink:0}
+.rank-cell{aspect-ratio:1;width:40px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;border-radius:6px;cursor:default;transition:transform 100ms;position:relative}
+.rank-cell:hover{transform:scale(1.12);z-index:5}
+.rank-cell-center{outline:2px solid white;outline-offset:-2px}
+.rank-legend{display:flex;flex-direction:column;gap:6px;padding:4px 0}
+.rank-legend-item{display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--muted)}
+.rank-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.rank-run-time{font-size:.72rem;color:var(--muted);margin-top:8px}
+
+/* ── Competitors ── */
+.competitors-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-top:16px}
+.competitors-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:14px 18px 10px;border-bottom:1px solid var(--border)}
+.competitor-row{display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid var(--border)}
+.competitor-row:last-child{border-bottom:none}
+.competitor-rank-badge{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;flex-shrink:0}
+.comp-rank-1{background:#FEF9C3;color:#854D0E}
+.comp-rank-2{background:#F1F5F9;color:#334155}
+.comp-rank-3{background:#FEF3E2;color:#92400E}
+.competitor-name{font-size:.88rem;font-weight:600;color:var(--slate);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.competitor-meta{font-size:.75rem;color:var(--muted);white-space:nowrap}
+.competitor-you{background:var(--blue-light);border-left:3px solid var(--blue)}
+
 /* ── Rankings placeholder ── */
 .rankings-placeholder{background:var(--white);border-radius:var(--radius);padding:48px 32px;border:1px solid var(--border);text-align:center}
 .rankings-placeholder-icon{width:56px;height:56px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
@@ -308,7 +341,8 @@ document.querySelectorAll('.tab-btn').forEach(function(btn) {
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
     document.getElementById('tab-' + tab).classList.add('active');
-    if (tab === 'billing' && !billingLoaded) loadBilling();
+    if (tab === 'rankings' && !rankingsLoaded) renderRankings();
+    if (tab === 'billing'  && !billingLoaded)  loadBilling();
   });
 });
 
@@ -414,7 +448,6 @@ function loadDashboard() {
     renderOverview(client, data, suspension);
     renderPosts(client, data);
     renderReviews(data);
-    renderRankings();
   })
   .catch(function() {
     document.getElementById('tab-overview').innerHTML = '<div class="no-data">Failed to load dashboard. Please refresh.</div>';
@@ -715,15 +748,138 @@ function reviewCard(r) {
 }
 
 /* ── Render: Rankings ── */
+var rankingsLoaded = false;
+
 function renderRankings() {
-  document.getElementById('tab-rankings').innerHTML =
-    '<div class="rankings-placeholder">' +
-    '<div class="rankings-placeholder-icon">' +
-    '<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="#1B4FD8" stroke-width="2"/></svg>' +
-    '</div>' +
-    '<h3>GBP Rank Tracking — Coming Soon</h3>' +
-    '<p>We\'re building a live rank grid that shows exactly where you appear on Google Maps across your service area — down to the street level. This feature is coming in the next update.</p>' +
-    '</div>';
+  if (rankingsLoaded) return;
+  rankingsLoaded = true;
+  var pane = document.getElementById('tab-rankings');
+  pane.innerHTML = '<div class="loading-state">Loading rank data…</div>';
+
+  fetch(API + '/api/portal/rankings', { headers: authHeaders() })
+    .then(function(r) { return r.json(); })
+    .then(function(d) { buildRankingsUI(d); })
+    .catch(function() {
+      pane.innerHTML = '<div class="no-data">Could not load rankings. Please refresh.</div>';
+    });
+}
+
+function buildRankingsUI(data) {
+  var grids   = data.grids   || [];
+  var comps   = data.competitors || {};
+  var html    = '';
+
+  if (!grids.length) {
+    html = '<div class="rankings-placeholder">' +
+      '<div class="rankings-placeholder-icon">' +
+      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="#1B4FD8" stroke-width="2"/></svg>' +
+      '</div>' +
+      '<h3>Rank Tracking Active — First Run Pending</h3>' +
+      '<p>Your rank grid will be ready after the first weekly scan (every Monday). Check back after the next run, or contact us to run it manually.</p>' +
+      '</div>';
+    document.getElementById('tab-rankings').innerHTML = html;
+    return;
+  }
+
+  grids.forEach(function(grid) {
+    var kw        = grid.keyword;
+    var size      = grid.grid_size || 7;
+    var cells     = grid.grid_data || [];
+    var cellMap   = {};
+    cells.forEach(function(c) { cellMap[c.row + ',' + c.col] = c; });
+    var centerRow = Math.floor(size / 2);
+    var centerCol = Math.floor(size / 2);
+    var kwComps   = comps[kw] || [];
+
+    // Summary chips
+    var avgRank   = grid.avg_rank   ? grid.avg_rank.toFixed(1)  : '—';
+    var top3Count = grid.top3_count != null ? grid.top3_count   : '—';
+    var top10Count= grid.top10_count!= null ? grid.top10_count  : '—';
+    var totalCells= size * size;
+    var avgChipCls = grid.avg_rank <= 5 ? 'rank-chip-green' : grid.avg_rank <= 10 ? 'rank-chip-yellow' : 'rank-chip-red';
+
+    html += '<div class="rank-section">';
+    html += '<div class="rank-keyword-header">';
+    html += '<span class="rank-keyword-title">📍 ' + esc(kw) + '</span>';
+    html += '<div class="rank-summary-chips">';
+    html += '<span class="rank-chip ' + avgChipCls + '">Avg rank: #' + avgRank + '</span>';
+    html += '<span class="rank-chip rank-chip-green">#1–3: ' + top3Count + '/' + totalCells + '</span>';
+    html += '<span class="rank-chip rank-chip-blue">#1–10: ' + top10Count + '/' + totalCells + '</span>';
+    html += '</div></div>';
+
+    // Grid + legend
+    html += '<div style="background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px 24px">';
+    html += '<div class="rank-grid-wrap">';
+
+    // The grid
+    html += '<div class="rank-grid" style="grid-template-columns:repeat(' + size + ',40px);grid-template-rows:repeat(' + size + ',40px)">';
+    for (var row = 0; row < size; row++) {
+      for (var col = 0; col < size; col++) {
+        var cell   = cellMap[row + ',' + col] || {};
+        var rank   = cell.rank != null ? cell.rank : null;
+        var colors = rankColors(rank);
+        var isCenter = (row === centerRow && col === centerCol);
+        var label  = rank !== null ? rank : '—';
+        var title  = rank !== null ? '#' + rank : 'Not in top 20';
+        html += '<div class="rank-cell' + (isCenter ? ' rank-cell-center' : '') + '" ' +
+          'style="background:' + colors.bg + ';color:' + colors.text + '" ' +
+          'title="' + esc(title) + '">' + label + '</div>';
+      }
+    }
+    html += '</div>';
+
+    // Legend
+    html += '<div class="rank-legend">';
+    var legendItems = [
+      { color: '#065F46', label: '#1 — Dominating' },
+      { color: '#10B981', label: '#2–3 — Top 3' },
+      { color: '#34D399', label: '#4–5 — Strong' },
+      { color: '#FCD34D', label: '#6–10 — Competitive' },
+      { color: '#F97316', label: '#11–15 — Weak' },
+      { color: '#EF4444', label: '#16–20 — Poor' },
+      { color: '#CBD5E1', label: 'Not found' },
+    ];
+    legendItems.forEach(function(li) {
+      html += '<div class="rank-legend-item"><div class="rank-legend-dot" style="background:' + li.color + '"></div><span>' + li.label + '</span></div>';
+    });
+    html += '<div class="rank-run-time">Last run: ' + fmtDate(grid.run_at) + '</div>';
+    html += '</div>';  // legend
+    html += '</div>';  // rank-grid-wrap
+    html += '</div>';  // card
+
+    // Competitors
+    if (kwComps.length) {
+      html += '<div class="competitors-card">';
+      html += '<div class="competitors-title">Top Competitors for "' + esc(kw) + '"</div>';
+      kwComps.forEach(function(c) {
+        var medalCls = c.rank_position === 1 ? 'comp-rank-1' : c.rank_position === 2 ? 'comp-rank-2' : 'comp-rank-3';
+        var medals   = ['🥇', '🥈', '🥉'];
+        var meta     = '';
+        if (c.rating)       meta += c.rating.toFixed(1) + '★';
+        if (c.review_count) meta += ' · ' + c.review_count + ' reviews';
+        html += '<div class="competitor-row">' +
+          '<div class="competitor-rank-badge ' + medalCls + '">' + medals[c.rank_position - 1] + '</div>' +
+          '<span class="competitor-name">' + esc(c.business_name) + '</span>' +
+          (meta ? '<span class="competitor-meta">' + esc(meta) + '</span>' : '') +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '</div>';  // rank-section
+  });
+
+  document.getElementById('tab-rankings').innerHTML = html;
+}
+
+function rankColors(rank) {
+  if (rank === null) return { bg: '#CBD5E1', text: '#475569' };
+  if (rank === 1)    return { bg: '#065F46', text: '#FFFFFF' };
+  if (rank <= 3)     return { bg: '#10B981', text: '#FFFFFF' };
+  if (rank <= 5)     return { bg: '#34D399', text: '#065F46' };
+  if (rank <= 10)    return { bg: '#FCD34D', text: '#713F12' };
+  if (rank <= 15)    return { bg: '#F97316', text: '#FFFFFF' };
+  return                    { bg: '#EF4444', text: '#FFFFFF' };
 }
 
 /* ── Billing ── */
