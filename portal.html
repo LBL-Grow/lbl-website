@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NCBWF3MH');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard | Local Boost Lab</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/Fav-Icon_Blue.png">
+  <link rel="stylesheet" href="/fonts.css">
+  <style>
+    :root{--blue:#1B4FD8;--blue-dark:#1440B0;--amber:#F59E0B;--slate:#0F172A;--surface:#EFF6FF;--surface-mid:#DBEAFE;--white:#FFFFFF;--success:#10B981;--danger:#EF4444;--border:#E5E7EB;--muted:#6B7280;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(0,0,0,.07);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px}
+    body{font-family:'Inter',sans-serif;color:var(--slate);background:#F8FAFC;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button{font-family:'Inter',sans-serif;cursor:pointer;border:none;background:none}
+    input{font-family:'Inter',sans-serif}
+
+    /* ── Login / screens ── */
+    .screen{display:none;min-height:100vh}
+    .screen.active{display:flex}
+    #screen-login,#screen-check{align-items:center;justify-content:center;background:var(--blue)}
+    #screen-dashboard{flex-direction:column}
+
+    .login-card{background:white;border-radius:var(--radius);padding:40px 36px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+    .login-logo{font-weight:800;font-size:.9rem;color:var(--blue);letter-spacing:.05em;margin-bottom:28px;display:flex;align-items:center;gap:8px}
+    .login-title{font-size:1.25rem;font-weight:700;margin-bottom:6px;color:var(--slate)}
+    .login-sub{font-size:.875rem;color:var(--muted);margin-bottom:24px;line-height:1.5}
+    .form-label{display:block;font-size:.8rem;font-weight:600;margin-bottom:6px;color:var(--slate)}
+    .form-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.9rem;outline:none;transition:border-color 150ms;color:var(--slate)}
+    .form-input:focus{border-color:var(--blue)}
+    .form-input.invalid{border-color:var(--danger)}
+    .btn-primary{display:block;width:100%;padding:13px;background:var(--blue);color:white;border-radius:var(--radius-sm);font-weight:700;font-size:.95rem;text-align:center;cursor:pointer;border:none;margin-top:16px;transition:background 150ms}
+    .btn-primary:hover{background:var(--blue-dark)}
+    .btn-primary:disabled{opacity:.6;cursor:not-allowed}
+    .login-error{font-size:.8rem;color:var(--danger);margin-top:10px;display:none}
+    .check-card{color:white;text-align:center;max-width:400px;padding:0 24px}
+    .check-card h2{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+    .check-card p{font-size:.95rem;opacity:.85;line-height:1.6}
+    .check-back{margin-top:24px;font-size:.85rem;opacity:.7;cursor:pointer;text-decoration:underline;display:inline-block}
+
+    /* ── Dashboard shell ── */
+    .dash-header{background:var(--slate);padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
+    .dash-logo{font-weight:800;font-size:.85rem;color:white;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
+    .dash-biz{font-size:.85rem;color:rgba(255,255,255,.65);border-left:1px solid rgba(255,255,255,.15);padding-left:16px;margin-left:4px}
+    .dash-logout{margin-left:auto;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-sm);transition:all 150ms}
+    .dash-logout:hover{color:white;border-color:rgba(255,255,255,.5)}
+    .dash-body{max-width:1100px;margin:0 auto;padding:32px 24px}
+    .dash-section{margin-bottom:40px}
+    .dash-section-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
+
+    /* ── Stat grid ── */
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .stat-card{background:white;border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .stat-label{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+    .stat-value{font-size:1.9rem;font-weight:800;color:var(--slate);line-height:1}
+    .stat-trend{font-size:.78rem;font-weight:600;margin-top:6px}
+    .stat-trend.up{color:var(--success)}
+    .stat-trend.down{color:var(--danger)}
+    .stat-trend.flat{color:var(--muted)}
+
+    /* ── Health grid ── */
+    .health-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .health-card{background:white;border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;gap:16px}
+    .health-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .health-icon.green{background:#D1FAE5}
+    .health-icon.amber{background:#FEF3C7}
+    .health-icon.red{background:#FEE2E2}
+    .health-text-label{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+    .health-text-val{font-size:1.1rem;font-weight:700;color:var(--slate);margin-top:2px}
+
+    /* ── Narrative ── */
+    .narrative-card{background:white;border-radius:var(--radius);padding:24px 28px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .narrative-text{font-size:.95rem;line-height:1.75;color:var(--slate);margin-bottom:16px}
+    .bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .bullets li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.5;color:var(--slate)}
+    .bullets li::before{content:'✓';color:var(--success);font-weight:700;flex-shrink:0;margin-top:1px}
+
+    /* ── Posts grid ── */
+    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .post-card{background:white;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+    .post-img{width:100%;height:140px;object-fit:cover;background:var(--surface);display:block}
+    .post-img-placeholder{width:100%;height:140px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--muted)}
+    .post-body{padding:14px}
+    .post-type{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+    .post-type.educational{background:#DBEAFE;color:#1E40AF}
+    .post-type.result{background:#D1FAE5;color:#065F46}
+    .post-type.local{background:#FEF3C7;color:#92400E}
+    .post-type.seasonal{background:#EDE9FE;color:#5B21B6}
+    .post-type.offer{background:#FCE7F3;color:#9D174D}
+    .post-summary{font-size:.83rem;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .post-date{font-size:.72rem;color:var(--muted);margin-top:8px}
+
+    /* ── Reviews ── */
+    .review-card{background:white;border-radius:var(--radius);padding:18px 20px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:12px}
+    .review-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .review-avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0}
+    .review-name{font-weight:600;font-size:.875rem}
+    .review-stars{color:var(--amber);font-size:.85rem;margin-top:1px}
+    .review-text{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:10px}
+    .review-reply{background:var(--surface);border-radius:var(--radius-sm);padding:10px 14px;font-size:.82rem;color:var(--slate);line-height:1.55;border-left:3px solid var(--blue)}
+    .review-reply-label{font-size:.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+    .badge-replied{display:inline-block;background:#D1FAE5;color:#065F46;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px}
+    .badge-pending{display:inline-block;background:#FEF3C7;color:#92400E;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px}
+    .no-data{text-align:center;padding:48px 24px;color:var(--muted);font-size:.95rem;background:white;border-radius:var(--radius);border:1px solid var(--border)}
+    .month-label{font-size:.8rem;font-weight:700;color:var(--blue);margin-bottom:16px}
+
+    @media(max-width:900px){.stat-grid{grid-template-columns:repeat(2,1fr)}.posts-grid{grid-template-columns:repeat(2,1fr)}.health-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){.stat-grid{grid-template-columns:1fr}.posts-grid{grid-template-columns:1fr}.dash-body{padding:20px 16px}}
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCBWF3MH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- LOGIN SCREEN -->
+<div class="screen active" id="screen-login">
+  <div class="login-card">
+    <div class="login-logo">
+      <svg width="18" height="24" viewBox="0 0 22 28" fill="none"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>
+      LOCAL BOOST LAB.
+    </div>
+    <h1 class="login-title">Your Performance Dashboard</h1>
+    <p class="login-sub">Enter your email and we'll send you a secure login link — no password needed.</p>
+    <label class="form-label" for="email-input">Business email</label>
+    <input type="email" id="email-input" class="form-input" placeholder="you@yourbusiness.com" autocomplete="email">
+    <div class="login-error" id="login-error">Something went wrong. Please try again.</div>
+    <button class="btn-primary" id="btn-send" onclick="requestLink()">Send Login Link →</button>
+  </div>
+</div>
+
+<!-- CHECK EMAIL SCREEN -->
+<div class="screen" id="screen-check">
+  <div class="check-card">
+    <div style="font-size:2.5rem;margin-bottom:16px;">📬</div>
+    <h2>Check your email</h2>
+    <p>We sent a secure login link to <strong id="sent-to"></strong>. Click the link to open your dashboard. It expires in 1 hour.</p>
+    <span class="check-back" onclick="showLogin()">← Use a different email</span>
+  </div>
+</div>
+
+<!-- DASHBOARD SCREEN -->
+<div class="screen" id="screen-dashboard">
+  <header class="dash-header">
+    <div class="dash-logo">
+      <svg width="16" height="21" viewBox="0 0 22 28" fill="none"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>
+      LOCAL BOOST LAB.
+    </div>
+    <span class="dash-biz" id="dash-biz-name">Loading…</span>
+    <button class="dash-logout" onclick="logout()">Sign Out</button>
+  </header>
+  <div class="dash-body" id="dash-body">
+    <div class="no-data" style="margin-top:40px;">Loading your dashboard…</div>
+  </div>
+</div>
+
+<script>
+  var API = '';  // relative — proxied by Vercel to Railway
+
+  /* ── Session storage ─────────────────────────────── */
+  var SESSION_KEY = 'lbl_portal_session';
+
+  function getSession() { return localStorage.getItem(SESSION_KEY); }
+  function setSession(s) { localStorage.setItem(SESSION_KEY, s); }
+  function clearSession() { localStorage.removeItem(SESSION_KEY); }
+
+  function authHeaders() {
+    return { 'Authorization': 'Bearer ' + getSession(), 'Content-Type': 'application/json' };
+  }
+
+  /* ── Init ─────────────────────────────────────────── */
+  (function init() {
+    var params = new URLSearchParams(window.location.search);
+
+    // Magic link token in URL
+    if (params.get('token')) {
+      history.replaceState({}, '', '/portal');
+      exchangeToken(params.get('token'));
+      return;
+    }
+
+    // Auth error
+    if (params.get('error')) {
+      history.replaceState({}, '', '/portal');
+      showLogin('Invalid or expired link. Please request a new one.');
+      return;
+    }
+
+    // Existing session
+    if (getSession()) {
+      validateAndLoad();
+    } else {
+      showLogin();
+    }
+  })();
+
+  /* ── Auth flows ───────────────────────────────────── */
+  function showLogin(errorMsg) {
+    show('screen-login');
+    if (errorMsg) {
+      var el = document.getElementById('login-error');
+      el.textContent = errorMsg;
+      el.style.display = 'block';
+    }
+  }
+
+  function requestLink() {
+    var email = document.getElementById('email-input').value.trim();
+    if (!email) return;
+    var btn = document.getElementById('btn-send');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    document.getElementById('login-error').style.display = 'none';
+
+    fetch(API + '/api/portal/request-link', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email }),
+    })
+    .then(function() {
+      document.getElementById('sent-to').textContent = email;
+      show('screen-check');
+    })
+    .catch(function() {
+      document.getElementById('login-error').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send Login Link →';
+    });
+  }
+
+  document.getElementById('email-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') requestLink();
+  });
+
+  function exchangeToken(token) {
+    show('screen-login');
+    fetch(API + '/api/portal/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token }),
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.session) {
+        setSession(data.session);
+        loadDashboard();
+      } else {
+        showLogin(data.error || 'Invalid link. Please request a new one.');
+      }
+    })
+    .catch(function() {
+      showLogin('Something went wrong. Please request a new link.');
+    });
+  }
+
+  function validateAndLoad() {
+    fetch(API + '/api/portal/me', { headers: authHeaders() })
+    .then(function(r) {
+      if (r.status === 401) { clearSession(); showLogin(); return; }
+      return r.json();
+    })
+    .then(function(client) {
+      if (!client) return;
+      document.getElementById('dash-biz-name').textContent = client.business_name || '';
+      loadDashboard();
+    })
+    .catch(function() { showLogin(); });
+  }
+
+  function logout() {
+    clearSession();
+    fetch(API + '/api/portal/logout', { method: 'POST' }).catch(function(){});
+    showLogin();
+  }
+
+  /* ── Dashboard render ────────────────────────────── */
+  function loadDashboard() {
+    show('screen-dashboard');
+    Promise.all([
+      fetch(API + '/api/portal/me',        { headers: authHeaders() }).then(function(r) { return r.json(); }),
+      fetch(API + '/api/portal/dashboard',  { headers: authHeaders() }).then(function(r) { return r.json(); }),
+    ])
+    .then(function(results) {
+      var client = results[0];
+      var data   = results[1];
+      document.getElementById('dash-biz-name').textContent = client.business_name || '';
+      renderDash(client, data);
+    })
+    .catch(function() {
+      document.getElementById('dash-body').innerHTML = '<div class="no-data">Failed to load dashboard. Please refresh.</div>';
+    });
+  }
+
+  function renderDash(client, data) {
+    var latest = data.reports && data.reports[0];
+    var html = '';
+
+    // ── Month label ──
+    if (latest) {
+      var MONTHS = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+      html += '<p class="month-label">📅 ' + MONTHS[latest.month] + ' ' + latest.year + ' Report</p>';
+    }
+
+    // ── Account health ──
+    html += '<div class="dash-section">';
+    html += '<div class="dash-section-title">Account Health</div>';
+    html += '<div class="health-grid">';
+
+    var consistency = latest ? Math.round((latest.posts_consistency || 0) * 100) : null;
+    var consistencyColor = consistency === null ? 'amber' : consistency >= 80 ? 'green' : consistency >= 50 ? 'amber' : 'red';
+    html += healthCard(consistencyColor, '📝', 'Post Consistency', consistency !== null ? consistency + '%' : 'No data');
+
+    var replyRate = latest ? Math.round((latest.reply_rate || 0) * 100) : null;
+    var replyColor = replyRate === null ? 'amber' : replyRate >= 80 ? 'green' : replyRate >= 50 ? 'amber' : 'red';
+    html += healthCard(replyColor, '💬', 'Review Reply Rate', replyRate !== null ? replyRate + '%' : 'No data');
+
+    var statusColor = client.status === 'active' ? 'green' : 'amber';
+    var statusLabel = client.status === 'active' ? 'Active & Publishing' : client.status || 'Unknown';
+    html += healthCard(statusColor, '🟢', 'GBP Profile', statusLabel);
+
+    html += '</div></div>';
+
+    // ── Stats ──
+    if (latest) {
+      html += '<div class="dash-section">';
+      html += '<div class="dash-section-title">Performance This Month</div>';
+      html += '<div class="stat-grid">';
+      html += statCard('Profile Views', fmt(latest.views_total), trendLabel(latest.views_total, latest.prev_views_total));
+      html += statCard('Phone Calls', fmt(latest.calls), trendLabel(latest.calls, latest.prev_calls));
+      html += statCard('Website Clicks', fmt(latest.website_clicks), trendLabel(latest.website_clicks, latest.prev_website_clicks));
+      html += statCard('Direction Requests', fmt(latest.directions), trendLabel(latest.directions, latest.prev_directions));
+      html += '</div></div>';
+    }
+
+    // ── Narrative ──
+    if (latest && (latest.narrative || (latest.bullets && latest.bullets.length))) {
+      html += '<div class="dash-section">';
+      html += '<div class="dash-section-title">Your Monthly Summary</div>';
+      html += '<div class="narrative-card">';
+      if (latest.narrative) html += '<p class="narrative-text">' + esc(latest.narrative) + '</p>';
+      if (latest.bullets && latest.bullets.length) {
+        html += '<ul class="bullets">';
+        latest.bullets.forEach(function(b) { html += '<li>' + esc(b) + '</li>'; });
+        html += '</ul>';
+      }
+      html += '</div></div>';
+    }
+
+    // ── Posts ──
+    html += '<div class="dash-section">';
+    html += '<div class="dash-section-title">Recent Google Posts</div>';
+    if (data.posts && data.posts.length) {
+      html += '<div class="posts-grid">';
+      data.posts.forEach(function(p) { html += postCard(p); });
+      html += '</div>';
+    } else {
+      html += '<div class="no-data">No posts published yet.</div>';
+    }
+    html += '</div>';
+
+    // ── Reviews ──
+    html += '<div class="dash-section">';
+    html += '<div class="dash-section-title">Recent Reviews</div>';
+    if (latest) {
+      html += '<div style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap;">';
+      html += '<span style="font-size:.875rem;color:var(--slate);"><strong>' + (latest.reviews_this_month || 0) + '</strong> <span style="color:var(--muted)">reviews this month</span></span>';
+      html += '<span style="font-size:.875rem;color:var(--slate);"><strong>' + (replyRate !== null ? replyRate + '%' : '—') + '</strong> <span style="color:var(--muted)">replied</span></span>';
+      if (latest.avg_reply_hours) html += '<span style="font-size:.875rem;color:var(--slate);"><strong>' + Math.round(latest.avg_reply_hours) + 'h</strong> <span style="color:var(--muted)">avg reply time</span></span>';
+      html += '</div>';
+    }
+    if (data.reviews && data.reviews.length) {
+      data.reviews.forEach(function(r) { html += reviewCard(r); });
+    } else {
+      html += '<div class="no-data">No reviews found yet.</div>';
+    }
+    html += '</div>';
+
+    document.getElementById('dash-body').innerHTML = html;
+  }
+
+  /* ── Component builders ───────────────────────────── */
+  function healthCard(color, icon, label, val) {
+    return '<div class="health-card">' +
+      '<div class="health-icon ' + color + '">' + icon + '</div>' +
+      '<div><div class="health-text-label">' + label + '</div><div class="health-text-val">' + val + '</div></div>' +
+      '</div>';
+  }
+
+  function statCard(label, value, trend) {
+    return '<div class="stat-card">' +
+      '<div class="stat-label">' + label + '</div>' +
+      '<div class="stat-value">' + value + '</div>' +
+      '<div class="stat-trend ' + trend.cls + '">' + trend.text + '</div>' +
+      '</div>';
+  }
+
+  function postCard(p) {
+    var type = p.post_type || 'post';
+    var img  = p.image_url
+      ? '<img class="post-img" src="' + esc(p.image_url) + '" alt="" loading="lazy">'
+      : '<div class="post-img-placeholder">📷</div>';
+    return '<div class="post-card">' + img +
+      '<div class="post-body">' +
+        '<span class="post-type ' + type + '">' + type + '</span>' +
+        '<div class="post-summary">' + esc(p.summary || '(No summary)') + '</div>' +
+        '<div class="post-date">' + fmtDate(p.published_at) + '</div>' +
+      '</div></div>';
+  }
+
+  function reviewCard(r) {
+    var stars = '★'.repeat(r.rating || 0) + '☆'.repeat(5 - (r.rating || 0));
+    var initial = (r.reviewer_name || 'A')[0].toUpperCase();
+    var replied = !!r.replied_at;
+    return '<div class="review-card">' +
+      '<div class="review-header">' +
+        '<div class="review-avatar">' + initial + '</div>' +
+        '<div>' +
+          '<div class="review-name">' + esc(r.reviewer_name || 'Anonymous') + (replied ? '<span class="badge-replied">Replied</span>' : '<span class="badge-pending">Pending</span>') + '</div>' +
+          '<div class="review-stars">' + stars + '</div>' +
+        '</div>' +
+      '</div>' +
+      (r.review_text ? '<p class="review-text">' + esc(r.review_text) + '</p>' : '') +
+      '</div>';
+  }
+
+  /* ── Helpers ──────────────────────────────────────── */
+  function show(id) {
+    ['screen-login','screen-check','screen-dashboard'].forEach(function(s) {
+      document.getElementById(s).classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+  }
+
+  function showLogin(msg) {
+    show('screen-login');
+    var el = document.getElementById('login-error');
+    if (msg) { el.textContent = msg; el.style.display = 'block'; }
+    else { el.style.display = 'none'; }
+  }
+
+  function fmt(n) { return n != null ? Number(n).toLocaleString() : '—'; }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function trendLabel(cur, prev) {
+    if (cur == null || prev == null || prev === 0) return { cls: 'flat', text: '—' };
+    var pct = Math.round(((cur - prev) / prev) * 100);
+    if (pct > 0)  return { cls: 'up',   text: '↑ ' + pct + '% vs last month' };
+    if (pct < 0)  return { cls: 'down', text: '↓ ' + Math.abs(pct) + '% vs last month' };
+    return { cls: 'flat', text: 'Same as last month' };
+  }
+
+  function esc(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+</script>
+</body>
+</html>
