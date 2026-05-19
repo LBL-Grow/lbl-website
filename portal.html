@@ -1,492 +1,831 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NCBWF3MH');</script>
-  <!-- End Google Tag Manager -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Dashboard | Local Boost Lab</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" type="image/png" href="/Fav-Icon_Blue.png">
-  <link rel="stylesheet" href="/fonts.css">
-  <style>
-    :root{--blue:#1B4FD8;--blue-dark:#1440B0;--amber:#F59E0B;--slate:#0F172A;--surface:#EFF6FF;--surface-mid:#DBEAFE;--white:#FFFFFF;--success:#10B981;--danger:#EF4444;--border:#E5E7EB;--muted:#6B7280;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(0,0,0,.07);}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-size:16px}
-    body{font-family:'Inter',sans-serif;color:var(--slate);background:#F8FAFC;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    button{font-family:'Inter',sans-serif;cursor:pointer;border:none;background:none}
-    input{font-family:'Inter',sans-serif}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Client Dashboard — Local Boost Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --blue:#1B4FD8;--blue-dark:#1440B0;--blue-light:#EFF6FF;
+  --amber:#F59E0B;--amber-light:#FFFBEB;
+  --slate:#0F172A;--slate-mid:#1E293B;
+  --success:#10B981;--danger:#EF4444;--warning:#F97316;
+  --border:#E5E7EB;--muted:#6B7280;--surface:#F8FAFC;
+  --white:#fff;
+  --radius:12px;--radius-sm:8px;--radius-xs:6px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--slate);min-height:100vh}
+button{cursor:pointer;font-family:inherit}
+a{color:inherit}
 
-    /* ── Login / screens ── */
-    .screen{display:none;min-height:100vh}
-    .screen.active{display:flex}
-    #screen-login,#screen-check{align-items:center;justify-content:center;background:var(--blue)}
-    #screen-dashboard{flex-direction:column}
+/* ── Screens ── */
+.screen{display:none;min-height:100vh}
+.screen.active{display:flex}
+#screen-login,#screen-check{align-items:center;justify-content:center;background:var(--blue)}
+#screen-dashboard{flex-direction:column;background:var(--surface)}
 
-    .login-card{background:white;border-radius:var(--radius);padding:40px 36px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-    .login-logo{font-weight:800;font-size:.9rem;color:var(--blue);letter-spacing:.05em;margin-bottom:28px;display:flex;align-items:center;gap:8px}
-    .login-title{font-size:1.25rem;font-weight:700;margin-bottom:6px;color:var(--slate)}
-    .login-sub{font-size:.875rem;color:var(--muted);margin-bottom:24px;line-height:1.5}
-    .form-label{display:block;font-size:.8rem;font-weight:600;margin-bottom:6px;color:var(--slate)}
-    .form-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.9rem;outline:none;transition:border-color 150ms;color:var(--slate)}
-    .form-input:focus{border-color:var(--blue)}
-    .form-input.invalid{border-color:var(--danger)}
-    .btn-primary{display:block;width:100%;padding:13px;background:var(--blue);color:white;border-radius:var(--radius-sm);font-weight:700;font-size:.95rem;text-align:center;cursor:pointer;border:none;margin-top:16px;transition:background 150ms}
-    .btn-primary:hover{background:var(--blue-dark)}
-    .btn-primary:disabled{opacity:.6;cursor:not-allowed}
-    .login-error{font-size:.8rem;color:var(--danger);margin-top:10px;display:none}
-    .check-card{color:white;text-align:center;max-width:400px;padding:0 24px}
-    .check-card h2{font-size:1.5rem;font-weight:700;margin-bottom:12px}
-    .check-card p{font-size:.95rem;opacity:.85;line-height:1.6}
-    .check-back{margin-top:24px;font-size:.85rem;opacity:.7;cursor:pointer;text-decoration:underline;display:inline-block}
+/* ── Login / Check ── */
+.auth-card{background:var(--white);border-radius:var(--radius);padding:40px 36px;width:100%;max-width:420px;box-shadow:var(--shadow-md)}
+.auth-logo{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.auth-logo-text{font-weight:800;font-size:1rem;color:var(--blue);letter-spacing:.05em}
+.auth-title{font-size:1.35rem;font-weight:800;color:var(--slate);margin-bottom:8px}
+.auth-sub{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:24px}
+.form-label{display:block;font-size:.78rem;font-weight:600;color:var(--slate);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.form-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.93rem;font-family:inherit;color:var(--slate);background:var(--white);transition:border 150ms,box-shadow 150ms;outline:none}
+.form-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,216,.12)}
+.form-input.error{border-color:var(--danger)}
+.login-error{font-size:.8rem;color:var(--danger);margin-top:6px;display:none}
+.btn-primary{display:block;width:100%;padding:13px;background:var(--blue);color:var(--white);border-radius:var(--radius-sm);font-weight:700;font-size:.93rem;text-align:center;border:none;margin-top:16px;transition:background 150ms}
+.btn-primary:hover{background:var(--blue-dark)}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed}
 
-    /* ── Dashboard shell ── */
-    .dash-header{background:var(--slate);padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
-    .dash-logo{font-weight:800;font-size:.85rem;color:white;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
-    .dash-biz{font-size:.85rem;color:rgba(255,255,255,.65);border-left:1px solid rgba(255,255,255,.15);padding-left:16px;margin-left:4px}
-    .dash-logout{margin-left:auto;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-sm);transition:all 150ms}
-    .dash-logout:hover{color:white;border-color:rgba(255,255,255,.5)}
-    .dash-body{max-width:1100px;margin:0 auto;padding:32px 24px}
-    .dash-section{margin-bottom:40px}
-    .dash-section-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
+/* check screen */
+.check-icon{width:56px;height:56px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.check-resend{display:block;width:100%;padding:11px;background:rgba(255,255,255,.12);color:var(--white);border:1.5px solid rgba(255,255,255,.3);border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;text-align:center;margin-top:14px;transition:background 150ms}
+.check-resend:hover{background:rgba(255,255,255,.2)}
+.check-back{display:block;text-align:center;margin-top:14px;font-size:.82rem;color:rgba(255,255,255,.65);cursor:pointer}
+.check-back:hover{color:var(--white)}
+.check-email-val{font-weight:700;word-break:break-all}
+.check-spam{font-size:.75rem;color:rgba(255,255,255,.5);text-align:center;margin-top:18px;line-height:1.6}
+.check-spam a,.check-email-copyable{color:rgba(255,255,255,.8);text-decoration:underline;cursor:text;user-select:all}
 
-    /* ── Stat grid ── */
-    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .stat-card{background:white;border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
-    .stat-label{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
-    .stat-value{font-size:1.9rem;font-weight:800;color:var(--slate);line-height:1}
-    .stat-trend{font-size:.78rem;font-weight:600;margin-top:6px}
-    .stat-trend.up{color:var(--success)}
-    .stat-trend.down{color:var(--danger)}
-    .stat-trend.flat{color:var(--muted)}
+/* ── Dashboard layout ── */
+.dash-header{background:var(--slate);padding:0 24px;display:flex;align-items:center;gap:16px;height:56px;position:sticky;top:0;z-index:100;flex-shrink:0}
+.dash-logo{display:flex;align-items:center;gap:8px;margin-right:8px}
+.dash-logo-text{font-weight:800;font-size:.88rem;color:var(--white);letter-spacing:.06em}
+.dash-biz{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.8);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dash-plan-badge{font-size:.72rem;font-weight:700;background:rgba(245,158,11,.2);color:#FCD34D;border-radius:20px;padding:3px 10px;white-space:nowrap;flex-shrink:0}
+.dash-logout{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.5);background:none;border:none;padding:6px 10px;border-radius:var(--radius-xs);transition:color 150ms,background 150ms}
+.dash-logout:hover{color:var(--white);background:rgba(255,255,255,.08)}
 
-    /* ── Health grid ── */
-    .health-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .health-card{background:white;border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;gap:16px}
-    .health-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .health-icon.green svg{color:#065F46}.health-icon.amber svg{color:#92400E}.health-icon.red svg{color:#991B1B}
-    .health-icon.green{background:#D1FAE5}
-    .health-icon.amber{background:#FEF3C7}
-    .health-icon.red{background:#FEE2E2}
-    .health-text-label{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-    .health-text-val{font-size:1.1rem;font-weight:700;color:var(--slate);margin-top:2px}
+/* ── Tabs ── */
+.dash-tabs{background:var(--slate-mid);display:flex;gap:0;padding:0 16px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
+.dash-tabs::-webkit-scrollbar{display:none}
+.tab-btn{padding:13px 16px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.45);border-bottom:2px solid transparent;transition:all 150ms;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;cursor:pointer}
+.tab-btn:hover:not(.active){color:rgba(255,255,255,.75)}
+.tab-btn.active{color:var(--white);border-bottom-color:var(--amber)}
+.tab-pane{display:none;padding:24px}
+.tab-pane.active{display:block}
 
-    /* ── Narrative ── */
-    .narrative-card{background:white;border-radius:var(--radius);padding:24px 28px;border:1px solid var(--border);box-shadow:var(--shadow)}
-    .narrative-text{font-size:.95rem;line-height:1.75;color:var(--slate);margin-bottom:16px}
-    .bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .bullets li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.5;color:var(--slate)}
-    .bullets li::before{content:'✓';color:var(--success);font-weight:700;flex-shrink:0;margin-top:1px}
+/* ── Section ── */
+.dash-section{margin-bottom:24px}
+.dash-section-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px;display:block}
 
-    /* ── Posts grid ── */
-    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .post-card{background:white;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
-    .post-img{width:100%;height:140px;object-fit:cover;background:var(--surface);display:block}
-    .post-img-placeholder{width:100%;height:140px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--muted)}
-    .post-body{padding:14px}
-    .post-type{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
-    .post-type.educational{background:#DBEAFE;color:#1E40AF}
-    .post-type.result{background:#D1FAE5;color:#065F46}
-    .post-type.local{background:#FEF3C7;color:#92400E}
-    .post-type.seasonal{background:#EDE9FE;color:#5B21B6}
-    .post-type.offer{background:#FCE7F3;color:#9D174D}
-    .post-summary{font-size:.83rem;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-    .post-date{font-size:.72rem;color:var(--muted);margin-top:8px}
+/* ── Health cards ── */
+.health-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+@media(max-width:900px){.health-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.health-grid{grid-template-columns:1fr 1fr}}
+.health-card{background:var(--white);border-radius:var(--radius);padding:16px 18px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.health-card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.health-card-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.health-card-val{font-size:1.4rem;font-weight:800;color:var(--slate);line-height:1}
+.health-card-sub{font-size:.72rem;color:var(--muted);margin-top:3px}
 
-    /* ── Reviews ── */
-    .review-card{background:white;border-radius:var(--radius);padding:18px 20px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:12px}
-    .review-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-    .review-avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0}
-    .review-name{font-weight:600;font-size:.875rem}
-    .review-stars{color:var(--amber);font-size:.85rem;margin-top:1px}
-    .review-text{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:10px}
-    .review-reply{background:var(--surface);border-radius:var(--radius-sm);padding:10px 14px;font-size:.82rem;color:var(--slate);line-height:1.55;border-left:3px solid var(--blue)}
-    .review-reply-label{font-size:.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
-    .badge-replied{display:inline-block;background:#D1FAE5;color:#065F46;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px}
-    .badge-pending{display:inline-block;background:#FEF3C7;color:#92400E;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px}
-    .no-data{text-align:center;padding:48px 24px;color:var(--muted);font-size:.95rem;background:white;border-radius:var(--radius);border:1px solid var(--border)}
-    .month-label{font-size:.8rem;font-weight:700;color:var(--blue);margin-bottom:16px}
+/* ── Stat cards ── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:var(--white);border-radius:var(--radius);padding:18px 20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.stat-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.stat-val{font-size:1.75rem;font-weight:800;color:var(--slate);line-height:1;margin-bottom:6px}
+.stat-trend{font-size:.75rem;font-weight:600;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px}
+.trend-up{color:#059669;background:#ECFDF5}
+.trend-down{color:var(--danger);background:#FEF2F2}
+.trend-flat{color:var(--muted);background:#F3F4F6}
 
-    @media(max-width:900px){.stat-grid{grid-template-columns:repeat(2,1fr)}.posts-grid{grid-template-columns:repeat(2,1fr)}.health-grid{grid-template-columns:1fr}}
-    @media(max-width:600px){.stat-grid{grid-template-columns:1fr}.posts-grid{grid-template-columns:1fr}.dash-body{padding:20px 16px}}
-  </style>
+/* ── Chart ── */
+.chart-card{background:var(--white);border-radius:var(--radius);padding:20px 24px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:24px}
+.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.chart-header-title{font-size:.93rem;font-weight:700;color:var(--slate)}
+.chart-wrap{position:relative;height:240px}
+
+/* ── Narrative ── */
+.narrative-card{background:var(--white);border-radius:var(--radius);padding:20px 24px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:24px}
+.narrative-month{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--blue);margin-bottom:8px}
+.narrative-text{font-size:.93rem;color:var(--slate);line-height:1.7;margin-bottom:16px}
+.bullets-list{display:flex;flex-direction:column;gap:6px}
+.bullet-item{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;color:var(--slate);line-height:1.5}
+.bullet-dot{width:18px;height:18px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* ── Review summary chips ── */
+.review-chips{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.review-chip{font-size:.78rem;font-weight:600;color:var(--slate);background:var(--white);border:1px solid var(--border);border-radius:20px;padding:4px 12px}
+
+/* ── Posts grid ── */
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.posts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.posts-grid{grid-template-columns:1fr}}
+.post-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.post-img{width:100%;height:150px;object-fit:cover}
+.post-img-placeholder{width:100%;height:150px;background:var(--blue-light);display:flex;align-items:center;justify-content:center}
+.post-body{padding:14px;flex:1;display:flex;flex-direction:column}
+.post-type-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:20px;margin-bottom:8px;width:fit-content}
+.post-type-badge.educational{background:#EDE9FE;color:#7C3AED}
+.post-type-badge.result{background:#D1FAE5;color:#059669}
+.post-type-badge.local{background:#DBEAFE;color:var(--blue)}
+.post-type-badge.seasonal{background:#FEF3C7;color:#D97706}
+.post-type-badge.offer{background:#FCE7F3;color:#DB2777}
+.post-type-badge.standard{background:#F3F4F6;color:#374151}
+.post-summary{font-size:.82rem;color:var(--slate);line-height:1.55;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.post-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;flex-wrap:wrap;gap:6px}
+.post-date{font-size:.72rem;color:var(--muted)}
+.post-gbp-link{font-size:.72rem;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;text-decoration:none}
+.post-gbp-link:hover{text-decoration:underline}
+
+/* ── Reviews ── */
+.review-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:12px}
+.review-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:var(--blue);color:var(--white);font-weight:700;font-size:.93rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.review-meta{flex:1}
+.review-name{font-weight:700;font-size:.88rem;color:var(--slate);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.review-stars{display:flex;gap:2px;margin-top:3px}
+.review-date{font-size:.72rem;color:var(--muted);margin-top:2px}
+.badge-replied{font-size:.65rem;font-weight:700;background:#D1FAE5;color:#059669;border-radius:20px;padding:2px 7px}
+.badge-pending{font-size:.65rem;font-weight:700;background:#FEF3C7;color:#D97706;border-radius:20px;padding:2px 7px}
+.review-text{font-size:.85rem;color:var(--slate);line-height:1.6;margin-bottom:0}
+.review-reply{background:var(--blue-light);border-radius:var(--radius-sm);padding:12px 16px;font-size:.82rem;color:var(--slate);line-height:1.6;border-left:3px solid var(--blue);margin-top:10px}
+.review-reply-label{font-size:.68rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+
+/* ── Rankings placeholder ── */
+.rankings-placeholder{background:var(--white);border-radius:var(--radius);padding:48px 32px;border:1px solid var(--border);text-align:center}
+.rankings-placeholder-icon{width:56px;height:56px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.rankings-placeholder h3{font-size:1.05rem;font-weight:700;color:var(--slate);margin-bottom:8px}
+.rankings-placeholder p{font-size:.85rem;color:var(--muted);line-height:1.6;max-width:360px;margin:0 auto}
+
+/* ── Billing ── */
+.plan-card{background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:20px}
+.plan-name-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.plan-name{font-size:1.1rem;font-weight:800;color:var(--slate)}
+.plan-status-badge{font-size:.68rem;font-weight:700;border-radius:20px;padding:3px 9px}
+.plan-status-active{background:#D1FAE5;color:#059669}
+.plan-status-cancelling{background:#FEF3C7;color:#D97706}
+.plan-status-inactive{background:#F3F4F6;color:var(--muted)}
+.plan-price{font-size:2.2rem;font-weight:800;color:var(--slate);margin:6px 0 2px;line-height:1}
+.plan-price span{font-size:.95rem;font-weight:500;color:var(--muted)}
+.plan-meta{font-size:.8rem;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.plan-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-portal{padding:11px 22px;background:var(--blue);color:var(--white);border-radius:var(--radius-sm);font-weight:700;font-size:.85rem;border:none;transition:background 150ms}
+.btn-portal:hover{background:var(--blue-dark)}
+.btn-cancel-sub{padding:11px 18px;background:transparent;color:var(--danger);border:1.5px solid var(--danger);border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;transition:all 150ms}
+.btn-cancel-sub:hover{background:#FEF2F2}
+.invoice-list{display:flex;flex-direction:column;gap:8px}
+.invoice-row{background:var(--white);border-radius:var(--radius-sm);padding:14px 18px;border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.invoice-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.invoice-number{font-size:.82rem;font-weight:600;color:var(--slate);white-space:nowrap}
+.invoice-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.invoice-period{font-size:.75rem;color:var(--muted)}
+.invoice-amount{font-size:.88rem;font-weight:700;color:var(--slate)}
+.invoice-dl{font-size:.78rem;font-weight:600;color:var(--blue);text-decoration:none;white-space:nowrap}
+.invoice-dl:hover{text-decoration:underline}
+
+/* ── Empty / loading states ── */
+.no-data{text-align:center;padding:48px 24px;color:var(--muted);font-size:.9rem}
+.loading-state{text-align:center;padding:64px 24px;color:var(--muted);font-size:.9rem}
+
+/* ── Upsell banner ── */
+.upsell-banner{background:linear-gradient(135deg,#1B4FD8 0%,#1440B0 100%);border-radius:var(--radius);padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.upsell-text{color:var(--white);font-size:.88rem;font-weight:600;flex:1}
+.upsell-text span{display:block;font-size:.78rem;font-weight:400;color:rgba(255,255,255,.75);margin-top:2px}
+.upsell-cta{padding:10px 20px;background:var(--amber);color:var(--slate);border-radius:var(--radius-sm);font-weight:700;font-size:.82rem;text-decoration:none;white-space:nowrap;border:none;transition:background 150ms}
+.upsell-cta:hover{background:#E08B00}
+</style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCBWF3MH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- LOGIN SCREEN -->
+<!-- ══ LOGIN ══ -->
 <div class="screen active" id="screen-login">
-  <div class="login-card">
-    <div class="login-logo">
-      <svg width="18" height="24" viewBox="0 0 22 28" fill="none"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>
-      LOCAL BOOST LAB.
+  <div class="auth-card">
+    <div class="auth-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="auth-logo-text">LOCAL BOOST LAB.</span>
     </div>
-    <h1 class="login-title">Your Performance Dashboard</h1>
-    <p class="login-sub">Enter your email and we'll send you a secure login link — no password needed.</p>
+    <h1 class="auth-title">Your Performance Dashboard</h1>
+    <p class="auth-sub">Enter your business email to receive a secure login link. No password needed.</p>
     <label class="form-label" for="email-input">Business email</label>
-    <input type="email" id="email-input" class="form-input" placeholder="you@yourbusiness.com" autocomplete="email">
-    <div class="login-error" id="login-error">Something went wrong. Please try again.</div>
+    <input class="form-input" id="email-input" type="email" placeholder="you@yourbusiness.com" autocomplete="email" onkeydown="if(event.key==='Enter')requestLink()">
+    <div class="login-error" id="login-error"></div>
     <button class="btn-primary" id="btn-send" onclick="requestLink()">Send Login Link →</button>
   </div>
 </div>
 
-<!-- CHECK EMAIL SCREEN -->
-<div class="screen" id="screen-check">
-  <div class="check-card">
-    <div style="font-weight:800;font-size:.85rem;color:white;letter-spacing:.06em;margin-bottom:32px;display:flex;align-items:center;gap:8px;justify-content:center;">
-      <svg width="16" height="21" viewBox="0 0 22 28" fill="none"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>
-      LOCAL BOOST LAB.
+<!-- ══ CHECK EMAIL ══ -->
+<div class="screen" id="screen-check" style="flex-direction:column;align-items:center;justify-content:center">
+  <div class="auth-card" style="text-align:center">
+    <div class="auth-logo" style="justify-content:center">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="auth-logo-text">LOCAL BOOST LAB.</span>
     </div>
-    <div style="margin-bottom:20px;background:rgba(255,255,255,.15);width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-left:auto;margin-right:auto;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="white" stroke-width="2"/><path d="M2 8l10 7 10-7" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    <div class="check-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="22,6 12,13 2,6" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
-    <h2>Check your email</h2>
-    <p style="margin-bottom:24px;">We sent a secure login link to <strong id="sent-to"></strong>. Click the link to open your dashboard — it expires in 1 hour.</p>
-    <p style="font-size:.82rem;opacity:.65;margin-bottom:28px;">Don't see it? Check your spam or promotions folder.</p>
-    <button onclick="resendLink()" style="display:block;width:100%;padding:12px;background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.3);border-radius:8px;font-weight:600;font-size:.88rem;cursor:pointer;margin-bottom:12px;font-family:Inter,sans-serif;transition:background 150ms;" onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">Resend link</button>
+    <h2 style="font-size:1.2rem;font-weight:800;color:var(--slate);margin-bottom:8px">Check your email</h2>
+    <p style="font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:4px">We sent a login link to</p>
+    <p style="font-size:.9rem;font-weight:700;color:var(--slate);margin-bottom:20px;word-break:break-all" id="sent-to"></p>
+    <button class="check-resend" style="background:var(--blue);color:var(--white);border-color:var(--blue);border-radius:var(--radius-sm);font-size:.85rem;padding:11px 20px;width:100%;margin-bottom:0" onclick="resendLink()">Resend link</button>
     <span class="check-back" onclick="showLogin()">← Use a different email</span>
-    <p style="margin-top:28px;font-size:.78rem;opacity:.5;line-height:1.6;">Still no email? Email us at <span style="color:white;opacity:1;user-select:all;">hello@localboostlab.com</span> and we'll get you in.</p>
+    <p class="check-spam">Don't see it? Check your spam folder.<br>Still no email? <span class="check-email-copyable" title="Copy this address">hello@localboostlab.com</span></p>
   </div>
 </div>
 
-<!-- DASHBOARD SCREEN -->
+<!-- ══ DASHBOARD ══ -->
 <div class="screen" id="screen-dashboard">
+  <!-- Header -->
   <header class="dash-header">
     <div class="dash-logo">
-      <svg width="16" height="21" viewBox="0 0 22 28" fill="none"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>
-      LOCAL BOOST LAB.
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="dash-logo-text">LOCAL BOOST LAB.</span>
     </div>
-    <span class="dash-biz" id="dash-biz-name">Loading…</span>
+    <span class="dash-biz" id="dash-biz-name"></span>
+    <span class="dash-plan-badge" id="dash-plan-badge"></span>
     <button class="dash-logout" onclick="logout()">Sign Out</button>
   </header>
-  <div class="dash-body" id="dash-body">
-    <div class="no-data" style="margin-top:40px;">Loading your dashboard…</div>
-  </div>
+
+  <!-- Tabs -->
+  <nav class="dash-tabs" role="tablist">
+    <button class="tab-btn active" data-tab="overview"  role="tab" aria-selected="true">Overview</button>
+    <button class="tab-btn"        data-tab="posts"     role="tab">Posts</button>
+    <button class="tab-btn"        data-tab="reviews"   role="tab">Reviews</button>
+    <button class="tab-btn"        data-tab="rankings"  role="tab">Rankings</button>
+    <button class="tab-btn"        data-tab="billing"   role="tab">Plan & Billing</button>
+  </nav>
+
+  <!-- Panes -->
+  <div id="tab-overview"  class="tab-pane active"><div class="loading-state">Loading dashboard…</div></div>
+  <div id="tab-posts"     class="tab-pane"></div>
+  <div id="tab-reviews"   class="tab-pane"></div>
+  <div id="tab-rankings"  class="tab-pane"></div>
+  <div id="tab-billing"   class="tab-pane"></div>
 </div>
 
 <script>
-  var API = '';  // relative — proxied by Vercel to Railway
+'use strict';
+var API = '';  // same origin via Vercel/Railway proxy
 
-  /* ── Session storage ─────────────────────────────── */
-  var SESSION_KEY = 'lbl_portal_session';
+/* ── Session ── */
+function getSession()    { return localStorage.getItem('lbl_portal_session'); }
+function setSession(s)   { localStorage.setItem('lbl_portal_session', s); }
+function clearSession()  { localStorage.removeItem('lbl_portal_session'); }
+function authHeaders()   { return { 'Authorization': 'Bearer ' + getSession(), 'Content-Type': 'application/json' }; }
 
-  function getSession() { return localStorage.getItem(SESSION_KEY); }
-  function setSession(s) { localStorage.setItem(SESSION_KEY, s); }
-  function clearSession() { localStorage.removeItem(SESSION_KEY); }
+/* ── Screen helpers ── */
+function show(id) {
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+}
+function showLogin(msg) {
+  show('screen-login');
+  var btn = document.getElementById('btn-send');
+  if (btn) { btn.disabled = false; btn.textContent = 'Send Login Link →'; }
+  var err = document.getElementById('login-error');
+  if (msg && err) { err.textContent = msg; err.style.display = 'block'; }
+  else if (err)   { err.style.display = 'none'; }
+}
 
-  function authHeaders() {
-    return { 'Authorization': 'Bearer ' + getSession(), 'Content-Type': 'application/json' };
-  }
-
-  /* ── Init ─────────────────────────────────────────── */
-  (function init() {
-    var params = new URLSearchParams(window.location.search);
-
-    // Magic link token in URL
-    if (params.get('token')) {
-      history.replaceState({}, '', '/portal');
-      exchangeToken(params.get('token'));
-      return;
-    }
-
-    // Auth error
-    if (params.get('error')) {
-      history.replaceState({}, '', '/portal');
-      showLogin('Invalid or expired link. Please request a new one.');
-      return;
-    }
-
-    // Existing session
-    if (getSession()) {
-      validateAndLoad();
-    } else {
-      showLogin();
-    }
-  })();
-
-  /* ── Auth flows ───────────────────────────────────── */
-  function showLogin(errorMsg) {
-    show('screen-login');
-    var btn = document.getElementById('btn-send');
-    if (btn) { btn.disabled = false; btn.textContent = 'Send Login Link →'; }
-    if (errorMsg) {
-      var el = document.getElementById('login-error');
-      el.textContent = errorMsg;
-      el.style.display = 'block';
-    }
-  }
-
-  function requestLink() {
-    var email = document.getElementById('email-input').value.trim();
-    if (!email) return;
-    var btn = document.getElementById('btn-send');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    document.getElementById('login-error').style.display = 'none';
-
-    fetch(API + '/api/portal/request-link', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email }),
-    })
-    .then(function() {
-      document.getElementById('sent-to').textContent = email;
-      show('screen-check');
-    })
-    .catch(function() {
-      document.getElementById('login-error').style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Send Login Link →';
+/* ── Tab switching ── */
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
     });
-  }
-
-  document.getElementById('email-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') requestLink();
+    document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('tab-' + tab).classList.add('active');
+    if (tab === 'billing' && !billingLoaded) loadBilling();
   });
+});
 
-  function resendLink() {
-    var email = document.getElementById('sent-to').textContent;
-    if (!email) { showLogin(); return; }
-    fetch(API + '/api/portal/request-link', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email }),
-    }).catch(function(){});
+/* ── Auth ── */
+function requestLink() {
+  var email = document.getElementById('email-input').value.trim();
+  if (!email) return;
+  var btn = document.getElementById('btn-send');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  fetch(API + '/api/portal/request-link', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email }),
+  })
+  .then(function() {
+    document.getElementById('sent-to').textContent = email;
+    show('screen-check');
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Send Login Link →';
+    var err = document.getElementById('login-error');
+    err.textContent = 'Something went wrong. Please try again.';
+    err.style.display = 'block';
+  });
+}
+
+function resendLink() {
+  var email = document.getElementById('sent-to').textContent;
+  if (!email) { showLogin(); return; }
+  fetch(API + '/api/portal/request-link', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email }),
+  }).catch(function() {});
+}
+
+function exchangeToken(token) {
+  fetch(API + '/api/portal/auth', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: token }),
+  })
+  .then(function(r) {
+    if (r.status === 401) { clearSession(); showLogin('Invalid or expired link. Please request a new one.'); return null; }
+    return r.json();
+  })
+  .then(function(d) {
+    if (!d) return;
+    if (d.session) { setSession(d.session); loadDashboard(); }
+    else showLogin(d.error || 'Invalid link. Please request a new one.');
+  })
+  .catch(function() { showLogin('Something went wrong. Please request a new link.'); });
+}
+
+function logout() {
+  clearSession();
+  fetch(API + '/api/portal/logout', { method: 'POST' }).catch(function() {});
+  showLogin();
+}
+
+/* ── Init ── */
+(function init() {
+  var params = new URLSearchParams(window.location.search);
+  var token  = params.get('token');
+  if (token) {
+    window.history.replaceState({}, '', '/portal');
+    exchangeToken(token);
+    return;
+  }
+  if (getSession()) { loadDashboard(); return; }
+  showLogin();
+})();
+
+/* ── Load dashboard ── */
+var _dashClient = null;
+var _dashData   = null;
+var _perfChart  = null;
+
+function loadDashboard() {
+  show('screen-dashboard');
+  document.getElementById('tab-overview').innerHTML = '<div class="loading-state">Loading your dashboard…</div>';
+
+  Promise.all([
+    fetch(API + '/api/portal/me',         { headers: authHeaders() }).then(function(r) { return r.json(); }),
+    fetch(API + '/api/portal/dashboard',  { headers: authHeaders() }).then(function(r) { return r.json(); }),
+    fetch(API + '/api/portal/suspension', { headers: authHeaders() }).then(function(r) { return r.json(); }).catch(function() { return { suspended: false }; }),
+  ])
+  .then(function(results) {
+    var client     = results[0];
+    var data       = results[1];
+    var suspension = results[2];
+
+    if (client.error) { clearSession(); showLogin(client.error); return; }
+
+    _dashClient = client;
+    _dashData   = data;
+
+    document.getElementById('dash-biz-name').textContent  = client.business_name || '';
+    document.getElementById('dash-plan-badge').textContent = client.plan_name || '';
+
+    renderOverview(client, data, suspension);
+    renderPosts(client, data);
+    renderReviews(data);
+    renderRankings();
+  })
+  .catch(function() {
+    document.getElementById('tab-overview').innerHTML = '<div class="no-data">Failed to load dashboard. Please refresh.</div>';
+  });
+}
+
+/* ── Helpers ── */
+var MONTHS = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmt(n)       { return (n !== null && n !== undefined && !isNaN(n)) ? Number(n).toLocaleString() : '—'; }
+function fmtDate(iso) { if (!iso) return '—'; var d = new Date(iso); return MONTHS[d.getMonth()+1] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+function fmtMonth(r)  { return MONTHS[r.month] + ' ' + r.year; }
+function esc(s)       { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function trendLabel(cur, prev) {
+  if (cur === null || cur === undefined || prev === null || prev === undefined || prev === 0) return { cls: 'trend-flat', text: '—' };
+  var pct = Math.round(((cur - prev) / prev) * 100);
+  if (pct > 0)  return { cls: 'trend-up',   text: '↑ ' + pct + '%' };
+  if (pct < 0)  return { cls: 'trend-down',  text: '↓ ' + Math.abs(pct) + '%' };
+  return { cls: 'trend-flat', text: '→ 0%' };
+}
+
+function healthColor(val, type) {
+  if (type === 'pct') {
+    if (val >= 80) return { bg: '#D1FAE5', icon: '#059669' };
+    if (val >= 50) return { bg: '#FEF3C7', icon: '#D97706' };
+    return { bg: '#FEE2E2', icon: var_danger };
+  }
+  return { bg: '#EFF6FF', icon: '#1B4FD8' };
+}
+var var_danger = '#EF4444';
+
+function pct(n) { return n !== null && n !== undefined ? Math.round(n * 100) : null; }
+
+/* ── Render: Overview ── */
+function renderOverview(client, data, suspension) {
+  var reports  = data.reports || [];
+  var latest   = reports.length ? reports[reports.length - 1] : null;
+  var html     = '';
+
+  // Upsell banner
+  if (latest && latest.upsell_triggered && latest.upsell_text) {
+    html += '<div class="upsell-banner"><div class="upsell-text">' + esc(latest.upsell_text) +
+      '<span>Upgrade your plan to unlock more growth.</span></div>' +
+      '<a href="/pricing" class="upsell-cta">Upgrade Plan →</a></div>';
   }
 
-  function exchangeToken(token) {
-    show('screen-login');
-    fetch(API + '/api/portal/auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token: token }),
-    })
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (data.session) {
-        setSession(data.session);
-        loadDashboard();
-      } else {
-        showLogin(data.error || 'Invalid link. Please request a new one.');
-      }
-    })
-    .catch(function() {
-      showLogin('Something went wrong. Please request a new link.');
+  // Health cards
+  var postCons  = latest ? pct(latest.posts_consistency) : null;
+  var replyRate = latest ? pct(latest.reply_rate)        : null;
+  var isSusp    = suspension && suspension.suspended;
+  var planOk    = client.status === 'active';
+
+  html += '<div class="health-grid">';
+  html += healthCard(
+    postCons !== null ? (postCons >= 80 ? '#D1FAE5' : postCons >= 50 ? '#FEF3C7' : '#FEE2E2') : '#F3F4F6',
+    postCons !== null ? (postCons >= 80 ? '#059669' : postCons >= 50 ? '#D97706' : '#EF4444') : '#6B7280',
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    'Post Consistency',
+    postCons !== null ? postCons + '%' : '—',
+    latest ? (latest.posts_published || 0) + ' of ' + (latest.posts_expected || 0) + ' posts' : 'No data'
+  );
+  html += healthCard(
+    replyRate !== null ? (replyRate >= 80 ? '#D1FAE5' : replyRate >= 50 ? '#FEF3C7' : '#FEE2E2') : '#F3F4F6',
+    replyRate !== null ? (replyRate >= 80 ? '#059669' : replyRate >= 50 ? '#D97706' : '#EF4444') : '#6B7280',
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    'Review Reply Rate',
+    replyRate !== null ? replyRate + '%' : '—',
+    latest && latest.avg_reply_hours ? 'Avg ' + Math.round(latest.avg_reply_hours) + 'h reply time' : 'No data'
+  );
+  html += healthCard(
+    isSusp ? '#FEE2E2' : '#D1FAE5',
+    isSusp ? '#EF4444' : '#059669',
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    'GBP Profile',
+    isSusp ? 'Suspended' : 'Active',
+    isSusp ? (suspension.reason || 'Contact support') : 'Verified & Publishing'
+  );
+  html += healthCard(
+    planOk ? '#D1FAE5' : '#FEF3C7',
+    planOk ? '#059669' : '#D97706',
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    'Plan Status',
+    client.plan_name || '—',
+    planOk ? 'Active' : esc(client.status || 'Unknown')
+  );
+  html += '</div>';
+
+  // Stats
+  if (latest) {
+    html += '<div class="stats-grid">';
+    var stats = [
+      { label: 'Profile Views',      val: latest.views_total,     prev: latest.prev_views_total },
+      { label: 'Phone Calls',         val: latest.calls,           prev: latest.prev_calls },
+      { label: 'Website Clicks',      val: latest.website_clicks,  prev: latest.prev_website_clicks },
+      { label: 'Direction Requests',  val: latest.directions,      prev: latest.prev_directions },
+    ];
+    stats.forEach(function(s) {
+      var t = trendLabel(s.val, s.prev);
+      html += '<div class="stat-card">' +
+        '<div class="stat-label">' + esc(s.label) + '</div>' +
+        '<div class="stat-val">' + fmt(s.val) + '</div>' +
+        '<span class="stat-trend ' + t.cls + '">' + t.text + '</span>' +
+        '</div>';
     });
-  }
-
-  function validateAndLoad() {
-    fetch(API + '/api/portal/me', { headers: authHeaders() })
-    .then(function(r) {
-      if (r.status === 401) { clearSession(); showLogin(); return; }
-      return r.json();
-    })
-    .then(function(client) {
-      if (!client) return;
-      document.getElementById('dash-biz-name').textContent = client.business_name || '';
-      loadDashboard();
-    })
-    .catch(function() { showLogin(); });
-  }
-
-  function logout() {
-    clearSession();
-    fetch(API + '/api/portal/logout', { method: 'POST' }).catch(function(){});
-    showLogin();
-  }
-
-  /* ── Dashboard render ────────────────────────────── */
-  function loadDashboard() {
-    show('screen-dashboard');
-    Promise.all([
-      fetch(API + '/api/portal/me',        { headers: authHeaders() }).then(function(r) { return r.json(); }),
-      fetch(API + '/api/portal/dashboard',  { headers: authHeaders() }).then(function(r) { return r.json(); }),
-    ])
-    .then(function(results) {
-      var client = results[0];
-      var data   = results[1];
-      document.getElementById('dash-biz-name').textContent = client.business_name || '';
-      renderDash(client, data);
-    })
-    .catch(function() {
-      document.getElementById('dash-body').innerHTML = '<div class="no-data">Failed to load dashboard. Please refresh.</div>';
-    });
-  }
-
-  function renderDash(client, data) {
-    var latest = data.reports && data.reports[0];
-    var html = '';
-
-    // ── Month label ──
-    if (latest) {
-      var MONTHS = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
-      html += '<p class="month-label">📅 ' + MONTHS[latest.month] + ' ' + latest.year + ' Report</p>';
-    }
-
-    // ── Account health ──
-    html += '<div class="dash-section">';
-    html += '<div class="dash-section-title">Account Health</div>';
-    html += '<div class="health-grid">';
-
-    var IC_POST   = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    var IC_REPLY  = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
-    var IC_STATUS = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-
-    var consistency = latest ? Math.round((latest.posts_consistency || 0) * 100) : null;
-    var consistencyColor = consistency === null ? 'amber' : consistency >= 80 ? 'green' : consistency >= 50 ? 'amber' : 'red';
-    html += healthCard(consistencyColor, IC_POST, 'Post Consistency', consistency !== null ? consistency + '%' : 'No data');
-
-    var replyRate = latest ? Math.round((latest.reply_rate || 0) * 100) : null;
-    var replyColor = replyRate === null ? 'amber' : replyRate >= 80 ? 'green' : replyRate >= 50 ? 'amber' : 'red';
-    html += healthCard(replyColor, IC_REPLY, 'Review Reply Rate', replyRate !== null ? replyRate + '%' : 'No data');
-
-    var statusColor = client.status === 'active' ? 'green' : 'amber';
-    var statusLabel = client.status === 'active' ? 'Active & Publishing' : client.status || 'Unknown';
-    html += healthCard(statusColor, IC_STATUS, 'GBP Profile', statusLabel);
-
-    html += '</div></div>';
-
-    // ── Stats ──
-    if (latest) {
-      html += '<div class="dash-section">';
-      html += '<div class="dash-section-title">Performance This Month</div>';
-      html += '<div class="stat-grid">';
-      html += statCard('Profile Views', fmt(latest.views_total), trendLabel(latest.views_total, latest.prev_views_total));
-      html += statCard('Phone Calls', fmt(latest.calls), trendLabel(latest.calls, latest.prev_calls));
-      html += statCard('Website Clicks', fmt(latest.website_clicks), trendLabel(latest.website_clicks, latest.prev_website_clicks));
-      html += statCard('Direction Requests', fmt(latest.directions), trendLabel(latest.directions, latest.prev_directions));
-      html += '</div></div>';
-    }
-
-    // ── Narrative ──
-    if (latest && (latest.narrative || (latest.bullets && latest.bullets.length))) {
-      html += '<div class="dash-section">';
-      html += '<div class="dash-section-title">Your Monthly Summary</div>';
-      html += '<div class="narrative-card">';
-      if (latest.narrative) html += '<p class="narrative-text">' + esc(latest.narrative) + '</p>';
-      if (latest.bullets && latest.bullets.length) {
-        html += '<ul class="bullets">';
-        latest.bullets.forEach(function(b) { html += '<li>' + esc(b) + '</li>'; });
-        html += '</ul>';
-      }
-      html += '</div></div>';
-    }
-
-    // ── Posts ──
-    html += '<div class="dash-section">';
-    html += '<div class="dash-section-title">Recent Google Posts</div>';
-    if (data.posts && data.posts.length) {
-      html += '<div class="posts-grid">';
-      data.posts.forEach(function(p) { html += postCard(p); });
-      html += '</div>';
-    } else {
-      html += '<div class="no-data">No posts published yet.</div>';
-    }
     html += '</div>';
 
-    // ── Reviews ──
-    html += '<div class="dash-section">';
-    html += '<div class="dash-section-title">Recent Reviews</div>';
-    if (latest) {
-      html += '<div style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap;">';
-      html += '<span style="font-size:.875rem;color:var(--slate);"><strong>' + (latest.reviews_this_month || 0) + '</strong> <span style="color:var(--muted)">reviews this month</span></span>';
-      html += '<span style="font-size:.875rem;color:var(--slate);"><strong>' + (replyRate !== null ? replyRate + '%' : '—') + '</strong> <span style="color:var(--muted)">replied</span></span>';
-      if (latest.avg_reply_hours) html += '<span style="font-size:.875rem;color:var(--slate);"><strong>' + Math.round(latest.avg_reply_hours) + 'h</strong> <span style="color:var(--muted)">avg reply time</span></span>';
-      html += '</div>';
-    }
-    if (data.reviews && data.reviews.length) {
-      data.reviews.forEach(function(r) { html += reviewCard(r); });
-    } else {
-      html += '<div class="no-data">No reviews found yet.</div>';
-    }
+    // Review chips
+    var replyRatePct = pct(latest.reply_rate);
+    html += '<div class="review-chips">';
+    if (latest.reviews_this_month !== null && latest.reviews_this_month !== undefined)
+      html += '<span class="review-chip">⭐ ' + latest.reviews_this_month + ' reviews this month</span>';
+    if (replyRatePct !== null)
+      html += '<span class="review-chip">💬 ' + replyRatePct + '% replied</span>';
+    if (latest.avg_reply_hours)
+      html += '<span class="review-chip">⚡ Avg ' + Math.round(latest.avg_reply_hours) + 'h response</span>';
     html += '</div>';
-
-    document.getElementById('dash-body').innerHTML = html;
   }
 
-  /* ── Component builders ───────────────────────────── */
-  function healthCard(color, icon, label, val) {
-    return '<div class="health-card">' +
-      '<div class="health-icon ' + color + '">' + icon + '</div>' +
-      '<div><div class="health-text-label">' + label + '</div><div class="health-text-val">' + val + '</div></div>' +
+  // Chart
+  if (reports.length > 1) {
+    html += '<div class="chart-card">' +
+      '<div class="chart-header"><span class="chart-header-title">Performance Over Time</span>' +
+      '<span style="font-size:.75rem;color:var(--muted)">' + fmtMonth(reports[0]) + ' – ' + fmtMonth(reports[reports.length-1]) + '</span></div>' +
+      '<div class="chart-wrap"><canvas id="perf-chart"></canvas></div>' +
       '</div>';
   }
 
-  function statCard(label, value, trend) {
-    return '<div class="stat-card">' +
-      '<div class="stat-label">' + label + '</div>' +
-      '<div class="stat-value">' + value + '</div>' +
-      '<div class="stat-trend ' + trend.cls + '">' + trend.text + '</div>' +
-      '</div>';
+  // Narrative
+  if (latest && latest.narrative) {
+    html += '<div class="narrative-card">';
+    html += '<div class="narrative-month">' + fmtMonth(latest) + ' Summary</div>';
+    html += '<p class="narrative-text">' + esc(latest.narrative) + '</p>';
+    if (latest.bullets && latest.bullets.length) {
+      var bullets = typeof latest.bullets === 'string' ? JSON.parse(latest.bullets) : latest.bullets;
+      html += '<div class="bullets-list">';
+      bullets.forEach(function(b) {
+        html += '<div class="bullet-item"><div class="bullet-dot">' +
+          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#1B4FD8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '</div><span>' + esc(b) + '</span></div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
   }
 
-  function postCard(p) {
-    var type = p.post_type || 'post';
-    var img  = p.image_url
-      ? '<img class="post-img" src="' + esc(p.image_url) + '" alt="" loading="lazy">'
-      : '<div class="post-img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#CBD5E1" stroke-width="1.8"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#CBD5E1" stroke-width="1.5"/><path d="M21 15l-5-5L5 21" stroke="#CBD5E1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
-    return '<div class="post-card">' + img +
-      '<div class="post-body">' +
-        '<span class="post-type ' + type + '">' + type + '</span>' +
-        '<div class="post-summary">' + esc(p.summary || '(No summary)') + '</div>' +
-        '<div class="post-date">' + fmtDate(p.published_at) + '</div>' +
-      '</div></div>';
+  document.getElementById('tab-overview').innerHTML = html;
+
+  // Render chart after DOM update
+  if (reports.length > 1) {
+    setTimeout(function() { renderPerfChart(reports); }, 0);
+  }
+}
+
+function healthCard(bg, iconColor, iconSvg, label, val, sub) {
+  return '<div class="health-card">' +
+    '<div class="health-card-icon" style="background:' + bg + ';color:' + iconColor + '">' + iconSvg + '</div>' +
+    '<div class="health-card-label">' + esc(label) + '</div>' +
+    '<div class="health-card-val">' + esc(val) + '</div>' +
+    '<div class="health-card-sub">' + esc(sub) + '</div>' +
+    '</div>';
+}
+
+/* ── Performance Chart ── */
+function renderPerfChart(reports) {
+  var canvas = document.getElementById('perf-chart');
+  if (!canvas) return;
+  if (_perfChart) { _perfChart.destroy(); _perfChart = null; }
+  var labels = reports.map(function(r) { return MONTHS[r.month] + ' \'' + String(r.year).slice(2); });
+  var views  = reports.map(function(r) { return r.views_total   || 0; });
+  var calls  = reports.map(function(r) { return r.calls         || 0; });
+  var clicks = reports.map(function(r) { return r.website_clicks || 0; });
+
+  _perfChart = new Chart(canvas.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        { label: 'Profile Views',  data: views,  borderColor: '#1B4FD8', backgroundColor: 'rgba(27,79,216,.06)', tension: .4, pointRadius: 4, pointHoverRadius: 6, fill: true, borderWidth: 2 },
+        { label: 'Phone Calls',    data: calls,  borderColor: '#10B981', backgroundColor: 'transparent',          tension: .4, pointRadius: 4, pointHoverRadius: 6, fill: false, borderWidth: 2 },
+        { label: 'Website Clicks', data: clicks, borderColor: '#F59E0B', backgroundColor: 'transparent',          tension: .4, pointRadius: 4, pointHoverRadius: 6, fill: false, borderWidth: 2 },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 11 }, color: '#6B7280', usePointStyle: true, pointStyleWidth: 8, padding: 16 } },
+        tooltip: { backgroundColor: '#0F172A', titleFont: { family: 'Inter', size: 11 }, bodyFont: { family: 'Inter', size: 11 }, padding: 10, cornerRadius: 8 },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' } },
+        y: { grid: { color: 'rgba(0,0,0,.04)' }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' }, border: { display: false } },
+      },
+    },
+  });
+}
+
+/* ── Render: Posts ── */
+function renderPosts(client, data) {
+  var posts = (data && data.posts) || [];
+  var html  = '';
+
+  if (!posts.length) {
+    document.getElementById('tab-posts').innerHTML = '<div class="no-data">No posts published yet.</div>';
+    return;
   }
 
-  function reviewCard(r) {
-    var starFilled = '<svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-    var starEmpty  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#CBD5E1" stroke-width="1.5"/></svg>';
-    var stars = starFilled.repeat(r.rating || 0) + starEmpty.repeat(5 - (r.rating || 0));
-    var initial = (r.reviewer_name || 'A')[0].toUpperCase();
-    var replied = !!r.replied_at;
-    return '<div class="review-card">' +
-      '<div class="review-header">' +
-        '<div class="review-avatar">' + initial + '</div>' +
-        '<div>' +
-          '<div class="review-name">' + esc(r.reviewer_name || 'Anonymous') + (replied ? '<span class="badge-replied">Replied</span>' : '<span class="badge-pending">Pending</span>') + '</div>' +
-          '<div class="review-stars">' + stars + '</div>' +
-        '</div>' +
+  html += '<span class="dash-section-title">' + posts.length + ' Recent Google Posts</span>';
+  html += '<div class="posts-grid">';
+  posts.forEach(function(p) { html += postCard(p, client && client.gbp_place_id); });
+  html += '</div>';
+  document.getElementById('tab-posts').innerHTML = html;
+}
+
+function postCard(p, gbpPlaceId) {
+  var type   = p.post_type || 'standard';
+  var imgHtml = p.image_url
+    ? '<img class="post-img" src="' + esc(p.image_url) + '" alt="Post image" loading="lazy">'
+    : '<div class="post-img-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="#93C5FD" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#93C5FD" stroke-width="2"/><polyline points="21 15 16 10 5 21" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+
+  var gbpLink = '';
+  if (gbpPlaceId) {
+    gbpLink = '<a href="https://search.google.com/local/posts?placeid=' + esc(gbpPlaceId) + '" target="_blank" rel="noopener" class="post-gbp-link">' +
+      '<svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="15 3 21 3 21 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="10" y1="14" x2="21" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>' +
+      ' View on Google</a>';
+  }
+
+  return '<div class="post-card">' + imgHtml +
+    '<div class="post-body">' +
+      '<span class="post-type-badge ' + esc(type) + '">' + esc(type) + '</span>' +
+      '<div class="post-summary">' + esc(p.summary || '(No summary)') + '</div>' +
+      '<div class="post-footer">' +
+        '<span class="post-date">' + fmtDate(p.published_at) + '</span>' +
+        gbpLink +
       '</div>' +
-      (r.review_text ? '<p class="review-text">' + esc(r.review_text) + '</p>' : '') +
-      '</div>';
+    '</div></div>';
+}
+
+/* ── Render: Reviews ── */
+function renderReviews(data) {
+  var reviews = (data && data.reviews) || [];
+  var reports = (data && data.reports) || [];
+  var latest  = reports.length ? reports[reports.length - 1] : null;
+  var html    = '';
+
+  if (latest) {
+    var replyRatePct = pct(latest.reply_rate);
+    html += '<div class="review-chips" style="margin-bottom:20px">';
+    if (latest.reviews_this_month !== null && latest.reviews_this_month !== undefined)
+      html += '<span class="review-chip">⭐ ' + latest.reviews_this_month + ' reviews this month</span>';
+    if (replyRatePct !== null)
+      html += '<span class="review-chip">💬 ' + replyRatePct + '% reply rate</span>';
+    if (latest.avg_reply_hours)
+      html += '<span class="review-chip">⚡ Avg ' + Math.round(latest.avg_reply_hours) + 'h response</span>';
+    html += '</div>';
   }
 
-  /* ── Helpers ──────────────────────────────────────── */
-  function show(id) {
-    ['screen-login','screen-check','screen-dashboard'].forEach(function(s) {
-      document.getElementById(s).classList.remove('active');
+  if (!reviews.length) {
+    html += '<div class="no-data">No reviews found yet.</div>';
+    document.getElementById('tab-reviews').innerHTML = html;
+    return;
+  }
+
+  reviews.forEach(function(r) { html += reviewCard(r); });
+  document.getElementById('tab-reviews').innerHTML = html;
+}
+
+function reviewCard(r) {
+  var rating = r.rating || 0;
+  var starFilled = '<svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+  var starEmpty  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#D1D5DB" stroke-width="2"/></svg>';
+  var stars = starFilled.repeat(rating) + starEmpty.repeat(Math.max(0, 5 - rating));
+  var initial = (r.reviewer_name || 'A')[0].toUpperCase();
+  var replied  = r.replied_at || r.response_text;
+
+  var replyHtml = '';
+  if (r.response_text) {
+    replyHtml = '<div class="review-reply"><div class="review-reply-label">Our Response</div>' + esc(r.response_text) + '</div>';
+  } else if (r.replied_at) {
+    replyHtml = '<div class="review-reply" style="color:var(--muted);font-style:italic">Response published on Google.</div>';
+  }
+
+  return '<div class="review-card">' +
+    '<div class="review-header">' +
+      '<div class="review-avatar">' + initial + '</div>' +
+      '<div class="review-meta">' +
+        '<div class="review-name">' + esc(r.reviewer_name || 'Anonymous') +
+          (replied ? '<span class="badge-replied">Replied</span>' : '<span class="badge-pending">Pending</span>') +
+        '</div>' +
+        '<div class="review-stars">' + stars + '</div>' +
+        '<div class="review-date">' + fmtDate(r.created_at) + '</div>' +
+      '</div>' +
+    '</div>' +
+    (r.review_text ? '<p class="review-text">' + esc(r.review_text) + '</p>' : '') +
+    replyHtml +
+    '</div>';
+}
+
+/* ── Render: Rankings ── */
+function renderRankings() {
+  document.getElementById('tab-rankings').innerHTML =
+    '<div class="rankings-placeholder">' +
+    '<div class="rankings-placeholder-icon">' +
+    '<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="#1B4FD8" stroke-width="2"/></svg>' +
+    '</div>' +
+    '<h3>GBP Rank Tracking — Coming Soon</h3>' +
+    '<p>We\'re building a live rank grid that shows exactly where you appear on Google Maps across your service area — down to the street level. This feature is coming in the next update.</p>' +
+    '</div>';
+}
+
+/* ── Billing ── */
+var billingLoaded = false;
+
+function loadBilling() {
+  billingLoaded = true;
+  document.getElementById('tab-billing').innerHTML = '<div class="loading-state">Loading billing info…</div>';
+  fetch(API + '/api/portal/billing', { headers: authHeaders() })
+    .then(function(r) { return r.json(); })
+    .then(function(d) { renderBilling(d); })
+    .catch(function() {
+      document.getElementById('tab-billing').innerHTML = '<div class="no-data">Could not load billing. Please refresh.</div>';
     });
-    document.getElementById(id).classList.add('active');
-  }
+}
 
-  function showLogin(msg) {
-    show('screen-login');
-    var el = document.getElementById('login-error');
-    if (msg) { el.textContent = msg; el.style.display = 'block'; }
-    else { el.style.display = 'none'; }
-  }
+function renderBilling(data) {
+  var sub  = data.subscription;
+  var invs = data.invoices || [];
+  var html = '';
 
-  function fmt(n) { return n != null ? Number(n).toLocaleString() : '—'; }
+  // Plan card
+  html += '<div class="dash-section">';
+  html += '<span class="dash-section-title">Your Plan</span>';
+  html += '<div class="plan-card">';
+  if (sub) {
+    var cancelEnd  = sub.cancel_at_period_end;
+    var periodEnd  = sub.current_period_end ? fmtDate(sub.current_period_end) : '—';
+    var statusBadge = cancelEnd
+      ? '<span class="plan-status-badge plan-status-cancelling">Cancels ' + periodEnd + '</span>'
+      : (sub.status === 'active' ? '<span class="plan-status-badge plan-status-active">Active</span>' : '<span class="plan-status-badge plan-status-inactive">' + esc(sub.status) + '</span>');
 
-  function fmtDate(iso) {
-    if (!iso) return '';
-    return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    html += '<div class="plan-name-row"><span class="plan-name">' + esc(sub.plan_name || 'Local Boost Lab Plan') + '</span>' + statusBadge + '</div>';
+    if (sub.plan_price) {
+      html += '<div class="plan-price">$' + esc(sub.plan_price) + '<span>/' + esc(sub.billing_cycle || 'mo') + '</span></div>';
+    }
+    html += '<div class="plan-meta">';
+    if (!cancelEnd) html += 'Next renewal: ' + periodEnd + '&nbsp;&nbsp;·&nbsp;&nbsp;';
+    html += esc(sub.billing_cycle === 'annual' ? 'Annual billing' : 'Monthly billing');
+    html += '</div>';
+  } else {
+    html += '<div class="plan-name-row"><span class="plan-name">' + esc((_dashClient && _dashClient.plan_name) || 'Local Boost Lab Plan') + '</span></div>';
+    html += '<div class="plan-meta" style="margin-bottom:20px">Contact us for billing details.</div>';
   }
+  html += '<div class="plan-actions">';
+  html += '<button class="btn-portal" onclick="openBillingPortal()">Manage Plan & Payment →</button>';
+  if (sub && sub.status === 'active' && !sub.cancel_at_period_end) {
+    html += '<button class="btn-cancel-sub" onclick="confirmCancel()">Cancel Subscription</button>';
+  }
+  html += '</div></div></div>';
 
-  function trendLabel(cur, prev) {
-    if (cur == null || prev == null || prev === 0) return { cls: 'flat', text: '—' };
-    var pct = Math.round(((cur - prev) / prev) * 100);
-    if (pct > 0)  return { cls: 'up',   text: '↑ ' + pct + '% vs last month' };
-    if (pct < 0)  return { cls: 'down', text: '↓ ' + Math.abs(pct) + '% vs last month' };
-    return { cls: 'flat', text: 'Same as last month' };
+  // Invoices
+  html += '<div class="dash-section">';
+  html += '<span class="dash-section-title">Invoice History</span>';
+  if (invs.length) {
+    html += '<div class="invoice-list">';
+    invs.forEach(function(inv) {
+      var badge = inv.status === 'paid'
+        ? '<span class="badge-replied">Paid</span>'
+        : '<span class="badge-pending">' + esc(inv.status) + '</span>';
+      html += '<div class="invoice-row">' +
+        '<div class="invoice-left"><span class="invoice-number">' + esc(inv.number || inv.id) + '</span>' + badge + '</div>' +
+        '<div class="invoice-right">' +
+          '<span class="invoice-period">' + fmtDate(inv.period_start) + ' – ' + fmtDate(inv.period_end) + '</span>' +
+          '<span class="invoice-amount">$' + (inv.amount ? Number(inv.amount).toFixed(2) : '—') + '</span>' +
+          (inv.pdf_url ? '<a href="' + esc(inv.pdf_url) + '" target="_blank" rel="noopener" class="invoice-dl">Download PDF ↓</a>' : '') +
+        '</div></div>';
+    });
+    html += '</div>';
+  } else {
+    html += '<div class="no-data" style="padding:24px">No invoices found.</div>';
   }
+  html += '</div>';
 
-  function esc(s) {
-    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+  document.getElementById('tab-billing').innerHTML = html;
+}
+
+function openBillingPortal() {
+  fetch(API + '/api/portal/billing-portal', { method: 'POST', headers: authHeaders() })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.url) window.open(d.url, '_blank');
+      else alert(d.error || 'Could not open billing portal.');
+    })
+    .catch(function() { alert('Failed to open billing portal. Please try again.'); });
+}
+
+function confirmCancel() {
+  if (!confirm('Cancel your subscription?\n\nYour service will continue until the end of the current billing period. You can resubscribe any time.')) return;
+  fetch(API + '/api/portal/cancel-subscription', { method: 'POST', headers: authHeaders() })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.ok) {
+        alert('Your subscription has been set to cancel at the end of this billing period.');
+        billingLoaded = false;
+        loadBilling();
+      } else {
+        alert(d.error || 'Something went wrong. Please try again.');
+      }
+    })
+    .catch(function() { alert('Failed to cancel. Please try again.'); });
+}
 </script>
 </body>
 </html>
