@@ -210,6 +210,8 @@
   /* ── Auth flows ───────────────────────────────────── */
   function showLogin(errorMsg) {
     show('screen-login');
+    var btn = document.getElementById('btn-send');
+    if (btn) { btn.disabled = false; btn.textContent = 'Send Login Link →'; }
     if (errorMsg) {
       var el = document.getElementById('login-error');
       el.textContent = errorMsg;
