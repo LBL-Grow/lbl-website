@@ -446,7 +446,7 @@ function loadDashboard() {
     document.getElementById('dash-plan-badge').textContent = client.plan_name || '';
 
     renderOverview(client, data, suspension);
-    renderPosts(client, data);
+    renderPosts(client, data);  // passes data.gbp_place_id
     renderReviews(data);
   })
   .catch(function() {
@@ -648,8 +648,9 @@ function renderPerfChart(reports) {
 
 /* ── Render: Posts ── */
 function renderPosts(client, data) {
-  var posts = (data && data.posts) || [];
-  var html  = '';
+  var posts      = (data && data.posts)        || [];
+  var placeId    = (data && data.gbp_place_id) || (client && client.gbp_place_id) || null;
+  var html       = '';
 
   if (!posts.length) {
     document.getElementById('tab-posts').innerHTML = '<div class="no-data">No posts published yet.</div>';
@@ -658,7 +659,7 @@ function renderPosts(client, data) {
 
   html += '<span class="dash-section-title">' + posts.length + ' Recent Google Posts</span>';
   html += '<div class="posts-grid">';
-  posts.forEach(function(p) { html += postCard(p, client && client.gbp_place_id); });
+  posts.forEach(function(p) { html += postCard(p, placeId); });
   html += '</div>';
   document.getElementById('tab-posts').innerHTML = html;
 }
