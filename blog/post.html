@@ -397,8 +397,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + title;
     document.getElementById('share-linkedin').href = 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + title;
 
-    // Render body markdown
-    document.getElementById('article-content').innerHTML = marked.parse(post.body || '');
+    // Render body — HTML (Quill) or markdown (legacy)
+    var _body = post.body || '';
+    document.getElementById('article-content').innerHTML = _body.trim().startsWith('<') ? _body : marked.parse(_body);
 
     // Show/hide elements
     document.getElementById('header-skeleton').style.display = 'none';
