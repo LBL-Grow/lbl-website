@@ -65,7 +65,8 @@
     /* ── Health grid ── */
     .health-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .health-card{background:white;border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;gap:16px}
-    .health-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .health-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .health-icon.green svg{color:#065F46}.health-icon.amber svg{color:#92400E}.health-icon.red svg{color:#991B1B}
     .health-icon.green{background:#D1FAE5}
     .health-icon.amber{background:#FEF3C7}
     .health-icon.red{background:#FEE2E2}
@@ -135,7 +136,9 @@
 <!-- CHECK EMAIL SCREEN -->
 <div class="screen" id="screen-check">
   <div class="check-card">
-    <div style="font-size:2.5rem;margin-bottom:16px;">📬</div>
+    <div style="margin-bottom:20px;background:rgba(255,255,255,.15);width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-left:auto;margin-right:auto;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="white" stroke-width="2"/><path d="M2 8l10 7 10-7" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
     <h2>Check your email</h2>
     <p>We sent a secure login link to <strong id="sent-to"></strong>. Click the link to open your dashboard. It expires in 1 hour.</p>
     <span class="check-back" onclick="showLogin()">← Use a different email</span>
@@ -309,17 +312,21 @@
     html += '<div class="dash-section-title">Account Health</div>';
     html += '<div class="health-grid">';
 
+    var IC_POST   = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var IC_REPLY  = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    var IC_STATUS = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
     var consistency = latest ? Math.round((latest.posts_consistency || 0) * 100) : null;
     var consistencyColor = consistency === null ? 'amber' : consistency >= 80 ? 'green' : consistency >= 50 ? 'amber' : 'red';
-    html += healthCard(consistencyColor, '📝', 'Post Consistency', consistency !== null ? consistency + '%' : 'No data');
+    html += healthCard(consistencyColor, IC_POST, 'Post Consistency', consistency !== null ? consistency + '%' : 'No data');
 
     var replyRate = latest ? Math.round((latest.reply_rate || 0) * 100) : null;
     var replyColor = replyRate === null ? 'amber' : replyRate >= 80 ? 'green' : replyRate >= 50 ? 'amber' : 'red';
-    html += healthCard(replyColor, '💬', 'Review Reply Rate', replyRate !== null ? replyRate + '%' : 'No data');
+    html += healthCard(replyColor, IC_REPLY, 'Review Reply Rate', replyRate !== null ? replyRate + '%' : 'No data');
 
     var statusColor = client.status === 'active' ? 'green' : 'amber';
     var statusLabel = client.status === 'active' ? 'Active & Publishing' : client.status || 'Unknown';
-    html += healthCard(statusColor, '🟢', 'GBP Profile', statusLabel);
+    html += healthCard(statusColor, IC_STATUS, 'GBP Profile', statusLabel);
 
     html += '</div></div>';
 
@@ -401,7 +408,7 @@
     var type = p.post_type || 'post';
     var img  = p.image_url
       ? '<img class="post-img" src="' + esc(p.image_url) + '" alt="" loading="lazy">'
-      : '<div class="post-img-placeholder">📷</div>';
+      : '<div class="post-img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#CBD5E1" stroke-width="1.8"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#CBD5E1" stroke-width="1.5"/><path d="M21 15l-5-5L5 21" stroke="#CBD5E1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
     return '<div class="post-card">' + img +
       '<div class="post-body">' +
         '<span class="post-type ' + type + '">' + type + '</span>' +
@@ -411,7 +418,9 @@
   }
 
   function reviewCard(r) {
-    var stars = '★'.repeat(r.rating || 0) + '☆'.repeat(5 - (r.rating || 0));
+    var starFilled = '<svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+    var starEmpty  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#CBD5E1" stroke-width="1.5"/></svg>';
+    var stars = starFilled.repeat(r.rating || 0) + starEmpty.repeat(5 - (r.rating || 0));
     var initial = (r.reviewer_name || 'A')[0].toUpperCase();
     var replied = !!r.replied_at;
     return '<div class="review-card">' +
