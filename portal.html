@@ -136,12 +136,19 @@
 <!-- CHECK EMAIL SCREEN -->
 <div class="screen" id="screen-check">
   <div class="check-card">
+    <div style="font-weight:800;font-size:.85rem;color:white;letter-spacing:.06em;margin-bottom:32px;display:flex;align-items:center;gap:8px;justify-content:center;">
+      <svg width="16" height="21" viewBox="0 0 22 28" fill="none"><path d="M11 0C4.925 0 0 4.925 0 11c0 7.333 10 17 11 17s11-9.667 11-17C22 4.925 17.075 0 11 0z" fill="#F59E0B"/><path d="M13 4L7 12H11L9 21L18 12H14L13 4Z" fill="white"/></svg>
+      LOCAL BOOST LAB.
+    </div>
     <div style="margin-bottom:20px;background:rgba(255,255,255,.15);width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-left:auto;margin-right:auto;">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="white" stroke-width="2"/><path d="M2 8l10 7 10-7" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
     </div>
     <h2>Check your email</h2>
-    <p>We sent a secure login link to <strong id="sent-to"></strong>. Click the link to open your dashboard. It expires in 1 hour.</p>
+    <p style="margin-bottom:24px;">We sent a secure login link to <strong id="sent-to"></strong>. Click the link to open your dashboard — it expires in 1 hour.</p>
+    <p style="font-size:.82rem;opacity:.65;margin-bottom:28px;">Don't see it? Check your spam or promotions folder.</p>
+    <button onclick="resendLink()" style="display:block;width:100%;padding:12px;background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.3);border-radius:8px;font-weight:600;font-size:.88rem;cursor:pointer;margin-bottom:12px;font-family:Inter,sans-serif;transition:background 150ms;" onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">Resend link</button>
     <span class="check-back" onclick="showLogin()">← Use a different email</span>
+    <p style="margin-top:28px;font-size:.78rem;opacity:.5;line-height:1.6;">Still no email? <a href="mailto:hello@localboostlab.com" style="color:white;text-decoration:underline;">Contact us</a> and we'll get you in.</p>
   </div>
 </div>
 
@@ -237,6 +244,16 @@
   document.getElementById('email-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') requestLink();
   });
+
+  function resendLink() {
+    var email = document.getElementById('sent-to').textContent;
+    if (!email) { showLogin(); return; }
+    fetch(API + '/api/portal/request-link', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email }),
+    }).catch(function(){});
+  }
 
   function exchangeToken(token) {
     show('screen-login');
