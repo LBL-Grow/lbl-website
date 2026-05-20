@@ -1182,7 +1182,7 @@ function buildRankingsUI(data) {
 
   document.getElementById('tab-rankings').innerHTML = html;
 
-  // setTimeout(0) ensures browser has painted containers before Leaflet reads dimensions
+  // 100ms gives browser time to complete layout before Leaflet reads container dimensions
   setTimeout(function() {
     if (typeof L !== 'undefined') {
       grids.forEach(function(grid, idx) {
@@ -1190,7 +1190,7 @@ function buildRankingsUI(data) {
         if (map) _rankMaps.push(map);
       });
     }
-  }, 0);
+  }, 100);
 
   // Render rank trend charts
   grids.forEach(function(grid) {
@@ -1237,6 +1237,10 @@ function initRankMap(idx, grid, kwComps) {
   var gridSize   = grid.grid_size || 7;
   var centerRow  = Math.floor(gridSize / 2);
   var centerCol  = Math.floor(gridSize / 2);
+
+  // Force browser layout reflow so Leaflet reads correct container dimensions
+  container.style.display = 'block';
+  void container.getBoundingClientRect();
 
   var map = L.map(container, {
     center: [centerLat, centerLng], zoom: 13,
