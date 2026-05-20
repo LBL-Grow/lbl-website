@@ -1173,13 +1173,15 @@ function buildRankingsUI(data) {
 
   document.getElementById('tab-rankings').innerHTML = html;
 
-  // Initialize Leaflet maps after DOM is set
-  if (typeof L !== 'undefined') {
-    grids.forEach(function(grid, idx) {
-      var map = initRankMap(idx, grid, comps[grid.keyword] || []);
-      if (map) _rankMaps.push(map);
-    });
-  }
+  // Delay Leaflet init until browser has painted the containers (avoids 0-size bug)
+  requestAnimationFrame(function() {
+    if (typeof L !== 'undefined') {
+      grids.forEach(function(grid, idx) {
+        var map = initRankMap(idx, grid, comps[grid.keyword] || []);
+        if (map) _rankMaps.push(map);
+      });
+    }
+  });
 
   // Render rank trend charts
   grids.forEach(function(grid) {
@@ -1268,7 +1270,11 @@ function initRankMap(idx, grid, kwComps) {
   });
 
   var bounds = validCells.map(function(c) { return [c.lat, c.lng]; });
-  if (bounds.length > 1) map.fitBounds(bounds, { padding: [28, 28] });
+  if (bounds.length > 1) {
+    map.fitBounds(bounds, { padding: [28, 28] });
+  }
+  // Force size recalculation after container is fully painted
+  setTimeout(function() { map.invalidateSize(); }, 150);
 
   return map;
 }
