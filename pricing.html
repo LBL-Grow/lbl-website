@@ -256,6 +256,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .comparison-table th:first-child, .comparison-table td:first-child { min-width: 110px; }
     }
   </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -682,6 +684,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var email = (document.getElementById('exit-email').value || '').trim();
         if (!email) { document.getElementById('exit-email').focus(); return; }
         exitSubmit.textContent = 'Sending…'; exitSubmit.disabled = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', lead_source: 'exit_intent', page: 'pricing' });
         fetch(API + '/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email,source:'exit-intent-pricing'}) })
           .then(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; })
           .catch(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; });
@@ -690,5 +694,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }());
 </script>
 
+<!-- GTM: plan CTA conversion events -->
+<script>
+(function() {
+  var PLAN_VALUES = { reputation: 97, presence: 157, authority: 217 };
+  window.dataLayer = window.dataLayer || [];
+  // Fire begin_checkout on any plan CTA click
+  document.querySelectorAll('a[href*="/onboarding"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      var href = link.getAttribute('href') || '';
+      var m = href.match(/[?&]plan=([^&]+)/);
+      var plan = m ? m[1] : 'unknown';
+      window.dataLayer.push({
+        event: 'begin_checkout',
+        plan_name: plan,
+        value: PLAN_VALUES[plan] || 0,
+        currency: 'USD',
+        page: 'pricing',
+      });
+    });
+  });
+}());
+</script>
 </body>
 </html>

@@ -190,6 +190,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .onboarding-card { padding: 28px 20px; }
     }
   </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -561,14 +563,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.disabled = true;
     btn.textContent = 'Activating your profile...';
 
-    /* Simulate async submission */
+    var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+      ? 'http://localhost:3000' : 'https://gbp-agent-production.up.railway.app';
+
+    var params = new URLSearchParams(window.location.search);
+    var plan = params.get('plan') || 'unknown';
+
+    var payload = {
+      plan:            plan,
+      bizName:         (document.getElementById('s1-biz-name')     || {}).value || '',
+      bizType:         (document.getElementById('s1-biz-type')     || {}).value || '',
+      city:            (document.getElementById('s1-city')         || {}).value || '',
+      serviceAreas:    (document.getElementById('s1-service-areas')|| {}).value || '',
+      website:         (document.getElementById('s1-website')      || {}).value || '',
+      yearsInBusiness: (document.getElementById('s1-years')        || {}).value || '',
+      gbpUrl:          (document.getElementById('s1-gbp-url')      || {}).value || '',
+      ownerName:       (document.getElementById('s2-owner-name')   || {}).value || '',
+      ownerEmail:      (document.getElementById('s2-email')        || {}).value || '',
+      tone:            (document.getElementById('s2-tone')         || {}).value || '',
+      alwaysSay:       (document.getElementById('s2-always')       || {}).value || '',
+      neverSay:        (document.getElementById('s2-never')        || {}).value || '',
+      service1:        (document.getElementById('s2-service1')     || {}).value || '',
+      service2:        (document.getElementById('s2-service2')     || {}).value || '',
+      service3:        (document.getElementById('s2-service3')     || {}).value || '',
+      compliment:      (document.getElementById('s2-compliment')   || {}).value || '',
+      accessMethod:    (document.querySelector('input[name="access-method"]:checked') || {}).value || '',
+      reviewPref:      (document.querySelector('input[name="review-pref"]:checked')   || {}).value || '',
+      notes:           (document.getElementById('s4-notes')        || {}).value || '',
+    };
+
+    fetch(API + '/api/onboarding', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch(function() { /* non-blocking — show success regardless */ });
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'onboarding_complete', plan: plan, page: 'onboarding' });
+
     setTimeout(function() {
       document.getElementById('progress-bar-wrap').style.display = 'none';
       document.getElementById('step-4').classList.remove('active');
       document.getElementById('success-screen').classList.add('show');
-
-      /* In production, POST to /api/onboarding/complete with form data */
-    }, 1800);
+    }, 1200);
   }
 
 

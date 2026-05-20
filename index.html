@@ -212,6 +212,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .pricing-trust p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; }
     .pricing-trust a { color: var(--signal-amber); font-weight: 600; text-decoration: underline; }
   </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -291,7 +293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p style="margin-top:10px;font-size:0.72rem;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:5px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0"><rect x="5" y="11" width="14" height="10" rx="2" fill="rgba(255,255,255,0.55)"/><path d="M8 11V7a4 4 0 018 0v4" stroke="rgba(255,255,255,0.55)" stroke-width="2.5"/></svg> AES-256 encryption · Manager access only · Revoke anytime</p>
       <p style="margin-top:6px;margin-bottom:20px;font-size:0.82rem;"><a href="/pricing" style="color:rgba(255,255,255,0.7);text-decoration:underline;">See what's included →</a></p>
 
-      <div class="hero-lead-form" id="hero-lead-form" style="display:none;">
+      <div class="hero-lead-form" id="hero-lead-form">
         <div class="hero-lead-form__title">Free GBP Audit Checklist</div>
         <div class="hero-lead-form__row">
           <input type="text" id="lead-name" placeholder="Your name" autocomplete="name" aria-label="Your name">
@@ -1067,6 +1069,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!email) { document.getElementById('lead-email').focus(); return; }
       heroSubmit.textContent = 'Sending…';
       heroSubmit.disabled = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', lead_source: 'hero_form', page: 'home', industry: industry });
       submitLead(name, email, industry, 'hero-form', function () {
         heroForm.innerHTML = '<div class="hero-lead-form__success">✓ Check your inbox — checklist on its way!</div>';
       });
@@ -1102,6 +1106,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!email) { document.getElementById('exit-email').focus(); return; }
       exitSubmit.textContent = 'Sending…';
       exitSubmit.disabled = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', lead_source: 'exit_intent', page: 'home' });
       submitLead('', email, '', 'exit-intent', function () {
         document.getElementById('exit-form').innerHTML =
           '<p style="color:var(--authority-blue);font-weight:700;font-size:0.95rem;padding:8px 0 4px;">✓ Check your inbox — it\'s on its way!</p>';

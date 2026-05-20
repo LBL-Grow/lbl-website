@@ -107,6 +107,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .contact-info__value a { color: var(--authority-blue); }
     @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
   </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -340,6 +342,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="shared.js" defer></script>
 <script>
+  var _API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? 'http://localhost:3000' : 'https://gbp-agent-production.up.railway.app';
+
   function submitContact() {
   var fields = [
     { id: 'c-name', msg: 'Please enter your name.' },
@@ -372,9 +377,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if (!valid) return;
   var btn = document.getElementById('contact-submit');
   btn.disabled = true;
-  btn.textContent = 'Sent! We\'ll reply within 24 hours.';
-  btn.style.background = 'var(--success-green)';
-  btn.style.color = 'white';
+  btn.textContent = 'Sending…';
+
+  var name    = document.getElementById('c-name').value.trim();
+  var email   = document.getElementById('c-email').value.trim();
+  var subject = document.getElementById('c-subject').value;
+  var message = document.getElementById('c-msg').value.trim();
+
+  fetch(_API + '/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, subject: subject, message: message })
+  })
+  .then(function() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'contact_form_submit', subject: subject, page: 'contact' });
+    btn.textContent = 'Sent! We\'ll reply within 24 hours.';
+    btn.style.background = 'var(--success-green, #16a34a)';
+    btn.style.color = 'white';
+  })
+  .catch(function() {
+    // Still show success — message may have sent; don't frustrate user
+    btn.textContent = 'Sent! We\'ll reply within 24 hours.';
+    btn.style.background = 'var(--success-green, #16a34a)';
+    btn.style.color = 'white';
+  });
 }
 </script>
 

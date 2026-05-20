@@ -168,6 +168,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .hiw-stat-grid { grid-template-columns: 1fr !important; }
     }
   </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -743,6 +745,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var email = (document.getElementById('exit-email').value || '').trim();
         if (!email) { document.getElementById('exit-email').focus(); return; }
         exitSubmit.textContent = 'Sending…'; exitSubmit.disabled = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', lead_source: 'exit_intent', page: 'how_it_works' });
         fetch(API + '/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email,source:'exit-intent-hiw'}) })
           .then(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; })
           .catch(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; });
@@ -750,6 +754,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }());
 </script>
-
+<!-- GTM: CTA click events -->
+<script>
+(function() {
+  window.dataLayer = window.dataLayer || [];
+  document.querySelectorAll('a[href*="/pricing"], a[href*="/onboarding"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      window.dataLayer.push({ event: 'cta_click', cta_destination: link.getAttribute('href'), page: 'how_it_works' });
+    });
+  });
+}());
+</script>
 </body>
 </html>

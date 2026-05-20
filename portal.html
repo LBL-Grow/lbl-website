@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Client Dashboard — Local Boost Lab</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 :root{
@@ -21,7 +18,7 @@
   --shadow-md:0 4px 16px rgba(0,0,0,.1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--slate);min-height:100vh}
+body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--surface);color:var(--slate);min-height:100vh}
 button{cursor:pointer;font-family:inherit}
 a{color:inherit}
 
@@ -227,7 +224,24 @@ a{color:inherit}
 .upsell-text span{display:block;font-size:.78rem;font-weight:400;color:rgba(255,255,255,.75);margin-top:2px}
 .upsell-cta{padding:10px 20px;background:var(--amber);color:var(--slate);border-radius:var(--radius-sm);font-weight:700;font-size:.82rem;text-decoration:none;white-space:nowrap;border:none;transition:background 150ms}
 .upsell-cta:hover{background:#E08B00}
+
+/* ── Performance tab ── */
+.perf-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+@media(max-width:1100px){.perf-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.perf-grid{grid-template-columns:repeat(2,1fr)}}
+.yoy-table-wrap,.kw-table-wrap{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px}
+.yoy-table,.kw-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.yoy-table th,.kw-table th{padding:10px 16px;text-align:left;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);background:var(--surface)}
+.yoy-table td,.kw-table td{padding:11px 16px;border-bottom:1px solid var(--border);color:var(--slate)}
+.yoy-table tr:last-child td,.kw-table tr:last-child td{border-bottom:none}
+.yoy-table tr:hover td,.kw-table tr:hover td{background:var(--surface)}
+.yoy-num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.kw-rank{width:40px;font-weight:700;color:var(--muted);text-align:center}
+.kw-term{font-weight:500}
+.kw-impressions{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
 </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 
@@ -293,16 +307,18 @@ a{color:inherit}
     <button class="tab-btn active" data-tab="overview"  role="tab" aria-selected="true">Overview</button>
     <button class="tab-btn"        data-tab="posts"     role="tab">Posts</button>
     <button class="tab-btn"        data-tab="reviews"   role="tab">Reviews</button>
-    <button class="tab-btn"        data-tab="rankings"  role="tab">Rankings</button>
-    <button class="tab-btn"        data-tab="billing"   role="tab">Plan & Billing</button>
+    <button class="tab-btn"        data-tab="rankings"     role="tab">Rankings</button>
+    <button class="tab-btn"        data-tab="performance"  role="tab">Performance</button>
+    <button class="tab-btn"        data-tab="billing"      role="tab">Plan & Billing</button>
   </nav>
 
   <!-- Panes -->
   <div id="tab-overview"  class="tab-pane active"><div class="loading-state">Loading dashboard…</div></div>
   <div id="tab-posts"     class="tab-pane"></div>
   <div id="tab-reviews"   class="tab-pane"></div>
-  <div id="tab-rankings"  class="tab-pane"></div>
-  <div id="tab-billing"   class="tab-pane"></div>
+  <div id="tab-rankings"     class="tab-pane"></div>
+  <div id="tab-performance"  class="tab-pane"></div>
+  <div id="tab-billing"      class="tab-pane"></div>
 </div>
 
 <script>
@@ -341,8 +357,9 @@ document.querySelectorAll('.tab-btn').forEach(function(btn) {
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
     document.getElementById('tab-' + tab).classList.add('active');
-    if (tab === 'rankings' && !rankingsLoaded) renderRankings();
-    if (tab === 'billing'  && !billingLoaded)  loadBilling();
+    if (tab === 'rankings'    && !rankingsLoaded)      renderRankings();
+    if (tab === 'performance' && !performanceLoaded) { performanceLoaded = true; renderPerformance(_dashData); }
+    if (tab === 'billing'     && !billingLoaded)       loadBilling();
   });
 });
 
@@ -422,6 +439,7 @@ function logout() {
 var _dashClient = null;
 var _dashData   = null;
 var _perfChart  = null;
+var _intChart   = null;
 
 function loadDashboard() {
   show('screen-dashboard');
@@ -646,6 +664,179 @@ function renderPerfChart(reports) {
   });
 }
 
+/* ── Render: Performance ── */
+function renderPerformance(data) {
+  var reports = (data && data.reports) || [];
+  var latest  = reports.length ? reports[reports.length - 1] : null;
+  var pane    = document.getElementById('tab-performance');
+  var html    = '';
+
+  // ── Live current-month cards (populated by fetchLivePerformance) ──
+  html += '<span class="dash-section-title">This Month — Live</span>';
+  html += '<div class="perf-grid">';
+  var liveCards = [
+    { id: 'lc-calls',    icon: '📞', label: 'Phone Calls' },
+    { id: 'lc-chat',     icon: '💬', label: 'Messages / Chat' },
+    { id: 'lc-bookings', icon: '📅', label: 'Bookings' },
+    { id: 'lc-dirs',     icon: '📍', label: 'Direction Requests' },
+    { id: 'lc-clicks',   icon: '🌐', label: 'Website Clicks' },
+  ];
+  liveCards.forEach(function(c) {
+    html += '<div class="stat-card" id="' + c.id + '">' +
+      '<div class="stat-label">' + c.icon + ' ' + esc(c.label) + '</div>' +
+      '<div class="stat-val" style="color:var(--muted);font-size:1.3rem">—</div>' +
+      '<span class="stat-trend trend-flat" style="font-size:.7rem">Fetching…</span>' +
+      '</div>';
+  });
+  html += '</div>';
+
+  // ── History chart ──
+  if (reports.length > 1) {
+    html += '<div class="chart-card">' +
+      '<div class="chart-header"><span class="chart-header-title">Interactions Over Time</span>' +
+      '<span style="font-size:.75rem;color:var(--muted)">' + esc(fmtMonth(reports[0])) + ' – ' + esc(fmtMonth(reports[reports.length - 1])) + '</span></div>' +
+      '<div class="chart-wrap"><canvas id="int-chart"></canvas></div>' +
+      '</div>';
+  }
+
+  // ── Year-over-Year ──
+  if (latest) {
+    var yoy = null;
+    for (var i = 0; i < reports.length; i++) {
+      if (reports[i].year === latest.year - 1 && reports[i].month === latest.month) { yoy = reports[i]; break; }
+    }
+    if (yoy) {
+      html += '<span class="dash-section-title" style="margin-top:8px">Year-over-Year — ' + esc(fmtMonth(latest)) + ' vs ' + esc(fmtMonth(yoy)) + '</span>';
+      html += '<div class="yoy-table-wrap"><table class="yoy-table">';
+      html += '<thead><tr><th>Metric</th><th style="text-align:right">' + esc(fmtMonth(yoy)) + '</th><th style="text-align:right">' + esc(fmtMonth(latest)) + '</th><th>Change</th></tr></thead><tbody>';
+      var yoyRows = [
+        { label: 'Profile Views',      cur: latest.views_total,     prev: yoy.views_total },
+        { label: 'Phone Calls',        cur: latest.calls,           prev: yoy.calls },
+        { label: 'Website Clicks',     cur: latest.website_clicks,  prev: yoy.website_clicks },
+        { label: 'Direction Requests', cur: latest.directions,      prev: yoy.directions },
+        { label: 'Messages / Chat',    cur: latest.chat,            prev: yoy.chat },
+        { label: 'Bookings',           cur: latest.bookings,        prev: yoy.bookings },
+      ];
+      yoyRows.forEach(function(row) {
+        var t = trendLabel(row.cur, row.prev);
+        html += '<tr><td>' + esc(row.label) + '</td>' +
+          '<td class="yoy-num">' + fmt(row.prev) + '</td>' +
+          '<td class="yoy-num">' + fmt(row.cur) + '</td>' +
+          '<td><span class="stat-trend ' + t.cls + '" style="font-size:.72rem">' + t.text + '</span></td></tr>';
+      });
+      html += '</tbody></table></div>';
+    }
+  }
+
+  // ── Search keywords (placeholder — filled by live fetch) ──
+  html += '<div id="kw-section"></div>';
+
+  pane.innerHTML = html;
+
+  if (reports.length > 1) {
+    setTimeout(function() { renderIntChart(reports); }, 0);
+  }
+
+  fetchLivePerformance();
+}
+
+function fetchLivePerformance() {
+  fetch(API + '/api/portal/performance', { headers: authHeaders() })
+    .then(function(r) { return r.json(); })
+    .then(function(d) { updateLivePerformance(d); })
+    .catch(function() { updateLivePerformance(null); });
+}
+
+function updateLivePerformance(d) {
+  var err = !d || d.error;
+  var m   = d && d.metrics ? d.metrics : {};
+  var sub = d && d.throughDay ? 'Day 1–' + d.throughDay + ' this month' : 'Current month';
+
+  var cardMap = [
+    { id: 'lc-calls',    val: m.calls },
+    { id: 'lc-chat',     val: m.chat },
+    { id: 'lc-bookings', val: m.bookings },
+    { id: 'lc-dirs',     val: m.directions },
+    { id: 'lc-clicks',   val: m.websiteClicks },
+  ];
+  cardMap.forEach(function(c) {
+    var el = document.getElementById(c.id);
+    if (!el) return;
+    var valEl   = el.querySelector('.stat-val');
+    var trendEl = el.querySelector('.stat-trend');
+    if (err) {
+      trendEl.textContent = 'Unavailable';
+    } else {
+      valEl.style.color    = '';
+      valEl.style.fontSize = '';
+      valEl.textContent    = fmt(c.val);
+      trendEl.textContent  = sub;
+    }
+  });
+
+  // Keywords
+  var kwSection = document.getElementById('kw-section');
+  if (!kwSection) return;
+  var kws = d && d.searchKeywords;
+  if (kws && kws.length) {
+    var MONTHS_FULL = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+    var kwTitle = d.month ? 'Top Search Terms — ' + MONTHS_FULL[d.month] + ' ' + d.year : 'Top Search Terms';
+    var kwHtml = '<span class="dash-section-title" style="margin-top:8px">' + esc(kwTitle) + '</span>';
+    kwHtml += '<div class="kw-table-wrap"><table class="kw-table">';
+    kwHtml += '<thead><tr><th class="kw-rank">#</th><th>Search Term</th><th style="text-align:right">Impressions</th></tr></thead><tbody>';
+    kws.forEach(function(k, i) {
+      kwHtml += '<tr>' +
+        '<td class="kw-rank">' + (i + 1) + '</td>' +
+        '<td class="kw-term">' + esc(k.keyword) + '</td>' +
+        '<td class="kw-impressions">' + (k.threshold ? '<span style="color:var(--muted)">&lt;10</span>' : fmt(k.impressions)) + '</td>' +
+        '</tr>';
+    });
+    kwHtml += '</tbody></table></div>';
+    kwSection.innerHTML = kwHtml;
+  } else if (!err) {
+    kwSection.innerHTML = '<div class="no-data" style="margin-top:8px">No search keyword data for this period.</div>';
+  }
+}
+
+function renderIntChart(reports) {
+  var canvas = document.getElementById('int-chart');
+  if (!canvas) return;
+  if (_intChart) { _intChart.destroy(); _intChart = null; }
+  var labels   = reports.map(function(r) { return MONTHS[r.month] + ' \'' + String(r.year).slice(2); });
+  var calls    = reports.map(function(r) { return r.calls          || 0; });
+  var chat     = reports.map(function(r) { return r.chat           || 0; });
+  var bookings = reports.map(function(r) { return r.bookings       || 0; });
+  var dirs     = reports.map(function(r) { return r.directions     || 0; });
+  var clicks   = reports.map(function(r) { return r.website_clicks || 0; });
+
+  _intChart = new Chart(canvas.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        { label: 'Phone Calls',       data: calls,    borderColor: '#10B981', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
+        { label: 'Messages',          data: chat,     borderColor: '#8B5CF6', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
+        { label: 'Bookings',          data: bookings, borderColor: '#F59E0B', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
+        { label: 'Direction Requests',data: dirs,     borderColor: '#EF4444', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
+        { label: 'Website Clicks',    data: clicks,   borderColor: '#1B4FD8', backgroundColor: 'rgba(27,79,216,.06)', tension: .4, pointRadius: 3, borderWidth: 2, fill: true },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 11 }, color: '#6B7280', usePointStyle: true, pointStyleWidth: 8, padding: 14 } },
+        tooltip: { backgroundColor: '#0F172A', titleFont: { family: 'Inter', size: 11 }, bodyFont: { family: 'Inter', size: 11 }, padding: 10, cornerRadius: 8 },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' } },
+        y: { grid: { color: 'rgba(0,0,0,.04)' }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' }, border: { display: false } },
+      },
+    },
+  });
+}
+
 /* ── Render: Posts ── */
 function renderPosts(client, data) {
   var posts      = (data && data.posts)        || [];
@@ -749,7 +940,8 @@ function reviewCard(r) {
 }
 
 /* ── Render: Rankings ── */
-var rankingsLoaded = false;
+var rankingsLoaded  = false;
+var performanceLoaded = false;
 
 function renderRankings() {
   if (rankingsLoaded) return;
@@ -765,9 +957,12 @@ function renderRankings() {
     });
 }
 
+var _rankCharts = {}; // Track Chart.js instances for cleanup
+
 function buildRankingsUI(data) {
   var grids   = data.grids   || [];
   var comps   = data.competitors || {};
+  var history = data.history || {};
   var html    = '';
 
   if (!grids.length) {
@@ -848,6 +1043,17 @@ function buildRankingsUI(data) {
     html += '</div>';  // rank-grid-wrap
     html += '</div>';  // card
 
+    // Rank history trend chart (requires ≥ 2 data points)
+    var kwHistory = history[kw] || [];
+    if (kwHistory.length >= 2) {
+      var chartId = 'rank-trend-' + kw.replace(/\W/g, '_');
+      html += '<div class="chart-card" style="margin-top:12px;">';
+      html += '<div class="chart-header"><span class="chart-header-title">📈 Rank Trend — ' + esc(kw) + '</span>';
+      html += '<span style="font-size:.75rem;color:var(--muted);">Avg map rank over time · lower = better</span></div>';
+      html += '<div class="chart-wrap"><canvas id="' + chartId + '"></canvas></div>';
+      html += '</div>';
+    }
+
     // Competitors
     if (kwComps.length) {
       html += '<div class="competitors-card">';
@@ -871,6 +1077,80 @@ function buildRankingsUI(data) {
   });
 
   document.getElementById('tab-rankings').innerHTML = html;
+
+  // Render trend charts after DOM is updated
+  grids.forEach(function(grid) {
+    var kw        = grid.keyword;
+    var kwHistory = history[kw] || [];
+    if (kwHistory.length < 2) return;
+
+    var chartId = 'rank-trend-' + kw.replace(/\W/g, '_');
+    var canvas  = document.getElementById(chartId);
+    if (!canvas || typeof Chart === 'undefined') return;
+
+    // Destroy previous instance if re-rendering
+    if (_rankCharts[chartId]) { _rankCharts[chartId].destroy(); }
+
+    var labels  = kwHistory.map(function(h) {
+      return new Date(h.run_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    });
+    var ranks   = kwHistory.map(function(h) { return h.avg_rank != null ? +h.avg_rank.toFixed(1) : null; });
+
+    // Color based on latest rank
+    var latestRank = ranks[ranks.length - 1];
+    var lineColor  = latestRank <= 5 ? '#10B981' : latestRank <= 10 ? '#F59E0B' : '#EF4444';
+
+    _rankCharts[chartId] = new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label:           'Avg rank',
+          data:            ranks,
+          borderColor:     lineColor,
+          backgroundColor: lineColor + '18',
+          borderWidth:     2.5,
+          pointRadius:     4,
+          pointHoverRadius: 6,
+          fill:            true,
+          tension:         0.35,
+          spanGaps:        true,
+        }],
+      },
+      options: {
+        responsive:          true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            reverse: true,  // rank #1 at top
+            min:     1,
+            suggestedMax: 20,
+            ticks: {
+              stepSize: 1,
+              callback: function(v) { return '#' + v; },
+              color:    '#94a3b8',
+              font:     { size: 11 },
+            },
+            grid: { color: '#f1f5f9' },
+          },
+          x: {
+            ticks: { color: '#94a3b8', font: { size: 11 } },
+            grid:  { display: false },
+          },
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                return ctx.raw != null ? 'Avg rank: #' + ctx.raw : 'No data';
+              },
+            },
+          },
+        },
+      },
+    });
+  });
 }
 
 function rankColors(rank) {
