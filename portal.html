@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Client Dashboard — Local Boost Lab</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root{
   --blue:#1B4FD8;--blue-dark:#1440B0;--blue-light:#EFF6FF;
@@ -239,6 +241,33 @@ a{color:inherit}
 .kw-rank{width:40px;font-weight:700;color:var(--muted);text-align:center}
 .kw-term{font-weight:500}
 .kw-impressions{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+
+/* ── Rank Map (Leaflet geo-grid) ── */
+.rank-map-container{height:440px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);margin-bottom:14px}
+.rank-map-container .leaflet-container{height:100%;font-family:'Inter',sans-serif}
+.leaflet-tooltip.rank-tt{background:rgba(15,23,42,.93);color:#fff;border:none;padding:8px 12px;font-size:.78rem;line-height:1.6;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.3);font-family:'Inter',sans-serif;pointer-events:none}
+.leaflet-tooltip.rank-tt::before{border-top-color:rgba(15,23,42,.93)}
+.rank-legend-row{display:flex;flex-direction:row;flex-wrap:wrap;gap:10px 18px;padding:4px 0 10px}
+
+/* ── Live snapshot in Overview ── */
+.live-snap-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.live-snap-badge{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:700;color:#059669;background:#D1FAE5;border-radius:20px;padding:3px 9px}
+.live-snap-dot{width:6px;height:6px;background:#059669;border-radius:50%;display:inline-block}
+.live-snap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:12px}
+.live-snap-card{background:var(--white);border-radius:var(--radius-sm);border:1px solid var(--border);padding:14px 16px;box-shadow:var(--shadow)}
+.live-snap-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:5px}
+.live-snap-val{font-size:1.35rem;font-weight:800;color:var(--slate);line-height:1}
+.live-snap-trend{font-size:.7rem;margin-top:4px}
+.live-snap-impr{background:var(--white);border-radius:var(--radius-sm);border:1px solid var(--border);padding:14px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
+.live-snap-impr-title{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
+.live-snap-impr-row{display:flex;gap:24px;flex-wrap:wrap}
+.live-snap-impr-item{flex:1;min-width:80px}
+.live-snap-impr-item strong{display:block;font-size:1.2rem;font-weight:800;color:var(--slate);line-height:1;margin-bottom:2px}
+.live-snap-impr-item span{font-size:.75rem;color:var(--muted)}
+.live-snap-link{font-size:.8rem;font-weight:600;color:var(--blue);text-decoration:none;display:inline-block;margin-top:4px}
+.live-snap-link:hover{text-decoration:underline}
+.live-snap-footer{font-size:.7rem;color:var(--muted);margin-top:8px}
+.live-snap-wrap{margin-bottom:24px}
 </style>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -466,6 +495,12 @@ function loadDashboard() {
     renderOverview(client, data, suspension);
     renderPosts(client, data);  // passes data.gbp_place_id
     renderReviews(data);
+
+    // Async live fetch — fills Overview snapshot and Performance tab cards
+    fetch(API + '/api/portal/performance', { headers: authHeaders() })
+      .then(function(r) { return r.json(); })
+      .then(function(d) { renderLiveSnap(d); })
+      .catch(function() { renderLiveSnap(null); });
   })
   .catch(function() {
     document.getElementById('tab-overview').innerHTML = '<div class="no-data">Failed to load dashboard. Please refresh.</div>';
@@ -553,8 +588,12 @@ function renderOverview(client, data, suspension) {
   );
   html += '</div>';
 
-  // Stats
+  // Live performance snapshot — populated async after main render
+  html += '<div id="live-perf-snap" class="live-snap-wrap"><div style="height:8px"></div></div>';
+
+  // Stats (last completed month from monthly_reports)
   if (latest) {
+    html += '<span class="dash-section-title">Last Month — ' + fmtMonth(latest) + '</span>';
     html += '<div class="stats-grid">';
     var stats = [
       { label: 'Profile Views',      val: latest.views_total,     prev: latest.prev_views_total },
@@ -662,6 +701,79 @@ function renderPerfChart(reports) {
       },
     },
   });
+}
+
+/* ── Live Overview Snapshot ── */
+function renderLiveSnap(d) {
+  var el = document.getElementById('live-perf-snap');
+  if (!el) return;
+  if (!d || d.error) { el.innerHTML = ''; return; }
+
+  var m    = d.metrics   || {};
+  var prev = d.prevReport || {};
+  var MONTHS_FULL = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+  var monthLabel = d.month ? MONTHS_FULL[d.month] + ' ' + d.year : 'This month';
+
+  var html = '<div class="live-snap-wrap">';
+  html += '<div class="live-snap-header">';
+  html += '<span class="dash-section-title" style="margin-bottom:0">This Month — Live</span>';
+  html += '<span class="live-snap-badge"><span class="live-snap-dot"></span>' + esc(monthLabel) + ', day 1–' + (d.throughDay || '?') + '</span>';
+  html += '</div>';
+
+  // Impressions row
+  if (m.viewsTotal || m.viewsMaps || m.viewsSearch) {
+    html += '<div class="live-snap-impr">';
+    html += '<div class="live-snap-impr-title">Google Impressions (Month to Date)</div>';
+    html += '<div class="live-snap-impr-row">';
+    html += '<div class="live-snap-impr-item"><strong>' + fmt(m.viewsMaps)    + '</strong><span>Maps</span></div>';
+    html += '<div class="live-snap-impr-item"><strong>' + fmt(m.viewsSearch)  + '</strong><span>Search</span></div>';
+    html += '<div class="live-snap-impr-item"><strong>' + fmt(m.viewsTotal)   + '</strong><span>Total</span></div>';
+    if (prev.views_total) {
+      var t = trendLabel(m.viewsTotal, prev.views_total);
+      html += '<div class="live-snap-impr-item"><span style="font-size:.72rem;color:var(--muted)">vs last month</span><span class="stat-trend ' + t.cls + '" style="margin-top:4px;display:inline-flex">' + t.text + '</span></div>';
+    }
+    html += '</div></div>';
+  }
+
+  // Interaction cards
+  var snapCards = [
+    { label: 'Phone Calls',      val: m.calls,         prevVal: prev.calls },
+    { label: 'Website Clicks',   val: m.websiteClicks,  prevVal: prev.website_clicks },
+    { label: 'Directions',       val: m.directions,     prevVal: prev.directions },
+    { label: 'Messages',         val: m.chat,           prevVal: prev.chat },
+    { label: 'Bookings',         val: m.bookings,       prevVal: prev.bookings },
+  ];
+  html += '<div class="live-snap-grid">';
+  snapCards.forEach(function(c) {
+    var t = trendLabel(c.val, c.prevVal);
+    html += '<div class="live-snap-card">';
+    html += '<div class="live-snap-label">' + esc(c.label) + '</div>';
+    html += '<div class="live-snap-val">' + fmt(c.val) + '</div>';
+    if (c.prevVal !== undefined && c.prevVal !== null) {
+      html += '<div class="live-snap-trend stat-trend ' + t.cls + '">' + t.text + '</div>';
+    }
+    html += '</div>';
+  });
+  html += '</div>';
+
+  html += '<a class="live-snap-link" href="#" onclick="switchToPerformanceTab();return false">→ Full performance &amp; search keyword analysis</a>';
+  html += '<div class="live-snap-footer">Updates every 5 min. Data has Google&apos;s ~4-day lag.</div>';
+  html += '</div>';
+
+  el.innerHTML = html;
+
+  // Also hydrate Performance tab live cards if already rendered
+  updateLivePerformance(d);
+}
+
+function switchToPerformanceTab() {
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+  document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+  var btn = document.querySelector('[data-tab="performance"]');
+  if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected', 'true'); }
+  var pane = document.getElementById('tab-performance');
+  if (pane) pane.classList.add('active');
+  if (!performanceLoaded) { performanceLoaded = true; renderPerformance(_dashData); }
 }
 
 /* ── Render: Performance ── */
@@ -957,12 +1069,13 @@ function renderRankings() {
     });
 }
 
-var _rankCharts = {}; // Track Chart.js instances for cleanup
+var _rankCharts = {};
+var _rankMaps   = []; // Leaflet map instances for cleanup
 
 function buildRankingsUI(data) {
-  var grids   = data.grids   || [];
+  var grids   = data.grids       || [];
   var comps   = data.competitors || {};
-  var history = data.history || {};
+  var history = data.history     || {};
   var html    = '';
 
   if (!grids.length) {
@@ -977,24 +1090,26 @@ function buildRankingsUI(data) {
     return;
   }
 
-  grids.forEach(function(grid) {
+  // Destroy any existing Leaflet maps before re-rendering
+  _rankMaps.forEach(function(m) { try { m.remove(); } catch(e) {} });
+  _rankMaps = [];
+
+  grids.forEach(function(grid, idx) {
     var kw        = grid.keyword;
     var size      = grid.grid_size || 7;
-    var cells     = grid.grid_data || [];
-    var cellMap   = {};
-    cells.forEach(function(c) { cellMap[c.row + ',' + c.col] = c; });
-    var centerRow = Math.floor(size / 2);
-    var centerCol = Math.floor(size / 2);
-    var kwComps   = comps[kw] || [];
+    var totalCells = size * size;
+    var kwComps   = comps[kw]   || [];
+    var kwHistory = history[kw] || [];
+    var chartId   = 'rank-trend-' + kw.replace(/\W/g, '_');
 
-    // Summary chips
-    var avgRank   = grid.avg_rank   ? grid.avg_rank.toFixed(1)  : '—';
-    var top3Count = grid.top3_count != null ? grid.top3_count   : '—';
-    var top10Count= grid.top10_count!= null ? grid.top10_count  : '—';
-    var totalCells= size * size;
+    var avgRank    = grid.avg_rank    ? grid.avg_rank.toFixed(1) : '—';
+    var top3Count  = grid.top3_count  != null ? grid.top3_count  : '—';
+    var top10Count = grid.top10_count != null ? grid.top10_count : '—';
     var avgChipCls = grid.avg_rank <= 5 ? 'rank-chip-green' : grid.avg_rank <= 10 ? 'rank-chip-yellow' : 'rank-chip-red';
 
     html += '<div class="rank-section">';
+
+    // Header + chips
     html += '<div class="rank-keyword-header">';
     html += '<span class="rank-keyword-title">📍 ' + esc(kw) + '</span>';
     html += '<div class="rank-summary-chips">';
@@ -1003,154 +1118,169 @@ function buildRankingsUI(data) {
     html += '<span class="rank-chip rank-chip-blue">#1–10: ' + top10Count + '/' + totalCells + '</span>';
     html += '</div></div>';
 
-    // Grid + legend
-    html += '<div style="background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px 24px">';
-    html += '<div class="rank-grid-wrap">';
+    // Map card
+    html += '<div style="background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px 24px;margin-bottom:16px">';
+    html += '<div class="rank-map-container" id="rank-map-' + idx + '"></div>';
 
-    // The grid
-    html += '<div class="rank-grid" style="grid-template-columns:repeat(' + size + ',40px);grid-template-rows:repeat(' + size + ',40px)">';
-    for (var row = 0; row < size; row++) {
-      for (var col = 0; col < size; col++) {
-        var cell   = cellMap[row + ',' + col] || {};
-        var rank   = cell.rank != null ? cell.rank : null;
-        var colors = rankColors(rank);
-        var isCenter = (row === centerRow && col === centerCol);
-        var label  = rank !== null ? rank : '—';
-        var title  = rank !== null ? '#' + rank : 'Not in top 20';
-        html += '<div class="rank-cell' + (isCenter ? ' rank-cell-center' : '') + '" ' +
-          'style="background:' + colors.bg + ';color:' + colors.text + '" ' +
-          'title="' + esc(title) + '">' + label + '</div>';
-      }
-    }
-    html += '</div>';
-
-    // Legend
-    html += '<div class="rank-legend">';
+    // Legend row (horizontal, below map)
+    html += '<div class="rank-legend-row">';
     var legendItems = [
-      { color: '#065F46', label: '#1 — Dominating' },
-      { color: '#10B981', label: '#2–3 — Top 3' },
-      { color: '#34D399', label: '#4–5 — Strong' },
-      { color: '#FCD34D', label: '#6–10 — Competitive' },
-      { color: '#F97316', label: '#11–15 — Weak' },
-      { color: '#EF4444', label: '#16–20 — Poor' },
+      { color: '#065F46', label: '#1' },
+      { color: '#10B981', label: '#2–3' },
+      { color: '#34D399', label: '#4–5' },
+      { color: '#FCD34D', label: '#6–10' },
+      { color: '#F97316', label: '#11–15' },
+      { color: '#EF4444', label: '#16–20' },
       { color: '#CBD5E1', label: 'Not found' },
     ];
     legendItems.forEach(function(li) {
-      html += '<div class="rank-legend-item"><div class="rank-legend-dot" style="background:' + li.color + '"></div><span>' + li.label + '</span></div>';
+      html += '<div class="rank-legend-item"><div class="rank-legend-dot" style="background:' + li.color + ';border-radius:50%"></div><span>' + li.label + '</span></div>';
     });
-    html += '<div class="rank-run-time">Last run: ' + fmtDate(grid.run_at) + '</div>';
-    html += '</div>';  // legend
-    html += '</div>';  // rank-grid-wrap
-    html += '</div>';  // card
+    html += '</div>';
+    html += '<div class="rank-run-time">Last scan: ' + fmtDate(grid.run_at) + ' &nbsp;·&nbsp; Hover pins to see competitor positions</div>';
+    html += '</div>'; // map card
 
-    // Rank history trend chart (requires ≥ 2 data points)
-    var kwHistory = history[kw] || [];
+    // Rank trend chart (if ≥ 2 history points)
     if (kwHistory.length >= 2) {
-      var chartId = 'rank-trend-' + kw.replace(/\W/g, '_');
-      html += '<div class="chart-card" style="margin-top:12px;">';
+      html += '<div class="chart-card" style="margin-bottom:16px">';
       html += '<div class="chart-header"><span class="chart-header-title">📈 Rank Trend — ' + esc(kw) + '</span>';
-      html += '<span style="font-size:.75rem;color:var(--muted);">Avg map rank over time · lower = better</span></div>';
+      html += '<span style="font-size:.75rem;color:var(--muted)">Avg map position over time · lower = better</span></div>';
       html += '<div class="chart-wrap"><canvas id="' + chartId + '"></canvas></div>';
       html += '</div>';
     }
 
-    // Competitors
+    // Competitors table (center-point)
     if (kwComps.length) {
       html += '<div class="competitors-card">';
-      html += '<div class="competitors-title">Top Competitors for "' + esc(kw) + '"</div>';
+      html += '<div class="competitors-title">Top 3 Competitors — "' + esc(kw) + '"</div>';
       kwComps.forEach(function(c) {
         var medalCls = c.rank_position === 1 ? 'comp-rank-1' : c.rank_position === 2 ? 'comp-rank-2' : 'comp-rank-3';
         var medals   = ['🥇', '🥈', '🥉'];
         var meta     = '';
         if (c.rating)       meta += c.rating.toFixed(1) + '★';
         if (c.review_count) meta += ' · ' + c.review_count + ' reviews';
-        html += '<div class="competitor-row">' +
-          '<div class="competitor-rank-badge ' + medalCls + '">' + medals[c.rank_position - 1] + '</div>' +
-          '<span class="competitor-name">' + esc(c.business_name) + '</span>' +
-          (meta ? '<span class="competitor-meta">' + esc(meta) + '</span>' : '') +
-          '</div>';
+        html += '<div class="competitor-row">';
+        html += '<div class="competitor-rank-badge ' + medalCls + '">' + medals[c.rank_position - 1] + '</div>';
+        html += '<span class="competitor-name">' + esc(c.business_name) + '</span>';
+        if (meta) html += '<span class="competitor-meta">' + esc(meta) + '</span>';
+        html += '</div>';
       });
       html += '</div>';
     }
 
-    html += '</div>';  // rank-section
+    html += '</div>'; // rank-section
   });
 
   document.getElementById('tab-rankings').innerHTML = html;
 
-  // Render trend charts after DOM is updated
+  // Initialize Leaflet maps after DOM is set
+  if (typeof L !== 'undefined') {
+    grids.forEach(function(grid, idx) {
+      var map = initRankMap(idx, grid, comps[grid.keyword] || []);
+      if (map) _rankMaps.push(map);
+    });
+  }
+
+  // Render rank trend charts
   grids.forEach(function(grid) {
     var kw        = grid.keyword;
     var kwHistory = history[kw] || [];
     if (kwHistory.length < 2) return;
-
     var chartId = 'rank-trend-' + kw.replace(/\W/g, '_');
     var canvas  = document.getElementById(chartId);
     if (!canvas || typeof Chart === 'undefined') return;
-
-    // Destroy previous instance if re-rendering
     if (_rankCharts[chartId]) { _rankCharts[chartId].destroy(); }
-
-    var labels  = kwHistory.map(function(h) {
-      return new Date(h.run_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    });
-    var ranks   = kwHistory.map(function(h) { return h.avg_rank != null ? +h.avg_rank.toFixed(1) : null; });
-
-    // Color based on latest rank
+    var labels     = kwHistory.map(function(h) { return new Date(h.run_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); });
+    var ranks      = kwHistory.map(function(h) { return h.avg_rank != null ? +h.avg_rank.toFixed(1) : null; });
     var latestRank = ranks[ranks.length - 1];
     var lineColor  = latestRank <= 5 ? '#10B981' : latestRank <= 10 ? '#F59E0B' : '#EF4444';
-
     _rankCharts[chartId] = new Chart(canvas, {
       type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label:           'Avg rank',
-          data:            ranks,
-          borderColor:     lineColor,
-          backgroundColor: lineColor + '18',
-          borderWidth:     2.5,
-          pointRadius:     4,
-          pointHoverRadius: 6,
-          fill:            true,
-          tension:         0.35,
-          spanGaps:        true,
-        }],
-      },
+      data: { labels: labels, datasets: [{ label: 'Avg rank', data: ranks, borderColor: lineColor, backgroundColor: lineColor + '18', borderWidth: 2.5, pointRadius: 4, pointHoverRadius: 6, fill: true, tension: 0.35, spanGaps: true }] },
       options: {
-        responsive:          true,
-        maintainAspectRatio: false,
+        responsive: true, maintainAspectRatio: false,
         scales: {
-          y: {
-            reverse: true,  // rank #1 at top
-            min:     1,
-            suggestedMax: 20,
-            ticks: {
-              stepSize: 1,
-              callback: function(v) { return '#' + v; },
-              color:    '#94a3b8',
-              font:     { size: 11 },
-            },
-            grid: { color: '#f1f5f9' },
-          },
-          x: {
-            ticks: { color: '#94a3b8', font: { size: 11 } },
-            grid:  { display: false },
-          },
+          y: { reverse: true, min: 1, suggestedMax: 20, ticks: { stepSize: 1, callback: function(v) { return '#' + v; }, color: '#94a3b8', font: { size: 11 } }, grid: { color: '#f1f5f9' } },
+          x: { ticks: { color: '#94a3b8', font: { size: 11 } }, grid: { display: false } },
         },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: function(ctx) {
-                return ctx.raw != null ? 'Avg rank: #' + ctx.raw : 'No data';
-              },
-            },
-          },
-        },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx) { return ctx.raw != null ? 'Avg rank: #' + ctx.raw : 'No data'; } } } },
       },
     });
   });
+}
+
+function initRankMap(idx, grid, kwComps) {
+  var container = document.getElementById('rank-map-' + idx);
+  if (!container || typeof L === 'undefined') return null;
+
+  var cells = grid.grid_data || [];
+  var validCells = cells.filter(function(c) { return c.lat != null && c.lng != null; });
+
+  if (!validCells.length) {
+    container.innerHTML = '<div class="no-data" style="padding:40px">No location data for this scan.</div>';
+    return null;
+  }
+
+  var centerLat  = grid.center_lat || (validCells.reduce(function(s, c) { return s + c.lat; }, 0) / validCells.length);
+  var centerLng  = grid.center_lng || (validCells.reduce(function(s, c) { return s + c.lng; }, 0) / validCells.length);
+  var gridSize   = grid.grid_size || 7;
+  var centerRow  = Math.floor(gridSize / 2);
+  var centerCol  = Math.floor(gridSize / 2);
+
+  var map = L.map(container, {
+    center: [centerLat, centerLng], zoom: 13,
+    dragging: false, touchZoom: false, scrollWheelZoom: false,
+    doubleClickZoom: false, keyboard: false, zoomControl: false,
+    boxZoom: false, attributionControl: true,
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  validCells.forEach(function(cell) {
+    var rank      = cell.rank != null ? cell.rank : null;
+    var fillColor = rankMapColor(rank);
+    var isCenter  = (cell.row === centerRow && cell.col === centerCol);
+    var size      = isCenter ? 38 : 30;
+    var label     = rank !== null ? String(rank) : '—';
+    var border    = isCenter ? '3px solid #F59E0B' : '2px solid rgba(255,255,255,.8)';
+    var fontSize  = size === 38 ? '13px' : (rank !== null && rank >= 10 ? '10px' : '11px');
+
+    var iconHtml = '<div style="width:' + size + 'px;height:' + size + 'px;background:' + fillColor +
+      ';color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;' +
+      'font-size:' + fontSize + ';font-weight:800;border:' + border +
+      ';box-shadow:0 2px 6px rgba(0,0,0,.35);font-family:Inter,sans-serif;line-height:1">' + label + '</div>';
+
+    var icon = L.divIcon({ className: '', html: iconHtml, iconSize: [size, size], iconAnchor: [size / 2, size / 2] });
+    var marker = L.marker([cell.lat, cell.lng], { icon: icon }).addTo(map);
+
+    // Tooltip: client rank + competitor positions
+    var ttLines = ['<b>' + (rank ? '#' + rank + ' &mdash; Your position here' : 'Not in top 20') + '</b>'];
+    var compData = cell.competitors || [];
+    if (compData.length) {
+      compData.forEach(function(c, i) { ttLines.push(['🥇','🥈','🥉'][i] + ' ' + esc(c.name) + ' (#' + c.rank + ')'); });
+    } else if (isCenter && kwComps.length) {
+      kwComps.forEach(function(c, i) { ttLines.push(['🥇','🥈','🥉'][i] + ' ' + esc(c.business_name) + ' (#' + c.rank_position + ')'); });
+    }
+    marker.bindTooltip(ttLines.join('<br>'), { className: 'rank-tt', direction: 'top', sticky: true });
+  });
+
+  var bounds = validCells.map(function(c) { return [c.lat, c.lng]; });
+  if (bounds.length > 1) map.fitBounds(bounds, { padding: [28, 28] });
+
+  return map;
+}
+
+function rankMapColor(rank) {
+  if (rank === null || rank === undefined) return '#CBD5E1';
+  if (rank === 1) return '#065F46';
+  if (rank <= 3)  return '#10B981';
+  if (rank <= 5)  return '#34D399';
+  if (rank <= 10) return '#FCD34D';
+  if (rank <= 15) return '#F97316';
+  return '#EF4444';
 }
 
 function rankColors(rank) {
