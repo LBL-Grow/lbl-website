@@ -1,0 +1,12 @@
+{
+  "name": "lbl-website",
+  "version": "1.0.0",
+  "description": "Local Boost Lab website",
+  "private": true,
+  "scripts": {
+    "postinstall": "echo 'Dependencies installed successfully'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
