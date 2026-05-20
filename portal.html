@@ -386,7 +386,16 @@ document.querySelectorAll('.tab-btn').forEach(function(btn) {
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
     document.getElementById('tab-' + tab).classList.add('active');
-    if (tab === 'rankings'    && !rankingsLoaded)      renderRankings();
+    if (tab === 'rankings') {
+      if (!rankingsLoaded) {
+        renderRankings();
+      } else {
+        // Re-activate: fix any maps that initialized with wrong dimensions
+        setTimeout(function() {
+          _rankMaps.forEach(function(m) { try { m.invalidateSize(true); } catch(e) {} });
+        }, 50);
+      }
+    }
     if (tab === 'performance' && !performanceLoaded) { performanceLoaded = true; renderPerformance(_dashData); }
     if (tab === 'billing'     && !billingLoaded)       loadBilling();
   });
@@ -1173,15 +1182,15 @@ function buildRankingsUI(data) {
 
   document.getElementById('tab-rankings').innerHTML = html;
 
-  // Delay Leaflet init until browser has painted the containers (avoids 0-size bug)
-  requestAnimationFrame(function() {
+  // setTimeout(0) ensures browser has painted containers before Leaflet reads dimensions
+  setTimeout(function() {
     if (typeof L !== 'undefined') {
       grids.forEach(function(grid, idx) {
         var map = initRankMap(idx, grid, comps[grid.keyword] || []);
         if (map) _rankMaps.push(map);
       });
     }
-  });
+  }, 0);
 
   // Render rank trend charts
   grids.forEach(function(grid) {
@@ -1270,11 +1279,13 @@ function initRankMap(idx, grid, kwComps) {
   });
 
   var bounds = validCells.map(function(c) { return [c.lat, c.lng]; });
-  if (bounds.length > 1) {
-    map.fitBounds(bounds, { padding: [28, 28] });
-  }
-  // Force size recalculation after container is fully painted
-  setTimeout(function() { map.invalidateSize(); }, 150);
+  if (bounds.length > 1) map.fitBounds(bounds, { padding: [28, 28] });
+
+  // Re-measure container after paint and re-fit — fixes tile misalignment
+  setTimeout(function() {
+    map.invalidateSize(true);
+    if (bounds.length > 1) map.fitBounds(bounds, { padding: [28, 28] });
+  }, 200);
 
   return map;
 }
