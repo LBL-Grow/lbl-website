@@ -292,8 +292,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="form-group">
           <label class="form-label" for="s1-gbp-url">Google Business Profile URL <span class="req">*</span></label>
-          <input id="s1-gbp-url" type="text" class="form-control" placeholder="https://g.page/yourbusiness" required>
+          <input id="s1-gbp-url" type="text" class="form-control" placeholder="https://maps.google.com/?cid=..." required>
           <div class="form-error">Please enter your GBP URL.</div>
+          <div style="margin-top:10px;padding:12px 14px;background:#EFF6FF;border-radius:8px;border:1px solid #BFDBFE;">
+            <p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#1B4FD8;">🔍 How to find your Google Business Profile URL</p>
+            <ol style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:1.8;">
+              <li>Go to <a href="https://maps.google.com" target="_blank" rel="noopener" style="color:#1B4FD8;">Google Maps</a> and search for your business name.</li>
+              <li>Click on your business in the results.</li>
+              <li>Click <strong>"Share"</strong> → then <strong>"Copy link"</strong>.</li>
+              <li>Paste that link here. It usually starts with <code style="background:#DBEAFE;padding:1px 5px;border-radius:3px;font-size:12px;">https://maps.google.com</code> or <code style="background:#DBEAFE;padding:1px 5px;border-radius:3px;font-size:12px;">https://g.page/</code></li>
+            </ol>
+            <p style="margin:8px 0 0;font-size:12px;color:#6B7280;">Can't find it? Email us at <a href="mailto:grow@localboostlab.com" style="color:#1B4FD8;">grow@localboostlab.com</a> — we'll look it up for you.</p>
+          </div>
         </div>
 
         <div class="onboarding-nav">
@@ -490,16 +500,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Success Screen -->
       <div class="success-screen" id="success-screen">
         <div class="success-icon"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#F59E0B" opacity="0.12"/><circle cx="28" cy="28" r="20" fill="#F59E0B" opacity="0.2"/><path d="M18 28l7 7 13-14" stroke="#1B4FD8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h2>You're all set!</h2>
-        <p>Your setup is complete. Here's what happens next:</p>
+        <h2>Payment confirmed — one step left!</h2>
+        <p>Check your email for a link to connect your Google Business Profile. That's the last step to activate your account.</p>
+
+        <!-- One-step action card -->
+        <div style="background:#EFF6FF;border:2px solid #1B4FD8;border-radius:12px;padding:20px 24px;margin:20px 0;text-align:left;">
+          <p style="margin:0 0 8px;font-size:15px;font-weight:700;color:#1B4FD8;">📧 Check your inbox</p>
+          <p style="margin:0 0 12px;font-size:14px;color:#374151;">We sent you an email from <strong>grow@localboostlab.com</strong> with a blue button that says <strong>"Connect Your Google Business Profile."</strong></p>
+          <p style="margin:0;font-size:13px;color:#6B7280;">Don't see it? Check spam or email <a href="mailto:support@localboostlab.com" style="color:#1B4FD8;">support@localboostlab.com</a>.</p>
+        </div>
+
+        <!-- What the OAuth does -->
+        <div style="background:#F9FAFB;border-radius:10px;padding:16px 20px;margin:0 0 16px;text-align:left;">
+          <p style="margin:0 0 10px;font-size:13px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:.04em;">Why connect Google?</p>
+          <ul style="margin:0;padding-left:18px;font-size:14px;color:#374151;line-height:2;">
+            <li>It lets us publish posts to your profile automatically</li>
+            <li>It lets Jake monitor and reply to your reviews 24/7</li>
+            <li>We only request access to your Business Profile — nothing else</li>
+            <li>You can revoke access from Google at any time</li>
+          </ul>
+        </div>
+
         <ul class="success-screen__list">
-          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Confirmation email on its way to your inbox</li>
-          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> We'll configure your profile management within 24 hours</li>
-          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first post goes live within 24 hours</li>
-          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Review monitoring starts immediately</li>
-          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first monthly report arrives on the 5th of next month</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <strong>Step 1:</strong> Click the link in your email to connect Google</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <strong>Step 2:</strong> Your first post goes live on the next Monday, Wednesday, or Friday</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Review monitoring starts the moment you connect</li>
+          <li><span class="check"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#F59E0B" opacity="0.18"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Your first monthly report arrives on the 5th</li>
         </ul>
-        <p style="font-size:0.875rem;color:var(--text-muted);">Questions? Email <a href="mailto:hello@localboostlab.com" style="color:var(--authority-blue);">hello@localboostlab.com</a>. We respond within 24 hours.</p>
+        <p style="font-size:0.875rem;color:var(--text-muted);margin-top:16px;">Questions? Email <a href="mailto:support@localboostlab.com" style="color:var(--authority-blue);">support@localboostlab.com</a> — we respond within a few hours.</p>
         <a href="/" class="btn btn-outline" style="margin-top:8px;">Return to Homepage</a>
       </div>
 
@@ -511,6 +539,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
   var currentStep = 1;
   var photos = [];
+  var uploadedGcsFolder = null; // set once first photo uploads successfully
+  var uploadQueue = []; // { file, index } awaiting upload
+  var uploadActive = false;
+
+  var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? 'http://localhost:3000' : 'https://powerful-balance-production-971d.up.railway.app';
+
+  function getOwnerEmail() {
+    return ((document.getElementById('s2-email') || {}).value || '').trim();
+  }
+
+  // Upload a single File object to GCS via /api/upload-photos
+  function uploadFileToGcs(file, index) {
+    return new Promise(function(resolve) {
+      var email = getOwnerEmail();
+      if (!email) { resolve({ ok: false, reason: 'no email' }); return; }
+      var params = new URLSearchParams({
+        email:       email,
+        filename:    file.name,
+        contentType: file.type || 'image/jpeg',
+      });
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', API + '/api/upload-photos?' + params.toString());
+      xhr.onload = function() {
+        try {
+          var res = JSON.parse(xhr.responseText);
+          if (res.gcsFolder) uploadedGcsFolder = res.gcsFolder;
+          resolve({ ok: xhr.status === 200, filePath: res.filePath });
+        } catch(e) { resolve({ ok: false }); }
+      };
+      xhr.onerror = function() { resolve({ ok: false }); };
+      xhr.send(file);
+    });
+  }
+
+  // Drain upload queue one-at-a-time (avoids overwhelming Railway)
+  function drainUploadQueue() {
+    if (uploadActive || uploadQueue.length === 0) return;
+    uploadActive = true;
+    var item = uploadQueue.shift();
+    uploadFileToGcs(item.file, item.index).then(function(result) {
+      uploadActive = false;
+      if (result.ok) {
+        var thumb = document.querySelector('.photo-thumb[data-idx="' + item.index + '"]');
+        if (thumb) thumb.style.outline = '2px solid #16a34a';
+      }
+      // Update overall upload progress label
+      var total   = photos.length;
+      var pending = uploadQueue.length + (uploadActive ? 1 : 0);
+      var done    = total - pending;
+      var pct     = total > 0 ? Math.round(done / total * 100) : 100;
+      var fillEl  = document.getElementById('upload-progress-fill');
+      var labelEl = document.getElementById('upload-progress-label');
+      var wrapEl  = document.getElementById('upload-progress-wrap');
+      if (fillEl)  fillEl.style.width = pct + '%';
+      if (labelEl) labelEl.textContent = done + '/' + total + ' uploaded';
+      if (wrapEl)  wrapEl.classList.toggle('show', pct < 100);
+      drainUploadQueue();
+    });
+  }
 
   function updateProgress(step) {
     var pct = [25, 50, 75, 100];
@@ -575,13 +663,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.disabled = true;
     btn.textContent = 'Saving your profile...';
 
-    var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
-      ? 'http://localhost:3000' : 'https://powerful-balance-production-971d.up.railway.app';
-
     var params = new URLSearchParams(window.location.search);
     var plan    = params.get('plan')    || 'reputation';
     var billing = params.get('billing') || 'monthly';
-    var ownerEmail = (document.getElementById('s2-email') || {}).value || '';
+    var ownerEmail = getOwnerEmail();
 
     var payload = {
       plan:            plan,
@@ -604,6 +689,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       accessMethod:    (document.querySelector('input[name="access-method"]:checked') || {}).value || '',
       reviewPref:      (document.querySelector('input[name="review-pref"]:checked')   || {}).value || '',
       notes:           (document.getElementById('s4-notes')        || {}).value || '',
+      gcsFolder:       uploadedGcsFolder || null,
     };
 
     // Save prospect data first (non-blocking), then redirect to Stripe checkout
@@ -734,15 +820,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     allowed.forEach(function(file) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        photos.push({ name: file.name, src: e.target.result });
+        var idx = photos.length;
+        photos.push({ name: file.name, src: e.target.result, file: file });
         loaded++;
-        addThumb(e.target.result, photos.length - 1);
+        addThumb(e.target.result, idx);
         var pct = Math.round((loaded / allowed.length) * 100);
         setProgress(pct);
         if (loaded === allowed.length) {
           progressWrap.classList.remove('show');
           uploadStatus.className = 'upload-status success';
-          uploadStatus.textContent = photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' ready ✓ — you can add more from other folders';
+          uploadStatus.textContent = photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' ready ✓ — uploading to your profile...';
+        }
+        // Queue GCS upload for this file (only if email is known)
+        if (getOwnerEmail()) {
+          uploadQueue.push({ file: file, index: idx });
+          drainUploadQueue();
         }
       };
       reader.readAsDataURL(file);
@@ -752,6 +844,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function addThumb(src, idx) {
     var div = document.createElement('div');
     div.className = 'photo-thumb';
+    div.dataset.idx = idx;
     div.innerHTML = '<img src="' + src + '" alt="Photo ' + (idx + 1) + '" loading="lazy">' +
       '<div class="photo-thumb__success">✓</div>' +
       '<div class="photo-thumb__remove" onclick="removePhoto(' + idx + ')" aria-label="Remove photo">×</div>';
