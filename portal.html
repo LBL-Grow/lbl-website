@@ -1006,12 +1006,9 @@ function renderPerformance(data) {
   var pane    = document.getElementById('tab-performance');
   var html    = '';
 
-  // ── Backfill banner (no historical data yet) ──
+  // ── Auto-backfill when no historical data ──
   if (!reports.length) {
-    html += '<div class="backfill-banner">' +
-      '<span>No historical data saved yet.</span>' +
-      '<button class="backfill-btn" onclick="runBackfill(this)">Load Last 6 Months</button>' +
-      '</div>';
+    html += '<div id="backfill-status" class="backfill-banner"><span>Loading historical data…</span></div>';
   }
 
   // ── Live current-month cards (populated by fetchLivePerformance) ──
@@ -1110,29 +1107,26 @@ function renderPerformance(data) {
 
   if (reports.length >= 2) setTimeout(function() { updateCompareTable(); }, 0);
   if (reports.length > 1)  setTimeout(function() { renderIntChart(reports); }, 0);
+  if (!reports.length)     setTimeout(function() { runBackfill(); }, 0);
 
   fetchLivePerformance();
 }
 
-function runBackfill(btn) {
-  btn.disabled = true;
-  btn.textContent = 'Loading…';
+function runBackfill() {
+  var statusEl = document.getElementById('backfill-status');
   fetch(API + '/api/portal/backfill-history', { method: 'POST', headers: authHeaders() })
     .then(function(r) { return r.json(); })
     .then(function(d) {
       var ok = (d.results || []).filter(function(r) { return r.status === 'ok'; }).length;
-      var skip = (d.results || []).filter(function(r) { return r.status === 'skipped'; }).length;
-      btn.textContent = ok + ' months loaded' + (skip ? ', ' + skip + ' skipped' : '');
       if (ok > 0) {
-        setTimeout(function() {
-          performanceLoaded = false;
-          loadDashboard();
-        }, 800);
+        performanceLoaded = false;
+        loadDashboard();
+      } else {
+        if (statusEl) statusEl.style.display = 'none';
       }
     })
     .catch(function() {
-      btn.disabled = false;
-      btn.textContent = 'Retry';
+      if (statusEl) statusEl.style.display = 'none';
     });
 }
 
