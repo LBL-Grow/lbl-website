@@ -367,6 +367,10 @@ a{color:inherit}
 .hist-num{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
 .hist-month{font-weight:600;color:var(--slate)}
 .hist-table-scroll{overflow-x:auto}
+.compare-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px;margin-bottom:24px}
+.compare-selects{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.compare-select{flex:1;min-width:140px;padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius-xs);font-family:inherit;font-size:.85rem;color:var(--slate);background:var(--surface);cursor:pointer;appearance:auto}
+.compare-vs{font-weight:700;color:var(--muted);font-size:.9rem;flex-shrink:0}
 .kw-rank{width:40px;font-weight:700;color:var(--muted);text-align:center}
 .kw-term{font-weight:500}
 .kw-impressions{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
@@ -605,8 +609,9 @@ function logout() {
 /* ── Load dashboard ── */
 var _dashClient = null;
 var _dashData   = null;
-var _perfChart  = null;
-var _intChart   = null;
+var _perfChart      = null;
+var _intChart       = null;
+var _compareReports = [];
 
 function loadDashboard() {
   show('screen-dashboard');
@@ -914,6 +919,70 @@ function switchToPerformanceTab() {
   if (!performanceLoaded) { performanceLoaded = true; renderPerformance(_dashData); }
 }
 
+/* ── Compare widget ── */
+function buildCompareWidget(reports) {
+  if (reports.length < 2) return '';
+  _compareReports = reports;
+  var MF = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+  var sorted = reports.slice().reverse();
+  function opts(selIdx) {
+    return sorted.map(function(r, i) {
+      return '<option value="' + r.year + '-' + r.month + '"' + (i === selIdx ? ' selected' : '') + '>' + MF[r.month] + ' ' + r.year + '</option>';
+    }).join('');
+  }
+  return '<span class="dash-section-title" style="margin-top:8px">Month Comparison</span>' +
+    '<div class="compare-card">' +
+    '<div class="compare-selects">' +
+    '<select id="cmp-a" class="compare-select" onchange="updateCompareTable()">' + opts(0) + '</select>' +
+    '<span class="compare-vs">vs</span>' +
+    '<select id="cmp-b" class="compare-select" onchange="updateCompareTable()">' + opts(1) + '</select>' +
+    '</div>' +
+    '<div id="compare-rows"></div>' +
+    '</div>';
+}
+
+function updateCompareTable() {
+  var MF = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+  var selA = document.getElementById('cmp-a');
+  var selB = document.getElementById('cmp-b');
+  var rowsEl = document.getElementById('compare-rows');
+  if (!selA || !selB || !rowsEl) return;
+  function findR(key) {
+    var p = key.split('-'), y = +p[0], m = +p[1];
+    for (var i = 0; i < _compareReports.length; i++) {
+      if (_compareReports[i].year === y && _compareReports[i].month === m) return _compareReports[i];
+    }
+    return null;
+  }
+  var rA = findR(selA.value), rB = findR(selB.value);
+  if (!rA || !rB) { rowsEl.innerHTML = ''; return; }
+  var lblA = MF[rA.month] + ' ' + rA.year;
+  var lblB = MF[rB.month] + ' ' + rB.year;
+  var rows = [
+    { label: 'Profile Views',      a: rA.views_total,    b: rB.views_total },
+    { label: 'Phone Calls',        a: rA.calls,          b: rB.calls },
+    { label: 'Website Clicks',     a: rA.website_clicks, b: rB.website_clicks },
+    { label: 'Direction Requests', a: rA.directions,     b: rB.directions },
+    { label: 'Messages / Chat',    a: rA.chat,           b: rB.chat },
+    { label: 'Bookings',           a: rA.bookings,       b: rB.bookings },
+  ];
+  var html = '<table class="hist-table"><thead><tr>' +
+    '<th>Metric</th>' +
+    '<th style="text-align:right">' + esc(lblA) + '</th>' +
+    '<th style="text-align:right">' + esc(lblB) + '</th>' +
+    '<th>Change</th>' +
+    '</tr></thead><tbody>';
+  rows.forEach(function(row) {
+    var t = trendLabel(row.a, row.b);
+    html += '<tr><td>' + esc(row.label) + '</td>' +
+      '<td class="hist-num">' + fmt(row.a) + '</td>' +
+      '<td class="hist-num">' + fmt(row.b) + '</td>' +
+      '<td><span class="stat-trend ' + t.cls + '" style="font-size:.72rem">' + t.text + '</span></td></tr>';
+  });
+  html += '</tbody></table>';
+  rowsEl.innerHTML = html;
+}
+
 /* ── Render: Performance ── */
 function renderPerformance(data) {
   var reports = (data && data.reports) || [];
@@ -978,6 +1047,9 @@ function renderPerformance(data) {
     }
   }
 
+  // ── Month comparison widget ──
+  if (reports.length >= 2) html += buildCompareWidget(reports);
+
   // ── Historical month-by-month table ──
   if (reports.length) {
     var MONTHS_FULL = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -1012,9 +1084,8 @@ function renderPerformance(data) {
 
   pane.innerHTML = html;
 
-  if (reports.length > 1) {
-    setTimeout(function() { renderIntChart(reports); }, 0);
-  }
+  if (reports.length >= 2) setTimeout(function() { updateCompareTable(); }, 0);
+  if (reports.length > 1)  setTimeout(function() { renderIntChart(reports); }, 0);
 
   fetchLivePerformance();
 }
