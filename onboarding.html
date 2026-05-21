@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>window.location.replace('waitlist.html');</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -119,22 +118,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: flex; align-items: center; gap: 6px;
     }
     .onboarding-nav .back-btn:hover { color: var(--authority-blue); }
-
-  
-  // Auto-select plan from URL param
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    var plan = params.get('plan');
-    var labels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
-    if (plan && labels[plan]) {
-      var banner = document.getElementById('plan-banner');
-      var name = document.getElementById('plan-banner-name');
-      if (banner && name) {
-        banner.style.display = 'flex';
-        name.textContent = labels[plan];
-      }
-    }
-  })();
 
   /* Photo upload */
     .upload-area { position: relative; }
@@ -462,11 +445,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="onboarding-submit-wrap">
         <button type="button" class="btn btn-primary btn-xl btn-full" id="submit-btn" onclick="submitOnboarding()">
-          Complete Setup &amp; Go Live →
+          Complete Setup &amp; Pay →
         </button>
         </div>
         <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:12px;">
-          After submitting, you'll receive a confirmation email. Your first post will go live within 24 hours.
+          You'll be taken to Stripe's secure checkout. After payment, setup completes and your first post goes live within 24 hours.
         </p>
 
         <div class="onboarding-nav" style="border-top:none;padding-top:0;margin-top:8px;">
@@ -561,13 +544,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     var btn = document.getElementById('submit-btn');
     btn.disabled = true;
-    btn.textContent = 'Activating your profile...';
+    btn.textContent = 'Saving your profile...';
 
     var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
-      ? 'http://localhost:3000' : 'https://gbp-agent-production.up.railway.app';
+      ? 'http://localhost:3000' : 'https://powerful-balance-production-971d.up.railway.app';
 
     var params = new URLSearchParams(window.location.search);
-    var plan = params.get('plan') || 'unknown';
+    var plan    = params.get('plan')    || 'reputation';
+    var billing = params.get('billing') || 'monthly';
+    var ownerEmail = (document.getElementById('s2-email') || {}).value || '';
 
     var payload = {
       plan:            plan,
@@ -579,7 +564,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       yearsInBusiness: (document.getElementById('s1-years')        || {}).value || '',
       gbpUrl:          (document.getElementById('s1-gbp-url')      || {}).value || '',
       ownerName:       (document.getElementById('s2-owner-name')   || {}).value || '',
-      ownerEmail:      (document.getElementById('s2-email')        || {}).value || '',
+      ownerEmail:      ownerEmail,
       tone:            (document.getElementById('s2-tone')         || {}).value || '',
       alwaysSay:       (document.getElementById('s2-always')       || {}).value || '',
       neverSay:        (document.getElementById('s2-never')        || {}).value || '',
@@ -592,28 +577,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       notes:           (document.getElementById('s4-notes')        || {}).value || '',
     };
 
+    // Save prospect data first (non-blocking), then redirect to Stripe checkout
     fetch(API + '/api/onboarding', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-    }).catch(function() { /* non-blocking — show success regardless */ });
+    }).catch(function() { /* non-blocking */ });
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'onboarding_complete', plan: plan, page: 'onboarding' });
+    window.dataLayer.push({ event: 'checkout_initiated', plan: plan, page: 'onboarding' });
 
-    setTimeout(function() {
-      document.getElementById('progress-bar-wrap').style.display = 'none';
-      document.getElementById('step-4').classList.remove('active');
-      document.getElementById('success-screen').classList.add('show');
-    }, 1200);
+    btn.textContent = 'Redirecting to secure checkout...';
+
+    fetch(API + '/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: plan, billing: billing, email: ownerEmail }),
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'No checkout URL returned');
+      }
+    })
+    .catch(function(err) {
+      btn.disabled = false;
+      btn.textContent = 'Complete Setup & Pay →';
+      errEl.style.display = 'block';
+      errEl.textContent = 'Could not start checkout. Please try again or email hello@localboostlab.com.';
+      console.error('Checkout error:', err);
+    });
   }
 
 
-  // Auto-select plan from URL param
+  // Auto-select plan from URL param + handle post-payment return
   (function() {
     var params = new URLSearchParams(window.location.search);
     var plan = params.get('plan');
-    var labels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
+    var paid = params.get('paid');
+
+    // Returning from Stripe success — skip form, show success screen
+    if (paid === '1') {
+      document.getElementById('progress-bar-wrap').style.display = 'none';
+      for (var i = 1; i <= 4; i++) {
+        var s = document.getElementById('step-' + i);
+        if (s) s.classList.remove('active');
+      }
+      document.getElementById('success-screen').classList.add('show');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'purchase_complete', plan: plan || 'unknown', page: 'onboarding' });
+      return;
+    }
+
+    var monthlyLabels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
+    var annualLabels  = { reviews: 'Reputation — $82/mo (annual)', reputation: 'Reputation — $82/mo (annual)', presence: 'Presence — $133/mo (annual)', complete: 'Authority — $184/mo (annual)', authority: 'Authority — $184/mo (annual)' };
+    var labels = (billing === 'annual') ? annualLabels : monthlyLabels;
     if (plan && labels[plan]) {
       var banner = document.getElementById('plan-banner');
       var name = document.getElementById('plan-banner-name');

@@ -620,6 +620,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (monthLabel) monthLabel.classList.toggle('active', !annual);
       if (annualLabel) annualLabel.classList.toggle('active', annual);
       document.body.classList.toggle('annual-billing', annual);
+      // Sync billing param on all plan CTA links
+      document.querySelectorAll('a[href*="/onboarding"]').forEach(function(link) {
+        var href = link.getAttribute('href') || '';
+        href = href.replace(/[&?]billing=[^&]*/g, '');
+        var sep = href.indexOf('?') !== -1 ? '&' : '?';
+        link.setAttribute('href', href + sep + 'billing=' + (annual ? 'annual' : 'monthly'));
+      });
     }
     toggle.addEventListener('change', function() { applyBilling(this.checked); });
     applyBilling(false);
