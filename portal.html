@@ -1730,7 +1730,7 @@ function submitPhotos() {
       fetch(API + '/api/portal/upload-photo', {
         method: 'POST',
         headers: Object.assign({ 'Content-Type': 'application/json' }, authHeaders()),
-        body: JSON.stringify({ imageBase64: base64, mimeType: f.type || 'image/jpeg', category: category }),
+        body: JSON.stringify({ imageBase64: base64, mimeType: f.type || 'image/jpeg', category: category, originalName: f.name }),
       })
       .then(function(r) { return r.json(); })
       .then(function(d) {
