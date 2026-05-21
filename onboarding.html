@@ -631,6 +631,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return;
     }
 
+    var billing = params.get('billing') || 'monthly';
     var monthlyLabels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
     var annualLabels  = { reviews: 'Reputation — $82/mo (annual)', reputation: 'Reputation — $82/mo (annual)', presence: 'Presence — $133/mo (annual)', complete: 'Authority — $184/mo (annual)', authority: 'Authority — $184/mo (annual)' };
     var labels = (billing === 'annual') ? annualLabels : monthlyLabels;
