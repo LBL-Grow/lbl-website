@@ -515,7 +515,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p style="margin:0 0 10px;font-size:13px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:.04em;">Why connect Google?</p>
           <ul style="margin:0;padding-left:18px;font-size:14px;color:#374151;line-height:2;">
             <li>It lets us publish posts to your profile automatically</li>
-            <li>It lets Jake monitor and reply to your reviews 24/7</li>
+            <li>It lets us monitor and reply to your reviews 24/7</li>
             <li>We only request access to your Business Profile — nothing else</li>
             <li>You can revoke access from Google at any time</li>
           </ul>
@@ -581,9 +581,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var item = uploadQueue.shift();
     uploadFileToGcs(item.file, item.index).then(function(result) {
       uploadActive = false;
+      var thumb = document.querySelector('.photo-thumb[data-idx="' + item.index + '"]');
       if (result.ok) {
-        var thumb = document.querySelector('.photo-thumb[data-idx="' + item.index + '"]');
         if (thumb) thumb.style.outline = '2px solid #16a34a';
+      } else {
+        if (thumb) thumb.style.outline = '2px solid #EF4444';
+        var statusEl = document.getElementById('upload-status');
+        if (statusEl) { statusEl.className = 'upload-status error'; statusEl.textContent = 'Some photos failed to upload. Check your connection and try again.'; }
       }
       // Update overall upload progress label
       var total   = photos.length;
@@ -733,19 +737,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var plan = params.get('plan');
     var paid = params.get('paid');
 
-    // Returning from Stripe success — skip form, show success screen
-    if (paid === '1') {
-      document.getElementById('progress-bar-wrap').style.display = 'none';
-      for (var i = 1; i <= 4; i++) {
-        var s = document.getElementById('step-' + i);
-        if (s) s.classList.remove('active');
-      }
-      document.getElementById('success-screen').classList.add('show');
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'purchase_complete', plan: plan || 'unknown', page: 'onboarding' });
-      return;
-    }
-
     var billing = params.get('billing') || 'monthly';
     var monthlyLabels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
     var annualLabels  = { reviews: 'Reputation — $82/mo (annual)', reputation: 'Reputation — $82/mo (annual)', presence: 'Presence — $133/mo (annual)', complete: 'Authority — $184/mo (annual)', authority: 'Authority — $184/mo (annual)' };
@@ -757,6 +748,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         banner.style.display = 'flex';
         name.textContent = labels[plan];
       }
+    }
+
+    // Returning from Stripe success — skip form, show success screen
+    if (paid === '1') {
+      document.getElementById('progress-bar-wrap').style.display = 'none';
+      for (var i = 1; i <= 4; i++) {
+        var s = document.getElementById('step-' + i);
+        if (s) s.classList.remove('active');
+      }
+      document.getElementById('success-screen').classList.add('show');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'purchase_complete', plan: plan || 'unknown', page: 'onboarding' });
+      return;
     }
   })();
 
