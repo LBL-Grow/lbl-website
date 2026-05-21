@@ -17,6 +17,11 @@
   ],
   "redirects": [
     {
+      "source": "/waitlist",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
       "source": "/pricing",
       "has": [{ "type": "query", "key": "plan" }],
       "destination": "/pricing",
@@ -51,6 +56,12 @@
     },
     {
       "source": "/portal",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/waitlist",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
