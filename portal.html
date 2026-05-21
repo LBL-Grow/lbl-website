@@ -357,13 +357,16 @@ a{color:inherit}
 .perf-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
 @media(max-width:1100px){.perf-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.perf-grid{grid-template-columns:repeat(2,1fr)}}
-.yoy-table-wrap,.kw-table-wrap{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px}
-.yoy-table,.kw-table{width:100%;border-collapse:collapse;font-size:.85rem}
-.yoy-table th,.kw-table th{padding:10px 16px;text-align:left;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);background:var(--surface)}
-.yoy-table td,.kw-table td{padding:11px 16px;border-bottom:1px solid var(--border);color:var(--slate)}
-.yoy-table tr:last-child td,.kw-table tr:last-child td{border-bottom:none}
-.yoy-table tr:hover td,.kw-table tr:hover td{background:var(--surface)}
+.yoy-table-wrap,.kw-table-wrap,.hist-table-wrap{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px}
+.yoy-table,.kw-table,.hist-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.yoy-table th,.kw-table th,.hist-table th{padding:10px 16px;text-align:left;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);background:var(--surface)}
+.yoy-table td,.kw-table td,.hist-table td{padding:11px 16px;border-bottom:1px solid var(--border);color:var(--slate)}
+.yoy-table tr:last-child td,.kw-table tr:last-child td,.hist-table tr:last-child td{border-bottom:none}
+.yoy-table tr:hover td,.kw-table tr:hover td,.hist-table tr:hover td{background:var(--surface)}
 .yoy-num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.hist-num{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.hist-month{font-weight:600;color:var(--slate)}
+.hist-table-scroll{overflow-x:auto}
 .kw-rank{width:40px;font-weight:700;color:var(--muted);text-align:center}
 .kw-term{font-weight:500}
 .kw-impressions{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
@@ -975,6 +978,35 @@ function renderPerformance(data) {
     }
   }
 
+  // ── Historical month-by-month table ──
+  if (reports.length) {
+    var MONTHS_FULL = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+    var sorted = reports.slice().reverse(); // most recent first
+    html += '<span class="dash-section-title" style="margin-top:8px">Monthly Breakdown — All Saved Months</span>';
+    html += '<div class="hist-table-wrap"><div class="hist-table-scroll"><table class="hist-table">';
+    html += '<thead><tr>' +
+      '<th>Month</th>' +
+      '<th style="text-align:right">Profile Views</th>' +
+      '<th style="text-align:right">Calls</th>' +
+      '<th style="text-align:right">Website Clicks</th>' +
+      '<th style="text-align:right">Directions</th>' +
+      '<th style="text-align:right">Chat</th>' +
+      '<th style="text-align:right">Bookings</th>' +
+      '</tr></thead><tbody>';
+    sorted.forEach(function(r) {
+      html += '<tr>' +
+        '<td class="hist-month">' + esc(MONTHS_FULL[r.month] + ' ' + r.year) + '</td>' +
+        '<td class="hist-num">' + fmt(r.views_total) + '</td>' +
+        '<td class="hist-num">' + fmt(r.calls) + '</td>' +
+        '<td class="hist-num">' + fmt(r.website_clicks) + '</td>' +
+        '<td class="hist-num">' + fmt(r.directions) + '</td>' +
+        '<td class="hist-num">' + fmt(r.chat) + '</td>' +
+        '<td class="hist-num">' + fmt(r.bookings) + '</td>' +
+        '</tr>';
+    });
+    html += '</tbody></table></div></div>';
+  }
+
   // ── Search keywords (placeholder — filled by live fetch) ──
   html += '<div id="kw-section"></div>';
 
@@ -1050,22 +1082,24 @@ function renderIntChart(reports) {
   if (!canvas) return;
   if (_intChart) { _intChart.destroy(); _intChart = null; }
   var labels   = reports.map(function(r) { return MONTHS[r.month] + ' \'' + String(r.year).slice(2); });
-  var calls    = reports.map(function(r) { return r.calls          || 0; });
-  var chat     = reports.map(function(r) { return r.chat           || 0; });
-  var bookings = reports.map(function(r) { return r.bookings       || 0; });
-  var dirs     = reports.map(function(r) { return r.directions     || 0; });
-  var clicks   = reports.map(function(r) { return r.website_clicks || 0; });
+  var views    = reports.map(function(r) { return r.views_total     || 0; });
+  var calls    = reports.map(function(r) { return r.calls           || 0; });
+  var chat     = reports.map(function(r) { return r.chat            || 0; });
+  var bookings = reports.map(function(r) { return r.bookings        || 0; });
+  var dirs     = reports.map(function(r) { return r.directions      || 0; });
+  var clicks   = reports.map(function(r) { return r.website_clicks  || 0; });
 
   _intChart = new Chart(canvas.getContext('2d'), {
     type: 'line',
     data: {
       labels: labels,
       datasets: [
-        { label: 'Phone Calls',       data: calls,    borderColor: '#10B981', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
-        { label: 'Messages',          data: chat,     borderColor: '#8B5CF6', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
-        { label: 'Bookings',          data: bookings, borderColor: '#F59E0B', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
-        { label: 'Direction Requests',data: dirs,     borderColor: '#EF4444', backgroundColor: 'transparent',         tension: .4, pointRadius: 3, borderWidth: 2 },
-        { label: 'Website Clicks',    data: clicks,   borderColor: '#1B4FD8', backgroundColor: 'rgba(27,79,216,.06)', tension: .4, pointRadius: 3, borderWidth: 2, fill: true },
+        { label: 'Profile Views',     data: views,    borderColor: '#94A3B8', backgroundColor: 'rgba(148,163,184,.08)', tension: .4, pointRadius: 3, borderWidth: 2, fill: true,  yAxisID: 'yViews', borderDash: [4,3] },
+        { label: 'Phone Calls',       data: calls,    borderColor: '#10B981', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
+        { label: 'Messages',          data: chat,     borderColor: '#8B5CF6', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
+        { label: 'Bookings',          data: bookings, borderColor: '#F59E0B', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
+        { label: 'Direction Requests',data: dirs,     borderColor: '#EF4444', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
+        { label: 'Website Clicks',    data: clicks,   borderColor: '#1B4FD8', backgroundColor: 'rgba(27,79,216,.06)',   tension: .4, pointRadius: 3, borderWidth: 2, fill: true,  yAxisID: 'yActs' },
       ],
     },
     options: {
@@ -1077,8 +1111,9 @@ function renderIntChart(reports) {
         tooltip: { backgroundColor: '#0F172A', titleFont: { family: 'Inter', size: 11 }, bodyFont: { family: 'Inter', size: 11 }, padding: 10, cornerRadius: 8 },
       },
       scales: {
-        x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' } },
-        y: { grid: { color: 'rgba(0,0,0,.04)' }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' }, border: { display: false } },
+        x:      { grid: { display: false }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' } },
+        yActs:  { position: 'left',  grid: { color: 'rgba(0,0,0,.04)' }, ticks: { font: { family: 'Inter', size: 10 }, color: '#94A3B8' }, border: { display: false } },
+        yViews: { position: 'right', grid: { drawOnChartArea: false }, ticks: { font: { family: 'Inter', size: 10 }, color: '#CBD5E1' }, border: { display: false } },
       },
     },
   });
