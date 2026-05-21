@@ -137,6 +137,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .upload-status.success { color: var(--authority-blue); font-weight: 600; }
     .upload-status.error   { color: var(--warning-red); }
+    .upload-progress-wrap {
+      margin-top: 10px;
+      display: none;
+    }
+    .upload-progress-wrap.show { display: block; }
+    .upload-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--surface-mid);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .upload-progress-bar__fill {
+      height: 100%;
+      width: 0%;
+      background: var(--authority-blue);
+      border-radius: 99px;
+      transition: width 150ms ease;
+    }
+    .upload-progress-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 4px;
+    }
 
     /* Success screen */
     .success-screen {
@@ -356,10 +381,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="upload-zone" id="upload-zone">
             <div class="upload-zone__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
             <p class="upload-zone__text"><strong>Drag and drop photos here</strong><br>or tap to add photos</p>
-            <p class="upload-zone__hint">JPG, PNG, WEBP, HEIC · Max 15MB per photo · Up to 30 photos · Min 5 recommended</p>
+            <p class="upload-zone__hint">JPG, PNG, WEBP, HEIC · Max 15MB per photo · Up to 100 photos · You can add from multiple folders</p>
           </div>
         </div>
 
+        <div class="upload-progress-wrap" id="upload-progress-wrap">
+          <div class="upload-progress-bar"><div class="upload-progress-bar__fill" id="upload-progress-fill"></div></div>
+          <div class="upload-progress-label" id="upload-progress-label">0%</div>
+        </div>
         <div class="upload-status" id="upload-status"></div>
         <div class="photo-grid" id="photo-grid"></div>
 
@@ -668,19 +697,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     handleFiles(e.dataTransfer.files);
   });
 
+  var progressWrap  = document.getElementById('upload-progress-wrap');
+  var progressFill  = document.getElementById('upload-progress-fill');
+  var progressLabel = document.getElementById('upload-progress-label');
+
+  function setProgress(pct) {
+    progressFill.style.width = pct + '%';
+    progressLabel.textContent = pct + '%';
+  }
+
   function handleFiles(fileList) {
     var allowed = Array.from(fileList).filter(function(f) {
-      return f.type.match(/image\/(jpeg|png|webp|heic)/) && f.size <= 15 * 1024 * 1024;
+      return f.type.match(/image\/(jpeg|png|webp|heic)/i) && f.size <= 15 * 1024 * 1024;
     });
 
-    if (photos.length + allowed.length > 30) {
+    var rejected = Array.from(fileList).length - allowed.length;
+    if (rejected > 0) {
       uploadStatus.className = 'upload-status error';
-      uploadStatus.textContent = 'Maximum 30 photos allowed.';
+      uploadStatus.textContent = rejected + ' file' + (rejected !== 1 ? 's' : '') + ' skipped (wrong type or over 15MB).';
+    }
+
+    if (!allowed.length) return;
+
+    if (photos.length + allowed.length > 100) {
+      uploadStatus.className = 'upload-status error';
+      uploadStatus.textContent = 'Maximum 100 photos allowed. Currently have ' + photos.length + '.';
       return;
     }
 
+    progressWrap.classList.add('show');
+    setProgress(0);
     uploadStatus.className = 'upload-status';
-    uploadStatus.textContent = 'Uploading... ' + allowed.length + ' photo' + (allowed.length !== 1 ? 's' : '') + '...';
+    uploadStatus.textContent = 'Reading ' + allowed.length + ' photo' + (allowed.length !== 1 ? 's' : '') + '...';
 
     var loaded = 0;
     allowed.forEach(function(file) {
@@ -689,9 +737,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         photos.push({ name: file.name, src: e.target.result });
         loaded++;
         addThumb(e.target.result, photos.length - 1);
+        var pct = Math.round((loaded / allowed.length) * 100);
+        setProgress(pct);
         if (loaded === allowed.length) {
+          progressWrap.classList.remove('show');
           uploadStatus.className = 'upload-status success';
-          uploadStatus.textContent = photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' uploaded successfully ✓';
+          uploadStatus.textContent = photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' ready ✓ — you can add more from other folders';
         }
       };
       reader.readAsDataURL(file);
