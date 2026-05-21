@@ -367,6 +367,22 @@ a{color:inherit}
 .hist-num{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
 .hist-month{font-weight:600;color:var(--slate)}
 .hist-table-scroll{overflow-x:auto}
+.photo-upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:36px 24px;text-align:center;cursor:pointer;transition:border-color 150ms,background 150ms;background:var(--white);margin-bottom:16px}
+.photo-upload-zone:hover,.photo-upload-zone.drag-over{border-color:var(--blue);background:var(--blue-light)}
+.photo-upload-icon{width:48px;height:48px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.photo-preview-wrap{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.photo-preview-item{position:relative;width:110px;height:82px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);flex-shrink:0}
+.photo-preview-item img{width:100%;height:100%;object-fit:cover}
+.photo-preview-remove{position:absolute;top:4px;right:4px;width:20px;height:20px;background:rgba(0,0,0,.55);border-radius:50%;border:none;color:#fff;font-size:13px;line-height:20px;text-align:center;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center}
+.photo-category-wrap{margin-bottom:14px}
+.photo-category-label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
+.photo-category-select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-xs);font-family:inherit;font-size:.85rem;color:var(--slate);background:var(--white)}
+.photo-submit-btn{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-xs);font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 150ms}
+.photo-submit-btn:hover:not(:disabled){background:var(--blue-dark)}
+.photo-submit-btn:disabled{background:var(--muted);cursor:default}
+.photo-status{font-size:.82rem;margin-top:12px;padding:10px 14px;border-radius:var(--radius-xs);display:none}
+.photo-status.ok{background:#D1FAE5;color:#065F46}.photo-status.err{background:#FEE2E2;color:#991B1B}
+.photo-hint{font-size:.75rem;color:var(--muted);margin-top:16px;line-height:1.6;background:var(--surface);border-radius:var(--radius-sm);padding:10px 14px}
 .backfill-banner{display:flex;align-items:center;gap:12px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:20px;font-size:.85rem;color:#92400E}
 .backfill-btn{margin-left:auto;padding:7px 16px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-xs);font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap}
 .backfill-btn:disabled{background:var(--muted);cursor:default}
@@ -474,6 +490,7 @@ a{color:inherit}
     <button class="tab-btn"        data-tab="reviews"   role="tab">Reviews</button>
     <button class="tab-btn"        data-tab="rankings"     role="tab">Rankings</button>
     <button class="tab-btn"        data-tab="performance"  role="tab">Performance</button>
+    <button class="tab-btn"        data-tab="photos"       role="tab">Photos</button>
     <button class="tab-btn"        data-tab="billing"      role="tab">Plan & Billing</button>
   </nav>
 
@@ -483,6 +500,7 @@ a{color:inherit}
   <div id="tab-reviews"   class="tab-pane"></div>
   <div id="tab-rankings"     class="tab-pane"></div>
   <div id="tab-performance"  class="tab-pane"></div>
+  <div id="tab-photos"       class="tab-pane"></div>
   <div id="tab-billing"      class="tab-pane"></div>
 </div>
 
@@ -533,6 +551,7 @@ document.querySelectorAll('.tab-btn').forEach(function(btn) {
       }
     }
     if (tab === 'performance' && !performanceLoaded) { performanceLoaded = true; renderPerformance(_dashData); }
+    if (tab === 'photos'      && !photosLoaded)      { photosLoaded = true; renderPhotos(); }
     if (tab === 'billing'     && !billingLoaded)       loadBilling();
   });
 });
@@ -627,6 +646,7 @@ var IC = {
   reply:    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 00-4-4H4"/></svg>',
   zap:      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
   trendUp:  '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+  camera:   '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>',
 };
 
 function loadDashboard() {
@@ -1333,8 +1353,9 @@ function reviewCard(r) {
 }
 
 /* ── Render: Rankings ── */
-var rankingsLoaded  = false;
+var rankingsLoaded    = false;
 var performanceLoaded = false;
+var photosLoaded      = false;
 
 function renderRankings() {
   if (rankingsLoaded) return;
@@ -1584,6 +1605,143 @@ function rankColors(rank) {
   if (rank <= 10)    return { bg: '#FCD34D', text: '#713F12' };
   if (rank <= 15)    return { bg: '#F97316', text: '#FFFFFF' };
   return                    { bg: '#EF4444', text: '#FFFFFF' };
+}
+
+/* ── Photos ── */
+var _photoFiles = [];
+
+function renderPhotos() {
+  var pane = document.getElementById('tab-photos');
+  _photoFiles = [];
+  var html = '<span class="dash-section-title">Add Photos to Your Google Profile</span>';
+  html += '<p style="font-size:.85rem;color:var(--muted);margin-bottom:20px;line-height:1.6">Photos you upload here will appear on your Google Business Profile. Google typically reviews and publishes them within 24 hours.</p>';
+
+  html += '<div id="photo-upload-zone" class="photo-upload-zone"' +
+    ' onclick="document.getElementById(\'photo-file-input\').click()"' +
+    ' ondragover="photoDragOver(event)" ondragleave="photoDragLeave(event)" ondrop="photoDrop(event)">' +
+    '<div class="photo-upload-icon">' + IC.camera + '</div>' +
+    '<div style="font-weight:700;color:var(--slate);margin-bottom:4px">Click to select photos</div>' +
+    '<div style="font-size:.75rem;color:var(--muted)">or drag & drop here · JPG, PNG, WebP · Max 5 MB each · Up to 10 photos</div>' +
+    '</div>';
+  html += '<input type="file" id="photo-file-input" accept="image/jpeg,image/png,image/webp" multiple style="display:none" onchange="photoFilePicked(event)">';
+  html += '<div id="photo-previews" class="photo-preview-wrap"></div>';
+
+  html += '<div class="photo-category-wrap">' +
+    '<label class="photo-category-label">Photo category</label>' +
+    '<select id="photo-category" class="photo-category-select">' +
+    '<option value="ADDITIONAL">General</option>' +
+    '<option value="EXTERIOR">Exterior</option>' +
+    '<option value="INTERIOR">Interior</option>' +
+    '<option value="PRODUCT">Product / Menu</option>' +
+    '<option value="AT_WORK">Team / At Work</option>' +
+    '<option value="FOOD_AND_DRINK">Food & Drink</option>' +
+    '</select></div>';
+
+  html += '<button class="photo-submit-btn" id="photo-submit-btn" onclick="submitPhotos()" disabled>Select photos to upload</button>';
+  html += '<div class="photo-status" id="photo-status"></div>';
+  html += '<div class="photo-hint">💡 <strong>Best practices:</strong> Use well-lit, high-resolution photos (min 720×720px). Show your team, space, products, and happy customers. Consistent updates signal an active business to Google.</div>';
+
+  pane.innerHTML = html;
+}
+
+function photoDragOver(e) {
+  e.preventDefault();
+  var z = document.getElementById('photo-upload-zone');
+  if (z) z.classList.add('drag-over');
+}
+function photoDragLeave(e) {
+  var z = document.getElementById('photo-upload-zone');
+  if (z) z.classList.remove('drag-over');
+}
+function photoDrop(e) {
+  e.preventDefault();
+  photoDragLeave(e);
+  var files = Array.from(e.dataTransfer.files).filter(function(f) { return f.type.startsWith('image/'); });
+  addPhotoFiles(files);
+}
+function photoFilePicked(e) {
+  addPhotoFiles(Array.from(e.target.files));
+  e.target.value = '';
+}
+function addPhotoFiles(files) {
+  files.forEach(function(f) {
+    if (_photoFiles.length >= 10) return;
+    if (f.size > 5 * 1024 * 1024) { alert(f.name + ' exceeds the 5 MB limit and was skipped.'); return; }
+    _photoFiles.push(f);
+  });
+  renderPhotoPreviewsDOM();
+  updatePhotoBtn();
+}
+function removePhoto(idx) {
+  _photoFiles.splice(idx, 1);
+  renderPhotoPreviewsDOM();
+  updatePhotoBtn();
+}
+function renderPhotoPreviewsDOM() {
+  var wrap = document.getElementById('photo-previews');
+  if (!wrap) return;
+  if (!_photoFiles.length) { wrap.innerHTML = ''; return; }
+  var html = '';
+  _photoFiles.forEach(function(f, i) {
+    html += '<div class="photo-preview-item">' +
+      '<img src="' + URL.createObjectURL(f) + '" alt="">' +
+      '<button class="photo-preview-remove" onclick="removePhoto(' + i + ')">×</button>' +
+      '</div>';
+  });
+  wrap.innerHTML = html;
+}
+function updatePhotoBtn() {
+  var btn = document.getElementById('photo-submit-btn');
+  if (!btn) return;
+  var n = _photoFiles.length;
+  btn.disabled = n === 0;
+  btn.textContent = n > 0 ? 'Upload ' + n + ' photo' + (n > 1 ? 's' : '') + ' to Google Profile' : 'Select photos to upload';
+}
+
+function submitPhotos() {
+  if (!_photoFiles.length) return;
+  var btn    = document.getElementById('photo-submit-btn');
+  var status = document.getElementById('photo-status');
+  var category = (document.getElementById('photo-category') || {}).value || 'ADDITIONAL';
+  btn.disabled = true;
+  status.style.display = 'none';
+  var total = _photoFiles.length, done = 0, errs = [];
+
+  function uploadNext(idx) {
+    if (idx >= total) {
+      if (errs.length) {
+        status.className = 'photo-status err';
+        status.innerHTML = done + ' uploaded. ' + errs.length + ' failed: ' + esc(errs.join(', '));
+      } else {
+        status.className = 'photo-status ok';
+        status.innerHTML = '✓ ' + done + ' photo' + (done > 1 ? 's' : '') + ' sent to your Google Profile. Allow up to 24 hours for them to appear.';
+        _photoFiles = [];
+        renderPhotoPreviewsDOM();
+      }
+      status.style.display = 'block';
+      updatePhotoBtn();
+      return;
+    }
+    btn.textContent = 'Uploading ' + (idx + 1) + ' / ' + total + '…';
+    var f = _photoFiles[idx];
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var base64 = ev.target.result.split(',')[1];
+      fetch(API + '/api/portal/upload-photo', {
+        method: 'POST',
+        headers: Object.assign({ 'Content-Type': 'application/json' }, authHeaders()),
+        body: JSON.stringify({ imageBase64: base64, mimeType: f.type || 'image/jpeg', category: category }),
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.ok) { done++; } else { errs.push(f.name + ' (' + (d.error || 'unknown error') + ')'); }
+        uploadNext(idx + 1);
+      })
+      .catch(function() { errs.push(f.name + ' (network error)'); uploadNext(idx + 1); });
+    };
+    reader.readAsDataURL(f);
+  }
+  uploadNext(0);
 }
 
 /* ── Billing ── */
