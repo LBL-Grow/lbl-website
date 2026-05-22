@@ -13,6 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <title id="page-title">Article | Local Boost Lab Blog</title>
   <meta name="description" id="page-desc" content="Local Boost Lab Blog">
   <meta name="robots" content="index, follow">
+  <link rel="author" href="/about">
   <link rel="icon" type="image/png" href="../Fav-Icon_Blue.png">
   <link rel="apple-touch-icon" href="../Fav-Icon_Blue.png">  <link rel="stylesheet" href="/fonts.css">
     <!-- Critical CSS: vars + reset + nav — eliminates styles.css render block -->
@@ -41,7 +42,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media(max-width:768px){:root{--section-pad:var(--section-pad-mobile)}}
   </style>
   <!-- Non-critical styles deferred -->
-  <link rel="preload" href="../styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="image" href="/Logo_vertical_yellow_white_60.png" fetchpriority="high">
+  <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../styles.css"></noscript>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
@@ -260,11 +262,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div id="article-content" class="prose"></div>
 
-    <div class="author-card">
+    <div class="author-card" itemscope itemtype="https://schema.org/Person">
       <div class="author-avatar">LP</div>
       <div>
-        <div class="author-name">Local Boost Lab Team</div>
-        <div class="author-bio">We manage Google Business Profiles for US local service businesses. Everything we write is based on real data from real managed profiles, not general SEO theory.</div>
+        <div class="author-name" itemprop="name"><a href="/about" rel="author" style="color:inherit;text-decoration:none;">Local Boost Lab Team</a></div>
+        <div class="author-bio" itemprop="description">We manage Google Business Profiles for US local service businesses. Everything we write is based on real data from real managed profiles, not general SEO theory.</div>
       </div>
     </div>
 
