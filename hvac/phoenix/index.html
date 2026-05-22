@@ -94,9 +94,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media(max-width:1024px){.nav__links,.nav__cta{display:none}.nav__hamburger{display:flex}}
     @media(max-width:768px){:root{--section-pad:var(--section-pad-mobile)}}
   </style>
+  <link rel="preload" as="image" href="/Logo_vertical_yellow_white_60.png" fetchpriority="high">
   <!-- Non-critical styles deferred -->
   <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -259,7 +262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="footer__inner">
     <div class="footer__grid">
       <div>
-        <a href="/" class="footer__logo"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" width="120" style="height:21px;width:auto;display:block;"></a>
+        <a href="/" class="footer__logo"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" width="120" loading="lazy" style="height:21px;width:auto;display:block;"></a>
         <div class="footer__tagline">Your Google Profile. Finally handled.</div>
         <div class="footer__email"><a href="mailto:hello@localboostlab.com">hello@localboostlab.com</a></div>
       </div>
@@ -284,7 +287,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div style="display:flex;align-items:center;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">
       <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Payments secured by</span>
-      <img src="/Stripe_logo.png" alt="Stripe" height="21" width="50" style="opacity:0.55;">
+      <img src="/Stripe_logo.png" alt="Stripe" height="21" width="50" loading="lazy" style="opacity:0.55;">
     </div>
     <div class="footer__bottom">
       <span>Local Boost Lab · Not affiliated with Google LLC · Serving Phoenix, AZ and all US local businesses</span>
