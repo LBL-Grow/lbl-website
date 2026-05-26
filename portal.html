@@ -1135,7 +1135,8 @@ function renderPerformance(data) {
 
   if (reports.length >= 2) setTimeout(function() { updateCompareTable(); }, 0);
   if (reports.length > 1)  setTimeout(function() { renderIntChart(reports); }, 0);
-  if (!reports.length)     setTimeout(function() { runBackfill(); }, 0);
+  var needsBackfill = !reports.length || reports.some(function(r) { return r.posts_consistency === null || r.reply_rate === null; });
+  if (needsBackfill)       setTimeout(function() { runBackfill(); }, 0);
 
   fetchLivePerformance();
 }
