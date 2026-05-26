@@ -735,8 +735,8 @@ function renderOverview(client, data, suspension) {
   }
 
   // Health cards
-  var postCons  = latest ? pct(latest.posts_consistency) : null;
-  var replyRate = latest ? pct(latest.reply_rate)        : null;
+  var postCons  = latest && latest.posts_consistency !== null && latest.posts_consistency !== undefined ? Math.round(latest.posts_consistency) : null;
+  var replyRate = latest && latest.reply_rate        !== null && latest.reply_rate        !== undefined ? Math.round(latest.reply_rate)        : null;
   var isSusp    = suspension && suspension.suspended;
   var planOk    = client.status === 'active';
 
@@ -799,7 +799,7 @@ function renderOverview(client, data, suspension) {
     html += '</div>';
 
     // Review chips
-    var replyRatePct = pct(latest.reply_rate);
+    var replyRatePct = latest.reply_rate !== null && latest.reply_rate !== undefined ? Math.round(latest.reply_rate) : null;
     html += '<div class="review-chips">';
     if (latest.reviews_this_month !== null && latest.reviews_this_month !== undefined)
       html += '<span class="review-chip">' + IC.star + latest.reviews_this_month + ' reviews this month</span>';
@@ -1308,7 +1308,7 @@ function renderReviews(data) {
   var html    = '';
 
   if (latest) {
-    var replyRatePct = pct(latest.reply_rate);
+    var replyRatePct = latest.reply_rate !== null && latest.reply_rate !== undefined ? Math.round(latest.reply_rate) : null;
     html += '<div class="review-chips" style="margin-bottom:20px">';
     if (latest.reviews_this_month !== null && latest.reviews_this_month !== undefined)
       html += '<span class="review-chip">' + IC.star + latest.reviews_this_month + ' reviews this month</span>';
