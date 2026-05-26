@@ -1147,17 +1147,32 @@ function runBackfill() {
     .then(function(d) {
       console.log('[backfill] response:', JSON.stringify(d));
       if (!d.queued) {
-        // Nothing to process
         if (statusEl) statusEl.style.display = 'none';
         return;
       }
-      // Background job running — wait 20s per month queued, then reload
-      var waitMs = Math.min(d.queued * 8000, 40000);
-      if (statusEl) statusEl.innerHTML = '<span>Fetching ' + d.queued + ' months of data… (~' + Math.round(waitMs/1000) + 's)</span>';
-      setTimeout(function() {
-        performanceLoaded = false;
-        loadDashboard();
-      }, waitMs);
+      // Poll dashboard every 10s until reports appear (max 120s)
+      if (statusEl) statusEl.innerHTML = '<span>Fetching ' + d.queued + ' months of history from Google…</span>';
+      var elapsed = 0;
+      var maxWait = 120000;
+      var interval = setInterval(function() {
+        elapsed += 10000;
+        fetch(API + '/api/portal/dashboard', { headers: authHeaders() })
+          .then(function(r) { return r.json(); })
+          .then(function(dash) {
+            var hasData = dash && dash.reports && dash.reports.length > 0;
+            if (hasData || elapsed >= maxWait) {
+              clearInterval(interval);
+              if (hasData) {
+                performanceLoaded = false;
+                loadDashboard();
+              } else {
+                if (statusEl) statusEl.innerHTML = '<span style="color:#92400E">Could not fetch historical data. Google may not have data for older months.</span>';
+                setTimeout(function() { if (statusEl) statusEl.style.display = 'none'; }, 5000);
+              }
+            }
+          })
+          .catch(function() { clearInterval(interval); if (statusEl) statusEl.style.display = 'none'; });
+      }, 10000);
     })
     .catch(function(err) {
       console.error('[backfill] fetch error:', err);
