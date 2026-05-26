@@ -1145,15 +1145,19 @@ function runBackfill() {
   fetch(API + '/api/portal/backfill-history', { method: 'POST', headers: authHeaders() })
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      console.log('[backfill] results:', JSON.stringify(d.results));
-      var ok = (d.results || []).filter(function(r) { return r.status === 'ok'; }).length;
-      if (ok > 0) {
+      console.log('[backfill] response:', JSON.stringify(d));
+      if (!d.queued) {
+        // Nothing to process
+        if (statusEl) statusEl.style.display = 'none';
+        return;
+      }
+      // Background job running — wait 20s per month queued, then reload
+      var waitMs = Math.min(d.queued * 8000, 40000);
+      if (statusEl) statusEl.innerHTML = '<span>Fetching ' + d.queued + ' months of data… (~' + Math.round(waitMs/1000) + 's)</span>';
+      setTimeout(function() {
         performanceLoaded = false;
         loadDashboard();
-      } else {
-        if (statusEl) statusEl.innerHTML = '<span style="color:#92400E">No new data found. Historical GBP data may not be available.</span>';
-        setTimeout(function() { if (statusEl) statusEl.style.display = 'none'; }, 4000);
-      }
+      }, waitMs);
     })
     .catch(function(err) {
       console.error('[backfill] fetch error:', err);
