@@ -173,8 +173,9 @@ a{color:inherit}
 
 /* check screen */
 .check-icon{width:56px;height:56px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
-.check-resend{display:block;width:100%;padding:11px;background:rgba(255,255,255,.12);color:var(--white);border:1.5px solid rgba(255,255,255,.3);border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;text-align:center;margin-top:14px;transition:background 150ms}
-.check-resend:hover{background:rgba(255,255,255,.2)}
+.check-resend{display:block;width:100%;padding:11px;background:var(--blue);color:var(--white);border:1.5px solid var(--blue);border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;text-align:center;margin-top:14px;cursor:pointer;transition:background 150ms,border-color 150ms,opacity 150ms}
+.check-resend:hover{background:#1642b8;border-color:#1642b8}
+.check-resend:disabled{opacity:.6;cursor:default}
 .check-back{display:block;text-align:center;margin-top:14px;font-size:.82rem;color:var(--muted);cursor:pointer}
 .check-back:hover{color:var(--slate)}
 .check-email-val{font-weight:700;word-break:break-all}
@@ -462,7 +463,7 @@ a{color:inherit}
     <h2 style="font-size:1.2rem;font-weight:800;color:var(--slate);margin-bottom:8px">Check your email</h2>
     <p style="font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:4px">We sent a login link to</p>
     <p style="font-size:.9rem;font-weight:700;color:var(--slate);margin-bottom:20px;word-break:break-all" id="sent-to"></p>
-    <button class="check-resend" style="background:var(--blue);color:var(--white);border-color:var(--blue);border-radius:var(--radius-sm);font-size:.85rem;padding:11px 20px;width:100%;margin-bottom:0" onclick="resendLink()">Resend link</button>
+    <button class="check-resend" id="btn-resend" onclick="resendLink()">Resend link</button>
     <span class="check-back" onclick="showLogin()">← Use a different email</span>
     <p class="check-spam">Don't see it? Check your spam folder.<br>Still no email? <span class="check-email-copyable" title="Copy this address">support@localboostlab.com</span></p>
   </div>
@@ -584,11 +585,18 @@ function requestLink() {
 function resendLink() {
   var email = document.getElementById('sent-to').textContent;
   if (!email) { showLogin(); return; }
+  var btn = document.getElementById('btn-resend');
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
   fetch(API + '/api/portal/request-link', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email: email }),
-  }).catch(function() {});
+  }).finally(function() {
+    if (btn) {
+      btn.textContent = 'Link sent!';
+      setTimeout(function() { btn.disabled = false; btn.textContent = 'Resend link'; }, 3000);
+    }
+  });
 }
 
 function exchangeToken(token) {
