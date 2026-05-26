@@ -1135,8 +1135,7 @@ function renderPerformance(data) {
 
   if (reports.length >= 2) setTimeout(function() { updateCompareTable(); }, 0);
   if (reports.length > 1)  setTimeout(function() { renderIntChart(reports); }, 0);
-  var needsBackfill = !reports.length || reports.some(function(r) { return r.posts_consistency === null || r.reply_rate === null; });
-  if (needsBackfill)       setTimeout(function() { runBackfill(); }, 0);
+  if (!reports.length)     setTimeout(function() { runBackfill(); }, 0);
 
   fetchLivePerformance();
 }
@@ -1146,15 +1145,18 @@ function runBackfill() {
   fetch(API + '/api/portal/backfill-history', { method: 'POST', headers: authHeaders() })
     .then(function(r) { return r.json(); })
     .then(function(d) {
+      console.log('[backfill] results:', JSON.stringify(d.results));
       var ok = (d.results || []).filter(function(r) { return r.status === 'ok'; }).length;
       if (ok > 0) {
         performanceLoaded = false;
         loadDashboard();
       } else {
-        if (statusEl) statusEl.style.display = 'none';
+        if (statusEl) statusEl.innerHTML = '<span style="color:#92400E">No new data found. Historical GBP data may not be available.</span>';
+        setTimeout(function() { if (statusEl) statusEl.style.display = 'none'; }, 4000);
       }
     })
-    .catch(function() {
+    .catch(function(err) {
+      console.error('[backfill] fetch error:', err);
       if (statusEl) statusEl.style.display = 'none';
     });
 }
