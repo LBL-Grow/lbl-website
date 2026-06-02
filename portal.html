@@ -1011,7 +1011,7 @@ function updateCompareTable() {
     { label: 'Phone Calls',        a: rA.calls,          b: rB.calls },
     { label: 'Website Clicks',     a: rA.website_clicks, b: rB.website_clicks },
     { label: 'Direction Requests', a: rA.directions,     b: rB.directions },
-    { label: 'Messages / Chat',    a: '—', b: '—', noApi: true },
+    { label: 'Messages / Chat',    a: rA.chat,  b: rB.chat },
     { label: 'Bookings',           a: rA.bookings,       b: rB.bookings },
   ];
   var html = '<table class="hist-table"><thead><tr>' +
@@ -1055,6 +1055,7 @@ function renderPerformance(data) {
   html += '<div class="perf-grid">';
   var liveCards = [
     { id: 'lc-calls',    icon: IC.phone,    label: 'Phone Calls' },
+    { id: 'lc-chat',     icon: IC.chat,     label: 'Messages / Chat' },
     { id: 'lc-bookings', icon: IC.calendar, label: 'Bookings' },
     { id: 'lc-dirs',     icon: IC.mapPin,   label: 'Direction Requests' },
     { id: 'lc-clicks',   icon: IC.globe,    label: 'Website Clicks' },
@@ -1092,7 +1093,7 @@ function renderPerformance(data) {
         { label: 'Phone Calls',        cur: latest.calls,           prev: yoy.calls },
         { label: 'Website Clicks',     cur: latest.website_clicks,  prev: yoy.website_clicks },
         { label: 'Direction Requests', cur: latest.directions,      prev: yoy.directions },
-        { label: 'Messages / Chat',    cur: '—', prev: '—', noApi: true },
+        { label: 'Messages / Chat',    cur: latest.chat,  prev: yoy.chat },
         { label: 'Bookings',           cur: latest.bookings,        prev: yoy.bookings },
       ];
       yoyRows.forEach(function(row) {
@@ -1211,6 +1212,7 @@ function updateLivePerformance(d) {
 
   var cardMap = [
     { id: 'lc-calls',    val: m.calls },
+    { id: 'lc-chat',     val: m.chat },
     { id: 'lc-bookings', val: m.bookings },
     { id: 'lc-dirs',     val: m.directions },
     { id: 'lc-clicks',   val: m.websiteClicks },
@@ -1313,10 +1315,24 @@ function renderPosts(client, data) {
   document.getElementById('tab-posts').innerHTML = html;
 }
 
+function safeImgUrl(url) {
+  // Encode spaces and special chars in GCS path segments without double-encoding
+  if (!url) return '';
+  try {
+    var u = new URL(url);
+    // Re-encode each path segment (handles spaces, parens, etc. in filenames)
+    u.pathname = u.pathname.split('/').map(function(seg) {
+      return encodeURIComponent(decodeURIComponent(seg));
+    }).join('/');
+    return u.toString();
+  } catch(e) { return url; }
+}
+
 function postCard(p, gbpPlaceId) {
   var type   = p.post_type || 'standard';
-  var imgHtml = p.image_url
-    ? '<img class="post-img" src="' + esc(p.image_url) + '" alt="Post image" loading="lazy">'
+  var imgSrc = safeImgUrl(p.image_url);
+  var imgHtml = imgSrc
+    ? '<img class="post-img" src="' + esc(imgSrc) + '" alt="Post image" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=post-img-placeholder><svg width=28 height=28 viewBox=\\\"0 0 24 24\\\" fill=none><rect x=3 y=3 width=18 height=18 rx=2 stroke=\\\"#93C5FD\\\" stroke-width=2/><circle cx=8.5 cy=8.5 r=1.5 stroke=\\\"#93C5FD\\\" stroke-width=2/><polyline points=\\\"21 15 16 10 5 21\\\" stroke=\\\"#93C5FD\\\" stroke-width=2 stroke-linecap=round stroke-linejoin=round/></svg></div>\'">'
     : '<div class="post-img-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="#93C5FD" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#93C5FD" stroke-width="2"/><polyline points="21 15 16 10 5 21" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
 
   var gbpLink = '';
