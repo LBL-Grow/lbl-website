@@ -119,6 +119,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .back-link { font-size: 0.85rem; color: var(--authority-blue); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; background: none; border: none; }
     .back-link:hover { text-decoration: underline; }
   </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -228,7 +230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-  var API = 'https://powerful-balance-production-971d.up.railway.app';
+  var API = '';
   var currentPostId = null;
   var quill;
 
@@ -247,17 +249,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       },
       placeholder: 'Write your post…'
     });
-  });
-
-  /* ── Auth ─────────────────────────────────────────── */
-  var RAILWAY = 'https://powerful-balance-production-971d.up.railway.app';
-  if (window.location.hostname !== 'powerful-balance-production-971d.up.railway.app') {
-    window.location.replace(RAILWAY + '/blog-admin.html');
-  } else {
-    fetch(API + '/api/admin/check', { credentials: 'include' })
+    fetch('/api/admin/check', { credentials: 'include' })
       .then(function(r) { if (r.ok) showApp(); })
       .catch(function() {});
-  }
+  });
 
   function checkAuth() {
     var val = document.getElementById('pw-input').value;
@@ -370,6 +365,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ── Quill content helpers ────────────────────────── */
+  var QuillDelta = null;
+
   function setQuillContent(body) {
     if (!quill) return;
     var html = '';
@@ -380,8 +377,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else {
       html = marked.parse(body);
     }
-    quill.setContents([]);
-    if (html) quill.clipboard.dangerouslyPasteHTML(0, html);
+    if (html) {
+      // Quill 2: clipboard.convert({ html }) → Delta; dangerouslyPasteHTML no longer takes index
+      var delta = quill.clipboard.convert({ html: html });
+      quill.setContents(delta, 'silent');
+    } else {
+      quill.setContents([], 'silent');
+    }
   }
 
   function getQuillHTML() {
@@ -495,20 +497,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ── Insert helpers ───────────────────────────────── */
+  function insertAtCursor(html) {
+    var range = quill.getSelection(true);
+    var delta = quill.clipboard.convert({ html: html });
+    var D = Quill.import('delta');
+    quill.updateContents(new D().retain(range.index).concat(delta), 'user');
+    quill.setSelection(range.index + delta.length(), 'silent');
+  }
+
   function insertCtaButton() {
     var text = prompt('Button label:', 'Get Started →');
     if (!text) return;
     var url = prompt('Button URL:', 'https://www.localboostlab.com/pricing');
     if (!url) return;
-    var range = quill.getSelection(true);
-    quill.clipboard.dangerouslyPasteHTML(range.index,
-      '<a href="' + url + '" style="display:inline-block;background:#1B4FD8;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.9rem;margin:8px 0;">' + text + '</a>');
+    insertAtCursor('<a href="' + url + '" style="display:inline-block;background:#1B4FD8;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.9rem;margin:8px 0;">' + text + '</a>');
   }
 
   function insertCallout() {
-    var range = quill.getSelection(true);
-    quill.clipboard.dangerouslyPasteHTML(range.index,
-      '<div style="background:#EFF6FF;border-left:4px solid #1B4FD8;padding:16px 20px;border-radius:0 8px 8px 0;margin:1.5em 0;font-size:0.95rem;">Your key insight here.</div>');
+    insertAtCursor('<div style="background:#EFF6FF;border-left:4px solid #1B4FD8;padding:16px 20px;border-radius:0 8px 8px 0;margin:1.5em 0;font-size:0.95rem;">Your key insight here.</div>');
   }
 
   /* ── Meta description char counter ───────────────── */
