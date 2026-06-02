@@ -349,7 +349,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           '<td style="font-size:0.82rem;color:var(--text-muted);">' + pub + '</td>' +
           '<td style="font-size:0.82rem;color:var(--text-muted);max-width:200px;">' + escHtml(tags) + '</td>' +
           '<td style="white-space:nowrap;">' +
-            '<button class="btn btn-outline btn-sm" onclick="editPost(' + JSON.stringify(p.slug) + ')">Edit</button> ' +
+            '<button class="btn btn-outline btn-sm" onclick="editPost(\'' + p.slug + '\')">Edit</button> ' +
             '<button class="btn-delete" onclick="deletePostById(' + p.id + ')">×</button>' +
           '</td>' +
         '</tr>';
