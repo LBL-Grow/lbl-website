@@ -234,8 +234,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var currentPostId = null;
   var quill;
 
-  /* ── Quill init ───────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded', function() {
+  /* ── Quill init (lazy — container must be visible first) ── */
+  function initQuill() {
+    if (quill) return;
     quill = new Quill('#quill-editor', {
       theme: 'snow',
       modules: {
@@ -249,6 +250,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       },
       placeholder: 'Write your post…'
     });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
     fetch('/api/admin/check', { credentials: 'include' })
       .then(function(r) { if (r.ok) showApp(); })
       .catch(function() {});
@@ -402,10 +406,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('save-indicator').className = 'save-indicator';
     document.getElementById('btn-delete-post').style.display = currentPostId ? 'inline-block' : 'none';
 
-    setQuillContent(post ? (post.body || '') : '');
-
     document.getElementById('view-list').style.display = 'none';
     document.getElementById('view-editor').style.display = 'block';
+
+    // Init Quill only after editor is visible — avoids zero-dimension bug
+    initQuill();
+    setQuillContent(post ? (post.body || '') : '');
   }
 
   function editPost(slug) {
