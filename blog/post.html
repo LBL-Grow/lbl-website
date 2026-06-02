@@ -107,7 +107,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .prose pre code { background: none; padding: 0; font-size: 0.875em; }
     .prose hr { border: none; border-top: 2px solid var(--border-color); margin: 2.5em 0; }
     .prose a { color: var(--authority-blue); text-decoration: underline; text-underline-offset: 3px; }
-    .prose img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+    .prose img { max-width: 100%; height: auto; border-radius: 8px; margin: 1em 0; display: block; }
+    .prose table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.9rem; overflow-x: auto; display: block; }
+    .prose table th, .prose table td { border: 1px solid var(--border-color); padding: 10px 14px; text-align: left; }
+    .prose table th { background: var(--surface-light); font-weight: 700; color: var(--authority-blue); }
+    .prose div[style] { max-width: 100%; box-sizing: border-box; }
+    .cover-image { width: 100%; max-height: 460px; object-fit: cover; display: block; border-radius: var(--radius-md); margin-bottom: 40px; }
 
     /* Share bar */
     .share-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
@@ -351,7 +356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="../shared.js" defer></script>
 <script>
-  var API = 'https://powerful-balance-production-971d.up.railway.app';
+  var API = '';
 
   function formatDate(iso) {
     if (!iso) return '';
@@ -401,9 +406,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + title;
     document.getElementById('share-linkedin').href = 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + title;
 
+    // Cover image
+    var contentEl = document.getElementById('article-content');
+    if (post.cover_image_url) {
+      var img = document.createElement('img');
+      img.src = post.cover_image_url;
+      img.alt = post.title || '';
+      img.className = 'cover-image';
+      img.onerror = function() { this.style.display = 'none'; };
+      contentEl.appendChild(img);
+    }
+
     // Render body — HTML (Quill) or markdown (legacy)
     var _body = post.body || '';
-    document.getElementById('article-content').innerHTML = _body.trim().startsWith('<') ? _body : marked.parse(_body);
+    var bodyDiv = document.createElement('div');
+    bodyDiv.innerHTML = _body.trim().startsWith('<') ? _body : marked.parse(_body);
+    contentEl.appendChild(bodyDiv);
 
     // Show/hide elements
     document.getElementById('header-skeleton').style.display = 'none';
