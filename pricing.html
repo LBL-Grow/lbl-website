@@ -9,6 +9,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NCBWF3MH');</script>
 <!-- End Google Tag Manager -->
+  <!-- Preconnect: reduce RTT for critical origins -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://powerful-balance-production-971d.up.railway.app">
   <link rel="icon" type="image/png" href="/Fav-Icon_Blue.png">
   <link rel="apple-touch-icon" href="/Fav-Icon_Blue.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -152,7 +155,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "worstRating": "1"
     }
   }
-  </script>  <link rel="stylesheet" href="/fonts.css">
+  </script>  <link rel="preload" href="/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/fonts.css"></noscript>
     <!-- Critical CSS: vars + reset + nav — eliminates styles.css render block -->
   <style>
     :root{--authority-blue:#1B4FD8;--authority-blue-dark:#1440B0;--authority-blue-light:#3B6FE8;--signal-amber:#F59E0B;--signal-amber-dark:#D97706;--slate-core:#0F172A;--surface-light:#EFF6FF;--surface-mid:#DBEAFE;--white:#FFFFFF;--success-green:#10B981;--warning-red:#EF4444;--border-color:#E5E7EB;--text-muted:#6B7280;--text-light:rgba(255,255,255,.85);--shadow-card:0 2px 12px rgba(0,0,0,.07);--shadow-elevated:0 8px 32px rgba(0,0,0,.12);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--font-heading:'Inter',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'DM Mono',monospace;--font-logo:'Ardela Edge X01','Inter',sans-serif;--container-max:1200px;--section-pad:80px;--section-pad-mobile:48px}
@@ -673,7 +676,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   (function () {
     var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
-      ? 'http://localhost:3000' : 'https://gbp-agent-production.up.railway.app';
+      ? 'http://localhost:3000' : 'https://powerful-balance-production-971d.up.railway.app';
     var exitShown = false;
     var exitOverlay = document.getElementById('exit-overlay');
     if (exitOverlay && window.innerWidth > 768) {
