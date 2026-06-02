@@ -345,7 +345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           '<td style="font-size:0.82rem;color:var(--text-muted);">' + pub + '</td>' +
           '<td style="font-size:0.82rem;color:var(--text-muted);max-width:200px;">' + escHtml(tags) + '</td>' +
           '<td style="white-space:nowrap;">' +
-            '<button class="btn btn-outline btn-sm" onclick="editPost(' + JSON.stringify(p).replace(/"/g,'&quot;') + ')">Edit</button> ' +
+            '<button class="btn btn-outline btn-sm" onclick="editPost(' + JSON.stringify(p.slug) + ')">Edit</button> ' +
             '<button class="btn-delete" onclick="deletePostById(' + p.id + ')">×</button>' +
           '</td>' +
         '</tr>';
@@ -408,11 +408,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('view-editor').style.display = 'block';
   }
 
-  function editPost(post) {
-    fetch(API + '/api/blog/' + post.slug, { credentials: 'include' })
+  function editPost(slug) {
+    fetch(API + '/api/blog/' + slug, { credentials: 'include' })
       .then(function(r) { return r.json(); })
-      .then(function(full) { showEditor(full.error ? post : full); })
-      .catch(function() { showEditor(post); });
+      .then(function(full) { if (full && !full.error) showEditor(full); else alert('Could not load post'); })
+      .catch(function(e) { alert('Load failed: ' + e.message); });
   }
 
   /* ── Show List ────────────────────────────────────── */
