@@ -734,9 +734,10 @@ function renderOverview(client, data, suspension) {
       '<a href="/pricing" class="upsell-cta">Upgrade Plan →</a></div>';
   }
 
-  // Health cards
-  var postCons  = latest && latest.posts_consistency !== null && latest.posts_consistency !== undefined ? Math.round(latest.posts_consistency) : null;
-  var replyRate = latest && latest.reply_rate        !== null && latest.reply_rate        !== undefined ? Math.round(latest.reply_rate)        : null;
+  // Health cards — use current month live data (not last historical month)
+  var cm        = data.current_month || {};
+  var postCons  = cm.posts_consistency !== null && cm.posts_consistency !== undefined ? cm.posts_consistency : null;
+  var replyRate = cm.reply_rate        !== null && cm.reply_rate        !== undefined ? cm.reply_rate        : null;
   var isSusp    = suspension && suspension.suspended;
   var planOk    = client.status === 'active';
 
@@ -747,7 +748,7 @@ function renderOverview(client, data, suspension) {
     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     'Post Consistency',
     postCons !== null ? postCons + '%' : '—',
-    latest ? (latest.posts_published || 0) + ' of ' + (latest.posts_expected || 0) + ' posts' : 'No data'
+    cm.posts_published !== undefined ? (cm.posts_published || 0) + ' of ' + (cm.posts_expected || 0) + ' posts this month' : 'No data'
   );
   html += healthCard(
     replyRate !== null ? (replyRate >= 80 ? '#D1FAE5' : replyRate >= 50 ? '#FEF3C7' : '#FEE2E2') : '#F3F4F6',
@@ -755,7 +756,7 @@ function renderOverview(client, data, suspension) {
     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     'Review Reply Rate',
     replyRate !== null ? replyRate + '%' : '—',
-    latest && latest.avg_reply_hours ? 'Avg ' + Math.round(latest.avg_reply_hours) + 'h reply time' : 'No data'
+    cm.reviews_total !== undefined ? (cm.reviews_replied || 0) + ' of ' + (cm.reviews_total || 0) + ' reviews this month' : 'No data'
   );
   html += healthCard(
     isSusp ? '#FEE2E2' : '#D1FAE5',
