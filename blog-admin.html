@@ -365,8 +365,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ── Quill content helpers ────────────────────────── */
-  var QuillDelta = null;
-
   function setQuillContent(body) {
     if (!quill) return;
     var html = '';
@@ -377,19 +375,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } else {
       html = marked.parse(body);
     }
-    if (html) {
-      // Quill 2: clipboard.convert({ html }) → Delta; dangerouslyPasteHTML no longer takes index
-      var delta = quill.clipboard.convert({ html: html });
-      quill.setContents(delta, 'silent');
-    } else {
-      quill.setContents([], 'silent');
-    }
+    quill.root.innerHTML = html;
   }
 
   function getQuillHTML() {
     if (!quill) return '';
-    var html = quill.getSemanticHTML ? quill.getSemanticHTML() : quill.root.innerHTML;
-    return html === '<p><br></p>' ? '' : html;
+    var html = quill.root.innerHTML;
+    return (html === '<p><br></p>' || html === '') ? '' : html;
   }
 
   /* ── Show Editor ──────────────────────────────────── */
@@ -497,12 +489,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ── Insert helpers ───────────────────────────────── */
-  function insertAtCursor(html) {
-    var range = quill.getSelection(true);
-    var delta = quill.clipboard.convert({ html: html });
-    var D = Quill.import('delta');
-    quill.updateContents(new D().retain(range.index).concat(delta), 'user');
-    quill.setSelection(range.index + delta.length(), 'silent');
+  function insertAtCursor(snippet) {
+    var current = quill.root.innerHTML;
+    var isEmpty = current === '<p><br></p>' || current === '';
+    quill.root.innerHTML = isEmpty ? snippet : current + snippet;
   }
 
   function insertCtaButton() {
@@ -510,7 +500,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!text) return;
     var url = prompt('Button URL:', 'https://www.localboostlab.com/pricing');
     if (!url) return;
-    insertAtCursor('<a href="' + url + '" style="display:inline-block;background:#1B4FD8;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.9rem;margin:8px 0;">' + text + '</a>');
+    insertAtCursor('<p><a href="' + url + '" style="display:inline-block;background:#1B4FD8;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.9rem;margin:8px 0;">' + text + '</a></p>');
   }
 
   function insertCallout() {
