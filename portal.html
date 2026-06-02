@@ -799,14 +799,15 @@ function renderOverview(client, data, suspension) {
     });
     html += '</div>';
 
-    // Review chips
-    var replyRatePct = latest.reply_rate !== null && latest.reply_rate !== undefined ? Math.round(latest.reply_rate) : null;
+    // Review chips — current month live data
+    var cm = data.current_month || {};
+    var replyRatePct = cm.reply_rate !== null && cm.reply_rate !== undefined ? cm.reply_rate : null;
     html += '<div class="review-chips">';
-    if (latest.reviews_this_month !== null && latest.reviews_this_month !== undefined)
-      html += '<span class="review-chip">' + IC.star + latest.reviews_this_month + ' reviews this month</span>';
+    if (cm.reviews_total !== undefined && cm.reviews_total !== null)
+      html += '<span class="review-chip">' + IC.star + cm.reviews_total + ' reviews this month</span>';
     if (replyRatePct !== null)
       html += '<span class="review-chip">' + IC.reply + replyRatePct + '% replied</span>';
-    if (latest.avg_reply_hours)
+    if (latest && latest.avg_reply_hours)
       html += '<span class="review-chip">' + IC.zap + 'Avg ' + Math.round(latest.avg_reply_hours) + 'h response</span>';
     html += '</div>';
   }
@@ -1328,16 +1329,18 @@ function renderReviews(data) {
   var reviews = (data && data.reviews) || [];
   var reports = (data && data.reports) || [];
   var latest  = reports.length ? reports[reports.length - 1] : null;
+  var cm      = (data && data.current_month) || {};
   var html    = '';
 
-  if (latest) {
-    var replyRatePct = latest.reply_rate !== null && latest.reply_rate !== undefined ? Math.round(latest.reply_rate) : null;
+  // Always show current-month chips if we have the data
+  if (cm.reviews_total !== undefined || (latest && latest.avg_reply_hours)) {
+    var replyRatePct = cm.reply_rate !== null && cm.reply_rate !== undefined ? cm.reply_rate : null;
     html += '<div class="review-chips" style="margin-bottom:20px">';
-    if (latest.reviews_this_month !== null && latest.reviews_this_month !== undefined)
-      html += '<span class="review-chip">' + IC.star + latest.reviews_this_month + ' reviews this month</span>';
+    if (cm.reviews_total !== undefined && cm.reviews_total !== null)
+      html += '<span class="review-chip">' + IC.star + cm.reviews_total + ' reviews this month</span>';
     if (replyRatePct !== null)
       html += '<span class="review-chip">' + IC.reply + replyRatePct + '% reply rate</span>';
-    if (latest.avg_reply_hours)
+    if (latest && latest.avg_reply_hours)
       html += '<span class="review-chip">' + IC.zap + 'Avg ' + Math.round(latest.avg_reply_hours) + 'h response</span>';
     html += '</div>';
   }
