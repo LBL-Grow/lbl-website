@@ -929,7 +929,6 @@ function renderLiveSnap(d) {
     { label: 'Phone Calls',      val: m.calls,         prevVal: prev.calls },
     { label: 'Website Clicks',   val: m.websiteClicks,  prevVal: prev.website_clicks },
     { label: 'Directions',       val: m.directions,     prevVal: prev.directions },
-    { label: 'Messages',         val: m.chat,           prevVal: prev.chat },
     { label: 'Bookings',         val: m.bookings,       prevVal: prev.bookings },
   ];
   html += '<div class="live-snap-grid">';
@@ -1009,7 +1008,7 @@ function updateCompareTable() {
     { label: 'Phone Calls',        a: rA.calls,          b: rB.calls },
     { label: 'Website Clicks',     a: rA.website_clicks, b: rB.website_clicks },
     { label: 'Direction Requests', a: rA.directions,     b: rB.directions },
-    { label: 'Messages / Chat',    a: rA.chat,           b: rB.chat },
+    { label: 'Messages / Chat',    a: '—', b: '—', noApi: true },
     { label: 'Bookings',           a: rA.bookings,       b: rB.bookings },
   ];
   var html = '<table class="hist-table"><thead><tr>' +
@@ -1019,11 +1018,18 @@ function updateCompareTable() {
     '<th>Change</th>' +
     '</tr></thead><tbody>';
   rows.forEach(function(row) {
-    var t = trendLabel(row.a, row.b);
-    html += '<tr><td>' + esc(row.label) + '</td>' +
-      '<td class="hist-num">' + fmt(row.a) + '</td>' +
-      '<td class="hist-num">' + fmt(row.b) + '</td>' +
-      '<td><span class="stat-trend ' + t.cls + '" style="font-size:.72rem">' + t.text + '</span></td></tr>';
+    if (row.noApi) {
+      html += '<tr><td>' + esc(row.label) + ' <span style="font-size:.7rem;color:var(--muted)" title="Not available via Google API — view in your Google Business Profile dashboard">ⓘ</span></td>' +
+        '<td class="hist-num" style="color:var(--muted)">—</td>' +
+        '<td class="hist-num" style="color:var(--muted)">—</td>' +
+        '<td><a href="https://business.google.com" target="_blank" style="font-size:.7rem;color:var(--blue);text-decoration:none">View in GBP →</a></td></tr>';
+    } else {
+      var t = trendLabel(row.a, row.b);
+      html += '<tr><td>' + esc(row.label) + '</td>' +
+        '<td class="hist-num">' + fmt(row.a) + '</td>' +
+        '<td class="hist-num">' + fmt(row.b) + '</td>' +
+        '<td><span class="stat-trend ' + t.cls + '" style="font-size:.72rem">' + t.text + '</span></td></tr>';
+    }
   });
   html += '</tbody></table>';
   rowsEl.innerHTML = html;
@@ -1046,7 +1052,6 @@ function renderPerformance(data) {
   html += '<div class="perf-grid">';
   var liveCards = [
     { id: 'lc-calls',    icon: IC.phone,    label: 'Phone Calls' },
-    { id: 'lc-chat',     icon: IC.chat,     label: 'Messages / Chat' },
     { id: 'lc-bookings', icon: IC.calendar, label: 'Bookings' },
     { id: 'lc-dirs',     icon: IC.mapPin,   label: 'Direction Requests' },
     { id: 'lc-clicks',   icon: IC.globe,    label: 'Website Clicks' },
@@ -1084,15 +1089,22 @@ function renderPerformance(data) {
         { label: 'Phone Calls',        cur: latest.calls,           prev: yoy.calls },
         { label: 'Website Clicks',     cur: latest.website_clicks,  prev: yoy.website_clicks },
         { label: 'Direction Requests', cur: latest.directions,      prev: yoy.directions },
-        { label: 'Messages / Chat',    cur: latest.chat,            prev: yoy.chat },
+        { label: 'Messages / Chat',    cur: '—', prev: '—', noApi: true },
         { label: 'Bookings',           cur: latest.bookings,        prev: yoy.bookings },
       ];
       yoyRows.forEach(function(row) {
-        var t = trendLabel(row.cur, row.prev);
-        html += '<tr><td>' + esc(row.label) + '</td>' +
-          '<td class="yoy-num">' + fmt(row.prev) + '</td>' +
-          '<td class="yoy-num">' + fmt(row.cur) + '</td>' +
-          '<td><span class="stat-trend ' + t.cls + '" style="font-size:.72rem">' + t.text + '</span></td></tr>';
+        if (row.noApi) {
+          html += '<tr><td>' + esc(row.label) + ' <span style="font-size:.7rem;color:var(--muted)" title="Not available via Google API — view in your Google Business Profile dashboard">ⓘ</span></td>' +
+            '<td class="yoy-num" style="color:var(--muted)">—</td>' +
+            '<td class="yoy-num" style="color:var(--muted)">—</td>' +
+            '<td><a href="https://business.google.com" target="_blank" style="font-size:.7rem;color:var(--blue);text-decoration:none">View in GBP →</a></td></tr>';
+        } else {
+          var t = trendLabel(row.cur, row.prev);
+          html += '<tr><td>' + esc(row.label) + '</td>' +
+            '<td class="yoy-num">' + fmt(row.prev) + '</td>' +
+            '<td class="yoy-num">' + fmt(row.cur) + '</td>' +
+            '<td><span class="stat-trend ' + t.cls + '" style="font-size:.72rem">' + t.text + '</span></td></tr>';
+        }
       });
       html += '</tbody></table></div>';
     }
@@ -1196,7 +1208,6 @@ function updateLivePerformance(d) {
 
   var cardMap = [
     { id: 'lc-calls',    val: m.calls },
-    { id: 'lc-chat',     val: m.chat },
     { id: 'lc-bookings', val: m.bookings },
     { id: 'lc-dirs',     val: m.directions },
     { id: 'lc-clicks',   val: m.websiteClicks },
@@ -1259,7 +1270,6 @@ function renderIntChart(reports) {
       datasets: [
         { label: 'Profile Views',     data: views,    borderColor: '#94A3B8', backgroundColor: 'rgba(148,163,184,.08)', tension: .4, pointRadius: 3, borderWidth: 2, fill: true,  yAxisID: 'yViews', borderDash: [4,3] },
         { label: 'Phone Calls',       data: calls,    borderColor: '#10B981', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
-        { label: 'Messages',          data: chat,     borderColor: '#8B5CF6', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
         { label: 'Bookings',          data: bookings, borderColor: '#F59E0B', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
         { label: 'Direction Requests',data: dirs,     borderColor: '#EF4444', backgroundColor: 'transparent',           tension: .4, pointRadius: 3, borderWidth: 2, yAxisID: 'yActs' },
         { label: 'Website Clicks',    data: clicks,   borderColor: '#1B4FD8', backgroundColor: 'rgba(27,79,216,.06)',   tension: .4, pointRadius: 3, borderWidth: 2, fill: true,  yAxisID: 'yActs' },
