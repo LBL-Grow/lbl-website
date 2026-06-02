@@ -1339,7 +1339,7 @@ function safeImgUrl(url) {
   } catch(e) { return url; }
 }
 
-var _postImgErrorSvg = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#93C5FD" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#93C5FD" stroke-width="2"/><polyline points="21 15 16 10 5 21" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var _postImgErrorSvg = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#93C5FD" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#93C5FD" stroke-width="2"/><polyline points="21 15 16 10 5 21" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 function postImgError(el) {
   var wrap = el.parentNode;
