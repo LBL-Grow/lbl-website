@@ -1754,23 +1754,41 @@ function addPhotoFiles(files) {
   renderPhotoPreviewsDOM();
   updatePhotoBtn();
 }
-function removePhoto(idx) {
-  _photoFiles.splice(idx, 1);
-  renderPhotoPreviewsDOM();
-  updatePhotoBtn();
-}
+var _photoDataUrls = [];
+
 function renderPhotoPreviewsDOM() {
   var wrap = document.getElementById('photo-previews');
   if (!wrap) return;
-  if (!_photoFiles.length) { wrap.innerHTML = ''; return; }
+  if (!_photoFiles.length) { wrap.innerHTML = ''; _photoDataUrls = []; return; }
+  // Build data URLs for any new files (CSP blocks blob: URLs)
+  var pending = _photoFiles.length - _photoDataUrls.length;
+  if (pending <= 0) { _flushPhotoPreviews(wrap); return; }
+  var toRead = _photoFiles.slice(_photoDataUrls.length);
+  toRead.forEach(function(f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+      _photoDataUrls.push(e.target.result);
+      if (_photoDataUrls.length === _photoFiles.length) _flushPhotoPreviews(wrap);
+    };
+    r.readAsDataURL(f);
+  });
+}
+function _flushPhotoPreviews(wrap) {
   var html = '';
-  _photoFiles.forEach(function(f, i) {
+  _photoDataUrls.forEach(function(src, i) {
     html += '<div class="photo-preview-item">' +
-      '<img src="' + URL.createObjectURL(f) + '" alt="">' +
-      '<button class="photo-preview-remove" onclick="removePhoto(' + i + ')">×</button>' +
+      '<img src="' + src + '" alt="">' +
+      '<button class="photo-preview-remove" onclick="removePhoto(' + i + ')" aria-label="Remove">×</button>' +
       '</div>';
   });
   wrap.innerHTML = html;
+}
+function removePhoto(idx) {
+  _photoFiles.splice(idx, 1);
+  _photoDataUrls.splice(idx, 1);
+  var wrap = document.getElementById('photo-previews');
+  if (wrap) _flushPhotoPreviews(wrap);
+  updatePhotoBtn();
 }
 function updatePhotoBtn() {
   var btn = document.getElementById('photo-submit-btn');
