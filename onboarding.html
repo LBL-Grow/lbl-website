@@ -194,8 +194,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .success-screen__list li:last-child { border-bottom: none; }
     .success-screen__list .check { color: var(--success-green); }
 
+    /* Step 3 — upload panel nested under the "upload" choice */
+    #upload-panel { padding: 4px 0 4px 14px; border-left: 2px solid var(--surface-mid); margin: -2px 0 2px 8px; }
+    #upload-panel[hidden] { display: none; }
+
+    /* Thumbnail states — the success overlay must only appear once GCS confirms */
+    .photo-thumb__success { opacity: 0; transition: opacity 150ms ease; pointer-events: none; }
+    .photo-thumb.is-done .photo-thumb__success { opacity: 1; }
+    .photo-thumb.is-uploading { opacity: 0.55; }
+    .photo-thumb.is-error { outline: 2px solid var(--warning-red); outline-offset: -2px; }
+    .photo-thumb.is-error::after {
+      content: '!'; position: absolute; left: 4px; bottom: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--warning-red); color: #fff;
+      font-size: 0.7rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-thumb__remove[aria-disabled="true"] { opacity: 0.35; cursor: not-allowed; }
+
+    #photo-mode-error { display: none; margin-top: 10px; }
+    #photo-mode-error.show { display: block; }
+
     @media (max-width: 768px) {
       .onboarding-card { padding: 28px 20px; }
+      /* Back + Continue collided on narrow screens — the amber CTA is nowrap */
+      .onboarding-nav { flex-wrap: wrap; gap: 12px; }
+      .onboarding-nav .btn { width: 100%; }
+      .onboarding-nav .back-btn { order: 2; }
+      #upload-panel { padding-left: 10px; margin-left: 4px; }
     }
   </style>
     <script defer src="/_vercel/insights/script.js"></script>
@@ -233,10 +259,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
       <!-- Plan Banner (auto-set from URL param) -->
-      <div id="plan-banner" style="display:none;background:var(--surface-light);border:1px solid var(--authority-blue);border-radius:var(--radius-sm);padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;">
+      <div id="plan-banner" hidden style="background:var(--surface-light);border:1px solid var(--authority-blue);border-radius:var(--radius-sm);padding:10px 16px;margin-bottom:20px;align-items:center;gap:10px;flex-wrap:wrap;">
         <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">Selected plan:</span>
         <span id="plan-banner-name" style="font-weight:700;color:var(--authority-blue);"></span>
         <a href="/pricing" style="font-size:0.78rem;color:var(--text-muted);margin-left:auto;">Change plan →</a>
+      </div>
+
+      <!-- Plan picker — shown only when the visitor arrived without a ?plan= param,
+           so nobody is silently checked out on the cheapest tier. -->
+      <div id="plan-picker-wrap" hidden style="background:var(--surface-light);border:1px solid var(--authority-blue);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:20px;">
+        <label for="plan-picker" class="form-label" style="display:block;margin-bottom:8px;">Choose your plan <span class="req">*</span></label>
+        <select id="plan-picker" class="form-control">
+          <option value="reputation">Reputation — $97/mo · review replies + monthly report</option>
+          <option value="presence">Presence — $157/mo · everything in Reputation + 3 GBP posts/week</option>
+          <option value="authority" selected>Authority — $217/mo · everything in Presence + rank tracking &amp; SEO content</option>
+        </select>
+        <p style="margin:8px 0 0;font-size:0.78rem;color:var(--text-muted);">Not sure? <a href="/pricing" style="color:var(--authority-blue);">Compare plans →</a> · No contract, cancel anytime.</p>
       </div>
       <!-- STEP 1: Your Business -->
       <div class="step-form active" id="step-1">
@@ -383,31 +421,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- STEP 3: Photos -->
       <div class="step-form" id="step-3">
-        <h2 class="step-heading">Upload your business photos.</h2>
-        <p class="step-subheading">We use your real photos in your posts. The more you give us, the more authentic your content looks. If you don't have any, we'll use AI-generated images.</p>
+        <h2 class="step-heading">Add your business photos.</h2>
+        <p class="step-subheading">Posts with your real photos get noticed more than stock imagery. No photos on hand? We'll generate images for you — you can always add real ones later from your client portal.</p>
 
-        <div class="upload-area" id="upload-area">
-          <input type="file" class="upload-input" id="photo-input" multiple accept="image/jpeg,image/png,image/webp,image/heic" aria-label="Upload photos">
-          <div class="upload-zone" id="upload-zone">
-            <div class="upload-zone__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-            <p class="upload-zone__text"><strong>Drag and drop photos here</strong><br>or tap to add photos</p>
-            <p class="upload-zone__hint">JPG, PNG, WEBP, HEIC · Max 15MB per photo · Up to 100 photos · You can add from multiple folders</p>
+        <fieldset style="border:none;padding:0;margin:0;">
+          <legend style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Photo option</legend>
+          <div class="radio-group">
+            <label class="radio-option" for="photo-mode-upload">
+              <input type="radio" id="photo-mode-upload" name="photo-mode" value="upload" data-required-group>
+              <div>
+                <div class="radio-option__label">I'll upload my own photos <span style="background:var(--signal-amber);color:var(--authority-blue);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:8px;">Recommended</span></div>
+                <div class="radio-option__desc">Your trucks, your team, your finished work. This is what makes posts look like you.</div>
+              </div>
+            </label>
+
+            <!-- Upload panel — only visible when "upload" is selected -->
+            <div id="upload-panel" hidden>
+              <div class="upload-area" id="upload-area">
+                <input type="file" class="upload-input" id="photo-input" multiple accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif" aria-label="Upload photos">
+                <div class="upload-zone" id="upload-zone">
+                  <div class="upload-zone__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+                  <p class="upload-zone__text"><strong>Drag and drop photos here</strong><br>or tap to add photos</p>
+                  <p class="upload-zone__hint">JPG, PNG, WEBP, HEIC · Max 15MB per photo · Up to 100 photos · You can add from multiple folders</p>
+                </div>
+              </div>
+
+              <div class="upload-progress-wrap" id="upload-progress-wrap">
+                <div class="upload-progress-bar"><div class="upload-progress-bar__fill" id="upload-progress-fill"></div></div>
+                <div class="upload-progress-label" id="upload-progress-label">0%</div>
+              </div>
+              <div class="upload-status" id="upload-status" role="status" aria-live="polite"></div>
+              <div class="photo-grid" id="photo-grid"></div>
+            </div>
+
+            <label class="radio-option" for="photo-mode-ai">
+              <input type="radio" id="photo-mode-ai" name="photo-mode" value="ai">
+              <div>
+                <div class="radio-option__label">I don't have photos right now — use AI-generated images</div>
+                <div class="radio-option__desc">We'll create on-brand images for your industry. You can swap in real photos any time from your portal.</div>
+              </div>
+            </label>
           </div>
-        </div>
-
-        <div class="upload-progress-wrap" id="upload-progress-wrap">
-          <div class="upload-progress-bar"><div class="upload-progress-bar__fill" id="upload-progress-fill"></div></div>
-          <div class="upload-progress-label" id="upload-progress-label">0%</div>
-        </div>
-        <div class="upload-status" id="upload-status"></div>
-        <div class="photo-grid" id="photo-grid"></div>
-
-        <div style="margin-top:24px;padding:16px;background:var(--surface-light);border-radius:var(--radius-sm);border:1px solid var(--border-color);">
-          <div class="form-check">
-            <input type="checkbox" id="no-photos-check">
-            <label for="no-photos-check">I don't have photos right now. Use AI-generated images for my posts</label>
-          </div>
-        </div>
+          <div class="form-error" id="photo-mode-error" data-default-msg="Please choose one of the two options above.">Please choose one of the two options above.</div>
+        </fieldset>
 
         <div class="onboarding-nav">
           <button class="back-btn" onclick="prevStep(3)">← Back</button>
@@ -501,10 +557,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="success-screen" id="success-screen">
         <div class="success-icon"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#F59E0B" opacity="0.12"/><circle cx="28" cy="28" r="20" fill="#F59E0B" opacity="0.2"/><path d="M18 28l7 7 13-14" stroke="#1B4FD8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h2>Payment confirmed — one step left!</h2>
-        <p>Check your email for a link to connect your Google Business Profile. That's the last step to activate your account.</p>
+        <p>Connect your Google Business Profile and you're live. It takes about 30 seconds.</p>
 
-        <!-- One-step action card -->
-        <div style="background:#EFF6FF;border:2px solid #1B4FD8;border-radius:12px;padding:20px 24px;margin:20px 0;text-align:left;">
+        <!-- Direct connect — resolved from the Stripe session so the client never
+             has to leave the page to find the invite email. -->
+        <div id="connect-now" style="margin:20px 0;">
+          <div id="connect-loading" style="font-size:0.9rem;color:var(--text-muted);">Preparing your secure Google link…</div>
+          <a id="connect-btn" href="#" class="btn btn-primary btn-xl" style="display:none;width:100%;max-width:420px;">Connect Your Google Business Profile →</a>
+          <p id="connect-note" style="display:none;font-size:0.8rem;color:var(--text-muted);margin-top:10px;">Manager access only. We can never transfer ownership or delete your listing.</p>
+        </div>
+
+        <!-- Email fallback -->
+        <div id="connect-email-fallback" style="background:#EFF6FF;border:2px solid #1B4FD8;border-radius:12px;padding:20px 24px;margin:20px 0;text-align:left;">
           <p style="margin:0 0 8px;font-size:15px;font-weight:700;color:#1B4FD8;">📧 Check your inbox</p>
           <p style="margin:0 0 12px;font-size:14px;color:#374151;">We sent you an email from <strong>grow@localboostlab.com</strong> with a blue button that says <strong>"Connect Your Google Business Profile."</strong></p>
           <p style="margin:0;font-size:13px;color:#6B7280;">Don't see it? Check spam or email <a href="mailto:support@localboostlab.com" style="color:#1B4FD8;">support@localboostlab.com</a>.</p>
@@ -538,10 +602,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="shared.js" defer></script>
 <script>
   var currentStep = 1;
-  var photos = [];
+  var photos = [];              // { id, name, file, url, status } — status: queued|uploading|done|error
+  var photoSeq = 0;
   var uploadedGcsFolder = null; // set once first photo uploads successfully
-  var uploadQueue = []; // { file, index } awaiting upload
+  var uploadFolderEmail = null; // email the GCS folder was keyed on — locked at first upload
+  var uploadQueue = [];         // photo ids awaiting upload
   var uploadActive = false;
+  var MAX_PHOTOS = 100;
+  var MAX_BYTES  = 15 * 1024 * 1024;
 
   var API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
     ? 'http://localhost:3000' : 'https://powerful-balance-production-971d.up.railway.app';
@@ -550,27 +618,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return ((document.getElementById('s2-email') || {}).value || '').trim();
   }
 
-  // Upload a single File object to GCS via /api/upload-photos
-  function uploadFileToGcs(file, index) {
+  function getPhoto(id) {
+    for (var i = 0; i < photos.length; i++) if (photos[i].id === id) return photos[i];
+    return null;
+  }
+
+  function uploadsPending() {
+    return uploadQueue.length + (uploadActive ? 1 : 0);
+  }
+
+  // Upload a single photo to GCS via /api/upload-photos.
+  // The folder is keyed on the email captured at the FIRST upload — if the client
+  // edits their email afterwards, everything still lands in one folder.
+  function uploadPhotoToGcs(photo) {
     return new Promise(function(resolve) {
-      var email = getOwnerEmail();
-      if (!email) { resolve({ ok: false, reason: 'no email' }); return; }
+      if (!uploadFolderEmail) uploadFolderEmail = getOwnerEmail();
+      if (!uploadFolderEmail) { resolve({ ok: false, reason: 'no email' }); return; }
       var params = new URLSearchParams({
-        email:       email,
-        filename:    file.name,
-        contentType: file.type || 'image/jpeg',
+        email:       uploadFolderEmail,
+        filename:    photo.name,
+        contentType: photo.file.type || 'image/jpeg',
       });
       var xhr = new XMLHttpRequest();
       xhr.open('POST', API + '/api/upload-photos?' + params.toString());
+      xhr.timeout = 120000;
       xhr.onload = function() {
         try {
           var res = JSON.parse(xhr.responseText);
           if (res.gcsFolder) uploadedGcsFolder = res.gcsFolder;
-          resolve({ ok: xhr.status === 200, filePath: res.filePath });
-        } catch(e) { resolve({ ok: false }); }
+          resolve({ ok: xhr.status === 200, filePath: res.filePath, error: res.error });
+        } catch (e) { resolve({ ok: false }); }
       };
-      xhr.onerror = function() { resolve({ ok: false }); };
-      xhr.send(file);
+      xhr.onerror   = function() { resolve({ ok: false }); };
+      xhr.ontimeout = function() { resolve({ ok: false }); };
+      xhr.send(photo.file);
     });
   }
 
@@ -578,30 +659,93 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function drainUploadQueue() {
     if (uploadActive || uploadQueue.length === 0) return;
     uploadActive = true;
-    var item = uploadQueue.shift();
-    uploadFileToGcs(item.file, item.index).then(function(result) {
+    var id = uploadQueue.shift();
+    var photo = getPhoto(id);
+    if (!photo) { uploadActive = false; drainUploadQueue(); return; }  // removed before its turn
+
+    photo.status = 'uploading';
+    paintThumb(photo);
+
+    uploadPhotoToGcs(photo).then(function(result) {
       uploadActive = false;
-      var thumb = document.querySelector('.photo-thumb[data-idx="' + item.index + '"]');
-      if (result.ok) {
-        if (thumb) thumb.style.outline = '2px solid #16a34a';
-      } else {
-        if (thumb) thumb.style.outline = '2px solid #EF4444';
-        var statusEl = document.getElementById('upload-status');
-        if (statusEl) { statusEl.className = 'upload-status error'; statusEl.textContent = 'Some photos failed to upload. Check your connection and try again.'; }
+      // The photo may have been removed while it was uploading.
+      if (getPhoto(id)) {
+        photo.status   = result.ok ? 'done' : 'error';
+        photo.filePath = result.filePath || null;
+        paintThumb(photo);
       }
-      // Update overall upload progress label
-      var total   = photos.length;
-      var pending = uploadQueue.length + (uploadActive ? 1 : 0);
-      var done    = total - pending;
-      var pct     = total > 0 ? Math.round(done / total * 100) : 100;
-      var fillEl  = document.getElementById('upload-progress-fill');
-      var labelEl = document.getElementById('upload-progress-label');
-      var wrapEl  = document.getElementById('upload-progress-wrap');
-      if (fillEl)  fillEl.style.width = pct + '%';
-      if (labelEl) labelEl.textContent = done + '/' + total + ' uploaded';
-      if (wrapEl)  wrapEl.classList.toggle('show', pct < 100);
+      renderUploadSummary();
       drainUploadQueue();
     });
+  }
+
+  function paintThumb(photo) {
+    var thumb = document.querySelector('.photo-thumb[data-id="' + photo.id + '"]');
+    if (!thumb) return;
+    thumb.classList.toggle('is-uploading', photo.status === 'uploading');
+    thumb.classList.toggle('is-done',      photo.status === 'done');
+    thumb.classList.toggle('is-error',     photo.status === 'error');
+    var rm = thumb.querySelector('.photo-thumb__remove');
+    if (rm) rm.setAttribute('aria-disabled', photo.status === 'uploading' ? 'true' : 'false');
+  }
+
+  function renderUploadSummary() {
+    var statusEl = document.getElementById('upload-status');
+    var fillEl   = document.getElementById('upload-progress-fill');
+    var labelEl  = document.getElementById('upload-progress-label');
+    var wrapEl   = document.getElementById('upload-progress-wrap');
+    if (!statusEl) return;
+
+    var total   = photos.length;
+    var done    = photos.filter(function(p) { return p.status === 'done';  }).length;
+    var failed  = photos.filter(function(p) { return p.status === 'error'; }).length;
+    var pending = uploadsPending();
+    var pct     = total > 0 ? Math.round(done / total * 100) : 0;
+
+    if (fillEl)  fillEl.style.width = pct + '%';
+    if (labelEl) labelEl.textContent = done + '/' + total + ' uploaded';
+    if (wrapEl)  wrapEl.classList.toggle('show', total > 0 && pending > 0);
+
+    if (total === 0) {
+      statusEl.className = 'upload-status';
+      statusEl.textContent = '';
+    } else if (pending > 0) {
+      statusEl.className = 'upload-status';
+      statusEl.textContent = 'Uploading ' + done + ' of ' + total + '… you can keep filling out the form.';
+    } else if (failed > 0) {
+      statusEl.className = 'upload-status error';
+      statusEl.textContent = failed + ' photo' + (failed !== 1 ? 's' : '') + ' failed to upload. Tap Retry below, or continue — we\'ll email you to collect them.';
+      showRetryButton();
+    } else {
+      statusEl.className = 'upload-status success';
+      statusEl.textContent = total + ' photo' + (total !== 1 ? 's' : '') + ' saved to your profile ✓';
+    }
+    if (failed === 0) hideRetryButton();
+  }
+
+  function showRetryButton() {
+    if (document.getElementById('upload-retry-btn')) return;
+    var btn = document.createElement('button');
+    btn.id = 'upload-retry-btn';
+    btn.type = 'button';
+    btn.className = 'btn btn-outline';
+    btn.style.cssText = 'margin-top:10px;padding:8px 18px;font-size:0.85rem;';
+    btn.textContent = 'Retry failed uploads';
+    btn.onclick = function() {
+      photos.forEach(function(p) {
+        if (p.status === 'error') { p.status = 'queued'; paintThumb(p); uploadQueue.push(p.id); }
+      });
+      hideRetryButton();
+      renderUploadSummary();
+      drainUploadQueue();
+    };
+    var statusEl = document.getElementById('upload-status');
+    statusEl.parentNode.insertBefore(btn, statusEl.nextSibling);
+  }
+
+  function hideRetryButton() {
+    var btn = document.getElementById('upload-retry-btn');
+    if (btn) btn.remove();
   }
 
   function updateProgress(step) {
@@ -615,23 +759,71 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+
   function validateStep(step) {
     var stepEl = document.getElementById('step-' + step);
     var required = stepEl.querySelectorAll('[required]');
     var valid = true;
+    var firstInvalid = null;
+
     required.forEach(function(f) {
-      if (!f.value.trim() || (f.type === 'checkbox' && !f.checked)) {
+      if (f.type === 'radio') return; // radio groups are validated separately below
+      var bad = !f.value.trim() || (f.type === 'checkbox' && !f.checked);
+      // A malformed email silently breaks Stripe checkout AND the prospect↔client
+      // match in peter.js, so it has to fail here rather than three steps later.
+      if (!bad && f.type === 'email' && !EMAIL_RE.test(f.value.trim())) bad = true;
+
+      var err = f.parentElement.querySelector('.form-error');
+      if (bad) {
         f.classList.add('invalid');
-        var err = f.parentElement.querySelector('.form-error');
+        f.classList.remove('valid');
         if (err) err.classList.add('show');
         valid = false;
+        if (!firstInvalid) firstInvalid = f;
       } else {
         f.classList.remove('invalid');
         f.classList.add('valid');
-        var err = f.parentElement.querySelector('.form-error');
         if (err) err.classList.remove('show');
       }
     });
+
+    // Radio groups marked with data-required-group need one option checked.
+    var groupLeads = stepEl.querySelectorAll('input[type="radio"][data-required-group]');
+    groupLeads.forEach(function(lead) {
+      var checked = stepEl.querySelector('input[name="' + lead.name + '"]:checked');
+      var err = document.getElementById(lead.name + '-error');
+      if (!checked) {
+        if (err) {
+          if (err.dataset.defaultMsg) err.textContent = err.dataset.defaultMsg;
+          err.classList.add('show');
+        }
+        valid = false;
+        if (!firstInvalid) firstInvalid = lead;
+      } else if (err) {
+        err.classList.remove('show');
+      }
+    });
+
+    // Step 3: "I'll upload my own photos" with nothing uploaded is a dead end —
+    // the client thinks we have photos and we don't.
+    if (step === 3 && valid) {
+      var mode = (stepEl.querySelector('input[name="photo-mode"]:checked') || {}).value;
+      if (mode === 'upload' && photos.length === 0) {
+        var e3 = document.getElementById('photo-mode-error');
+        if (e3) {
+          e3.textContent = 'Add at least one photo, or pick "use AI-generated images" instead.';
+          e3.classList.add('show');
+        }
+        valid = false;
+        firstInvalid = document.getElementById('photo-mode-upload');
+      }
+    }
+
+    if (firstInvalid) {
+      firstInvalid.focus({ preventScroll: true });
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     return valid;
   }
 
@@ -641,6 +833,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     currentStep = from + 1;
     document.getElementById('step-' + currentStep).classList.add('active');
     updateProgress(currentStep);
+    saveDraft();
     document.querySelector('.onboarding-main').scrollIntoView({ behavior: 'smooth' });
   }
 
@@ -649,6 +842,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     currentStep = from - 1;
     document.getElementById('step-' + currentStep).classList.add('active');
     updateProgress(currentStep);
+  }
+
+  // Uploads run in the background while the client fills step 4. Redirecting to
+  // Stripe kills the page — and with it any in-flight upload — so we drain the
+  // queue before leaving. Resolves regardless after `timeoutMs` so a stuck upload
+  // can never block a paying customer.
+  function waitForUploads(timeoutMs, onTick) {
+    return new Promise(function(resolve) {
+      if (uploadsPending() === 0) { resolve(true); return; }
+      var startedAt = Date.now();
+      var iv = setInterval(function() {
+        if (uploadsPending() === 0) { clearInterval(iv); resolve(true); return; }
+        if (Date.now() - startedAt > timeoutMs) { clearInterval(iv); resolve(false); return; }
+        if (onTick) onTick(uploadsPending());
+      }, 400);
+    });
   }
 
   function submitOnboarding() {
@@ -668,9 +877,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.textContent = 'Saving your profile...';
 
     var params = new URLSearchParams(window.location.search);
-    var plan    = params.get('plan')    || 'reputation';
+    var picker  = document.getElementById('plan-picker');
+    var plan    = params.get('plan') || (picker ? picker.value : '') || 'reputation';
     var billing = params.get('billing') || 'monthly';
     var ownerEmail = getOwnerEmail();
+    var photoMode  = (document.querySelector('input[name="photo-mode"]:checked') || {}).value || '';
 
     var payload = {
       plan:            plan,
@@ -693,29 +904,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       accessMethod:    (document.querySelector('input[name="access-method"]:checked') || {}).value || '',
       reviewPref:      (document.querySelector('input[name="review-pref"]:checked')   || {}).value || '',
       notes:           (document.getElementById('s4-notes')        || {}).value || '',
+      photoMode:       photoMode,
+      noPhotos:        photoMode === 'ai',
+      photoCount:      photos.filter(function(p) { return p.status === 'done'; }).length,
       gcsFolder:       uploadedGcsFolder || null,
     };
 
-    // Save prospect data first (non-blocking), then redirect to Stripe checkout
-    fetch(API + '/api/onboarding', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    }).catch(function() { /* non-blocking */ });
+    waitForUploads(45000, function(left) {
+      btn.textContent = 'Finishing photo upload (' + left + ' left)...';
+    })
+    .then(function(drained) {
+      if (!drained) payload.uploadIncomplete = true;
+      payload.photoCount = photos.filter(function(p) { return p.status === 'done'; }).length;
+      payload.gcsFolder  = uploadedGcsFolder || null;
+      btn.textContent = 'Saving your profile...';
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'checkout_initiated', plan: plan, page: 'onboarding' });
+      // This POST is the ONLY place gcsFolder + the full form ever reach the
+      // backend — peter.js reads it back after checkout to provision the client.
+      // It must complete before we navigate away, so it is awaited (and marked
+      // keepalive as a belt-and-braces guard against an early unload).
+      return fetch(API + '/api/onboarding', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      })
+      .then(function(r) { return r.ok ? r.json().catch(function() { return {}; }) : Promise.reject(new Error('onboarding save failed: ' + r.status)); })
+      .catch(function(err) {
+        // Don't block the sale — but make the failure loud so support can recover it.
+        console.error('Onboarding save error:', err);
+        return { saveFailed: true };
+      });
+    })
+    .then(function() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'checkout_initiated', plan: plan, page: 'onboarding' });
 
-    btn.textContent = 'Redirecting to secure checkout...';
+      btn.textContent = 'Redirecting to secure checkout...';
 
-    fetch(API + '/api/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plan: plan, billing: billing, email: ownerEmail }),
+      return fetch(API + '/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: plan, billing: billing, email: ownerEmail }),
+      });
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.url) {
+        clearDraft();
         window.location.href = data.url;
       } else {
         throw new Error(data.error || 'No checkout URL returned');
@@ -741,13 +977,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var monthlyLabels = { reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo' };
     var annualLabels  = { reviews: 'Reputation — $82/mo (annual)', reputation: 'Reputation — $82/mo (annual)', presence: 'Presence — $133/mo (annual)', complete: 'Authority — $184/mo (annual)', authority: 'Authority — $184/mo (annual)' };
     var labels = (billing === 'annual') ? annualLabels : monthlyLabels;
+    var banner = document.getElementById('plan-banner');
+    var name   = document.getElementById('plan-banner-name');
+    var picker = document.getElementById('plan-picker-wrap');
+
     if (plan && labels[plan]) {
-      var banner = document.getElementById('plan-banner');
-      var name = document.getElementById('plan-banner-name');
-      if (banner && name) {
-        banner.style.display = 'flex';
-        name.textContent = labels[plan];
-      }
+      banner.hidden = false;
+      banner.style.display = 'flex';
+      name.textContent = labels[plan];
+    } else if (paid !== '1') {
+      // No plan in the URL. Previously the form defaulted to Reputation at submit
+      // time without ever telling the client — so an Authority-intent visitor got
+      // charged $97. Make them pick instead.
+      picker.hidden = false;
     }
 
     // Returning from Stripe success — skip form, show success screen
@@ -760,7 +1002,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('success-screen').classList.add('show');
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'purchase_complete', plan: plan || 'unknown', page: 'onboarding' });
+      try { localStorage.removeItem('lbl_onboarding_draft_v1'); } catch (e) {}
+      resolveConnectLink(params.get('session_id'));
       return;
+    }
+
+    // Fetch the client's OAuth invite link. peter.js provisions on the Stripe
+    // webhook, which can land a second or two after the redirect — so poll a few
+    // times before falling back to the emailed link.
+    function resolveConnectLink(sessionId) {
+      var loading  = document.getElementById('connect-loading');
+      var btn      = document.getElementById('connect-btn');
+      var note     = document.getElementById('connect-note');
+      var fallback = document.getElementById('connect-email-fallback');
+      if (!sessionId) { loading.style.display = 'none'; return; }
+
+      var attempts = 0;
+      (function poll() {
+        attempts++;
+        fetch(API + '/api/checkout-oauth-link?session_id=' + encodeURIComponent(sessionId))
+          .then(function(r) { return r.json().then(function(d) { return { status: r.status, body: d }; }); })
+          .then(function(res) {
+            if (res.status === 200 && res.body.url) {
+              loading.style.display = 'none';
+              btn.href = res.body.url;
+              btn.style.display = 'inline-flex';
+              note.style.display = 'block';
+              var heading = fallback.querySelector('p');
+              if (heading) heading.innerHTML = '📧 We also emailed you this link';
+              window.dataLayer.push({ event: 'oauth_link_ready', page: 'onboarding' });
+              return;
+            }
+            if (res.status === 202 && attempts < 8) { setTimeout(poll, 1500); return; }
+            loading.style.display = 'none'; // fall back to the email card below
+          })
+          .catch(function() {
+            if (attempts < 8) { setTimeout(poll, 1500); return; }
+            loading.style.display = 'none';
+          });
+      })();
     }
   })();
 
@@ -771,7 +1051,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var uploadZone = document.getElementById('upload-zone');
 
   photoInput.addEventListener('change', function() {
+    ensureUploadMode();
     handleFiles(this.files);
+    this.value = ''; // so re-picking the same file fires `change` again
   });
 
   uploadZone.addEventListener('dragover', function(e) {
@@ -784,99 +1066,238 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   uploadZone.addEventListener('drop', function(e) {
     e.preventDefault();
     uploadZone.classList.remove('dragover');
+    ensureUploadMode();
     handleFiles(e.dataTransfer.files);
   });
 
-  var progressWrap  = document.getElementById('upload-progress-wrap');
-  var progressFill  = document.getElementById('upload-progress-fill');
-  var progressLabel = document.getElementById('upload-progress-label');
+  var IMAGE_EXT_RE  = /\.(jpe?g|png|webp|heic|heif)$/i;
+  var IMAGE_MIME_RE = /^image\/(jpe?g|png|webp|heic|heif)$/i;
 
-  function setProgress(pct) {
-    progressFill.style.width = pct + '%';
-    progressLabel.textContent = pct + '%';
+  // iOS/Android often hand over HEIC (and sometimes JPEG) with an empty `type`,
+  // so the extension is the fallback — otherwise real photos were silently dropped.
+  function isAcceptedImage(file) {
+    if (file.size > MAX_BYTES) return false;
+    if (file.type) return IMAGE_MIME_RE.test(file.type);
+    return IMAGE_EXT_RE.test(file.name || '');
   }
 
   function handleFiles(fileList) {
-    var allowed = Array.from(fileList).filter(function(f) {
-      return f.type.match(/image\/(jpeg|png|webp|heic)/i) && f.size <= 15 * 1024 * 1024;
-    });
+    var incoming = Array.from(fileList);
+    var allowed  = incoming.filter(isAcceptedImage);
+    var rejected = incoming.length - allowed.length;
 
-    var rejected = Array.from(fileList).length - allowed.length;
     if (rejected > 0) {
       uploadStatus.className = 'upload-status error';
-      uploadStatus.textContent = rejected + ' file' + (rejected !== 1 ? 's' : '') + ' skipped (wrong type or over 15MB).';
+      uploadStatus.textContent = rejected + ' file' + (rejected !== 1 ? 's' : '') + ' skipped (not an image, or over 15MB).';
     }
-
     if (!allowed.length) return;
 
-    if (photos.length + allowed.length > 100) {
+    if (photos.length + allowed.length > MAX_PHOTOS) {
       uploadStatus.className = 'upload-status error';
-      uploadStatus.textContent = 'Maximum 100 photos allowed. Currently have ' + photos.length + '.';
+      uploadStatus.textContent = 'Maximum ' + MAX_PHOTOS + ' photos. You already have ' + photos.length + '.';
       return;
     }
 
-    progressWrap.classList.add('show');
-    setProgress(0);
-    uploadStatus.className = 'upload-status';
-    uploadStatus.textContent = 'Reading ' + allowed.length + ' photo' + (allowed.length !== 1 ? 's' : '') + '...';
-
-    var loaded = 0;
     allowed.forEach(function(file) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        var idx = photos.length;
-        photos.push({ name: file.name, src: e.target.result, file: file });
-        loaded++;
-        addThumb(e.target.result, idx);
-        var pct = Math.round((loaded / allowed.length) * 100);
-        setProgress(pct);
-        if (loaded === allowed.length) {
-          progressWrap.classList.remove('show');
-          uploadStatus.className = 'upload-status success';
-          uploadStatus.textContent = photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' ready ✓ — uploading to your profile...';
-        }
-        // Queue GCS upload for this file (only if email is known)
-        if (getOwnerEmail()) {
-          uploadQueue.push({ file: file, index: idx });
-          drainUploadQueue();
-        }
+      // objectURL, not a base64 data URL — 100 × 15 MB of base64 blows out tab memory.
+      var photo = {
+        id:     ++photoSeq,
+        name:   file.name || ('photo-' + photoSeq + '.jpg'),
+        file:   file,
+        url:    URL.createObjectURL(file),
+        status: 'queued',
       };
-      reader.readAsDataURL(file);
+      photos.push(photo);
+      addThumb(photo);
+      uploadQueue.push(photo.id);
     });
+
+    renderUploadSummary();
+    drainUploadQueue();
   }
 
-  function addThumb(src, idx) {
+  function addThumb(photo) {
     var div = document.createElement('div');
     div.className = 'photo-thumb';
-    div.dataset.idx = idx;
-    div.innerHTML = '<img src="' + src + '" alt="Photo ' + (idx + 1) + '" loading="lazy">' +
-      '<div class="photo-thumb__success">✓</div>' +
-      '<div class="photo-thumb__remove" onclick="removePhoto(' + idx + ')" aria-label="Remove photo">×</div>';
+    div.dataset.id = photo.id;
+
+    var img = document.createElement('img');
+    img.src = photo.url;
+    img.alt = photo.name;
+    img.loading = 'lazy';
+
+    var ok = document.createElement('div');
+    ok.className = 'photo-thumb__success';
+    ok.textContent = '✓';
+
+    var rm = document.createElement('div');
+    rm.className = 'photo-thumb__remove';
+    rm.setAttribute('role', 'button');
+    rm.setAttribute('tabindex', '0');
+    rm.setAttribute('aria-label', 'Remove ' + photo.name);
+    rm.textContent = '×';
+    rm.onclick = function() { removePhoto(photo.id); };
+    rm.onkeydown = function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); removePhoto(photo.id); } };
+
+    div.appendChild(img);
+    div.appendChild(ok);
+    div.appendChild(rm);
     photoGrid.appendChild(div);
   }
 
-  function removePhoto(idx) {
-    photos.splice(idx, 1);
-    photoGrid.innerHTML = '';
-    photos.forEach(function(p, i) { addThumb(p.src, i); });
-    uploadStatus.className = 'upload-status' + (photos.length > 0 ? ' success' : '');
-    uploadStatus.textContent = photos.length > 0 ? photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + ' ✓' : '';
+  // Keyed on stable ids, not array indices — splicing the array used to leave the
+  // queue pointing at the wrong photos.
+  function removePhoto(id) {
+    var photo = getPhoto(id);
+    if (!photo) return;
+    if (photo.status === 'uploading') return; // can't cancel mid-flight
+
+    if (photo.status === 'done') {
+      // Already in GCS — ask the backend to drop it so the agents never see it.
+      var params = new URLSearchParams({ email: uploadFolderEmail || getOwnerEmail(), filename: photo.name });
+      fetch(API + '/api/upload-photos?' + params.toString(), { method: 'DELETE' })
+        .catch(function(e) { console.warn('Photo delete failed:', e); });
+    }
+
+    uploadQueue = uploadQueue.filter(function(qid) { return qid !== id; });
+    photos = photos.filter(function(p) { return p.id !== id; });
+    URL.revokeObjectURL(photo.url);
+
+    var thumb = photoGrid.querySelector('.photo-thumb[data-id="' + id + '"]');
+    if (thumb) thumb.remove();
+    renderUploadSummary();
   }
 
-  /* No-photos checkbox */
-  document.getElementById('no-photos-check').addEventListener('change', function() {
-    var area  = document.getElementById('upload-area');
-    var input = document.getElementById('photo-input');
-    if (this.checked) {
-      area.style.display = 'none';
-      input.disabled = true;
+  /* Photo mode: upload vs AI-generated ------------------------------------- */
+  var uploadPanel = document.getElementById('upload-panel');
+
+  function applyPhotoMode(mode) {
+    var isUpload = mode === 'upload';
+    uploadPanel.hidden = !isUpload;
+    photoInput.disabled = !isUpload;
+    if (!isUpload) {
       uploadStatus.className = 'upload-status';
-      uploadStatus.textContent = '✓ Got it — AI-generated images will be used for your posts.';
-    } else {
-      area.style.display = '';
-      input.disabled = false;
       uploadStatus.textContent = '';
+    } else {
+      renderUploadSummary();
     }
+    var err = document.getElementById('photo-mode-error');
+    if (err && mode) err.classList.remove('show');
+    saveDraft();
+  }
+
+  document.querySelectorAll('input[name="photo-mode"]').forEach(function(radio) {
+    radio.addEventListener('change', function() { applyPhotoMode(this.value); });
+  });
+
+  // Selecting files should imply "I'm uploading" even if the client never
+  // clicked the radio (e.g. they dragged photos straight onto the page).
+  function ensureUploadMode() {
+    var r = document.getElementById('photo-mode-upload');
+    if (!r.checked) { r.checked = true; applyPhotoMode('upload'); }
+  }
+
+  applyPhotoMode((document.querySelector('input[name="photo-mode"]:checked') || {}).value || '');
+
+  /* Draft persistence ------------------------------------------------------ */
+  // The form takes 5–7 minutes. An accidental refresh or a tab crash used to
+  // wipe everything, which is a guaranteed abandon.
+  var DRAFT_KEY = 'lbl_onboarding_draft_v1';
+  var DRAFT_FIELDS = [
+    's1-biz-name','s1-biz-type','s1-city','s1-service-areas','s1-website','s1-years','s1-gbp-url',
+    's2-owner-name','s2-email','s2-tone','s2-always','s2-never','s2-service1','s2-service2','s2-service3','s2-compliment',
+    's4-notes',
+  ];
+
+  function saveDraft() {
+    try {
+      var data = { step: currentStep, fields: {} };
+      DRAFT_FIELDS.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.value) data.fields[id] = el.value;
+      });
+      var mode = document.querySelector('input[name="photo-mode"]:checked');
+      if (mode) data.photoMode = mode.value;
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+    } catch (e) { /* private mode / quota — draft is a nicety, never a blocker */ }
+  }
+
+  function clearDraft() {
+    try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+  }
+
+  function restoreDraft() {
+    var raw;
+    try { raw = localStorage.getItem(DRAFT_KEY); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { clearDraft(); return; }
+    if (!data || !data.fields) return;
+
+    var restored = 0;
+    Object.keys(data.fields).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) { el.value = data.fields[id]; restored++; }
+    });
+    if (!restored) return;
+
+    if (data.photoMode) {
+      var modeEl = document.getElementById('photo-mode-' + data.photoMode);
+      if (modeEl) { modeEl.checked = true; applyPhotoMode(data.photoMode); }
+    }
+
+    // Photos themselves can't be restored (File objects don't survive a reload),
+    // so never jump straight back into step 3 claiming they're still there.
+    var step = Math.min(data.step || 1, 3);
+    if (step > 1) {
+      document.getElementById('step-1').classList.remove('active');
+      document.getElementById('step-' + step).classList.add('active');
+      currentStep = step;
+      updateProgress(step);
+    }
+
+    var note = document.createElement('div');
+    note.style.cssText = 'background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:10px 14px;margin-bottom:18px;font-size:0.85rem;color:#1B4FD8;display:flex;align-items:center;gap:10px;';
+    note.innerHTML = '<span>We restored your answers from earlier.</span>';
+    var reset = document.createElement('button');
+    reset.type = 'button';
+    reset.textContent = 'Start over';
+    reset.style.cssText = 'margin-left:auto;background:none;border:none;color:#6B7280;text-decoration:underline;font-size:0.8rem;cursor:pointer;';
+    reset.onclick = function() { clearDraft(); location.href = location.pathname + location.search; };
+    note.appendChild(reset);
+    var card = document.querySelector('.onboarding-card');
+    card.insertBefore(note, card.firstChild);
+  }
+
+  DRAFT_FIELDS.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('change', saveDraft);
+  });
+
+  /* Industry deep-links ---------------------------------------------------- */
+  // industries.html links here with ?industry=hvac etc. That param used to be
+  // dropped on the floor, so the client re-picked their own industry by hand.
+  (function() {
+    var INDUSTRY_MAP = {
+      hvac: 'HVAC', plumbing: 'Plumbing', dental: 'Dental', legal: 'Legal',
+      cleaning: 'Cleaning', landscaping: 'Landscaping', auto: 'Auto Repair',
+      medspa: 'Med Spa', chiro: 'Chiropractic', pest: 'Pest Control', roofing: 'Roofing',
+    };
+    var industry = (new URLSearchParams(location.search).get('industry') || '').toLowerCase();
+    var label = INDUSTRY_MAP[industry];
+    if (!label) return;
+    var sel = document.getElementById('s1-biz-type');
+    if (!sel) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].text === label) { sel.selectedIndex = i; sel.classList.add('valid'); break; }
+    }
+  })();
+
+  restoreDraft();
+
+  // Uploads are lost if the tab closes mid-flight — warn before that happens.
+  window.addEventListener('beforeunload', function(e) {
+    if (uploadsPending() > 0) { e.preventDefault(); e.returnValue = ''; }
   });
 </script>
 
