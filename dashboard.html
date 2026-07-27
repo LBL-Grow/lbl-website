@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="apple-touch-icon" href="/Fav-Icon_Blue.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard | Local Boost Lab</title>
-  <meta name="robots" content="noindex, nofollow">  <link rel="stylesheet" href="/fonts.css">
+  <meta name="robots" content="noindex, nofollow">  <link rel="preload" href="/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/fonts.css"></noscript>
     <!-- Critical CSS: vars + reset + nav — eliminates styles.css render block -->
   <style>
     :root{--authority-blue:#1B4FD8;--authority-blue-dark:#1440B0;--authority-blue-light:#3B6FE8;--signal-amber:#F59E0B;--signal-amber-dark:#D97706;--slate-core:#0F172A;--surface-light:#EFF6FF;--surface-mid:#DBEAFE;--white:#FFFFFF;--success-green:#10B981;--warning-red:#EF4444;--border-color:#E5E7EB;--text-muted:#6B7280;--text-light:rgba(255,255,255,.85);--shadow-card:0 2px 12px rgba(0,0,0,.07);--shadow-elevated:0 8px 32px rgba(0,0,0,.12);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--font-heading:'Inter',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'DM Mono',monospace;--font-logo:'Ardela Edge X01','Inter',sans-serif;--container-max:1200px;--section-pad:80px;--section-pad-mobile:48px}
@@ -274,6 +274,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .psi-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--border-color); border-top-color: var(--authority-blue); border-radius: 50%; animation: psi-spin 0.7s linear infinite; vertical-align: middle; margin-right: 6px; }
     @keyframes psi-spin { to { transform: rotate(360deg); } }
   </style>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -324,8 +326,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="dashboard-header">
       <h1 id="tab-title">Overview</h1>
       <div style="display:flex;align-items:center;gap:12px;">
-        <span style="font-size:0.8rem;color:var(--text-muted);">Last updated: just now</span>
-        <button class="btn btn-outline" style="padding:8px 16px;font-size:0.82rem;" onclick="localStorage.removeItem('lbl_authed');location.reload();">Sign Out</button>
+        <span style="font-size:0.8rem;color:var(--text-muted);" id="last-updated-ts">Last updated: —</span>
+        <button class="btn btn-outline" style="padding:8px 16px;font-size:0.82rem;" onclick="signOut()">Sign Out</button>
       </div>
     </div>
 
@@ -384,14 +386,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="health-dot health-dot--green"><div class="health-dot__circle"></div><span class="health-dot__text">Operational</span></div>
             </div>
             <div class="health-item">
-              <div class="health-item__name">BullMQ (Job Queue)</div>
-              <div class="health-dot health-dot--green"><div class="health-dot__circle"></div><span class="health-dot__text">Operational</span></div>
+              <div class="health-item__name">Supabase (Database)</div>
+              <div class="health-dot health-dot--green" id="health-supabase"><div class="health-dot__circle"></div><span class="health-dot__text">Operational</span></div>
             </div>
             <div class="health-item">
               <div class="health-item__name">Resend (Email)</div>
               <div class="health-dot health-dot--green"><div class="health-dot__circle"></div><span class="health-dot__text">Operational</span></div>
             </div>
-            <div style="padding:12px 20px;font-size:0.72rem;color:var(--text-muted);border-top:1px solid var(--surface-mid);">Last check: 2 min ago · All systems normal</div>
+            <div style="padding:12px 20px;font-size:0.72rem;color:var(--text-muted);border-top:1px solid var(--surface-mid);" id="health-last-check">Last check: — · Waiting for agent data</div>
           </div>
         </div>
       </div>
@@ -403,14 +405,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;" id="filter-all">All</button>
             <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;" id="filter-active">Active</button>
           </div>
-          <button class="btn btn-primary" style="padding:10px 18px;font-size:0.85rem;" onclick="openDrawer('new')">+ Add Client Manually</button>
+          <button class="btn btn-primary" style="padding:10px 18px;font-size:0.85rem;" onclick="alert('Manual client add — provision via Stripe checkout or contact juan@localboostlab.com')">+ Add Client</button>
         </div>
         <div class="section-card">
           <div style="overflow-x:auto;">
             <table class="data-table">
               <thead><tr>
                 <th>Business Name</th><th>Plan</th><th>Status</th>
-                <th>Reviews (30d)</th><th>Last Post</th><th>MRR</th><th>Joined</th><th>Actions</th>
+                <th>Posts Published</th><th>Last Post</th><th>MRR</th><th>Services</th><th>Actions</th>
               </tr></thead>
               <tbody id="clients-tbody">
                 <tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.875rem;">Loading…</td></tr>
@@ -423,71 +425,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- ── REVIEWS TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-reviews">
         <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
-          <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;">All</button>
-          <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;">Positive</button>
-          <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;">Neutral</button>
-          <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;">Negative</button>
-          <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;border-color:var(--warning-red);color:var(--warning-red);">Pending Action (2)</button>
+          <button class="btn btn-primary" style="padding:8px 14px;font-size:0.8rem;">All</button>
+          <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;">Auto-replied</button>
+          <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;">Recent</button>
         </div>
         <div class="section-card">
           <div style="overflow-x:auto;">
             <table class="data-table">
               <thead><tr>
-                <th>Client</th><th>Reviewer</th><th>Rating</th><th>Status</th><th>Response</th><th>Time</th>
+                <th>Client</th><th>Reviewer</th><th>Rating</th><th>Status</th><th>Note</th><th>Time</th>
               </tr></thead>
-              <tbody>
-                <tr class="review-row" onclick="toggleReview(this)">
-                  <td><strong>Martinez HVAC</strong></td><td>Mike T.</td>
-                  <td style="color:#FCD34D;">★★★★★</td>
-                  <td><span class="badge badge--green">✓ Replied (auto)</span></td>
-                  <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.82rem;color:var(--text-muted);">"Thank you so much, Mike!..."</td>
-                  <td style="font-size:0.8rem;color:var(--text-muted);">28 min ago</td>
-                </tr>
-                <tr><td colspan="6" style="padding:0;">
-                  <div class="review-detail">
-                    <div class="review-detail__text">"Best HVAC crew in Phoenix — showed up on time and fixed it right the first time!"</div>
-                    <div class="review-detail__draft">"Thank you so much, Mike! That means the world to our team. We take pride in punctual, first-time-right service, and we're thrilled we hit the mark for you. Hope to see you next season! — The Martinez Team"</div>
-                    <div style="font-size:0.75rem;color:var(--success-green);font-weight:600;">✓ Published automatically</div>
-                  </div>
-                </td></tr>
-
-                <tr class="review-row" onclick="toggleReview(this)">
-                  <td><strong>Sunrise Dental</strong></td><td>Jennifer R.</td>
-                  <td style="color:#FCD34D;">★★★</td>
-                  <td><span class="badge badge--amber">⏳ Awaiting approval</span></td>
-                  <td style="font-size:0.82rem;color:var(--text-muted);">Draft ready</td>
-                  <td style="font-size:0.8rem;color:var(--text-muted);">3h ago</td>
-                </tr>
-                <tr><td colspan="6" style="padding:0;">
-                  <div class="review-detail">
-                    <div class="review-detail__text">"Good experience overall but the wait time was longer than expected. Staff was kind though."</div>
-                    <div class="review-detail__draft" id="draft-sunrise">Thank you for your honest feedback, Jennifer. We sincerely apologize for the longer wait — we understand your time is valuable. We're actively working to improve our scheduling. We'd love the opportunity to provide a smoother experience on your next visit. — Dr. S and the Sunrise Dental team</div>
-                    <div class="review-detail__actions">
-                      <button class="btn btn-primary" style="padding:8px 14px;font-size:0.8rem;" onclick="event.stopPropagation();approveReview(this)">✓ Approve &amp; Post</button>
-                      <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;" onclick="event.stopPropagation();editDraft('draft-sunrise')">Edit Draft</button>
-                      <button class="btn" style="padding:8px 14px;font-size:0.8rem;border:1px solid var(--border-color);color:var(--text-muted);" onclick="event.stopPropagation()">Client Declined</button>
-                    </div>
-                  </div>
-                </td></tr>
-
-                <tr class="review-row" onclick="toggleReview(this)">
-                  <td><strong>Sunrise Dental</strong></td><td>David K.</td>
-                  <td style="color:#FCD34D;">★★</td>
-                  <td><span class="badge badge--red"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#EF4444"/><path d="M12 7v5M12 16v1" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg> Urgent — client alerted</span></td>
-                  <td style="font-size:0.82rem;color:var(--text-muted);">No response yet</td>
-                  <td style="font-size:0.8rem;color:var(--text-muted);">1h ago</td>
-                </tr>
-                <tr><td colspan="6" style="padding:0;">
-                  <div class="review-detail">
-                    <div class="review-detail__text">"Billing department charged me twice and has been impossible to reach. Very frustrated."</div>
-                    <div class="review-detail__draft" id="draft-david">David, thank you for bringing this to our attention. We're very sorry to hear about this billing concern — this is not the experience we want for our patients. Please contact our office manager directly at [phone/email] and we will resolve this immediately. We take billing accuracy very seriously. — Dr. S and the Sunrise Dental team</div>
-                    <div class="review-detail__actions">
-                      <button class="btn btn-primary" style="padding:8px 14px;font-size:0.8rem;" onclick="event.stopPropagation();approveReview(this)">✓ Approve &amp; Post</button>
-                      <button class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;" onclick="event.stopPropagation();editDraft('draft-david')">Edit Draft</button>
-                      <button class="btn" style="padding:8px 14px;font-size:0.8rem;border:1px solid var(--border-color);color:var(--text-muted);" onclick="event.stopPropagation()">Client Declined</button>
-                    </div>
-                  </div>
-                </td></tr>
+              <tbody id="reviews-tbody">
+                <tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text-muted);font-size:0.875rem;">Loading review activity…</td></tr>
               </tbody>
             </table>
           </div>
@@ -497,7 +446,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- ── POSTS TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-posts">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-          <h3 style="font-size:1rem;color:var(--authority-blue);">April 2026 — Content Calendar</h3>
+          <h3 style="font-size:1rem;color:var(--authority-blue);" id="calendar-month-title">Loading calendar…</h3>
           <button class="btn btn-primary" style="padding:10px 18px;font-size:0.85rem;">+ Create Manual Post</button>
         </div>
 
@@ -509,55 +458,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span style="display:flex;align-items:center;gap:6px;font-size:0.78rem;"><span style="width:10px;height:10px;background:#FEE2E2;border-radius:2px;display:inline-block;"></span>Failed</span>
             </div>
 
-            <div class="post-calendar">
-              <!-- Headers -->
-              <div class="cal-day cal-day--header">Sun</div>
-              <div class="cal-day cal-day--header">Mon</div>
-              <div class="cal-day cal-day--header">Tue</div>
-              <div class="cal-day cal-day--header">Wed</div>
-              <div class="cal-day cal-day--header">Thu</div>
-              <div class="cal-day cal-day--header">Fri</div>
-              <div class="cal-day cal-day--header">Sat</div>
-              <!-- Week 1 (Apr starts Tue) -->
-              <div class="cal-day"></div>
-              <div class="cal-day"></div>
-              <div class="cal-day cal-day--published" title="Martinez HVAC — Published">1<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day">2</div>
-              <div class="cal-day cal-day--published" title="Published">3<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day">4</div>
-              <div class="cal-day cal-day--published">5<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <!-- Week 2 -->
-              <div class="cal-day">6</div>
-              <div class="cal-day">7</div>
-              <div class="cal-day cal-day--published">8<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day">9</div>
-              <div class="cal-day cal-day--published">10<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day">11</div>
-              <div class="cal-day cal-day--published">12<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <!-- Week 3 -->
-              <div class="cal-day">13</div>
-              <div class="cal-day">14</div>
-              <div class="cal-day cal-day--published">15<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day">16</div>
-              <div class="cal-day cal-day--failed" title="Failed — retry needed">17<br><span style="font-size:0.6rem;">2/3 !</span></div>
-              <div class="cal-day">18</div>
-              <div class="cal-day cal-day--published">19<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <!-- Week 4 -->
-              <div class="cal-day">20</div>
-              <div class="cal-day">21</div>
-              <div class="cal-day cal-day--published">22<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day">23</div>
-              <div class="cal-day cal-day--published">24<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day">25</div>
-              <div class="cal-day cal-day--published">26<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <!-- Week 5 -->
-              <div class="cal-day">27</div>
-              <div class="cal-day">28</div>
-              <div class="cal-day cal-day--published">29<br><span style="font-size:0.6rem;">3 posts</span></div>
-              <div class="cal-day cal-day--today">30</div>
-              <div class="cal-day cal-day--scheduled">May 1<br><span style="font-size:0.6rem;">sched.</span></div>
-              <div class="cal-day">May 2</div>
-              <div class="cal-day cal-day--scheduled">May 3<br><span style="font-size:0.6rem;">sched.</span></div>
+            <div class="post-calendar" id="post-calendar-grid">
+              <!-- Generated dynamically by renderCalendar() -->
             </div>
           </div>
         </div>
@@ -607,6 +509,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- ── WEBSITE TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-website">
+
+        <!-- Search Console Panel -->
+        <div class="section-card" id="gsc-panel" style="margin-bottom:24px;">
+          <div class="section-card__header">
+            <h3>Search Performance · localboostlab.com</h3>
+            <span style="font-size:0.72rem;color:var(--text-muted);" id="gsc-period">Last 28 days</span>
+          </div>
+          <div id="gsc-body">
+            <div style="padding:24px;text-align:center;color:var(--text-muted);font-size:0.875rem;" id="gsc-loading">Loading search data…</div>
+          </div>
+        </div>
+
         <div class="section-card">
           <div class="section-card__header">
             <h3>Website Performance · localboostlab.com</h3>
@@ -682,14 +596,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- ── SYSTEM HEALTH TAB ─────── -->
       <div class="dashboard-tab-content" id="tab-health">
-        <div class="kpi-bar" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr));margin-bottom:24px;" id="agent-cards">
-          <div class="kpi-card" style="border-top:3px solid var(--success-green);position:relative;"><div style="position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--success-green);border-radius:50%;"></div><div class="kpi-card__label">Claire (AI Chat)</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--success-green);">Always On</div><div class="kpi-card__change">24/7 · AI support</div></div>
-          <div class="kpi-card"><div class="kpi-card__label">Review Agent</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
-          <div class="kpi-card"><div class="kpi-card__label">Posting Agent</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
-          <div class="kpi-card"><div class="kpi-card__label">Health Monitor</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
-          <div class="kpi-card"><div class="kpi-card__label">Monthly Reports</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
-          <div class="kpi-card"><div class="kpi-card__label">Patrick Digest</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
-          <div class="kpi-card"><div class="kpi-card__label">Lisa</div><div class="kpi-card__value" style="font-size:1.1rem;color:var(--text-muted);">Loading…</div><div class="kpi-card__change">—</div></div>
+        <div class="kpi-bar" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-bottom:24px;" id="agent-cards">
+          <div style="grid-column:1/-1;padding:16px;text-align:center;color:var(--text-muted);font-size:0.875rem;">Loading 13 agents…</div>
         </div>
         <div class="section-card">
           <div class="section-card__header"><h3>Recent Agent Runs</h3></div>
@@ -768,17 +676,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
 
-      <!-- ── PROSPECTS TAB ─────── -->
-      <div class="dashboard-tab-content" id="tab-prospects">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-          <p style="color:var(--text-muted);font-size:0.875rem;margin:0;">Sales pipeline — track every potential client from first touch to close.</p>
-          <button class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;" onclick="openProspectForm()">+ Add Prospect</button>
-        </div>
-        <div class="pipeline-board" id="pipeline-board">
-          <div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--text-muted);font-size:0.875rem;">Loading pipeline…</div>
-        </div>
-      </div>
-
         <div class="section-card">
           <div class="section-card__header"><h3>Annual Projection — at current MRR</h3></div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);">
@@ -799,6 +696,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </div>
 
+      <!-- ── PROSPECTS TAB ─────── -->
+      <div class="dashboard-tab-content" id="tab-prospects">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <p style="color:var(--text-muted);font-size:0.875rem;margin:0;">Sales pipeline — track every potential client from first touch to close.</p>
+          <button class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;" onclick="openProspectForm()">+ Add Prospect</button>
+        </div>
+        <div class="pipeline-board" id="pipeline-board">
+          <div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--text-muted);font-size:0.875rem;">Loading pipeline…</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -815,32 +723,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="shared.js" defer></script>
 <script>
-  /* Auth */
-  var PASS = 'lbl_admin_2026';
+  /* Auth — server-side.
+     The password used to be a plaintext constant in this file, compared in the
+     browser, while every /api endpoint behind it was wide open. The gate now
+     runs against /api/admin/login, which sets an HttpOnly session cookie that
+     requireAdmin checks on each request. Nothing secret lives in this file. */
 
   var RAILWAY = 'https://powerful-balance-production-971d.up.railway.app';
 
-  /* Redirect to Railway from anywhere except Railway itself */
+  /* Redirect to Railway from anywhere except Railway itself — the session
+     cookie is same-origin, so the dashboard only works when served from there */
   if (window.location.hostname !== 'powerful-balance-production-971d.up.railway.app') {
     window.location.replace(RAILWAY + '/dashboard.html');
-  } else if (localStorage.getItem('lbl_authed') === PASS) {
-    showDashboard();
+  } else {
+    // Stale marker from the old client-side gate — it never meant anything.
+    localStorage.removeItem('lbl_authed');
+    fetch('/api/admin/check')
+      .then(function(r) { if (r.ok) showDashboard(); })
+      .catch(function() { /* stay on the password screen */ });
   }
 
   function checkAuth() {
-    var val = document.getElementById('pw-input').value;
-    if (val === PASS) {
-      localStorage.setItem('lbl_authed', PASS);
-      showDashboard();
-    } else {
-      document.getElementById('pw-error').style.display = 'block';
-      document.getElementById('pw-input').classList.add('invalid');
-    }
+    var input = document.getElementById('pw-input');
+    var err   = document.getElementById('pw-error');
+    var val   = input.value;
+    if (!val) return;
+
+    input.disabled = true;
+    fetch('/api/admin/login', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ password: val }),
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, body: d }; }); })
+    .then(function(res) {
+      input.disabled = false;
+      if (res.ok) {
+        input.value = '';
+        err.style.display = 'none';
+        input.classList.remove('invalid');
+        showDashboard();
+        return;
+      }
+      err.textContent = res.status === 429
+        ? 'Too many attempts. Try again in a few minutes.'
+        : (res.body && res.body.error) || 'Invalid password';
+      err.style.display = 'block';
+      input.classList.add('invalid');
+    })
+    .catch(function() {
+      input.disabled = false;
+      err.textContent = 'Could not reach the server. Check your connection.';
+      err.style.display = 'block';
+    });
   }
 
   document.getElementById('pw-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') checkAuth();
   });
+
+  // Clearing localStorage no longer logs anyone out — the session is an
+  // HttpOnly cookie, so it has to be cleared server-side.
+  function signOut() {
+    fetch('/api/admin/logout', { method: 'POST' })
+      .catch(function() {})
+      .then(function() { location.reload(); });
+  }
 
   function showDashboard() {
     document.getElementById('auth-gate').classList.add('hidden');
@@ -880,38 +828,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var el = document.getElementById(id);
     var text = el.textContent;
     el.innerHTML = '<textarea style="width:100%;min-height:100px;padding:10px;border:1.5px solid var(--authority-blue);border-radius:var(--radius-sm);font-size:0.875rem;font-family:var(--font-body);">' + text + '</textarea>';
-  }
-
-  /* Client drawer */
-  var drawerData = {
-    martinez: { name: 'Martinez HVAC', plan: 'Presence · $157/mo', joined: 'Apr 1, 2026', status: 'Active', email: 'mike@martinezhvac.com', reviews: '47 total · 12 this month', rating: '4.8 ★' },
-    sunrise:  { name: 'Sunrise Dental', plan: 'Authority · $217/mo', joined: 'Mar 15, 2026', status: 'Active', email: 'admin@sunrisedental.com', reviews: '83 total · 8 this month', rating: '4.9 ★' },
-    cleansweep: { name: 'Clean Sweep Chicago', plan: 'Reputation · $97/mo', joined: 'Apr 10, 2026', status: '⚠️ Alert', email: 'rachel@cleansweepchicago.com', reviews: '22 total · 3 this month', rating: '4.7 ★' }
-  };
-
-  function openDrawer(key) {
-    var d = drawerData[key];
-    if (!d) { document.getElementById('drawer-title').textContent = 'Add Client'; document.getElementById('drawer-body').innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">Manual client add form coming soon.</p>'; }
-    else {
-      document.getElementById('drawer-title').textContent = d.name;
-      document.getElementById('drawer-body').innerHTML =
-        '<div class="form-group"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
-        '<div><div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Plan</div><div style="font-size:0.9rem;font-weight:600;">' + d.plan + '</div></div>' +
-        '<div><div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Status</div><div style="font-size:0.9rem;font-weight:600;">' + d.status + '</div></div>' +
-        '<div><div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Reviews</div><div style="font-size:0.9rem;">' + d.reviews + '</div></div>' +
-        '<div><div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Rating</div><div style="font-size:0.9rem;color:var(--signal-amber);font-weight:700;">' + d.rating + '</div></div>' +
-        '</div></div>' +
-        '<div style="margin-bottom:20px;"><div style="font-size:0.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:6px;">Email</div><a href="mailto:' + d.email + '" style="color:var(--authority-blue);font-size:0.9rem;">' + d.email + '</a></div>' +
-        '<hr class="divider">' +
-        '<div style="font-weight:700;font-size:0.875rem;margin-bottom:12px;">Danger Zone</div>' +
-        '<div style="display:flex;gap:10px;">' +
-        '<button class="btn" style="border:1px solid var(--signal-amber);color:var(--signal-amber);padding:10px 16px;font-size:0.8rem;">Pause Service</button>' +
-        '<button class="btn btn-danger" style="padding:10px 16px;font-size:0.8rem;">Offboard Client</button>' +
-        '</div>';
-    }
-    document.getElementById('client-drawer').classList.add('open');
-    document.getElementById('drawer-overlay').classList.add('show');
-    document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
@@ -955,10 +871,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         apiFetch('/api/agent-status'),
       ]);
       if (notice) notice.style.display = 'none';
+      var tsEl = document.getElementById('last-updated-ts');
+      if (tsEl) tsEl.textContent = 'Last updated: ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
       try { renderStats(stats); }    catch(e) { console.error('renderStats:', e); }
       try { renderClients(clients); } catch(e) { console.error('renderClients:', e); }
       try { renderPosts(posts); }    catch(e) { console.error('renderPosts:', e); }
       try { renderActivity(activity); } catch(e) { console.error('renderActivity:', e); }
+      try { renderReviews(activity); } catch(e) { console.error('renderReviews:', e); }
       try { renderBilling(stats, clients); } catch(e) { console.error('renderBilling:', e); }
       try { renderPerformanceTab(clients, stats); } catch(e) { console.error('renderPerformanceTab:', e); }
       try { renderAccounting(accounting); } catch(e) { console.error('renderAccounting:', e); }
@@ -1007,17 +926,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           '<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">' + esc(c.city) + ' · ' + esc(services) + '</div></td>' +
         '<td><span class="badge ' + badge + '">' + label + '</span></td>' +
         '<td>' + status + '</td>' +
-        '<td>' + c.postCount + ' posts</td>' +
+        '<td style="font-family:var(--font-mono);">' + c.postCount + '</td>' +
         '<td>' + lastPost + '</td>' +
         '<td style="font-family:var(--font-mono);">' + (c.mrr === 0 ? '<span class="badge badge--internal">Internal</span>' : '$' + c.mrr) + '</td>' +
-        '<td>—</td>' +
+        '<td style="font-size:0.78rem;color:var(--text-muted);">' + [c.reviewAgent && '★ Reviews', c.postingAgent && '✎ Posts'].filter(Boolean).join(' · ') + '</td>' +
         '<td><button class="btn btn-outline" style="padding:6px 12px;font-size:0.75rem;" ' +
           'onclick=\'openClientDrawer(' + JSON.stringify(c).replace(/'/g,"&#39;") + ')\'>View</button></td>' +
         '</tr>';
     }).join('') || '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text-muted);">No clients found.</td></tr>';
   }
 
+  function renderCalendar(posts) {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var today = now.getDate();
+
+    var postDays = {};
+    (posts || []).forEach(function(p) {
+      var d = new Date(p.publishedAt);
+      if (d.getFullYear() === year && d.getMonth() === month) {
+        var day = d.getDate();
+        postDays[day] = (postDays[day] || 0) + 1;
+      }
+    });
+
+    var firstDay = new Date(year, month, 1).getDay();
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var monthName = now.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+    var titleEl = document.getElementById('calendar-month-title');
+    if (titleEl) titleEl.textContent = monthName + ' — Content Calendar';
+
+    var cells = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(function(d) {
+      return '<div class="cal-day cal-day--header">' + d + '</div>';
+    });
+    for (var i = 0; i < firstDay; i++) cells.push('<div class="cal-day"></div>');
+    for (var d = 1; d <= daysInMonth; d++) {
+      var count = postDays[d] || 0;
+      var cls = 'cal-day';
+      if (d === today) cls += ' cal-day--today';
+      if (count > 0) cls += ' cal-day--published';
+      var dayOfWeek = new Date(year, month, d).getDay();
+      if (d > today && (dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5)) cls += ' cal-day--scheduled';
+      var label = d + (count > 0 ? '<br><span style="font-size:0.6rem;">' + count + ' post' + (count !== 1 ? 's' : '') + '</span>' : '');
+      cells.push('<div class="' + cls + '">' + label + '</div>');
+    }
+    var grid = document.getElementById('post-calendar-grid');
+    if (grid) grid.innerHTML = cells.join('');
+  }
+
   function renderPosts(posts) {
+    renderCalendar(posts);
     var tbody = document.getElementById('posts-recent-tbody');
     if (!tbody) return;
     tbody.innerHTML = posts.slice(0, 15).map(function(p) {
@@ -1032,6 +992,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         '<td><span class="badge badge--green">Published</span></td>' +
         '<td><button class="btn btn-outline" style="padding:6px 10px;font-size:0.72rem;" ' +
           'onclick="showPostModal(' + safeText + ')">View</button></td>' +
+        '</tr>';
+    }).join('');
+  }
+
+  function renderReviews(activity) {
+    var tbody = document.getElementById('reviews-tbody');
+    if (!tbody) return;
+    var items = (activity || []).filter(function(item) { return item.type === 'review'; });
+    if (!items.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text-muted);font-size:0.875rem;">No review activity yet. Jake checks every 15 min.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = items.map(function(item) {
+      var client = esc(item.label.replace(/^Review replied\s*—?\s*/i, '') || '—');
+      return '<tr>' +
+        '<td><strong>' + client + '</strong></td>' +
+        '<td style="color:var(--text-muted);">—</td>' +
+        '<td style="color:#FCD34D;">★★★★★</td>' +
+        '<td><span class="badge badge--green">✓ Auto-replied</span></td>' +
+        '<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.82rem;color:var(--text-muted);">' + esc(item.detail || '—') + '</td>' +
+        '<td style="font-size:0.8rem;color:var(--text-muted);">' + esc(item.timeAgo) + '</td>' +
         '</tr>';
     }).join('');
   }
@@ -1274,7 +1255,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function renderAgents(d) {
     var statusColor = { success:'var(--success-green)', error:'var(--warning-red)', running:'var(--signal-amber)' };
-    var agentLabel  = { reviewer:'Review Agent', poster:'Posting Agent', 'health-monitor':'Health Monitor', tracker:'Monthly Reports', patrick:'Patrick Digest', lisa:'Lisa' };
+    var agentLabel = {
+    jake:    'Jake — Reviews',
+    tyler:   'Tyler — Posts',
+    elsa:    'Elsa — Outreach',
+    chase:   'Chase — Prospects',
+    riley:   'Riley — Health',
+    emma:    'Emma — Tracking',
+    david:   'David — Media',
+    patrick: 'Patrick — Digest',
+    lisa:    'Lisa — Billing',
+    chris:   'Chris — IT',
+    charly:  'Charly — Accounting',
+    amy:     'Amy — Brand',
+    eloise:  'Eloise — SEO'
+  };
 
     function ago(ts) {
       if (!ts) return '—';
@@ -1288,12 +1283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     var cardsEl = document.getElementById('agent-cards');
     if (cardsEl && d.agents) {
-      var summerCard = '<div class="kpi-card" style="border-top:3px solid var(--success-green);position:relative;">' +
-        '<div style="position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--success-green);border-radius:50%;"></div>' +
-        '<div class="kpi-card__label">Claire (AI Chat)</div>' +
-        '<div class="kpi-card__value" style="color:var(--success-green);font-size:1.1rem;">Always On</div>' +
-        '<div class="kpi-card__change">24/7 · AI support</div></div>';
-      cardsEl.innerHTML = summerCard + d.agents.map(function(a) {
+      cardsEl.innerHTML = d.agents.map(function(a) {
         var s  = a.last ? a.last.status : 'never';
         var c  = statusColor[s] || 'var(--text-muted)';
         var t  = a.last ? ago(a.last.started_at) : '—';
@@ -1326,6 +1316,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           '<td style="color:var(--text-muted);">' + ago(r.started_at) + '</td>' +
           '</tr>';
       }).join('');
+    }
+
+    /* Update overview system health last-check from real agent run data */
+    var healthEl = document.getElementById('health-last-check');
+    if (healthEl && d.recent && d.recent.length) {
+      var lastRun = d.recent[0];
+      var errCount = d.recent.filter(function(r) { return r.status === 'error'; }).length;
+      var txt = 'Last agent run: ' + ago(lastRun.started_at);
+      if (errCount > 0) {
+        txt += ' · ⚠ ' + errCount + ' error' + (errCount > 1 ? 's' : '') + ' in last 25 runs';
+        healthEl.style.color = '#EF4444';
+      } else {
+        txt += ' · All agents OK';
+      }
+      healthEl.textContent = txt;
     }
   }
 
@@ -1663,6 +1668,156 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     if (btnAll)    btnAll.addEventListener('click',    function() { setClientFilter(false); });
     if (btnActive) btnActive.addEventListener('click', function() { setClientFilter(true); });
+  }());
+
+  /* ── Search Console ─────────────────────────────────── */
+  var _gscLoaded = false;
+
+  function fetchSearchConsole() {
+    if (_gscLoaded) return;
+    _gscLoaded = true;
+    fetch(API + '/api/search-console')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.error && d.notConfigured) { renderGSCNotConfigured(); return; }
+        if (d.error) throw new Error(d.error);
+        renderGSC(d);
+      })
+      .catch(function(e) {
+        var body = document.getElementById('gsc-body');
+        if (body) body.innerHTML = '<div style="padding:20px;color:var(--warning-red);font-size:0.85rem;">Could not load search data: ' + esc(e.message) + '</div>';
+      });
+  }
+
+  function renderGSCNotConfigured() {
+    var body = document.getElementById('gsc-body');
+    if (!body) return;
+    body.innerHTML =
+      '<div style="padding:24px;display:flex;align-items:flex-start;gap:16px;">' +
+        '<div style="font-size:2rem;">🔌</div>' +
+        '<div>' +
+          '<div style="font-weight:700;margin-bottom:6px;">Search Console not connected</div>' +
+          '<div style="font-size:0.875rem;color:var(--text-muted);line-height:1.7;max-width:520px;">To see live clicks, impressions, CTR and top queries, add one env var on Railway:<br>' +
+          '<code style="background:var(--surface-mid);padding:2px 8px;border-radius:4px;font-size:0.8rem;">GSC_REFRESH_TOKEN</code> — get it by running Google OAuth with <code style="background:var(--surface-mid);padding:2px 8px;border-radius:4px;font-size:0.8rem;">webmasters.readonly</code> scope for your own account.</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function renderGSC(d) {
+    var periodEl = document.getElementById('gsc-period');
+    if (periodEl && d.period) periodEl.textContent = d.period.start + ' → ' + d.period.end + (d.cached || d.stale ? ' (cached)' : '');
+
+    /* Build sparkline SVG from trend data */
+    var sparkline = '';
+    if (d.trend && d.trend.length > 1) {
+      var vals = d.trend.map(function(t) { return t.clicks; });
+      var maxV = Math.max.apply(null, vals) || 1;
+      var w = 120, h = 32;
+      var pts = vals.map(function(v, i) {
+        return ((i / (vals.length - 1)) * w).toFixed(1) + ',' + ((1 - v / maxV) * h).toFixed(1);
+      }).join(' ');
+      sparkline = '<svg width="' + w + '" height="' + h + '" style="display:block;"><polyline points="' + pts + '" fill="none" stroke="var(--authority-blue)" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+    }
+
+    var kpiColor = function(n) { return n > 0 ? 'var(--success-green)' : 'var(--text-muted)'; };
+
+    var html =
+      '<div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border-color);">' +
+        '<div style="padding:20px;border-right:1px solid var(--border-color);">' +
+          '<div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px;">Clicks (28d)</div>' +
+          '<div style="font-size:1.65rem;font-weight:800;color:' + kpiColor(d.clicks) + ';">' + (d.clicks || 0).toLocaleString() + '</div>' +
+          '<div style="margin-top:6px;">' + sparkline + '</div>' +
+        '</div>' +
+        '<div style="padding:20px;border-right:1px solid var(--border-color);">' +
+          '<div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px;">Impressions (28d)</div>' +
+          '<div style="font-size:1.65rem;font-weight:800;color:var(--slate-core);">' + (d.impressions || 0).toLocaleString() + '</div>' +
+        '</div>' +
+        '<div style="padding:20px;border-right:1px solid var(--border-color);">' +
+          '<div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px;">Click-Through Rate</div>' +
+          '<div style="font-size:1.65rem;font-weight:800;color:var(--slate-core);">' + d.ctr + '%</div>' +
+        '</div>' +
+        '<div style="padding:20px;">' +
+          '<div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px;">Avg Position</div>' +
+          '<div style="font-size:1.65rem;font-weight:800;color:var(--slate-core);">' + d.position + '</div>' +
+        '</div>' +
+      '</div>';
+
+    if (d.topQueries && d.topQueries.length) {
+      html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">';
+
+      /* Top queries */
+      html += '<div style="border-right:1px solid var(--border-color);">' +
+        '<div style="padding:12px 16px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border-color);">Top Queries</div>' +
+        '<table style="width:100%;border-collapse:collapse;">' +
+        '<thead><tr style="background:var(--surface-light);">' +
+          '<th style="padding:8px 16px;text-align:left;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);">Query</th>' +
+          '<th style="padding:8px 12px;text-align:right;font-size:0.68rem;font-weight:700;color:var(--text-muted);">Clicks</th>' +
+          '<th style="padding:8px 12px;text-align:right;font-size:0.68rem;font-weight:700;color:var(--text-muted);">Pos.</th>' +
+        '</tr></thead><tbody>' +
+        d.topQueries.map(function(q) {
+          return '<tr style="border-top:1px solid var(--border-color);">' +
+            '<td style="padding:8px 16px;font-size:0.82rem;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(q.query) + '</td>' +
+            '<td style="padding:8px 12px;text-align:right;font-family:var(--font-mono);font-size:0.8rem;color:var(--success-green);font-weight:600;">' + q.clicks + '</td>' +
+            '<td style="padding:8px 12px;text-align:right;font-family:var(--font-mono);font-size:0.8rem;color:var(--text-muted);">' + q.position + '</td>' +
+          '</tr>';
+        }).join('') +
+        '</tbody></table></div>';
+
+      /* Top pages */
+      if (d.topPages && d.topPages.length) {
+        html += '<div>' +
+          '<div style="padding:12px 16px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border-color);">Top Pages</div>' +
+          '<table style="width:100%;border-collapse:collapse;">' +
+          '<thead><tr style="background:var(--surface-light);">' +
+            '<th style="padding:8px 16px;text-align:left;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);">Page</th>' +
+            '<th style="padding:8px 12px;text-align:right;font-size:0.68rem;font-weight:700;color:var(--text-muted);">Clicks</th>' +
+            '<th style="padding:8px 12px;text-align:right;font-size:0.68rem;font-weight:700;color:var(--text-muted);">Impr.</th>' +
+          '</tr></thead><tbody>' +
+          d.topPages.map(function(p) {
+            var pg = p.page || '/';
+            return '<tr style="border-top:1px solid var(--border-color);">' +
+              '<td style="padding:8px 16px;font-size:0.78rem;font-family:var(--font-mono);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="' + esc(pg) + '">' + esc(pg || '/') + '</td>' +
+              '<td style="padding:8px 12px;text-align:right;font-family:var(--font-mono);font-size:0.8rem;color:var(--success-green);font-weight:600;">' + p.clicks + '</td>' +
+              '<td style="padding:8px 12px;text-align:right;font-family:var(--font-mono);font-size:0.8rem;color:var(--text-muted);">' + p.impressions + '</td>' +
+            '</tr>';
+          }).join('') +
+          '</tbody></table></div>';
+      }
+
+      html += '</div>'; /* close grid */
+    }
+
+    html += '<div style="padding:10px 16px;font-size:0.72rem;color:var(--text-muted);display:flex;justify-content:space-between;border-top:1px solid var(--border-color);">' +
+      '<span>Source: Google Search Console · 1h cache</span>' +
+      '<a href="https://search.google.com/search-console/performance/search-analytics?resource_id=https%3A%2F%2Fwww.localboostlab.com%2F" target="_blank" rel="noopener" style="color:var(--authority-blue);text-decoration:none;">Open in GSC ↗</a>' +
+    '</div>';
+
+    var body = document.getElementById('gsc-body');
+    if (body) body.innerHTML = html;
+  }
+
+  /* Auto-trigger PSI (if cache > 1h old) + load GSC when Website tab opens */
+  (function() {
+    var origTabTitles = tabTitles;
+    document.querySelectorAll('.sidebar__nav-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        if (this.dataset.tab === 'website') {
+          /* Auto-run PSI if no cache or cache is stale (>1h) */
+          var ts  = localStorage.getItem('psi_ts_mobile');
+          var raw = localStorage.getItem('psi_mobile');
+          var stale = !raw;
+          if (ts) {
+            var age = Date.now() - new Date(ts).getTime();
+            if (age > 3_600_000) stale = true;
+          }
+          if (stale) {
+            setTimeout(runPSI, 400);
+          }
+          /* Load GSC data once per session */
+          fetchSearchConsole();
+        }
+      });
+    });
   }());
 
   function showPostModal(text) {
