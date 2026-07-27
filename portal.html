@@ -1721,7 +1721,9 @@ function renderPhotos() {
 
   html += '<button class="photo-submit-btn" id="photo-submit-btn" onclick="submitPhotos()" disabled>Select photos to upload</button>';
   html += '<div class="photo-status" id="photo-status"></div>';
-  html += '<div class="photo-hint">💡 <strong>Best practices:</strong> Use well-lit, high-resolution photos (min 720×720px). Show your team, space, products, and happy customers. Consistent updates signal an active business to Google.</div>';
+  // 1000px, not 720px — david.js rejects anything below 1000px and moves it to
+  // Rejected_Assets, so the old figure told clients to upload photos we discard.
+  html += '<div class="photo-hint">💡 <strong>Best practices:</strong> Use well-lit photos at least 1000px on the shortest side — smaller ones get filtered out automatically. Show your team, space, products, and happy customers. Consistent updates signal an active business to Google.</div>';
 
   pane.innerHTML = html;
 }
@@ -1738,7 +1740,13 @@ function photoDragLeave(e) {
 function photoDrop(e) {
   e.preventDefault();
   photoDragLeave(e);
-  var files = Array.from(e.dataTransfer.files).filter(function(f) { return f.type.startsWith('image/'); });
+  // Match the file picker's accept list. This used to take any image/*, so a
+  // HEIC accepted here was rejected by the click path and by Google.
+  var files = Array.from(e.dataTransfer.files).filter(function(f) {
+    return /^image\/(jpeg|png|webp)$/i.test(f.type);
+  });
+  var skipped = e.dataTransfer.files.length - files.length;
+  if (skipped > 0) alert(skipped + ' file' + (skipped > 1 ? 's were' : ' was') + ' skipped. Google accepts JPG, PNG and WebP only — iPhone HEIC photos need converting first.');
   addPhotoFiles(files);
 }
 function photoFilePicked(e) {
@@ -1890,6 +1898,10 @@ function renderBilling(data) {
   html += '<button class="btn-portal" onclick="openBillingPortal()">Manage Plan & Payment →</button>';
   if (sub && sub.status === 'active' && !sub.cancel_at_period_end) {
     html += '<button class="btn-cancel-sub" onclick="confirmCancel()">Cancel Subscription</button>';
+  } else if (sub && sub.cancel_at_period_end) {
+    // A pending cancellation used to be a dead end in the UI — reversing it
+    // meant emailing support, even though Stripe undoes it in one call.
+    html += '<button class="btn-portal" onclick="resumeSubscription()">Resume Subscription</button>';
   }
   html += '</div></div></div>';
 
@@ -1943,6 +1955,22 @@ function confirmCancel() {
       }
     })
     .catch(function() { alert('Failed to cancel. Please try again.'); });
+}
+
+function resumeSubscription() {
+  if (!confirm('Resume your subscription?\n\nYour plan will continue as normal and billing picks back up on the usual date.')) return;
+  fetch(API + '/api/portal/resume-subscription', { method: 'POST', headers: authHeaders() })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.ok) {
+        alert('Your subscription is active again. Nothing else to do.');
+        billingLoaded = false;
+        loadBilling();
+      } else {
+        alert(d.error || 'Something went wrong. Please try again.');
+      }
+    })
+    .catch(function() { alert('Failed to resume. Please try again.'); });
 }
 </script>
 </body>
