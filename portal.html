@@ -427,6 +427,59 @@ a{color:inherit}
 .live-snap-link:hover{text-decoration:underline}
 .live-snap-footer{font-size:.7rem;color:var(--muted);margin-top:8px}
 .live-snap-wrap{margin-bottom:24px}
+
+/* ── Profile health (Owen) ─────────────────────────────────────────────────
+   Visual direction: the service tag that hangs off a water heater or a fire
+   extinguisher. A contractor has been reading those for 20 years — the widget
+   speaks that language, not a SaaS dashboard's. Everything is scoped to .owen
+   so it cannot collide with the rest of the portal. */
+.owen{--enamel:#14544A;--tag:#E9E7DF;--tag-edge:#D2CFC4;--paper:#FBFBF9;--ink:#14181A;--oxide:#8E2F24;--amber-deep:#9C6500;
+  background:var(--paper);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow);
+  color:var(--ink);overflow:hidden;margin-bottom:24px}
+.owen-tag{position:relative;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding:22px 24px;background:var(--tag);border-bottom:1px solid var(--tag-edge)}
+.owen-tag::before{content:'';position:absolute;top:13px;left:13px;width:11px;height:11px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--tag-edge)}
+.owen-grade{display:grid;place-items:center;width:88px;height:88px;border:2px solid var(--ink);border-radius:50%;font-size:2.9rem;font-weight:800;line-height:1;letter-spacing:-.02em}
+.owen-grade[data-band="good"]{border-color:var(--enamel);color:var(--enamel)}
+.owen-grade[data-band="warn"]{border-color:var(--amber-deep);color:var(--amber-deep)}
+.owen-grade[data-band="bad"]{border-color:var(--oxide);color:var(--oxide)}
+.owen-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.owen-readout{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1.75rem;font-weight:700;letter-spacing:-.02em;margin-bottom:12px;line-height:1}
+.owen-readout span{font-size:.9rem;font-weight:400;color:var(--muted)}
+.owen-gauge{display:flex;gap:2px;margin-bottom:12px}
+.owen-seg{height:12px;flex:1;background:rgba(0,0,0,.07);transform-origin:bottom}
+.owen-seg[data-on="1"]{background:var(--enamel)}
+.owen-tag[data-band="warn"] .owen-seg[data-on="1"]{background:var(--amber-deep)}
+.owen-tag[data-band="bad"] .owen-seg[data-on="1"]{background:var(--oxide)}
+.owen-stamps{display:flex;flex-wrap:wrap;gap:18px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;color:var(--muted)}
+.owen-stamps b{font-weight:600;color:var(--ink)}
+.owen-list{margin:0;padding:0;list-style:none}
+.owen-row{display:grid;grid-template-columns:14px 1fr auto;gap:12px;align-items:start;padding:14px 24px;border-bottom:1px solid var(--border)}
+.owen-row:last-child{border-bottom:0}
+.owen-mark{width:11px;height:11px;margin-top:4px;border:1.5px solid var(--muted)}
+.owen-mark[data-s="ok"]{background:var(--enamel);border-color:var(--enamel)}
+.owen-mark[data-s="partial"]{background:linear-gradient(135deg,var(--amber-deep) 50%,transparent 50%);border-color:var(--amber-deep)}
+.owen-mark[data-s="missing"]{background:transparent;border-color:var(--oxide)}
+.owen-mark[data-s="blocked"]{background:repeating-linear-gradient(45deg,var(--oxide),var(--oxide) 2px,transparent 2px,transparent 4px);border-color:var(--oxide)}
+.owen-label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.owen-detail{font-size:.84rem;color:var(--muted)}
+.owen-fix{font-size:.82rem;margin-top:6px;padding-left:10px;border-left:2px solid var(--enamel);color:var(--ink)}
+.owen-fix[data-by="you"]{border-left-color:var(--amber-deep)}
+.owen-fix b{display:block;font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.owen-pts{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;color:var(--muted);white-space:nowrap;padding-top:2px}
+.owen-pts b{color:var(--ink);font-weight:700}
+.owen-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 24px;background:rgba(0,0,0,.02);border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+.owen-empty{padding:36px 24px;text-align:center;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:no-preference){
+  .owen-seg[data-on="1"]{animation:owen-fill .34s cubic-bezier(.2,.7,.3,1) backwards}
+  @keyframes owen-fill{from{transform:scaleY(.15);opacity:0}}
+}
+@media (max-width:560px){
+  .owen-tag{grid-template-columns:1fr;gap:12px;padding-top:28px}
+  .owen-grade{width:64px;height:64px;font-size:2.1rem}
+  .owen-row{grid-template-columns:14px 1fr;padding-left:16px;padding-right:16px}
+  .owen-pts{grid-column:2}
+  .owen-readout{font-size:1.5rem}
+}
 </style>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -694,6 +747,14 @@ function loadDashboard() {
       .then(function(r) { return r.json(); })
       .then(function(d) { renderLiveSnap(d); })
       .catch(function() { renderLiveSnap(null); });
+
+    // Async — profile health card (Owen). Never blocks the dashboard: if the
+    // audit has not happened yet the endpoint returns null and the card shows
+    // its own empty state.
+    fetch(API + '/api/portal/profile-score', { headers: authHeaders() })
+      .then(function(r) { return r.json(); })
+      .then(function(d) { renderOwen(d); })
+      .catch(function() { renderOwen(null); });
   })
   .catch(function() {
     document.getElementById('tab-overview').innerHTML = '<div class="no-data">Failed to load dashboard. Please refresh.</div>';
@@ -784,6 +845,9 @@ function renderOverview(client, data, suspension) {
 
   // Live performance snapshot — populated async after main render
   html += '<div id="live-perf-snap" class="live-snap-wrap"><div style="height:8px"></div></div>';
+
+  // Profile health (Owen) — populated async after main render
+  html += '<div id="owen-mount"></div>';
 
   // Stats (last completed month from monthly_reports)
   if (latest) {
@@ -896,6 +960,76 @@ function renderPerfChart(reports) {
       },
     },
   });
+}
+
+/* ── Profile Health (Owen) ──
+   One row per rubric check, each showing points earned out of points possible
+   and who closes the gap. Scores come from a deterministic rubric, so the same
+   profile always reads the same number — a score that moves on its own would
+   be worse than no score at all. */
+var OWEN_BANDS = { A: 'good', B: 'good', C: 'warn', D: 'warn', F: 'bad' };
+var OWEN_SEGMENTS = 20;   // one segment = 5 points
+
+function renderOwen(data) {
+  var mount = document.getElementById('owen-mount');
+  if (!mount) return;
+
+  if (!data || data.error || !data.checks || !data.checks.length) {
+    mount.innerHTML = '<div class="owen"><p class="owen-empty">' +
+      'We have not audited your Google profile yet. The first check runs within ' +
+      '24 hours of connecting your Google account.</p></div>';
+    return;
+  }
+
+  var band   = OWEN_BANDS[data.grade] || 'warn';
+  var filled = Math.round((data.score / 100) * OWEN_SEGMENTS);
+
+  var gauge = '';
+  for (var i = 0; i < OWEN_SEGMENTS; i++) {
+    gauge += '<i class="owen-seg" data-on="' + (i < filled ? 1 : 0) +
+             '" style="animation-delay:' + (i * 18) + 'ms"></i>';
+  }
+
+  var rows = '';
+  var pending = 0;
+  data.checks.forEach(function(c) {
+    if (c.status !== 'ok') pending++;
+    var byUs = !!c.autofixable;
+    rows += '<li class="owen-row">' +
+      '<i class="owen-mark" data-s="' + esc(c.status) + '" aria-hidden="true"></i>' +
+      '<div>' +
+        '<p class="owen-label">' + esc(c.label) + '</p>' +
+        '<p class="owen-detail">' + esc(c.detail) + '</p>' +
+        (c.fix ? '<p class="owen-fix" data-by="' + (byUs ? 'us' : 'you') + '"><b>' +
+                 (byUs ? 'We handle this' : 'We need you') + '</b>' + esc(c.fix) + '</p>' : '') +
+      '</div>' +
+      '<p class="owen-pts"><b>' + esc(c.earned) + '</b>/' + esc(c.weight) + '</p>' +
+    '</li>';
+  });
+
+  mount.innerHTML =
+    '<section class="owen" aria-label="Google profile health">' +
+      '<header class="owen-tag" data-band="' + band + '">' +
+        '<div class="owen-grade" data-band="' + band + '" role="img" aria-label="Grade ' +
+          esc(data.grade) + '">' + esc(data.grade) + '</div>' +
+        '<div>' +
+          '<p class="owen-eyebrow">Google Profile — Last Inspection</p>' +
+          '<p class="owen-readout">' + esc(data.score) + '<span> / 100</span></p>' +
+          '<div class="owen-gauge" role="img" aria-label="' + esc(data.score) + ' out of 100 points">' + gauge + '</div>' +
+          '<div class="owen-stamps">' +
+            '<span>Checked <b>' + esc(fmtDate(data.checkedOn)) + '</b></span>' +
+            '<span>Next check <b>' + esc(fmtDate(data.nextCheckOn)) + '</b></span>' +
+            '<span>Open items <b>' + pending + '</b></span>' +
+          '</div>' +
+        '</div>' +
+      '</header>' +
+      '<ul class="owen-list">' + rows + '</ul>' +
+      '<footer class="owen-foot"><span>' +
+        (data.appliedCount
+          ? 'We applied ' + esc(data.appliedCount) + ' improvement' + (data.appliedCount === 1 ? '' : 's') + ' in the last check.'
+          : 'No changes needed in the last check.') +
+      '</span></footer>' +
+    '</section>';
 }
 
 /* ── Live Overview Snapshot ── */
