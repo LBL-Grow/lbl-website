@@ -17,12 +17,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WhatsApp AI Assistant | Local Boost Lab</title>
   <meta name="description" content="A supervised AI assistant on your own WhatsApp Business number. It answers customer questions, books appointments and sends reminders, day and night.">
-  <link rel="canonical" href="https://localboostlab.com/whatsapp">
+  <link rel="canonical" href="https://localboostlab.com/whatsapp-ai-assistant">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="WhatsApp AI Assistant | Local Boost Lab">
   <meta property="og:description" content="Instant answers on WhatsApp, day and night. Bookings, reminders and handoff to your team, supervised by Local Boost Lab.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://localboostlab.com/whatsapp">
+  <meta property="og:url" content="https://localboostlab.com/whatsapp-ai-assistant">
   <meta property="og:image" content="https://localboostlab.com/1200x630_OG_Image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="WhatsApp AI Assistant | Local Boost Lab">
@@ -36,7 +36,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "name": "WhatsApp AI Assistant",
     "provider": { "@type": "Organization", "name": "Local Boost Lab", "url": "https://localboostlab.com" },
     "description": "A supervised AI assistant on the business's own WhatsApp Business number that answers common questions, schedules and confirms appointments, sends reminders and hands off to the team when a person is needed.",
-    "url": "https://localboostlab.com/whatsapp",
+    "url": "https://localboostlab.com/whatsapp-ai-assistant",
     "serviceType": ["WhatsApp AI Assistant", "Appointment Scheduling", "Appointment Reminders", "Customer Messaging"]
   }
   </script>
@@ -143,8 +143,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .wa-msg--in { align-self: flex-start; background: var(--surface-light); border: 1px solid var(--border-color); }
     .wa-msg--out { align-self: flex-end; background: #DCFCE7; color: var(--slate-core); }
     .wa-msg__meta { display: block; font-size: 0.68rem; color: var(--text-muted); margin-top: 4px; }
-    .wa-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 720px; margin: 0 auto; }
-    .wa-chips .tag-chip { font-size: 0.9rem; padding: 8px 18px; }
+    .wa-uc {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .wa-uc__tabs { display: flex; flex-direction: column; gap: 8px; }
+    .wa-uc__tab {
+      text-align: left;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: white;
+      color: var(--slate-core);
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+    }
+    .wa-uc__tab:hover { border-color: var(--authority-blue); }
+    .wa-uc__tab.is-active { background: var(--authority-blue); border-color: var(--authority-blue); color: white; }
+    .wa-uc__tab:focus-visible { outline: 3px solid var(--signal-amber); outline-offset: 2px; }
+    .wa-uc__panel {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 32px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      min-height: 420px;
+    }
+    .wa-uc__info h3 { font-size: 1.5rem; margin-bottom: 16px; }
+    .wa-uc__panel .wa-chat { max-width: none; border: 1px solid var(--border-color); }
+    .wa-uc__panel .wa-chat__body { min-height: 260px; }
+    .wa-msg.is-new { animation: waMsgIn 320ms ease both; }
+    @keyframes waMsgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .wa-typing { align-self: flex-start; display: flex; gap: 4px; padding: 10px 12px; background: var(--surface-light); border: 1px solid var(--border-color); border-radius: 12px; }
+    .wa-typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); animation: waDot 1s infinite ease-in-out; }
+    .wa-typing span:nth-child(2) { animation-delay: .15s; }
+    .wa-typing span:nth-child(3) { animation-delay: .3s; }
+    @keyframes waDot { 0%, 80%, 100% { opacity: .3; } 40% { opacity: 1; } }
+    .wa-uc__note { text-align: center; color: var(--text-muted); margin-top: 32px; font-size: 0.95rem; }
+    .wa-uc__note a { color: var(--authority-blue); font-weight: 600; }
+    .wa-honest {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 32px;
+      align-items: center;
+      background: var(--surface-light);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--signal-amber);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .wa-honest h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .wa-honest p { color: var(--text-muted); }
+    .wa-honest__list { display: grid; gap: 10px; }
+    .wa-honest__list li { font-weight: 600; color: var(--slate-core); padding-left: 28px; position: relative; }
+    .wa-honest__list li::before { content: "✓"; position: absolute; left: 0; color: var(--success-green); font-weight: 700; }
+    .wa-fit-grid { grid-template-columns: repeat(3, 1fr); }
+    .section-header .process-tag { margin-bottom: 16px; }
+    @media (prefers-reduced-motion: reduce) {
+      .wa-msg.is-new, .wa-typing span { animation: none; }
+    }
+    @media (max-width: 1024px) {
+      .wa-uc { grid-template-columns: 1fr; }
+      .wa-uc__tabs { flex-direction: row; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+      .wa-uc__tab { white-space: nowrap; flex-shrink: 0; }
+    }
+    @media (max-width: 768px) {
+      .wa-uc__panel { grid-template-columns: 1fr; padding: 20px; min-height: 0; }
+      .wa-honest { grid-template-columns: 1fr; padding: 24px; }
+      .wa-fit-grid { grid-template-columns: 1fr; }
+    }
     .wa-hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
 
     @media (max-width: 768px) {
@@ -168,7 +243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/" class="nav__logo" aria-label="Local Boost Lab - Home"><img src="/Logo_vertical_yellow_white_60.png" alt="Local Boost Lab" height="21" width="120" style="height:21px;width:auto;display:block;"></a>
     <div class="nav__links">
       <a href="/how-it-works">How It Works</a>
-      <a href="/whatsapp" class="nav__active">WhatsApp AI</a>
+      <a href="/whatsapp-ai-assistant" class="nav__active">WhatsApp AI</a>
       <div class="nav__dropdown">
         <button class="nav__dropdown-trigger" aria-haspopup="menu" aria-expanded="false">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <ul class="nav__dropdown-menu" role="menu">
@@ -248,6 +323,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="wa-chat">
           <div class="wa-chat__header">WhatsApp · Example conversation</div>
           <div class="wa-chat__body">
+            <div class="wa-msg wa-msg--in">Are you open on Sunday?</div>
+            <div class="wa-msg wa-msg--out">We're closed on Sundays, but Saturday we're open from 9:00 AM to 2:00 PM. Want me to save you a spot?</div>
+            <div class="wa-msg wa-msg--in">Yes, 10 AM please</div>
+            <div class="wa-msg wa-msg--out">Done. You're booked for Saturday at 10:00 AM. We'll send you a reminder on Friday.<span class="wa-msg__meta">✓ Appointment confirmed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who it is for -->
+<section class="section section--mid" aria-labelledby="wa-who-heading">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2 id="wa-who-heading">Who it is for</h2>
+      <p>Local businesses that live on appointments and inquiries. Pick yours and see how the assistant would handle a typical message.</p>
+    </div>
+    <div class="wa-uc fade-up" id="wa-uc">
+      <div class="wa-uc__tabs" role="tablist" aria-label="Business types">
+        <button type="button" class="wa-uc__tab is-active" role="tab" aria-selected="true" aria-controls="wa-uc-panel" data-uc="dental">Dental clinics</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="spa">Spas and salons</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="cars">Used car dealers</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="inspection">Vehicle inspection centers</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="aesthetic">Medical and aesthetic clinics</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="vet">Veterinary clinics</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="repair">Auto repair shops</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="gym">Gyms and studios</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="home">Home services</button>
+        <button type="button" class="wa-uc__tab" role="tab" aria-selected="false" aria-controls="wa-uc-panel" data-uc="pro">Law and accounting firms</button>
+      </div>
+      <div class="wa-uc__panel" id="wa-uc-panel" role="tabpanel" aria-live="polite">
+        <div class="wa-uc__info">
+          <span class="process-tag" id="wa-uc-tag">Dental clinics</span>
+          <h3 id="wa-uc-title">Fill the chair, not the inbox.</h3>
+          <ul class="wa-list" id="wa-uc-points" role="list">
+            <li>Books cleanings and checkups straight into open slots.</li>
+            <li>Sends a reminder the day before to cut no-shows.</li>
+            <li>Passes pain or emergency messages to your front desk right away.</li>
+          </ul>
+        </div>
+        <div class="wa-chat" aria-label="Example conversation">
+          <div class="wa-chat__header">WhatsApp · Example conversation</div>
+          <div class="wa-chat__body" id="wa-uc-chat">
             <div class="wa-msg wa-msg--in">Hi, can I book a cleaning for Thursday afternoon?</div>
             <div class="wa-msg wa-msg--out">Of course. Thursday has openings at 2:00 PM and 4:30 PM. Which one works for you?</div>
             <div class="wa-msg wa-msg--in">4:30 please</div>
@@ -256,15 +375,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+    <p class="wa-uc__note fade-up">Don't see your business? If your customers message you to ask, book or confirm, the assistant can help. <a href="/contact?topic=whatsapp">Tell us about it →</a></p>
   </div>
 </section>
 
 <!-- How it works -->
-<section class="section section--mid" aria-labelledby="wa-how-heading">
+<section class="section section--white" aria-labelledby="wa-how-heading">
   <div class="container">
     <div class="section-header fade-up">
       <h2 id="wa-how-heading">How it works</h2>
-      <p>Three steps from subscription to a live assistant.</p>
+      <p>Simple onboarding. Three steps from subscription to a live assistant.</p>
     </div>
     <div class="bento-grid bento-grid--3col fade-up">
       <div class="bento-cell bento-cell--light">
@@ -283,22 +403,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="bento-step-body">Your assistant goes live, supervised by our team.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Who it is for -->
-<section class="section section--white" aria-labelledby="wa-who-heading">
-  <div class="container">
-    <div class="section-header fade-up">
-      <h2 id="wa-who-heading">Who it is for</h2>
-      <p>Local businesses that live on appointments and inquiries.</p>
-    </div>
-    <div class="wa-chips fade-up">
-      <span class="tag-chip tag-chip--light">Dental clinics</span>
-      <span class="tag-chip tag-chip--light">Spas</span>
-      <span class="tag-chip tag-chip--light">Used car dealers</span>
-      <span class="tag-chip tag-chip--light">Vehicle inspection centers</span>
-      <span class="tag-chip tag-chip--light">And more</span>
+    <div class="wa-honest fade-up">
+      <div class="wa-honest__text">
+        <h3>Nothing hidden under the table.</h3>
+        <p>Same as our Google Business Profile service: what you see is what you get. No long contracts, no surprise fees and no fine print. If it stops being useful to you, you leave.</p>
+      </div>
+      <ul class="wa-honest__list" role="list">
+        <li>No contracts</li>
+        <li>No hidden fees</li>
+        <li>Cancel anytime</li>
+        <li>Setup done with you, not left to you</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -322,6 +438,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="bento-step-title">Works with your Google presence</div>
         <p class="bento-step-body">Built to work alongside your Google presence.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tailored -->
+<section class="section section--white" aria-labelledby="wa-fit-heading">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="process-tag">Made to fit</span>
+      <h2 id="wa-fit-heading">Built around your business. Priced around it too.</h2>
+      <p>We're not here to sell you a package. We'd rather understand how your customers reach you, what they ask and how you book, then build the assistant around that. You pay for what your business needs, not for a plan we picked for you.</p>
+    </div>
+    <div class="bento-grid wa-fit-grid fade-up">
+      <div class="bento-cell bento-cell--light">
+        <div class="bento-step-num">01</div>
+        <div class="bento-step-title">We listen first</div>
+        <p class="bento-step-body">A short conversation about your business, your customers and how many messages you get.</p>
+      </div>
+      <div class="bento-cell bento-cell--light">
+        <div class="bento-step-num">02</div>
+        <div class="bento-step-title">We shape it to fit</div>
+        <p class="bento-step-body">Only what you need: answers, bookings, reminders, or all of them together.</p>
+      </div>
+      <div class="bento-cell bento-cell--light" style="border-color:var(--signal-amber);">
+        <div class="bento-step-num" style="color:var(--signal-amber);opacity:0.5;">03</div>
+        <div class="bento-step-title">You pay for what you use</div>
+        <p class="bento-step-body">A clear monthly price based on what we build together. As your business changes, the plan changes with it.</p>
+      </div>
+    </div>
+    <div class="fade-up" style="text-align:center;margin-top:40px;">
+      <a href="/contact?topic=whatsapp" class="btn btn-outline btn-lg">Let's talk about your business →</a>
     </div>
   </div>
 </section>
@@ -369,15 +516,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </nav>
       </div>
     </div>
-      <div>
-        <div class="footer__col-title">Cities We Serve</div>
-        <nav class="footer__links" aria-label="City pages">
-          <a href="/hvac/miami">HVAC Miami</a>
-          <a href="/hvac/phoenix">HVAC Phoenix</a>
-          <a href="/dental/austin">Dental Austin</a>
-          <a href="/plumbing/miami">Plumbing Miami</a>
-        </nav>
-      </div>
     </div>
     <div style="display:flex;align-items:center;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:0;flex-wrap:wrap;">
       <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Payments secured by</span>
@@ -425,6 +563,179 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script src="shared.js" defer></script>
+<!-- Who it is for: example conversations per business type -->
+<script>
+(function () {
+  var root = document.getElementById('wa-uc');
+  if (!root) return;
+  // in: customer, out: assistant. "meta" renders as a small status line.
+  var CASES = {
+    dental: {
+      title: 'Fill the chair, not the inbox.',
+      points: ['Books cleanings and checkups straight into open slots.', 'Sends a reminder the day before to cut no-shows.', 'Passes pain or emergency messages to your front desk right away.'],
+      chat: [['in', 'Hi, can I book a cleaning for Thursday afternoon?'], ['out', 'Of course. Thursday has openings at 2:00 PM and 4:30 PM. Which one works for you?'], ['in', '4:30 please'], ['out', "You're booked for Thursday at 4:30 PM. We'll send you a reminder the day before.", 'Appointment confirmed']]
+    },
+    spa: {
+      title: 'Bookings while your team is with clients.',
+      points: ['Shares your treatments, durations and price list.', 'Books, moves and confirms appointments.', 'Reminds clients so empty slots get filled.'],
+      chat: [['in', 'Do you have anything for a 60 minute massage on Saturday?'], ['out', 'Yes. Saturday we have 11:00 AM and 3:00 PM. Would you like one of those?'], ['in', '11 works. Can I add a facial after?'], ['out', 'Done. Massage at 11:00 AM and facial right after. See you Saturday!', 'Appointment confirmed']]
+    },
+    cars: {
+      title: 'Turn "is it still available?" into a visit.',
+      points: ['Answers questions about stock, location and hours.', 'Schedules test drives and visits.', 'Hands serious buyers to a salesperson with the full chat.'],
+      chat: [['in', 'Is the silver 2019 sedan from your listing still available?'], ['out', 'Yes, it is. Would you like to come see it or schedule a test drive?'], ['in', 'Test drive tomorrow after work?'], ['out', 'Tomorrow at 5:30 PM is open. I booked it and let our sales team know you are coming.', 'Handed to sales team']]
+    },
+    inspection: {
+      title: 'Fewer calls asking the same question.',
+      points: ['Explains what to bring and how long it takes.', 'Books inspection slots to spread out the day.', 'Reminds customers before their appointment.'],
+      chat: [['in', 'What do I need to bring for the inspection?'], ['out', "Bring your vehicle registration, your ID and proof of insurance. It usually takes about 40 minutes. Want me to book a time?"], ['in', 'Yes, Monday morning'], ['out', 'You are set for Monday at 8:30 AM. We will remind you on Sunday.', 'Appointment confirmed']]
+    },
+    aesthetic: {
+      title: 'Consultations booked, medical questions to your staff.',
+      points: ['Books first consultations and follow-ups.', 'Answers questions about services and preparation.', 'Sends anything clinical to your team, never guesses.'],
+      chat: [['in', 'I want a consultation for skin treatments. Is next week possible?'], ['out', 'Yes. We have Tuesday at 10:00 AM or Wednesday at 6:00 PM for a first consultation.'], ['in', 'Is the treatment safe if I am pregnant?'], ['out', 'That is a great question for our medical team. I have passed it to them and they will reply here shortly.', 'Handed to your team']]
+    },
+    vet: {
+      title: 'Calm answers for worried pet owners.',
+      points: ['Books checkups, vaccines and grooming.', 'Sends vaccine and appointment reminders.', 'Flags urgent cases to your team immediately.'],
+      chat: [['in', 'My dog is due for his vaccines. Do you have time this week?'], ['out', 'We do. Friday at 9:00 AM or 2:00 PM. Which one is better for you?'], ['in', 'Friday 2 PM'], ['out', 'Booked for Friday at 2:00 PM. Please bring his vaccination card.', 'Appointment confirmed']]
+    },
+    repair: {
+      title: 'Keep the bays full without picking up the phone.',
+      points: ['Books oil changes, diagnostics and services.', 'Answers questions about hours and what you work on.', 'Hands quotes and complex jobs to your service advisor.'],
+      chat: [['in', 'Can I bring my car in for an oil change tomorrow?'], ['out', 'Sure. Tomorrow we have 8:00 AM and 1:00 PM. Which one works?'], ['in', '8 AM. Also the brakes are making noise'], ['out', 'Booked for 8:00 AM. I let your service advisor know about the brakes so they can check them too.', 'Handed to service advisor']]
+    },
+    gym: {
+      title: 'Answer every "how much?" before it goes cold.',
+      points: ['Shares class schedules and membership options.', 'Books trial classes and personal sessions.', 'Reminds new members before their first visit.'],
+      chat: [['in', 'Hi! Do you have beginner classes?'], ['out', 'We do. Beginner classes run Monday and Wednesday at 7:00 PM. Want to try one for free?'], ['in', 'Yes, Monday'], ['out', 'You are in for Monday at 7:00 PM. Bring water and comfortable clothes!', 'Trial class booked']]
+    },
+    home: {
+      title: 'Never lose an urgent job to a missed call.',
+      points: ['Collects the problem, address and best time.', 'Books visits into your technicians\' schedule.', 'Escalates urgent jobs to your team right away.'],
+      chat: [['in', 'My AC stopped cooling. Can someone come today?'], ['out', 'Sorry to hear that. Can you share your address and a good time window?'], ['in', '123 Main St, anytime after 2'], ['out', 'Thanks. I flagged this as urgent and our team will confirm a technician shortly.', 'Escalated as urgent']]
+    },
+    pro: {
+      title: 'First consultations, organized before you join.',
+      points: ['Books initial consultations.', 'Collects a short summary so you arrive prepared.', 'Keeps sensitive details for your team only.'],
+      chat: [['in', 'I need help with my small business taxes. Can I meet someone?'], ['out', 'Yes. We have Thursday at 11:00 AM or Friday at 4:00 PM for a first consultation.'], ['in', 'Thursday. It is about last year\'s return'], ['out', 'Booked for Thursday at 11:00 AM. I added your note so the team is ready.', 'Consultation booked']]
+    }
+  };
+
+  var tabs = Array.prototype.slice.call(root.querySelectorAll('.wa-uc__tab'));
+  var tagEl = document.getElementById('wa-uc-tag');
+  var titleEl = document.getElementById('wa-uc-title');
+  var pointsEl = document.getElementById('wa-uc-points');
+  var chatEl = document.getElementById('wa-uc-chat');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [];
+  var autoTimer = null;
+  var userPicked = false;
+
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+  function msgEl(m) {
+    var d = document.createElement('div');
+    d.className = 'wa-msg wa-msg--' + m[0] + ' is-new';
+    d.textContent = m[1];
+    if (m[2]) {
+      var s = document.createElement('span');
+      s.className = 'wa-msg__meta';
+      s.textContent = '✓ ' + m[2];
+      d.appendChild(s);
+    }
+    return d;
+  }
+
+  function render(key) {
+    var c = CASES[key];
+    if (!c) return;
+    clearTimers();
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-uc') === key;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      if (on) {
+        tagEl.textContent = t.textContent;
+        // Horizontal tab strip on small screens: keep the active tab visible without scrolling the page
+        var strip = t.parentNode;
+        if (strip.scrollWidth > strip.clientWidth) {
+          strip.scrollTo({ left: t.offsetLeft - strip.offsetLeft - 16, behavior: reduce ? 'auto' : 'smooth' });
+        }
+      }
+    });
+    titleEl.textContent = c.title;
+    pointsEl.innerHTML = '';
+    c.points.forEach(function (p) { var li = document.createElement('li'); li.textContent = p; pointsEl.appendChild(li); });
+    chatEl.innerHTML = '';
+    if (reduce) { c.chat.forEach(function (m) { chatEl.appendChild(msgEl(m)); }); return; }
+    var t = 0;
+    c.chat.forEach(function (m) {
+      if (m[0] === 'out') {
+        timers.push(setTimeout(function () {
+          var typing = document.createElement('div');
+          typing.className = 'wa-typing';
+          typing.innerHTML = '<span></span><span></span><span></span>';
+          chatEl.appendChild(typing);
+        }, t));
+        t += 700;
+        timers.push(setTimeout(function () {
+          var ty = chatEl.querySelector('.wa-typing');
+          if (ty) ty.remove();
+          chatEl.appendChild(msgEl(m));
+        }, t));
+      } else {
+        timers.push(setTimeout(function () { chatEl.appendChild(msgEl(m)); }, t));
+      }
+      t += 650;
+    });
+  }
+
+  function scheduleAuto() {
+    if (reduce || userPicked) return;
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(function () {
+      var i = tabs.findIndex(function (t) { return t.classList.contains('is-active'); });
+      var next = tabs[(i + 1) % tabs.length];
+      render(next.getAttribute('data-uc'));
+      scheduleAuto();
+    }, 7000);
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      userPicked = true;
+      clearTimeout(autoTimer);
+      render(t.getAttribute('data-uc'));
+    });
+    t.addEventListener('keydown', function (e) {
+      var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus();
+      n.click();
+    });
+  });
+  tabs.forEach(function (t, i) { t.tabIndex = i === 0 ? 0 : -1; });
+
+  // Start the rotation only once the section is on screen
+  if ('IntersectionObserver' in window) {
+    var started = false;
+    new IntersectionObserver(function (entries, obs) {
+      if (entries[0].isIntersecting && !started) {
+        started = true;
+        obs.disconnect();
+        render('dental');
+        scheduleAuto();
+      }
+    }, { threshold: 0.3 }).observe(root);
+  }
+  root.addEventListener('mouseenter', function () { clearTimeout(autoTimer); });
+  root.addEventListener('mouseleave', scheduleAuto);
+}());
+</script>
 <!-- GTM: CTA click events -->
 <script>
 (function() {

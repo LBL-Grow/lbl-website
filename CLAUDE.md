@@ -29,7 +29,7 @@ Pure static HTML/CSS/JS. `vercel.json` handles routing, proxying, and headers.
 | `index.html` | `/` | Homepage |
 | `pricing.html` | `/pricing` | Stripe checkout links |
 | `how-it-works.html` | `/how-it-works` | GBP service page |
-| `whatsapp.html` | `/whatsapp` | WhatsApp AI Assistant service page |
+| `whatsapp-ai-assistant.html` | `/whatsapp-ai-assistant` | WhatsApp AI Assistant service page |
 | `about.html` | `/about` | |
 | `industries.html` | `/industries` | Overview |
 | `contact.html` | `/contact` | |

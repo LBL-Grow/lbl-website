@@ -28,6 +28,11 @@
       "permanent": true
     },
     {
+      "source": "/whatsapp",
+      "destination": "/whatsapp-ai-assistant",
+      "permanent": true
+    },
+    {
       "source": "/dashboard",
       "destination": "https://powerful-balance-production-971d.up.railway.app/dashboard.html",
       "permanent": false
