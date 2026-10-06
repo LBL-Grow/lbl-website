@@ -1072,6 +1072,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.dataLayer.push({ event: 'generate_lead', lead_source: 'hero_form', page: 'home', industry: industry });
       submitLead(name, email, industry, 'hero-form', function (err) {
         if (err) { heroSubmit.textContent = 'Something went wrong. Please try again in a minute.'; heroSubmit.disabled = false; return; }
+        try { localStorage.setItem('lbl_lead_popup', 'subscribed'); } catch (e) {}
         heroForm.innerHTML = '<div class="hero-lead-form__success">✓ Check your inbox — checklist on its way!</div>';
       });
     });
@@ -1080,6 +1081,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* Exit intent — desktop only (mouseleave from top) */
   var exitShown = false;
   var exitOverlay = document.getElementById('exit-overlay');
+  /* Don't nag: snoozed 7 days after a dismissal, never again once subscribed */
+  try {
+    var leadPopup = localStorage.getItem('lbl_lead_popup');
+    if (leadPopup === 'subscribed' || (leadPopup && Date.now() - Number(leadPopup) < 7 * 864e5)) exitShown = true;
+  } catch (e) {}
+  /* Mobile has no exit intent: slide up a bottom sheet (not a full-screen
+     interstitial, which Google penalises on mobile) once the visitor has
+     read half the page or spent 30s on it */
+  if (exitOverlay && window.innerWidth <= 768 && !exitShown) {
+    var onSheetScroll = function () {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      if (h > 0 && window.scrollY / h >= 0.5) showSheet();
+    };
+    var showSheet = function () {
+      window.removeEventListener('scroll', onSheetScroll);
+      if (exitShown) return;
+      exitShown = true;
+      exitOverlay.classList.add('exit-overlay--sheet', 'active');
+      exitOverlay.setAttribute('aria-modal', 'false');
+    };
+    window.addEventListener('scroll', onSheetScroll, { passive: true });
+    setTimeout(showSheet, 30000);
+  }
   if (exitOverlay && window.innerWidth > 768) {
     document.addEventListener('mouseleave', function (e) {
       if (e.clientY < 5 && !exitShown) {
@@ -1090,7 +1114,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   var exitClose = document.getElementById('exit-close');
   var exitSkip  = document.getElementById('exit-skip');
-  function closeExit() { if (exitOverlay) exitOverlay.classList.remove('active'); }
+  function closeExit() {
+    if (exitOverlay) exitOverlay.classList.remove('active');
+    try { if (localStorage.getItem('lbl_lead_popup') !== 'subscribed') localStorage.setItem('lbl_lead_popup', String(Date.now())); } catch (e) {}
+  }
   if (exitClose) exitClose.addEventListener('click', closeExit);
   if (exitSkip)  exitSkip.addEventListener('click', closeExit);
   if (exitOverlay) {
@@ -1110,7 +1137,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.dataLayer.push({ event: 'generate_lead', lead_source: 'exit_intent', page: 'home' });
       submitLead('', email, '', 'exit-intent', function (err) {
         if (err) { exitSubmit.textContent = 'Something went wrong. Please try again in a minute.'; exitSubmit.disabled = false; return; }
-        document.getElementById('exit-form').innerHTML =
+        try { localStorage.setItem('lbl_lead_popup', 'subscribed'); } catch (e) {} document.getElementById('exit-form').innerHTML =
           '<p style="color:var(--authority-blue);font-weight:700;font-size:0.95rem;padding:8px 0 4px;">✓ Check your inbox — it\'s on its way!</p>';
       });
     });

@@ -2857,3 +2857,27 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
   text-decoration: underline;
 }
 .exit-modal__skip:hover { color: var(--slate-core); }
+
+/* Mobile: the lead popup is a bottom sheet, not a full-screen modal.
+   Google penalises intrusive interstitials on mobile, and the page stays
+   scrollable and tappable behind it. */
+.exit-overlay--sheet {
+  background: transparent;
+  pointer-events: none;
+  align-items: flex-end;
+  padding: 0;
+}
+.exit-overlay--sheet .exit-modal {
+  pointer-events: auto;
+  max-width: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 22px 20px calc(16px + env(safe-area-inset-bottom));
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.18);
+  animation: exit-sheet-up 0.3s ease-out;
+}
+.exit-overlay--sheet .exit-modal__emoji { display: none; }
+.exit-overlay--sheet .exit-modal h3 { font-size: 1.05rem; padding: 0 28px; }
+.exit-overlay--sheet .exit-modal p { font-size: 0.82rem; margin-bottom: 14px; }
+.exit-overlay--sheet .exit-modal__form input { font-size: 16px; } /* below 16px iOS zooms in on focus */
+@keyframes exit-sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .exit-overlay--sheet .exit-modal { animation: none; } }
