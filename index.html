@@ -1052,7 +1052,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: name, email: email, industry: industry, source: source })
     })
-    .then(function (r) { return r.json(); })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function () { cb(null); })
     .catch(function (e) { cb(e); });
   }
@@ -1070,7 +1070,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       heroSubmit.disabled = true;
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'generate_lead', lead_source: 'hero_form', page: 'home', industry: industry });
-      submitLead(name, email, industry, 'hero-form', function () {
+      submitLead(name, email, industry, 'hero-form', function (err) {
+        if (err) { heroSubmit.textContent = 'Something went wrong. Please try again in a minute.'; heroSubmit.disabled = false; return; }
         heroForm.innerHTML = '<div class="hero-lead-form__success">✓ Check your inbox — checklist on its way!</div>';
       });
     });
@@ -1107,7 +1108,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       exitSubmit.disabled = true;
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'generate_lead', lead_source: 'exit_intent', page: 'home' });
-      submitLead('', email, '', 'exit-intent', function () {
+      submitLead('', email, '', 'exit-intent', function (err) {
+        if (err) { exitSubmit.textContent = 'Something went wrong. Please try again in a minute.'; exitSubmit.disabled = false; return; }
         document.getElementById('exit-form').innerHTML =
           '<p style="color:var(--authority-blue);font-weight:700;font-size:0.95rem;padding:8px 0 4px;">✓ Check your inbox — it\'s on its way!</p>';
       });

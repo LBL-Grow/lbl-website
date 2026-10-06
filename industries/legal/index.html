@@ -644,7 +644,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, source: source })
-    }).then(function(r){ return r.json(); }).then(function(){ cb(null); }).catch(function(e){ cb(e); });
+    }).then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).then(function(){ cb(null); }).catch(function(e){ cb(e); });
   }
   var exitShown = false;
   var exitOverlay = document.getElementById('exit-overlay');
@@ -671,7 +671,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!email) { document.getElementById('exit-email').focus(); return; }
       exitSubmit.textContent = 'Sending…';
       exitSubmit.disabled = true;
-      submitLead(email, 'exit-intent', function() {
+      submitLead(email, 'exit-intent', function (err) {
+        if (err) { exitSubmit.textContent = 'Something went wrong. Please try again in a minute.'; exitSubmit.disabled = false; return; }
         document.getElementById('exit-form').innerHTML =
           '<p style="color:var(--authority-blue);font-weight:700;font-size:0.95rem;padding:8px 0 4px;">✓ Check your inbox — it\'s on its way!</p>';
       });

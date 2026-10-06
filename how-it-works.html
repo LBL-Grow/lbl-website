@@ -746,8 +746,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'generate_lead', lead_source: 'exit_intent', page: 'how_it_works' });
         fetch(API + '/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email,source:'exit-intent-hiw'}) })
-          .then(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; })
-          .catch(function(){ document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; });
+          .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); document.getElementById('exit-form').innerHTML = '<p style="color:var(--authority-blue);font-weight:700;padding:8px 0;">✓ Check your inbox!</p>'; })
+          .catch(function(){ exitSubmit.textContent = 'Something went wrong. Please try again in a minute.'; exitSubmit.disabled = false; });
       });
     }
   }());
