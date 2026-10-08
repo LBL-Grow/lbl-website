@@ -1,0 +1,426 @@
+{
+ "*": [
+  [
+   "Previous slide",
+   "Anterior"
+  ],
+  [
+   "Next slide",
+   "Siguiente"
+  ],
+  [
+   "'Sending…'",
+   "'Enviando…'"
+  ],
+  [
+   "Something went wrong. Please try again in a minute.",
+   "Algo salió mal. Inténtalo de nuevo en un minuto."
+  ]
+ ],
+ "contact": [
+  [
+   "Please enter your name.",
+   "Escribe tu nombre."
+  ],
+  [
+   "Please enter a valid email.",
+   "Escribe un correo válido."
+  ],
+  [
+   "Please select a subject.",
+   "Elige un asunto."
+  ],
+  [
+   "Please enter your message.",
+   "Escribe tu mensaje."
+  ],
+  [
+   "Sent! We\\'ll reply within 24 hours.",
+   "¡Enviado! Te respondemos en menos de 24 horas."
+  ]
+ ],
+ "audit": [
+  [
+   "Send My Free Audit Request →",
+   "Enviar mi solicitud de auditoría →"
+  ],
+  [
+   "Something went wrong. Please try again or email hello@localboostlab.com",
+   "Algo salió mal. Inténtalo de nuevo o escríbenos a hello@localboostlab.com"
+  ]
+ ],
+ "whatsapp": [
+  [
+   "Fill the chair, not the inbox.",
+   "Llena la agenda, no la bandeja de mensajes."
+  ],
+  [
+   "Books cleanings and checkups straight into open slots.",
+   "Agenda limpiezas y controles en los espacios libres."
+  ],
+  [
+   "Sends a reminder the day before to cut no-shows.",
+   "Envía un recordatorio el día anterior para que falten menos pacientes."
+  ],
+  [
+   "Passes pain or emergency messages to your front desk right away.",
+   "Pasa de inmediato a recepción los mensajes de dolor o urgencia."
+  ],
+  [
+   "Hi, can I book a cleaning for Thursday afternoon?",
+   "Hola, ¿puedo agendar una limpieza para el jueves en la tarde?"
+  ],
+  [
+   "Of course. Thursday has openings at 2:00 PM and 4:30 PM. Which one works for you?",
+   "Claro. El jueves hay espacio a las 2:00 p. m. y a las 4:30 p. m. ¿Cuál te sirve?"
+  ],
+  [
+   "4:30 please",
+   "A las 4:30, por favor"
+  ],
+  [
+   "You're booked for Thursday at 4:30 PM. We'll send you a reminder the day before.",
+   "Quedaste para el jueves a las 4:30 p. m. Te enviamos un recordatorio el día anterior."
+  ],
+  [
+   "You\\'re booked for Thursday at 4:30 PM. We\\'ll send you a reminder the day before.",
+   "Quedaste para el jueves a las 4:30 p. m. Te enviamos un recordatorio el día anterior."
+  ],
+  [
+   "Appointment confirmed",
+   "Cita confirmada"
+  ],
+  [
+   "Bookings while your team is with clients.",
+   "Citas agendadas mientras tu equipo atiende."
+  ],
+  [
+   "Shares your treatments, durations and price list.",
+   "Comparte tus tratamientos, duración y precios."
+  ],
+  [
+   "Books, moves and confirms appointments.",
+   "Agenda, mueve y confirma citas."
+  ],
+  [
+   "Reminds clients so empty slots get filled.",
+   "Les recuerda a tus clientes para que no queden espacios vacíos."
+  ],
+  [
+   "Do you have anything for a 60 minute massage on Saturday?",
+   "¿Tienen espacio el sábado para un masaje de 60 minutos?"
+  ],
+  [
+   "Yes. Saturday we have 11:00 AM and 3:00 PM. Would you like one of those?",
+   "Sí. El sábado hay a las 11:00 a. m. y a las 3:00 p. m. ¿Te sirve alguno?"
+  ],
+  [
+   "11 works. Can I add a facial after?",
+   "A las 11 está bien. ¿Puedo sumar una limpieza facial después?"
+  ],
+  [
+   "Done. Massage at 11:00 AM and facial right after. See you Saturday!",
+   "Listo. Masaje a las 11:00 a. m. y limpieza facial enseguida. ¡Nos vemos el sábado!"
+  ],
+  [
+   "Turn \"is it still available?\" into a visit.",
+   "Convierte el «¿todavía está disponible?» en una visita."
+  ],
+  [
+   "Turn \\\"is it still available?\\\" into a visit.",
+   "Convierte el «¿todavía está disponible?» en una visita."
+  ],
+  [
+   "Answers questions about stock, location and hours.",
+   "Responde sobre disponibilidad, ubicación y horarios."
+  ],
+  [
+   "Schedules test drives and visits.",
+   "Agenda pruebas de manejo y visitas."
+  ],
+  [
+   "Hands serious buyers to a salesperson with the full chat.",
+   "Le pasa los compradores serios a un asesor, con toda la conversación."
+  ],
+  [
+   "Is the silver 2019 sedan from your listing still available?",
+   "¿Todavía tienen el sedán gris 2019 del anuncio?"
+  ],
+  [
+   "Yes, it is. Would you like to come see it or schedule a test drive?",
+   "Sí, está disponible. ¿Quieres venir a verlo o agendar una prueba de manejo?"
+  ],
+  [
+   "Test drive tomorrow after work?",
+   "¿Prueba de manejo mañana después del trabajo?"
+  ],
+  [
+   "Tomorrow at 5:30 PM is open. I booked it and let our sales team know you are coming.",
+   "Mañana a las 5:30 p. m. hay espacio. Ya quedó agendado y le avisé al equipo comercial."
+  ],
+  [
+   "Handed to sales team",
+   "Pasado al equipo comercial"
+  ],
+  [
+   "Fewer calls asking the same question.",
+   "Menos llamadas con la misma pregunta."
+  ],
+  [
+   "Explains what to bring and how long it takes.",
+   "Explica qué llevar y cuánto se demora."
+  ],
+  [
+   "Books inspection slots to spread out the day.",
+   "Agenda las revisiones para repartir mejor el día."
+  ],
+  [
+   "Reminds customers before their appointment.",
+   "Les recuerda a los clientes antes de la cita."
+  ],
+  [
+   "What do I need to bring for the inspection?",
+   "¿Qué tengo que llevar para la revisión técnico-mecánica?"
+  ],
+  [
+   "Bring your vehicle registration, your ID and proof of insurance. It usually takes about 40 minutes. Want me to book a time?",
+   "Trae la licencia de tránsito del vehículo, tu cédula y el SOAT vigente. Normalmente toma unos 40 minutos. ¿Te agendo una hora?"
+  ],
+  [
+   "Yes, Monday morning",
+   "Sí, el lunes en la mañana"
+  ],
+  [
+   "You are set for Monday at 8:30 AM. We will remind you on Sunday.",
+   "Quedaste para el lunes a las 8:30 a. m. Te recordamos el domingo."
+  ],
+  [
+   "Consultations booked, medical questions to your staff.",
+   "Consultas agendadas; las preguntas médicas, a tu equipo."
+  ],
+  [
+   "Books first consultations and follow-ups.",
+   "Agenda primeras consultas y controles."
+  ],
+  [
+   "Answers questions about services and preparation.",
+   "Responde sobre servicios y preparación."
+  ],
+  [
+   "Sends anything clinical to your team, never guesses.",
+   "Pasa a tu equipo todo lo clínico: nunca adivina."
+  ],
+  [
+   "I want a consultation for skin treatments. Is next week possible?",
+   "Quiero una consulta para tratamientos de piel. ¿Se puede la próxima semana?"
+  ],
+  [
+   "Yes. We have Tuesday at 10:00 AM or Wednesday at 6:00 PM for a first consultation.",
+   "Sí. Para primera consulta hay el martes a las 10:00 a. m. o el miércoles a las 6:00 p. m."
+  ],
+  [
+   "Is the treatment safe if I am pregnant?",
+   "¿El tratamiento es seguro si estoy embarazada?"
+  ],
+  [
+   "That is a great question for our medical team. I have passed it to them and they will reply here shortly.",
+   "Esa pregunta es para nuestro equipo médico. Ya se la pasé y te responden por aquí en un momento."
+  ],
+  [
+   "Handed to your team",
+   "Pasado a tu equipo"
+  ],
+  [
+   "Calm answers for worried pet owners.",
+   "Respuestas tranquilas para dueños preocupados."
+  ],
+  [
+   "Books checkups, vaccines and grooming.",
+   "Agenda controles, vacunas y peluquería."
+  ],
+  [
+   "Sends vaccine and appointment reminders.",
+   "Envía recordatorios de vacunas y citas."
+  ],
+  [
+   "Flags urgent cases to your team immediately.",
+   "Le avisa de inmediato a tu equipo de los casos urgentes."
+  ],
+  [
+   "My dog is due for his vaccines. Do you have time this week?",
+   "A mi perro le tocan las vacunas. ¿Tienen espacio esta semana?"
+  ],
+  [
+   "We do. Friday at 9:00 AM or 2:00 PM. Which one is better for you?",
+   "Sí. El viernes a las 9:00 a. m. o a las 2:00 p. m. ¿Cuál te queda mejor?"
+  ],
+  [
+   "Booked for Friday at 2:00 PM. Please bring his vaccination card.",
+   "Quedó para el viernes a las 2:00 p. m. Por favor trae su carné de vacunas."
+  ],
+  [
+   "Keep the bays full without picking up the phone.",
+   "El taller lleno sin contestar el teléfono."
+  ],
+  [
+   "Books oil changes, diagnostics and services.",
+   "Agenda cambios de aceite, diagnósticos y mantenimientos."
+  ],
+  [
+   "Answers questions about hours and what you work on.",
+   "Responde sobre horarios y qué trabajos hacen."
+  ],
+  [
+   "Hands quotes and complex jobs to your service advisor.",
+   "Le pasa cotizaciones y trabajos complejos a tu asesor de servicio."
+  ],
+  [
+   "Can I bring my car in for an oil change tomorrow?",
+   "¿Puedo llevar el carro mañana para cambio de aceite?"
+  ],
+  [
+   "Sure. Tomorrow we have 8:00 AM and 1:00 PM. Which one works?",
+   "Claro. Mañana hay a las 8:00 a. m. y a la 1:00 p. m. ¿Cuál te sirve?"
+  ],
+  [
+   "8 AM. Also the brakes are making noise",
+   "A las 8. Además los frenos están sonando"
+  ],
+  [
+   "Booked for 8:00 AM. I let your service advisor know about the brakes so they can check them too.",
+   "Quedó para las 8:00 a. m. Le avisé al asesor de servicio lo de los frenos para que también los revisen."
+  ],
+  [
+   "Handed to service advisor",
+   "Pasado al asesor de servicio"
+  ],
+  [
+   "Answer every \"how much?\" before it goes cold.",
+   "Responde cada «¿cuánto vale?» antes de que se enfríe."
+  ],
+  [
+   "Answer every \\\"how much?\\\" before it goes cold.",
+   "Responde cada «¿cuánto vale?» antes de que se enfríe."
+  ],
+  [
+   "Shares class schedules and membership options.",
+   "Comparte horarios de clases y planes."
+  ],
+  [
+   "Books trial classes and personal sessions.",
+   "Agenda clases de prueba y sesiones personalizadas."
+  ],
+  [
+   "Reminds new members before their first visit.",
+   "Les recuerda a los nuevos antes de su primera visita."
+  ],
+  [
+   "Hi! Do you have beginner classes?",
+   "¡Hola! ¿Tienen clases para principiantes?"
+  ],
+  [
+   "We do. Beginner classes run Monday and Wednesday at 7:00 PM. Want to try one for free?",
+   "Sí. Hay clases para principiantes lunes y miércoles a las 7:00 p. m. ¿Quieres probar una gratis?"
+  ],
+  [
+   "You are in for Monday at 7:00 PM. Bring water and comfortable clothes!",
+   "Quedaste para el lunes a las 7:00 p. m. ¡Trae agua y ropa cómoda!"
+  ],
+  [
+   "Trial class booked",
+   "Clase de prueba agendada"
+  ],
+  [
+   "Never lose an urgent job to a missed call.",
+   "No pierdas un trabajo urgente por una llamada sin contestar."
+  ],
+  [
+   "Collects the problem, address and best time.",
+   "Toma el problema, la dirección y el mejor horario."
+  ],
+  [
+   "Books visits into your technicians\\' schedule.",
+   "Agenda visitas en el horario de tus técnicos."
+  ],
+  [
+   "Books visits into your technicians' schedule.",
+   "Agenda visitas en el horario de tus técnicos."
+  ],
+  [
+   "Escalates urgent jobs to your team right away.",
+   "Le pasa de inmediato a tu equipo los trabajos urgentes."
+  ],
+  [
+   "My AC stopped cooling. Can someone come today?",
+   "El aire dejó de enfriar. ¿Puede venir alguien hoy?"
+  ],
+  [
+   "Sorry to hear that. Can you share your address and a good time window?",
+   "Qué pena con eso. ¿Me compartes tu dirección y en qué horario te sirve?"
+  ],
+  [
+   "123 Main St, anytime after 2",
+   "Calle 10 # 43-21, después de las 2"
+  ],
+  [
+   "Thanks. I flagged this as urgent and our team will confirm a technician shortly.",
+   "Gracias. Lo marqué como urgente y nuestro equipo te confirma un técnico en un momento."
+  ],
+  [
+   "Escalated as urgent",
+   "Marcado como urgente"
+  ],
+  [
+   "First consultations, organized before you join.",
+   "Primeras consultas, organizadas antes de que llegues."
+  ],
+  [
+   "Books initial consultations.",
+   "Agenda consultas iniciales."
+  ],
+  [
+   "Collects a short summary so you arrive prepared.",
+   "Toma un resumen corto para que llegues preparado."
+  ],
+  [
+   "Keeps sensitive details for your team only.",
+   "Deja los datos sensibles solo para tu equipo."
+  ],
+  [
+   "I need help with my small business taxes. Can I meet someone?",
+   "Necesito ayuda con la declaración de renta de mi negocio. ¿Puedo reunirme con alguien?"
+  ],
+  [
+   "Yes. We have Thursday at 11:00 AM or Friday at 4:00 PM for a first consultation.",
+   "Sí. Para primera consulta hay el jueves a las 11:00 a. m. o el viernes a las 4:00 p. m."
+  ],
+  [
+   "Thursday. It is about last year\\'s return",
+   "El jueves. Es sobre la declaración del año pasado"
+  ],
+  [
+   "Thursday. It is about last year's return",
+   "El jueves. Es sobre la declaración del año pasado"
+  ],
+  [
+   "Booked for Thursday at 11:00 AM. I added your note so the team is ready.",
+   "Quedó para el jueves a las 11:00 a. m. Agregué tu nota para que el equipo esté listo."
+  ],
+  [
+   "Consultation booked",
+   "Consulta agendada"
+  ],
+  [
+   "Yes, 10 AM please",
+   "Sí, a las 10, por favor"
+  ],
+  [
+   "'Friday 2 PM'",
+   "'El viernes a las 2'"
+  ],
+  [
+   "'Yes, Monday'",
+   "'Sí, el lunes'"
+  ]
+ ]
+}

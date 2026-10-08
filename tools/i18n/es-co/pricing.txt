@@ -1,0 +1,77 @@
+0|Precios | Local Boost Lab: Perfil de Negocio de Google desde US$97 al mes
+1|Planes de gestión del Perfil de Negocio de Google desde US$97 al mes: Reputación, Presencia y Autoridad. Publicaciones, respuestas a reseñas e informe mensual. Sin contrato.
+2|Precios | Local Boost Lab: desde US$97 al mes
+3|Reputación por US$97 al mes, Presencia por US$157 y Autoridad por US$217. Sin contrato, sin costo de instalación y cancelas cuando quieras.
+4|Precios de gestión del Perfil de Negocio de Google: desde US$97 al mes
+5|Gestión automatizada del Perfil de Negocio de Google. Tres planes: US$97, US$157 y US$217 al mes. Cancelas cuando quieras.
+21|Ver planes &#x2192;
+35|Ver planes &#x2192;
+39|Precios claros y honestos.
+40|Sin costo de instalación, sin contrato y sin sobrecostos de agencia. Cancelas cuando quieras y lo tramitamos en 24 horas. Precios en dólares (USD).
+41|@@DROP:section@@
+42-49|@@EMPTY@@
+50|Elige tu plan
+51|Con el pago anual ahorras 15 %.
+56|Ahorra 15 %
+58|Tu reputación cuidada en piloto automático.
+61|US$984 al año (pago anual)
+62|Respuestas automáticas
+63|a todas las reseñas de 4 y 5 estrellas, con tu tono
+64|Aviso por correo + borrador
+65|para reseñas de 3 estrellas. Tú apruebas antes de publicar
+66|Aviso urgente
+67|con reseñas de 1 y 2 estrellas (NUNCA respondemos solos)
+68|Informe mensual
+69|que llega el día 5 de cada mes
+71|No incluye publicaciones en el perfil (pásate a Autoridad)
+74|Contenido y visibilidad. Tres publicaciones por semana.
+77|US$1.596 al año (pago anual)
+78|3 publicaciones por semana optimizadas para SEO
+79|: lunes, miércoles y viernes a las 9:00 a. m.
+80|Biblioteca de fotos
+81|: hasta 30 imágenes tuyas en rotación
+82|Imágenes generadas con IA
+83|(Gemini) cuando quedan menos de 5 fotos sin usar
+84|Ningún tema se repite
+85|en 30 días
+86|El tono de tu marca
+87|en todo el contenido
+88|Informe mensual de resultados
+89|el día 5 de cada mes
+90|Soporte por correo: primera respuesta en 24 horas
+95|Todo incluido, con soporte prioritario.
+98|US$2.208 al año (pago anual)
+101|Soporte prioritario por correo
+102|: primera respuesta en 12 horas
+103|Revisión mensual del estado del perfil
+104|+ alertas de riesgo de suspensión
+105|Acceso anticipado
+106|a funciones nuevas
+108|Funciona con IA, ajustada a tu tono y controlada por ti.
+109|La IA pone la velocidad. Tú decides en lo que importa. Nosotros nos encargamos del resto. Las respuestas a reseñas de 3 estrellas o menos siempre necesitan tu aprobación antes de publicarse. Las de 4 y 5 estrellas se publican solas, con tu tono. Nunca respondemos una reseña negativa sin que tú lo apruebes.
+110|No prometemos posiciones. Sin costo de instalación. Cancelas cuando quieras y lo tramitamos en 24 horas.
+111|@@DROP:section@@
+112-133|@@EMPTY@@
+134|Preguntas sobre precios
+135|¿Hay costo de instalación?
+136|No. No hay costo de instalación, de registro ni cargos sorpresa. Pagas el precio mensual o anual del plan y nada más.
+137|¿Puedo cambiar de plan después?
+138|Sí. Escríbenos a
+140|y cambiamos tu plan en 24 horas. Si subes de plan, el cambio aplica de inmediato; si bajas, aplica en el siguiente ciclo de cobro.
+141|¿Qué medios de pago aceptan?
+142|Todos los pagos se hacen con Stripe, con tarjeta de crédito o débito (Visa, Mastercard, American Express). El cobro se hace en dólares (USD) y tu banco hace la conversión a pesos. Por ahora no recibimos PSE, transferencias ni efectivo.
+143|¿Qué pasa si cancelo a mitad de mes?
+144|No hacemos devoluciones proporcionales por periodos parciales. El servicio sigue activo hasta el final del periodo que ya pagaste. Retiramos nuestro acceso a tu perfil apenas confirmamos la cancelación.
+145|¿Hay descuento por varias sedes?
+146|Sí: si tienes 3 sedes o más, escríbenos a
+148|y te cotizamos. Por lo general damos entre 15 % y 25 % de descuento por sede adicional.
+149|¿Los precios incluyen impuestos?
+150|No. Los precios se muestran sin impuestos. Stripe calcula y aplica los que correspondan según tu dirección de facturación al momento del pago.
+151|¿Listo para empezar?
+152|Sin costo de instalación, sin contrato y cancelas cuando quieras. Tu perfil queda activo y atendido en 24 horas.
+153|Empezar →
+181|Pregunta por los precios...
+191|Espera: llévate gratis la lista para revisar tu perfil
+192|Antes de irte, recibe gratis una lista de 12 puntos para revisar tu Perfil de Negocio de Google. Te llega al correo de inmediato.
+196|No, gracias
+169|Legal

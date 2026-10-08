@@ -1,0 +1,88 @@
+0|Asistente de WhatsApp con IA | Local Boost Lab
+1|Un asistente con IA, supervisado por personas, en tu propio número de WhatsApp Business. Responde preguntas, agenda citas y envía recordatorios, de día y de noche.
+2|Asistente de WhatsApp con IA | Local Boost Lab
+3|Respuestas inmediatas por WhatsApp, de día y de noche. Citas, recordatorios y paso a tu equipo, con supervisión de Local Boost Lab.
+4|Asistente de WhatsApp con IA | Local Boost Lab
+5|Respuestas inmediatas por WhatsApp, de día y de noche. Citas, recordatorios y paso a tu equipo, con supervisión de Local Boost Lab.
+37|Asistente de WhatsApp con IA
+38|Servicio nuevo
+39|Asistente de WhatsApp con IA
+40|Dales a tus clientes respuesta inmediata por WhatsApp, de día y de noche. Local Boost Lab configura un asistente con IA, supervisado por nuestro equipo, que les responde, agenda citas y envía recordatorios, para que no se te escape ningún cliente ni ninguna cita.
+41|Pide una demostración →
+42|Cómo funciona
+43|Qué hace
+44|Tu cliente recibe respuesta. Tú recibes la cita.
+45|Responde las preguntas de siempre: dirección, precios, horarios y servicios.
+46|Agenda citas y las confirma.
+47|Envía recordatorios para que menos personas falten.
+48|Le pasa la conversación a tu equipo cuando hace falta una persona.
+49|Funciona en tu propio número de WhatsApp Business y cada conversación es privada de tu negocio.
+50|WhatsApp · Conversación de ejemplo
+51|¿Abren el domingo?
+52|Los domingos no abrimos, pero el sábado atendemos de 9:00 a. m. a 2:00 p. m. ¿Te separo un cupo?
+53|Sí, a las 10, por favor
+54|Listo. Quedaste para el sábado a las 10:00 a. m. El viernes te enviamos un recordatorio.
+55|✓ Cita confirmada
+56|Para quién es
+57|Negocios locales que viven de citas y consultas. Elige el tuyo y mira cómo respondería el asistente un mensaje típico.
+58|Tipos de negocio
+59|Consultorios odontológicos
+60|Spas y salones de belleza
+61|Venta de carros usados
+62|Centros de diagnóstico automotor (CDA)
+63|Clínicas médicas y estéticas
+64|Veterinarias
+65|Talleres mecánicos
+66|Gimnasios y estudios
+67|Servicios a domicilio
+68|Abogados y contadores
+69|Consultorios odontológicos
+70|Llena la agenda, no la bandeja de mensajes.
+71|Agenda limpiezas y controles en los espacios libres.
+72|Envía un recordatorio el día anterior para que falten menos pacientes.
+73|Pasa de inmediato a recepción los mensajes de dolor o urgencia.
+74|Conversación de ejemplo
+75|WhatsApp · Conversación de ejemplo
+76|Hola, ¿puedo agendar una limpieza para el jueves en la tarde?
+77|Claro. El jueves hay espacio a las 2:00 p. m. y a las 4:30 p. m. ¿Cuál te sirve?
+78|A las 4:30, por favor
+79|Quedaste para el jueves a las 4:30 p. m. Te enviamos un recordatorio el día anterior.
+80|✓ Cita confirmada
+81|¿No ves tu tipo de negocio? Si tus clientes te escriben para preguntar, agendar o confirmar, el asistente te sirve.
+82|Cuéntanos →
+83|Cómo funciona
+84|Un arranque sencillo: tres pasos entre la suscripción y el asistente funcionando.
+85|Cuéntanos de tu negocio
+86|Te suscribes y nos cuentas de tu negocio.
+87|Conecta tu número
+88|Conectas tu propio número de WhatsApp Business en pocos clics.
+89|Empieza a funcionar
+90|Tu asistente empieza a atender, supervisado por nuestro equipo.
+91|Nada por debajo de la mesa.
+92|Igual que con el Perfil de Negocio de Google: lo que ves es lo que hay. Sin contratos largos, sin cargos sorpresa y sin letra menuda. Si deja de servirte, te vas.
+93|Sin contratos
+94|Sin cargos ocultos
+95|Tarifas de mensajería de WhatsApp incluidas
+96|Cancelas cuando quieras
+97|La configuración la hacemos contigo, no te la dejamos a ti
+98|Por qué IA supervisada
+99|Personas reales pendientes
+100|Personas reales supervisan el asistente para cuidar la calidad.
+101|Una sola suscripción mensual
+102|Una suscripción mensual clara.
+103|Trabaja con tu presencia en Google
+104|Pensado para trabajar junto con tu presencia en Google.
+105|A tu medida
+106|Hecho alrededor de tu negocio. El precio también.
+107|No estamos para venderte un paquete. Preferimos entender cómo te contactan tus clientes, qué preguntan y cómo agendas, y armar el asistente alrededor de eso. Pagas por lo que tu negocio necesita, no por un plan que escogimos nosotros.
+108|Primero escuchamos
+109|Una conversación corta sobre tu negocio, tus clientes y cuántos mensajes recibes.
+110|Lo ajustamos a tu medida
+111|Solo lo que necesitas: respuestas, citas, recordatorios o todo junto.
+112|Pagas por lo que usas
+113|Un precio mensual claro según lo que armemos juntos. Si tu negocio cambia, el plan cambia con él.
+114|Hablemos de tu negocio →
+115|Míralo responderles a tus clientes.
+116|Cuéntanos de tu negocio y te mostramos una demostración.
+117|Pide una demostración →
+132|Legal

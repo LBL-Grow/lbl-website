@@ -1,0 +1,110 @@
+0|Cómo funciona | Local Boost Lab: gestión del Perfil de Negocio de Google
+1|Así gestiona Local Boost Lab tu Perfil de Negocio de Google: respuestas automáticas a reseñas, publicaciones cada semana e informe mensual. La configuración toma entre 5 y 7 minutos.
+2|Cómo funciona | Local Boost Lab
+3|Tres pasos y diez minutos. Mira cómo gestionamos tu Perfil de Negocio de Google de forma automática.
+4|Cómo funciona Local Boost Lab: 3 pasos, menos de 10 minutos
+5|Eliges un plan, llenas un formulario de 5 minutos y en 24 horas estamos trabajando. De ahí en adelante nos encargamos de todo.
+39|El proceso
+40|Cómo funciona Local Boost Lab
+41|Del registro a la primera publicación: todo lo que hacemos y cómo lo hacemos. Sin cajas negras.
+42|Para empezar: tres pasos
+43|Tu parte de la configuración toma menos de 10 minutos. La nuestra, 24 horas.
+44|@@DROP:hiw-stat-grid@@
+45-49|@@EMPTY@@
+52|Elige tu plan y paga con Stripe. Menos de 60 segundos. Sin cargos ocultos y sin contrato.
+55|Cuéntanos de tu negocio, el tono de tu marca y tus servicios. Sube fotos si tienes. Son entre 4 y 7 minutos.
+57|Empezamos en 24 horas
+58|Configuramos tu perfil, cargamos tu tono y dejamos lista la primera publicación. De ahí en adelante todo es automático.
+59|Qué pasa después del registro
+60|Esto es lo que corre por debajo mientras tú atiendes tu negocio.
+61|Gestión de reseñas
+62|Cada reseña, atendida en minutos.
+63|Nuestro sistema vigila tu Perfil de Negocio de Google a toda hora. Apenas aparece una reseña nueva:
+64|Reseñas de 4 y 5 estrellas:
+65|Respuesta automática con tu tono en menos de una hora
+66|Reseñas de 3 estrellas:
+67|Te llega un aviso por correo con un borrador de respuesta en 15 minutos. Tú apruebas o editas.
+68|Reseñas de 1 y 2 estrellas:
+69|Aviso urgente en 5 minutos. Preparamos un borrador, pero nunca publicamos sin tu aprobación expresa
+70|✓ NUNCA respondemos solos una reseña de menos de 4 estrellas.
+71|★★★★★ Reseña nueva (ejemplo) · hace 4 min
+72|“Excelente servicio, vinieron el mismo día.”
+73|✓ Respondida automáticamente · ahora mismo
+74|“¡Muchas gracias por tus palabras!...”
+75|★★★ Aviso enviado · hace 12 min
+76|“Buen trabajo, pero se demoraron más de lo acordado.”
+77|Esperando tu aprobación
+78|Publicación de contenido
+79|Tres publicaciones por semana. Todas las semanas. Sin que tú hagas nada.
+80|Cada lunes, miércoles y viernes a las 9:00 a. m., hora de tu ciudad, sale una publicación nueva en tu Perfil de Negocio de Google.
+81|Cada publicación:
+82|Se escribe para tu negocio y tus servicios
+83|Usa las palabras con las que te buscan en tu zona
+84|Lleva tus fotos (si las hay) o imágenes generadas con IA
+85|No repite tema en 30 días
+86|Tiene el formato que mejor funciona en el perfil (extensión, llamado a la acción)
+87|Las publicaciones pueden llevar imágenes generadas con IA cuando no hay fotos del cliente. Todo el texto se genera con IA y se revisa antes de publicarse.
+88|Publicaciones de esta semana
+89|Lunes 9:00 a. m.
+90|✓ Publicada
+91|Miércoles 9:00 a. m.
+92|✓ Publicada
+93|Viernes 9:00 a. m.
+94|Programada
+95|Informes mensuales
+96|Un informe de verdad el día 5 de cada mes.
+97|El día 5 de cada mes recibes por correo un informe claro. Sin paneles a los que entrar y sin presentaciones de 47 diapositivas. Solo las cifras que te importan:
+98|Reseñas recibidas y tu calificación actual
+99|Porcentaje de reseñas respondidas y tiempo promedio de respuesta
+100|Publicaciones hechas y cómo les fue
+101|Vistas del perfil, clics y solicitudes de cómo llegar
+102|Comparación con el mes anterior
+103|Informe de abril (ejemplo)
+104|Reseñas nuevas
+105|Calificación actual
+106|Reseñas respondidas
+107|Publicaciones
+109|Nuestros compromisos de respuesta
+110|No son metas aspiracionales: es lo que hacemos.
+111|Tipo de reseña
+112|Aviso enviado en
+113|Respuesta automática
+114|Requiere tu aprobación
+115|Reseña de 5 estrellas
+116|✓ Menos de 1 hora
+117|No
+118|Reseña de 4 estrellas
+119|✓ Menos de 1 hora
+120|No
+121|Reseña de 3 estrellas
+122|15 minutos
+123|✗ Nunca
+124|Sí, con borrador listo
+125|Reseña de 2 estrellas
+126|5 minutos (urgente)
+127|✗ Nunca
+128|Sí, con borrador listo
+129|Reseña de 1 estrella
+130|5 minutos (urgente)
+131|✗ Nunca
+132|Sí, con borrador listo
+133|Preguntas comunes
+134|¿Tengo que darles mi contraseña de Google?
+135|No. Usamos el acceso seguro de Google (OAuth): autorizas con un clic desde el sistema del propio Google. Nunca vemos ni guardamos tu contraseña. Si prefieres, puedes agregar a
+136|grow@localboostlab.com
+137|como administrador de tu perfil desde la configuración del Perfil de Negocio.
+138|¿Y si quiero aprobar las publicaciones antes de que salgan?
+139|Hoy las publicaciones salen solas según el calendario. Si quieres revisarlas antes, escríbenos y te activamos la vista previa (disponible en el plan Autoridad).
+140|¿Puedo pedir publicaciones especiales para promociones o eventos?
+141|Claro. Escríbenos a grow@localboostlab.com con los detalles y la creamos y programamos. En el plan Autoridad, las publicaciones urgentes se atienden en 4 horas.
+142|¿Qué pasa si Google marca mi perfil?
+143|Seguimos al pie de la letra las políticas de contenido de Google y revisamos todo antes de publicar. En el plan Autoridad tienes además una revisión mensual del perfil y alertas de riesgo de suspensión. Si llegara a haber una marca, pausamos de inmediato las publicaciones y te ayudamos con el proceso ante Google. Nunca cambiamos la configuración, el estado de verificación ni los datos de tu cuenta: solo trabajamos sobre contenido y respuestas a reseñas.
+144|¿Y si no tengo fotos para subir?
+145|No hay problema. Usamos imágenes generadas con IA acordes con tu industria y tus servicios. Siempre preferimos tus fotos reales, porque funcionan mejor, pero mientras tanto mantenemos tu perfil activo con imágenes generadas.
+146|¿Cómo cancelo?
+147|Escríbenos a
+149|y tramitamos tu cancelación en 24 horas, sin preguntas. El servicio sigue activo hasta el final del periodo que ya pagaste. Retiramos nuestro acceso a tu perfil apenas cancelas.
+150|¿Listo para dejar de pensar en tu perfil de Google?
+151|Sin contrato. Empieza desde US$97 al mes.
+191|Una lista de 12 puntos con lo que está frenando tu Perfil de Negocio de Google y qué arreglar primero.
+168|Legal

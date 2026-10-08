@@ -1,0 +1,762 @@
+[
+ {
+  "i": 0,
+  "k": "text",
+  "en": "WhatsApp AI Assistant | Local Boost Lab"
+ },
+ {
+  "i": 1,
+  "k": "attr:content",
+  "en": "A supervised AI assistant on your own WhatsApp Business number. It answers customer questions, books appointments and sends reminders, day and night."
+ },
+ {
+  "i": 2,
+  "k": "attr:content",
+  "en": "WhatsApp AI Assistant | Local Boost Lab"
+ },
+ {
+  "i": 3,
+  "k": "attr:content",
+  "en": "Instant answers on WhatsApp, day and night. Bookings, reminders and handoff to your team, supervised by Local Boost Lab."
+ },
+ {
+  "i": 4,
+  "k": "attr:content",
+  "en": "WhatsApp AI Assistant | Local Boost Lab"
+ },
+ {
+  "i": 5,
+  "k": "attr:content",
+  "en": "Instant answers on WhatsApp, day and night. Bookings, reminders and handoff to your team, supervised by Local Boost Lab."
+ },
+ {
+  "i": 6,
+  "k": "text",
+  "en": "Skip to main content"
+ },
+ {
+  "i": 7,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab - Home"
+ },
+ {
+  "i": 8,
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
+ },
+ {
+  "i": 9,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 10,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 11,
+  "k": "text",
+  "en": "Industries "
+ },
+ {
+  "i": 12,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 13,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 14,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 15,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 16,
+  "k": "text",
+  "en": "All Industries"
+ },
+ {
+  "i": 17,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 18,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 19,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 20,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 21,
+  "k": "text",
+  "en": "See Plans →"
+ },
+ {
+  "i": 22,
+  "k": "attr:aria-label",
+  "en": "Toggle menu"
+ },
+ {
+  "i": 23,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 24,
+  "k": "text",
+  "en": "Industries "
+ },
+ {
+  "i": 25,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 26,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 27,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 28,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 29,
+  "k": "text",
+  "en": "All Industries"
+ },
+ {
+  "i": 30,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 31,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 32,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 33,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 34,
+  "k": "text",
+  "en": "See Plans →"
+ },
+ {
+  "i": 35,
+  "k": "attr:aria-label",
+  "en": "Breadcrumb"
+ },
+ {
+  "i": 36,
+  "k": "text",
+  "en": "Home"
+ },
+ {
+  "i": 37,
+  "k": "text",
+  "en": "WhatsApp AI Assistant"
+ },
+ {
+  "i": 38,
+  "k": "text",
+  "en": "New Service"
+ },
+ {
+  "i": 39,
+  "k": "text",
+  "en": "WhatsApp AI Assistant"
+ },
+ {
+  "i": 40,
+  "k": "text",
+  "en": "Give your customers instant answers on WhatsApp, day and night. Local Boost Lab sets up an AI assistant, supervised by our team, that replies to your customers, books appointments and sends reminders, so you never miss a lead or a booking."
+ },
+ {
+  "i": 41,
+  "k": "text",
+  "en": "Request a demo →"
+ },
+ {
+  "i": 42,
+  "k": "text",
+  "en": "How it works"
+ },
+ {
+  "i": 43,
+  "k": "text",
+  "en": "What it does"
+ },
+ {
+  "i": 44,
+  "k": "text",
+  "en": "Your customers get an answer. You get the booking."
+ },
+ {
+  "i": 45,
+  "k": "text",
+  "en": "Answers common questions such as address, prices, hours and services."
+ },
+ {
+  "i": 46,
+  "k": "text",
+  "en": "Schedules appointments and confirms them."
+ },
+ {
+  "i": 47,
+  "k": "text",
+  "en": "Sends appointment reminders so fewer people miss their visit."
+ },
+ {
+  "i": 48,
+  "k": "text",
+  "en": "Hands off to your team when a conversation needs a person."
+ },
+ {
+  "i": 49,
+  "k": "text",
+  "en": "Works on your own WhatsApp Business number, and every conversation stays private to your business."
+ },
+ {
+  "i": 50,
+  "k": "text",
+  "en": "WhatsApp · Example conversation"
+ },
+ {
+  "i": 51,
+  "k": "text",
+  "en": "Are you open on Sunday?"
+ },
+ {
+  "i": 52,
+  "k": "text",
+  "en": "We're closed on Sundays, but Saturday we're open from 9:00 AM to 2:00 PM. Want me to save you a spot?"
+ },
+ {
+  "i": 53,
+  "k": "text",
+  "en": "Yes, 10 AM please"
+ },
+ {
+  "i": 54,
+  "k": "text",
+  "en": "Done. You're booked for Saturday at 10:00 AM. We'll send you a reminder on Friday."
+ },
+ {
+  "i": 55,
+  "k": "text",
+  "en": "✓ Appointment confirmed"
+ },
+ {
+  "i": 56,
+  "k": "text",
+  "en": "Who it is for"
+ },
+ {
+  "i": 57,
+  "k": "text",
+  "en": "Local businesses that live on appointments and inquiries. Pick yours and see how the assistant would handle a typical message."
+ },
+ {
+  "i": 58,
+  "k": "attr:aria-label",
+  "en": "Business types"
+ },
+ {
+  "i": 59,
+  "k": "text",
+  "en": "Dental clinics"
+ },
+ {
+  "i": 60,
+  "k": "text",
+  "en": "Spas and salons"
+ },
+ {
+  "i": 61,
+  "k": "text",
+  "en": "Used car dealers"
+ },
+ {
+  "i": 62,
+  "k": "text",
+  "en": "Vehicle inspection centers"
+ },
+ {
+  "i": 63,
+  "k": "text",
+  "en": "Medical and aesthetic clinics"
+ },
+ {
+  "i": 64,
+  "k": "text",
+  "en": "Veterinary clinics"
+ },
+ {
+  "i": 65,
+  "k": "text",
+  "en": "Auto repair shops"
+ },
+ {
+  "i": 66,
+  "k": "text",
+  "en": "Gyms and studios"
+ },
+ {
+  "i": 67,
+  "k": "text",
+  "en": "Home services"
+ },
+ {
+  "i": 68,
+  "k": "text",
+  "en": "Law and accounting firms"
+ },
+ {
+  "i": 69,
+  "k": "text",
+  "en": "Dental clinics"
+ },
+ {
+  "i": 70,
+  "k": "text",
+  "en": "Fill the chair, not the inbox."
+ },
+ {
+  "i": 71,
+  "k": "text",
+  "en": "Books cleanings and checkups straight into open slots."
+ },
+ {
+  "i": 72,
+  "k": "text",
+  "en": "Sends a reminder the day before to cut no-shows."
+ },
+ {
+  "i": 73,
+  "k": "text",
+  "en": "Passes pain or emergency messages to your front desk right away."
+ },
+ {
+  "i": 74,
+  "k": "attr:aria-label",
+  "en": "Example conversation"
+ },
+ {
+  "i": 75,
+  "k": "text",
+  "en": "WhatsApp · Example conversation"
+ },
+ {
+  "i": 76,
+  "k": "text",
+  "en": "Hi, can I book a cleaning for Thursday afternoon?"
+ },
+ {
+  "i": 77,
+  "k": "text",
+  "en": "Of course. Thursday has openings at 2:00 PM and 4:30 PM. Which one works for you?"
+ },
+ {
+  "i": 78,
+  "k": "text",
+  "en": "4:30 please"
+ },
+ {
+  "i": 79,
+  "k": "text",
+  "en": "You're booked for Thursday at 4:30 PM. We'll send you a reminder the day before."
+ },
+ {
+  "i": 80,
+  "k": "text",
+  "en": "✓ Appointment confirmed"
+ },
+ {
+  "i": 81,
+  "k": "text",
+  "en": "Don't see your business? If your customers message you to ask, book or confirm, the assistant can help. "
+ },
+ {
+  "i": 82,
+  "k": "text",
+  "en": "Tell us about it →"
+ },
+ {
+  "i": 83,
+  "k": "text",
+  "en": "How it works"
+ },
+ {
+  "i": 84,
+  "k": "text",
+  "en": "Simple onboarding. Three steps from subscription to a live assistant."
+ },
+ {
+  "i": 85,
+  "k": "text",
+  "en": "Tell us about your business"
+ },
+ {
+  "i": 86,
+  "k": "text",
+  "en": "Subscribe and tell us about your business."
+ },
+ {
+  "i": 87,
+  "k": "text",
+  "en": "Connect your number"
+ },
+ {
+  "i": 88,
+  "k": "text",
+  "en": "Connect your own WhatsApp Business number in a few clicks."
+ },
+ {
+  "i": 89,
+  "k": "text",
+  "en": "Go live"
+ },
+ {
+  "i": 90,
+  "k": "text",
+  "en": "Your assistant goes live, supervised by our team."
+ },
+ {
+  "i": 91,
+  "k": "text",
+  "en": "Nothing hidden under the table."
+ },
+ {
+  "i": 92,
+  "k": "text",
+  "en": "Same as our Google Business Profile service: what you see is what you get. No long contracts, no surprise fees and no fine print. If it stops being useful to you, you leave."
+ },
+ {
+  "i": 93,
+  "k": "text",
+  "en": "No contracts"
+ },
+ {
+  "i": 94,
+  "k": "text",
+  "en": "No hidden fees"
+ },
+ {
+  "i": 95,
+  "k": "text",
+  "en": "WhatsApp messaging fees included"
+ },
+ {
+  "i": 96,
+  "k": "text",
+  "en": "Cancel anytime"
+ },
+ {
+  "i": 97,
+  "k": "text",
+  "en": "Setup done with you, not left to you"
+ },
+ {
+  "i": 98,
+  "k": "text",
+  "en": "Why supervised AI"
+ },
+ {
+  "i": 99,
+  "k": "text",
+  "en": "Real people in the loop"
+ },
+ {
+  "i": 100,
+  "k": "text",
+  "en": "Real people supervise the assistant, so quality stays high."
+ },
+ {
+  "i": 101,
+  "k": "text",
+  "en": "One monthly subscription"
+ },
+ {
+  "i": 102,
+  "k": "text",
+  "en": "One clear monthly subscription."
+ },
+ {
+  "i": 103,
+  "k": "text",
+  "en": "Works with your Google presence"
+ },
+ {
+  "i": 104,
+  "k": "text",
+  "en": "Built to work alongside your Google presence."
+ },
+ {
+  "i": 105,
+  "k": "text",
+  "en": "Made to fit"
+ },
+ {
+  "i": 106,
+  "k": "text",
+  "en": "Built around your business. Priced around it too."
+ },
+ {
+  "i": 107,
+  "k": "text",
+  "en": "We're not here to sell you a package. We'd rather understand how your customers reach you, what they ask and how you book, then build the assistant around that. You pay for what your business needs, not for a plan we picked for you."
+ },
+ {
+  "i": 108,
+  "k": "text",
+  "en": "We listen first"
+ },
+ {
+  "i": 109,
+  "k": "text",
+  "en": "A short conversation about your business, your customers and how many messages you get."
+ },
+ {
+  "i": 110,
+  "k": "text",
+  "en": "We shape it to fit"
+ },
+ {
+  "i": 111,
+  "k": "text",
+  "en": "Only what you need: answers, bookings, reminders, or all of them together."
+ },
+ {
+  "i": 112,
+  "k": "text",
+  "en": "You pay for what you use"
+ },
+ {
+  "i": 113,
+  "k": "text",
+  "en": "A clear monthly price based on what we build together. As your business changes, the plan changes with it."
+ },
+ {
+  "i": 114,
+  "k": "text",
+  "en": "Let's talk about your business →"
+ },
+ {
+  "i": 115,
+  "k": "text",
+  "en": "See it answer your customers."
+ },
+ {
+  "i": 116,
+  "k": "text",
+  "en": "Tell us about your business and we'll walk you through a demo."
+ },
+ {
+  "i": 117,
+  "k": "text",
+  "en": "Request a demo →"
+ },
+ {
+  "i": 118,
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
+ },
+ {
+  "i": 119,
+  "k": "text",
+  "en": "Your Google Profile. Finally handled."
+ },
+ {
+  "i": 120,
+  "k": "text",
+  "en": "hello@localboostlab.com"
+ },
+ {
+  "i": 121,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on LinkedIn"
+ },
+ {
+  "i": 122,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Instagram"
+ },
+ {
+  "i": 123,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on X"
+ },
+ {
+  "i": 124,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Facebook"
+ },
+ {
+  "i": 125,
+  "k": "text",
+  "en": "Product"
+ },
+ {
+  "i": 126,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 127,
+  "k": "text",
+  "en": "Industries"
+ },
+ {
+  "i": 128,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 129,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 130,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 131,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 132,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 133,
+  "k": "text",
+  "en": "Privacy Policy"
+ },
+ {
+  "i": 134,
+  "k": "text",
+  "en": "Terms of Service"
+ },
+ {
+  "i": 135,
+  "k": "text",
+  "en": "Payments secured by"
+ },
+ {
+  "i": 136,
+  "k": "attr:alt",
+  "en": "Stripe"
+ },
+ {
+  "i": 137,
+  "k": "text",
+  "en": "Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses"
+ },
+ {
+  "i": 138,
+  "k": "text",
+  "en": "This site uses only essential cookies. "
+ },
+ {
+  "i": 139,
+  "k": "text",
+  "en": "Manage Cookies"
+ },
+ {
+  "i": 140,
+  "k": "attr:alt",
+  "en": "Claire, Local Boost Lab Support"
+ },
+ {
+  "i": 141,
+  "k": "text",
+  "en": "Claire"
+ },
+ {
+  "i": 142,
+  "k": "text",
+  "en": "Online 24/7 · AI support"
+ },
+ {
+  "i": 143,
+  "k": "attr:aria-label",
+  "en": "× Close chat"
+ },
+ {
+  "i": 144,
+  "k": "attr:placeholder",
+  "en": "Ask a question..."
+ },
+ {
+  "i": 145,
+  "k": "attr:aria-label",
+  "en": "Chat message"
+ },
+ {
+  "i": 146,
+  "k": "text",
+  "en": "Send"
+ },
+ {
+  "i": 147,
+  "k": "attr:aria-label",
+  "en": "Chat with support"
+ },
+ {
+  "i": 148,
+  "k": "text",
+  "en": "This site uses essential cookies for checkout and onboarding. "
+ },
+ {
+  "i": 149,
+  "k": "text",
+  "en": "Learn more →"
+ },
+ {
+  "i": 150,
+  "k": "text",
+  "en": "Accept"
+ },
+ {
+  "i": 151,
+  "k": "text",
+  "en": "Preferences"
+ }
+]
