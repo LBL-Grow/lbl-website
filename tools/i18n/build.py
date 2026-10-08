@@ -165,10 +165,39 @@ def set_hreflang(html, cfg):
     return re.sub(r'(<link rel="canonical"[^>]*>)', lambda m: m.group(1) + '\n  ' + block, html, count=1)
 
 
+PILL = 'border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:4px 12px;white-space:nowrap'
+
+
+# El enlace de idioma ocupa sitio en el menú: se evita que los enlaces partan en dos líneas.
+# `.grid-3>*{min-width:0}` corrige un desborde lateral de las tarjetas de precios entre 1025 y 1200 px.
+NAV_CSS = ('  <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-space:nowrap}'
+           '@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}</style>')
+
+
+def append_inside(html, cls, snippet):
+    """Inserta `snippet` justo antes del cierre del primer <div class="cls ...">."""
+    m = re.search(rf'<div class="{cls}"[^>]*>', html)
+    if not m:
+        return html
+    depth = 0
+    for t in re.finditer(r'<(/?)div\b[^>]*>', html[m.start():]):
+        depth += -1 if t.group(1) else 1
+        if depth == 0:
+            at = m.start() + t.start()
+            return html[:at] + snippet + html[at:]
+    return html
+
+
 def set_lang_link(html, href, hreflang, label):
-    link = f'<a href="{href}" hreflang="{hreflang}" lang="{hreflang[:2]}" data-lang-switch>{label}</a>'
-    html = re.sub(r'\s*<span><a [^>]*data-lang-switch>[^<]*</a></span>', '', html)
-    return re.sub(r'(<div class="footer__bottom">)', lambda m: m.group(1) + f'\n      <span>{link}</span>', html, count=1)
+    """Enlace de cambio de idioma en el menú (escritorio y móvil) y en el pie."""
+    attrs = f'href="{href}" hreflang="{hreflang}" lang="{hreflang[:2]}" data-lang-switch'
+    html = clean(html)
+    html = re.sub(r'\s*<style data-lang-nav>.*?</style>', '', html, flags=re.S)
+    html = html.replace('</head>', NAV_CSS + '\n</head>', 1)
+    short = {'en': 'EN', 'es-CO': 'ES'}[hreflang]
+    html = append_inside(html, 'nav__links', f'  <a {attrs} style="{PILL}" title="{label}" aria-label="{label}">{short}</a>\n    ')
+    html = append_inside(html, 'nav__mobile-overlay', f'  <a {attrs}>{label}</a>\n')
+    return re.sub(r'(<div class="footer__bottom">)', lambda m: m.group(1) + f'\n      <span><a {attrs}>{label}</a></span>', html, count=1)
 
 
 def jsonld(cfg, title, desc):
