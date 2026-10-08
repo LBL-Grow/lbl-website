@@ -1,0 +1,75 @@
+{
+ "home": {
+  "src": "index.html",
+  "dst": "es-co/index.html",
+  "en": "/",
+  "es": "/es-co"
+ },
+ "pricing": {
+  "src": "pricing.html",
+  "dst": "es-co/precios.html",
+  "en": "/pricing",
+  "es": "/es-co/precios"
+ },
+ "how": {
+  "src": "how-it-works.html",
+  "dst": "es-co/como-funciona.html",
+  "en": "/how-it-works",
+  "es": "/es-co/como-funciona"
+ },
+ "industries": {
+  "src": "industries/index.html",
+  "dst": "es-co/industrias.html",
+  "en": "/industries",
+  "es": "/es-co/industrias",
+  "tag": "industries.html"
+ },
+ "hvac": {
+  "src": "industries/hvac/index.html",
+  "dst": "es-co/industrias/aire-acondicionado/index.html",
+  "en": "/industries/hvac",
+  "es": "/es-co/industrias/aire-acondicionado"
+ },
+ "dental": {
+  "src": "industries/dental/index.html",
+  "dst": "es-co/industrias/odontologia/index.html",
+  "en": "/industries/dental",
+  "es": "/es-co/industrias/odontologia"
+ },
+ "legal": {
+  "src": "industries/legal/index.html",
+  "dst": "es-co/industrias/abogados/index.html",
+  "en": "/industries/legal",
+  "es": "/es-co/industrias/abogados"
+ },
+ "cleaning": {
+  "src": "industries/cleaning/index.html",
+  "dst": "es-co/industrias/limpieza/index.html",
+  "en": "/industries/cleaning",
+  "es": "/es-co/industrias/limpieza"
+ },
+ "whatsapp": {
+  "src": "whatsapp-ai-assistant.html",
+  "dst": "es-co/asistente-whatsapp.html",
+  "en": "/whatsapp-ai-assistant",
+  "es": "/es-co/asistente-whatsapp"
+ },
+ "about": {
+  "src": "about.html",
+  "dst": "es-co/nosotros.html",
+  "en": "/about",
+  "es": "/es-co/nosotros"
+ },
+ "contact": {
+  "src": "contact.html",
+  "dst": "es-co/contacto.html",
+  "en": "/contact",
+  "es": "/es-co/contacto"
+ },
+ "audit": {
+  "src": "free-audit.html",
+  "dst": "es-co/auditoria-gratis.html",
+  "en": "/free-audit",
+  "es": "/es-co/auditoria-gratis"
+ }
+}

@@ -60,3 +60,19 @@ Images come in `.png` + `.webp` pairs. Always add both when uploading new images
 - **GTM tag** (`GTM-NCBWF3MH`) must remain in `<head>` of every page
 - **CSP header** in vercel.json is strict — new external scripts need to be added there
 - `robots.txt` and `sitemap.xml` are static files; update sitemap when adding pages
+
+## Spanish (Colombia) version: `/es-co/`
+
+The pages under `es-co/` are **generated** from the English pages. Do not edit them by hand.
+
+```bash
+python3 tools/i18n/extract.py   # after changing an English page: refresh the list of strings
+python3 tools/i18n/build.py     # regenerate es-co/ (fails listing any untranslated string)
+```
+
+- Page map (English file → Spanish URL): `tools/i18n/pages.json`
+- Translations: `tools/i18n/es-co/<page>.txt` (`<position>|<text>`), shared strings in `_shared.json`, strings inside inline scripts in `_js.json`
+- The Spanish pages leave out the unsourced statistics, the "results from clients" blocks and the `aggregateRating` markup
+- `build.py` also adds the `hreflang` tags and the language link to the English pages
+- `tools/` is excluded from the deployment (`.vercelignore`)
+- `/sitemap.xml` is served by the Railway backend (`server.js` in GBP-Agent): new URLs must be added there

@@ -1,0 +1,632 @@
+[
+ {
+  "i": 0,
+  "k": "text",
+  "en": "Free GBP Audit — See Exactly Where You Stand | Local Boost Lab"
+ },
+ {
+  "i": 1,
+  "k": "attr:content",
+  "en": "Get a free, no-commitment Google Business Profile audit. We'll analyze your profile and send you a full report with specific fixes — no sales pitch."
+ },
+ {
+  "i": 2,
+  "k": "text",
+  "en": "Skip to main content"
+ },
+ {
+  "i": 3,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab - Home"
+ },
+ {
+  "i": 4,
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
+ },
+ {
+  "i": 5,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 6,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 7,
+  "k": "text",
+  "en": "Industries "
+ },
+ {
+  "i": 8,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 9,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 10,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 11,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 12,
+  "k": "text",
+  "en": "All Industries"
+ },
+ {
+  "i": 13,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 14,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 15,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 16,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 17,
+  "k": "text",
+  "en": "See Plans →"
+ },
+ {
+  "i": 18,
+  "k": "attr:aria-label",
+  "en": "Toggle menu"
+ },
+ {
+  "i": 19,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 20,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 21,
+  "k": "text",
+  "en": "Industries "
+ },
+ {
+  "i": 22,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 23,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 24,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 25,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 26,
+  "k": "text",
+  "en": "All Industries"
+ },
+ {
+  "i": 27,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 28,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 29,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 30,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 31,
+  "k": "text",
+  "en": "See Plans →"
+ },
+ {
+  "i": 32,
+  "k": "text",
+  "en": "\n      Free · No commitment · Delivered in 48 hrs\n    "
+ },
+ {
+  "i": 33,
+  "k": "text",
+  "en": "See exactly where your Google profile is losing you customers"
+ },
+ {
+  "i": 34,
+  "k": "text",
+  "en": "We'll analyze your Google Business Profile and send you a full audit report — specific gaps, competitor comparison, and a prioritized action plan. No sales pitch, no strings attached."
+ },
+ {
+  "i": 35,
+  "k": "text",
+  "en": "What's in your free audit"
+ },
+ {
+  "i": 36,
+  "k": "text",
+  "en": "Profile completeness score and specific gaps"
+ },
+ {
+  "i": 37,
+  "k": "text",
+  "en": "Review strategy analysis — volume, recency, and response rate"
+ },
+ {
+  "i": 38,
+  "k": "text",
+  "en": "GBP post activity and keyword visibility assessment"
+ },
+ {
+  "i": 39,
+  "k": "text",
+  "en": "Competitor comparison in your city and niche"
+ },
+ {
+  "i": 40,
+  "k": "text",
+  "en": "Prioritized action plan ranked by ranking impact"
+ },
+ {
+  "i": 41,
+  "k": "text",
+  "en": "Photo and category optimization notes"
+ },
+ {
+  "i": 42,
+  "k": "text",
+  "en": "Who is this for?"
+ },
+ {
+  "i": 43,
+  "k": "text",
+  "en": " Local service businesses — HVAC, dental, legal, cleaning, plumbing, roofing — that appear on Google Maps and want to know why customers are choosing competitors instead.\n      "
+ },
+ {
+  "i": 44,
+  "k": "text",
+  "en": "100% free — no credit card, ever"
+ },
+ {
+  "i": 45,
+  "k": "text",
+  "en": "Delivered within 48 business hours"
+ },
+ {
+  "i": 46,
+  "k": "text",
+  "en": "Real humans review your profile — not automation"
+ },
+ {
+  "i": 47,
+  "k": "text",
+  "en": "Request your free audit"
+ },
+ {
+  "i": 48,
+  "k": "text",
+  "en": "Takes 2 minutes. We'll do the rest and deliver your report within 48 hours."
+ },
+ {
+  "i": 49,
+  "k": "text",
+  "en": "Your Name "
+ },
+ {
+  "i": 50,
+  "k": "attr:placeholder",
+  "en": "Mike Martinez"
+ },
+ {
+  "i": 51,
+  "k": "text",
+  "en": "Please enter your name."
+ },
+ {
+  "i": 52,
+  "k": "text",
+  "en": "Phone "
+ },
+ {
+  "i": 53,
+  "k": "text",
+  "en": "(optional)"
+ },
+ {
+  "i": 54,
+  "k": "text",
+  "en": "Email Address "
+ },
+ {
+  "i": 55,
+  "k": "attr:placeholder",
+  "en": "mike@martinezhvac.com"
+ },
+ {
+  "i": 56,
+  "k": "text",
+  "en": "Please enter a valid email."
+ },
+ {
+  "i": 57,
+  "k": "text",
+  "en": "Business Name "
+ },
+ {
+  "i": 58,
+  "k": "attr:placeholder",
+  "en": "Martinez HVAC"
+ },
+ {
+  "i": 59,
+  "k": "text",
+  "en": "Please enter your business name."
+ },
+ {
+  "i": 60,
+  "k": "text",
+  "en": "Industry "
+ },
+ {
+  "i": 61,
+  "k": "text",
+  "en": "Select..."
+ },
+ {
+  "i": 62,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 63,
+  "k": "text",
+  "en": "Plumbing"
+ },
+ {
+  "i": 64,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 65,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 66,
+  "k": "text",
+  "en": "Cleaning / Janitorial"
+ },
+ {
+  "i": 67,
+  "k": "text",
+  "en": "Roofing"
+ },
+ {
+  "i": 68,
+  "k": "text",
+  "en": "Landscaping"
+ },
+ {
+  "i": 69,
+  "k": "text",
+  "en": "Auto Repair"
+ },
+ {
+  "i": 70,
+  "k": "text",
+  "en": "Electrical"
+ },
+ {
+  "i": 71,
+  "k": "text",
+  "en": "Real Estate"
+ },
+ {
+  "i": 72,
+  "k": "text",
+  "en": "Other"
+ },
+ {
+  "i": 73,
+  "k": "text",
+  "en": "Please select your industry."
+ },
+ {
+  "i": 74,
+  "k": "text",
+  "en": "City / Service Area "
+ },
+ {
+  "i": 75,
+  "k": "attr:placeholder",
+  "en": "Miami, FL"
+ },
+ {
+  "i": 76,
+  "k": "text",
+  "en": "Please enter your city."
+ },
+ {
+  "i": 77,
+  "k": "text",
+  "en": "Google Business Profile URL "
+ },
+ {
+  "i": 78,
+  "k": "text",
+  "en": "Find it: Google Maps → search your business → Share → Copy link"
+ },
+ {
+  "i": 79,
+  "k": "text",
+  "en": "Please enter your GBP URL."
+ },
+ {
+  "i": 80,
+  "k": "text",
+  "en": "Website "
+ },
+ {
+  "i": 81,
+  "k": "text",
+  "en": "(optional)"
+ },
+ {
+  "i": 82,
+  "k": "text",
+  "en": "What's your biggest challenge right now? "
+ },
+ {
+  "i": 83,
+  "k": "attr:placeholder",
+  "en": "e.g. Not showing up in map results, not enough reviews, competitors outranking us..."
+ },
+ {
+  "i": 84,
+  "k": "text",
+  "en": "Please describe your main challenge."
+ },
+ {
+  "i": 85,
+  "k": "text",
+  "en": "\n            Send My Free Audit Request →\n          "
+ },
+ {
+  "i": 86,
+  "k": "text",
+  "en": "\n            No spam. No sales call. Just a real audit delivered to your inbox.\n          "
+ },
+ {
+  "i": 87,
+  "k": "text",
+  "en": "Audit request received!"
+ },
+ {
+  "i": 88,
+  "k": "text",
+  "en": "We'll analyze your Google Business Profile and send your full report within "
+ },
+ {
+  "i": 89,
+  "k": "text",
+  "en": "48 hours"
+ },
+ {
+  "i": 90,
+  "k": "text",
+  "en": "While you wait — "
+ },
+ {
+  "i": 91,
+  "k": "text",
+  "en": "see how Local Boost Lab works →"
+ },
+ {
+  "i": 92,
+  "k": "text",
+  "en": "What happens after you submit"
+ },
+ {
+  "i": 93,
+  "k": "text",
+  "en": "No automated responses. A real person looks at your profile, runs the analysis, and writes your report."
+ },
+ {
+  "i": 94,
+  "k": "text",
+  "en": "We analyze your profile"
+ },
+ {
+  "i": 95,
+  "k": "text",
+  "en": "We review your GBP completeness, review activity, post history, category selection, photo quality, and local keyword positioning within 24 hours."
+ },
+ {
+  "i": 96,
+  "k": "text",
+  "en": "You get a full report"
+ },
+ {
+  "i": 97,
+  "k": "text",
+  "en": "We email you a personalized audit with a score, specific gaps, and a prioritized list of fixes ranked by impact — not a generic checklist."
+ },
+ {
+  "i": 98,
+  "k": "text",
+  "en": "You decide what to do"
+ },
+ {
+  "i": 99,
+  "k": "text",
+  "en": "Fix it yourself with our report, or let us handle everything with an automated plan. No pressure either way — the audit is yours to keep."
+ },
+ {
+  "i": 100,
+  "k": "text",
+  "en": "Already know you want the full service?"
+ },
+ {
+  "i": 101,
+  "k": "text",
+  "en": "Skip the audit and start with a plan. Automated posting, review management, and monthly reporting — fully done for you."
+ },
+ {
+  "i": 102,
+  "k": "text",
+  "en": "See Plans →"
+ },
+ {
+  "i": 103,
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
+ },
+ {
+  "i": 104,
+  "k": "text",
+  "en": "Your Google Profile. Finally handled."
+ },
+ {
+  "i": 105,
+  "k": "text",
+  "en": "hello@localboostlab.com"
+ },
+ {
+  "i": 106,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on LinkedIn"
+ },
+ {
+  "i": 107,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Instagram"
+ },
+ {
+  "i": 108,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on X"
+ },
+ {
+  "i": 109,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Facebook"
+ },
+ {
+  "i": 110,
+  "k": "text",
+  "en": "Product"
+ },
+ {
+  "i": 111,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 112,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 113,
+  "k": "text",
+  "en": "Industries"
+ },
+ {
+  "i": 114,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 115,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 116,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 117,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 118,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 119,
+  "k": "text",
+  "en": "Privacy Policy"
+ },
+ {
+  "i": 120,
+  "k": "text",
+  "en": "Terms of Service"
+ },
+ {
+  "i": 121,
+  "k": "text",
+  "en": "Payments secured by"
+ },
+ {
+  "i": 122,
+  "k": "attr:alt",
+  "en": "Stripe"
+ },
+ {
+  "i": 123,
+  "k": "text",
+  "en": "Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses"
+ },
+ {
+  "i": 124,
+  "k": "text",
+  "en": "This site uses only essential cookies. "
+ },
+ {
+  "i": 125,
+  "k": "text",
+  "en": "Manage Cookies"
+ }
+]

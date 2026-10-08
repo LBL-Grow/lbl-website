@@ -1,0 +1,77 @@
+0|Industrias que atendemos | Local Boost Lab
+1|Local Boost Lab gestiona el Perfil de Negocio de Google de negocios locales de servicios: aire acondicionado, odontología, abogados, limpieza, plomería, talleres y más. Desde US$97 al mes.
+2|Industrias que atendemos | Local Boost Lab
+3|Gestión del Perfil de Negocio de Google para negocios locales de cualquier sector. Respuestas a reseñas, 3 publicaciones por semana e informe mensual. Desde US$97 al mes.
+4|Industrias que atendemos | Local Boost Lab
+37|Gestión del Perfil de Negocio de Google
+38|Si tus clientes lo buscan en Google,
+39|te ayudamos a aparecer.
+40|Los negocios locales de servicios viven de aparecer entre los primeros resultados del mapa de Google. Gestionamos tu Perfil de Negocio de Google (respuestas a reseñas, publicaciones cada semana e informe mensual) para que dejes de perder llamadas frente a quien aparece primero.
+44|Para responder reseñas de 4 y 5 estrellas
+45|3×/sem
+46|Publicaciones en el perfil: lunes, miércoles y viernes a las 9:00 a. m.
+47|Desde el registro hasta la primera publicación en tu perfil
+48|Experiencia a fondo
+49|Industrias con guía propia
+50|En estas cuatro industrias el perfil de Google pesa mucho y hay cuidados particulares al comunicar. Para cada una armamos una estrategia de contenido, una forma de responder reseñas y unas reglas propias.
+51|Aire acondicionado · Refrigeración
+52|Cuando el aire falla, el cliente llama al primero que ve con buenas reseñas.
+53|El contenido se arma según el clima de tu ciudad: mantenimiento preventivo, temporada de calor, humedad y servicio de urgencias, con un calendario pensado para tu zona.
+54|@@DROP:featured-card__stat@@
+55|Ver la guía de aire acondicionado →
+56|Odontología · Salud
+57|Un paciente con miedo al odontólogo lee las reseñas antes de pedir la cita.
+58|En salud el contenido se maneja con cuidado: nunca mencionamos tratamientos específicos al responder reseñas, no hacemos afirmaciones clínicas y siempre ponemos por delante las señales de confianza que tranquilizan a un paciente nervioso.
+59|@@DROP:featured-card__stat@@
+60|Ver la guía de odontología →
+61|Abogados · Firmas legales
+62|Quien necesita un abogado casi siempre empieza buscando en Google.
+63|La comunicación de un abogado pide prudencia. Nunca prometemos resultados ni mencionamos casos concretos, y cada publicación se escribe para transmitir seriedad y cercanía local sin comprometer a la firma.
+64|@@DROP:featured-card__stat@@
+65|Ver la guía de abogados →
+66|Limpieza · Servicios para el hogar
+67|Nadie le abre la puerta de su casa a una empresa en la que no confía.
+68|El cliente de limpieza compra primero confianza. Armamos el contenido alrededor de señales de seriedad (personal verificado, el mismo equipo en cada visita, resultados concretos) y reforzamos la relación de largo plazo en cada respuesta a una reseña.
+69|@@DROP:featured-card__stat@@
+70|Ver la guía de limpieza →
+71|Todos los servicios locales
+72|Trabajamos con cualquier negocio local de servicios
+73|Si tus clientes buscan en Google, tu Perfil de Negocio de Google es tu activo de marketing más importante. Las industrias de abajo reciben lo mismo (respuestas automáticas a reseñas, publicaciones cada semana e informe mensual), ajustado a su tipo de negocio.
+75|En plomería mandan las urgencias. Respuestas rápidas a las reseñas y publicaciones enfocadas en atención inmediata mantienen tu perfil a la vista cuando se revienta un tubo a las 2:00 a. m.
+77|La seguridad y la experiencia certificada son lo que convence a un cliente de electricidad. Las incluimos en el contenido sin sonar genéricos.
+79|En un taller, la fidelidad lo es todo. Las respuestas que mencionan el servicio puntual (cambio de aceite, frenos, diagnóstico) ayudan a que el cliente vuelva.
+81|En jardinería el contenido sigue el clima: temporada de lluvias, podas, mantenimiento y siembras. El calendario casi se escribe solo.
+82|Control de plagas
+83|Las búsquedas de control de plagas cambian según la época y el tipo de plaga. Ajustamos tus publicaciones a lo que pasa en tu zona: zancudos, comején, roedores.
+84|Quiropraxia y bienestar
+85|La confianza del paciente se gana antes de la primera llamada. Las publicaciones educativas sobre dolencias concretas (dolor de espalda, lesiones deportivas, postura) te muestran como el experto de la zona.
+86|Salones de belleza y spas
+87|Las respuestas a reseñas que mencionan el servicio (balayage, limpieza facial, masajes) le dicen a Google exactamente qué haces y a quién atiendes.
+89|La temporada de lluvias dispara las búsquedas de techos y goteras. Programamos tus publicaciones para esos momentos y respondemos cada reseña antes de que la competencia se lleve la siguiente llamada.
+90|Clases y educación
+91|Regreso a clases, preparación de exámenes y contenidos por grado: los negocios de educación se mueven con el calendario escolar, y tus publicaciones también.
+92|Veterinarias y mascotas
+93|Quien tiene mascota investiga muy bien a su veterinario. Una respuesta cálida y profesional a cada reseña pesa más que cualquier anuncio.
+94|Restaurantes y comida
+95|Los restaurantes viven de las reseñas. Respuestas rápidas y personales, que mencionan el plato, la ocasión y la experiencia, traen visitas y clientes fieles.
+96|Contratistas y remodelaciones
+97|Fotos de obra, publicaciones enfocadas en resultados y respuestas a reseñas que mencionan el trabajo puntual (cocinas, ampliaciones, remodelaciones) muestran lo que sabes hacer.
+98|¿No ves tu industria?
+99|Escríbenos →
+100|: si tus clientes te encuentran en Google, te podemos ayudar.
+101|El mismo sistema para cada industria.
+102|La base de lo que hacemos no cambia: respuestas automáticas a reseñas, publicaciones constantes en el perfil e informe mensual. Lo que cambia es la estrategia de contenido, el tono y los cuidados propios de tu tipo de negocio.
+103|Paso 1
+104|Conectas tu perfil de Google
+105|Solo con el acceso seguro de Google (OAuth): nunca pedimos tu contraseña. Acceso de administrador y nada más.
+106|Paso 2
+107|Empezamos en 24 horas
+108|Primera publicación hecha, reseñas vigiladas y revisión del estado del perfil completa.
+109|Paso 3
+110|Recibes las llamadas
+111|Con actividad constante, el perfil va ganando visibilidad con el paso de los meses. No prometemos posiciones.
+113|Sin contrato. Cancelas cuando quieras. Sirve para cualquier negocio local de servicios.
+114|Tu competencia ya está apareciendo primero.
+115|Cada semana que tu perfil pasa quieto le regalas clientes al negocio que aparece arriba. Activo en 24 horas y sin contratos.
+119|Cualquier negocio local de servicios
+133|Legal

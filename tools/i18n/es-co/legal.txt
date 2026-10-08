@@ -1,0 +1,33 @@
+0|Perfil de Negocio de Google para abogados y firmas | Local Boost Lab
+1|Gestión del Perfil de Negocio de Google para abogados y firmas legales. Respuestas a reseñas profesionales, contenido educativo e informe mensual. Desde US$97 al mes.
+2|Perfil de Negocio de Google para abogados y firmas | Local Boost Lab
+3|Quien busca abogado lee cómo respondes las reseñas: está midiendo tu profesionalismo. Local Boost Lab cuida esa primera impresión en Google.
+4|Perfil de Negocio de Google para abogados y firmas | Local Boost Lab
+41|Abogados · Gestión del Perfil de Negocio de Google
+42|Tu futuro cliente lee cómo respondes las reseñas antes de llamar.
+43|¿Qué dicen las tuyas?
+44|Un posible cliente mide el profesionalismo de una firma por su presencia en Google, sobre todo por cómo responde las reseñas. Mantenemos tu perfil activo y cuidado, con un tono sobrio. Desde US$97 al mes.
+47|@@DROP:section@@
+48-62|@@EMPTY@@
+63|Qué hace Local Boost Lab por tu firma
+64|Respuestas a reseñas profesionales, contenido educativo prudente e informe mensual, hecho por nosotros.
+65|Respuestas a reseñas profesionales
+66|Cada reseña de 4 y 5 estrellas recibe una respuesta mesurada, empática y profesional en menos de una hora. Nunca confirmamos ni negamos que alguien sea cliente, ni mencionamos detalles de un caso. Las reseñas negativas siempre pasan por tu aprobación.
+67|Publicaciones educativas · Con prudencia
+68|Publicamos lunes, miércoles y viernes a las 9:00 a. m. El contenido explica derechos, qué esperar de un trámite o proceso y preguntas frecuentes de tu área de práctica. Hablamos de procesos, no de promesas: nunca garantizamos resultados.
+70|El día 5 de cada mes: cómo van las reseñas, cómo rindieron las publicaciones, vistas del perfil, llamadas y clics al sitio web. Lo lees en dos minutos.
+71|Seguimiento y exactitud del perfil
+72|En el perfil de un abogado, las categorías y las áreas de práctica pesan mucho. Vigilamos cambios no autorizados y datos desactualizados, y te avisamos de lo que haya que corregir.
+73|@@DROP:section@@
+74-82|@@EMPTY@@
+128|¿Cuidan las reglas de la profesión al escribir contenido legal?
+129|Sí. Nunca usamos lenguaje de promesa («ganamos tu caso», «el mejor abogado»). Todo el contenido habla de procesos y es educativo. La responsabilidad final sobre lo que se comunica es del abogado, por eso puedes pedir vista previa en el plan Autoridad.
+130|¿Cómo manejan las respuestas a reseñas de una firma?
+131|Cada reseña positiva recibe una respuesta profesional y empática en menos de una hora. Nunca confirmamos una representación ni comentamos detalles de un caso. Las reseñas de 3 estrellas o menos te llegan con un borrador y tú decides.
+132|¿Por qué cada reseña pesa tanto en una firma?
+133|Porque una firma suele tener muchas menos reseñas que un restaurante o una tienda, así que cada una pesa más en el promedio y en la impresión que se lleva quien te está evaluando. Por eso importa responderlas todas, y bien.
+134|¿Con qué áreas de práctica trabajan?
+135|Con firmas y abogados de cualquier área: familia, laboral, penal, civil, comercial, sucesiones, migración y otras. Ajustamos el contenido y el tono a cada una.
+138|Tu presencia en Google es tu primera impresión. Que sea profesional.
+139|Hay posibles clientes evaluando tu firma en este momento. Sin contratos. Cancelas cuando quieras.
+157|Legal
