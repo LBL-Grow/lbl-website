@@ -422,5 +422,107 @@
    "'Yes, Monday'",
    "'Sí, el lunes'"
   ]
+ ],
+ "onboarding": [
+  [
+   "' uploaded'",
+   "' subidas'"
+  ],
+  [
+   "'Uploading ' + done + ' of ' + total + '… you can keep filling out the form.'",
+   "'Subiendo ' + done + ' de ' + total + '… puedes seguir llenando el formulario.'"
+  ],
+  [
+   "failed + ' photo' + (failed !== 1 ? 's' : '') + ' failed to upload. Tap Retry below, or continue — we\\'ll email you to collect them.'",
+   "failed + (failed !== 1 ? ' fotos no se subieron' : ' foto no se subió') + '. Toca Reintentar abajo o continúa: te escribimos para recibirlas.'"
+  ],
+  [
+   "total + ' photo' + (total !== 1 ? 's' : '') + ' saved to your profile ✓'",
+   "total + (total !== 1 ? ' fotos guardadas' : ' foto guardada') + ' en tu perfil ✓'"
+  ],
+  [
+   "'Retry failed uploads'",
+   "'Reintentar las que fallaron'"
+  ],
+  [
+   "'Add at least one photo, or pick \"use AI-generated images\" instead.'",
+   "'Agrega al menos una foto o elige la opción de imágenes generadas con IA.'"
+  ],
+  [
+   "'Please check both confirmation boxes before submitting.'",
+   "'Marca las dos casillas de confirmación antes de enviar.'"
+  ],
+  [
+   "'Saving your profile...'",
+   "'Guardando tu perfil...'"
+  ],
+  [
+   "'Finishing photo upload (' + left + ' left)...'",
+   "'Terminando de subir las fotos (faltan ' + left + ')...'"
+  ],
+  [
+   "'Redirecting to secure checkout...'",
+   "'Pasando al pago seguro...'"
+  ],
+  [
+   "'Complete Setup & Pay →'",
+   "'Terminar y pagar →'"
+  ],
+  [
+   "'Could not start checkout. Please try again or email support@localboostlab.com.'",
+   "'No pudimos iniciar el pago. Inténtalo de nuevo o escribe a support@localboostlab.com.'"
+  ],
+  [
+   "reviews: 'Reputation — $97/mo', reputation: 'Reputation — $97/mo', presence: 'Presence — $157/mo', complete: 'Authority — $217/mo', authority: 'Authority — $217/mo'",
+   "reviews: 'Reputación: US$97/mes', reputation: 'Reputación: US$97/mes', presence: 'Presencia: US$157/mes', complete: 'Autoridad: US$217/mes', authority: 'Autoridad: US$217/mes'"
+  ],
+  [
+   "reviews: 'Reputation — $82/mo (annual)', reputation: 'Reputation — $82/mo (annual)', presence: 'Presence — $133/mo (annual)', complete: 'Authority — $184/mo (annual)', authority: 'Authority — $184/mo (annual)'",
+   "reviews: 'Reputación: US$82/mes (anual)', reputation: 'Reputación: US$82/mes (anual)', presence: 'Presencia: US$133/mes (anual)', complete: 'Autoridad: US$184/mes (anual)', authority: 'Autoridad: US$184/mes (anual)'"
+  ],
+  [
+   "'📧 We also emailed you this link'",
+   "'📧 También te enviamos este enlace por correo'"
+  ],
+  [
+   "rejected + ' file' + (rejected !== 1 ? 's' : '') + ' skipped (not an image, or over 15MB).'",
+   "rejected + (rejected !== 1 ? ' archivos omitidos' : ' archivo omitido') + ' (no es imagen o pesa más de 15 MB).'"
+  ],
+  [
+   "'Maximum ' + MAX_PHOTOS + ' photos. You already have ' + photos.length + '.'",
+   "'Máximo ' + MAX_PHOTOS + ' fotos. Ya tienes ' + photos.length + '.'"
+  ],
+  [
+   "'Remove ' + photo.name",
+   "'Quitar ' + photo.name"
+  ],
+  [
+   "'<span>We restored your answers from earlier.</span>'",
+   "'<span>Recuperamos las respuestas que habías dado.</span>'"
+  ],
+  [
+   "'Start over'",
+   "'Empezar de nuevo'"
+  ],
+  [
+   "hvac: 'HVAC', plumbing: 'Plumbing', dental: 'Dental', legal: 'Legal',",
+   "hvac: 'Aire acondicionado', plumbing: 'Plomería', dental: 'Odontología', legal: 'Abogados',"
+  ],
+  [
+   "cleaning: 'Cleaning', landscaping: 'Landscaping', auto: 'Auto Repair',",
+   "cleaning: 'Limpieza', landscaping: 'Jardinería', auto: 'Talleres mecánicos',"
+  ],
+  [
+   "medspa: 'Med Spa', chiro: 'Chiropractic', pest: 'Pest Control', roofing: 'Roofing',",
+   "medspa: 'Medicina estética', chiro: 'Quiropraxia', pest: 'Control de plagas', roofing: 'Techos y cubiertas',"
+  ],
+  [
+   "body: JSON.stringify({ plan: plan, billing: billing, email: ownerEmail }),",
+   "body: JSON.stringify({ plan: plan, billing: billing, email: ownerEmail, locale: 'es-co' }),"
+  ],
+  [
+   "      plan:            plan,\n      bizName:",
+   "      plan:            plan,\n      language:        'es',\n      locale:          'es-co',\n      bizName:"
+  ]
  ]
 }

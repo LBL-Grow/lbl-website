@@ -1,0 +1,187 @@
+0|Política de privacidad | Local Boost Lab
+1|Política de privacidad de Local Boost Lab: cómo recogemos, usamos y protegemos tus datos personales, y cuáles son tus derechos.
+2|Política de privacidad | Local Boost Lab
+3|Política de privacidad de Local Boost Lab: cómo recogemos, usamos y protegemos tus datos.
+4|Política de privacidad | Local Boost Lab
+32|Vigente desde el 30 de abril de 2026 &nbsp;·&nbsp; Versión 1.0 &nbsp;·&nbsp; Esta es una traducción de cortesía; si hay diferencias, prevalece la versión en inglés.
+36|Contenido
+37|Introducción
+38|Información que recogemos
+39|Cómo usamos tu información
+40|Con quién compartimos los datos
+41|Seguridad de los datos
+42|Conservación de los datos
+43|Tus derechos
+44|Cookies y sitio web
+45|Residentes de California: CCPA
+46|Cambios en esta política
+49|1. Introducción
+50|Local Boost Lab («LBL», «Local Boost Lab», «nosotros») se compromete a proteger la privacidad y la seguridad de la información personal y de negocio de sus clientes. Esta Política de privacidad explica qué datos recogemos, cómo los usamos, cómo los protegemos y cuáles son tus derechos. Aplica a todos los clientes de LBL, a los visitantes del sitio y a cualquier persona cuya información tratemos al prestar nuestros servicios de gestión del Perfil de Negocio de Google.
+51|LBL es una empresa con sede en Estados Unidos. Si resides en California, la Ley de Privacidad del Consumidor de California (CCPA) te da derechos adicionales, descritos en la sección 9. LBL no recoge de forma intencional datos de residentes de la Unión Europea; si resides allí y usas nuestros servicios, escríbenos antes de suscribirte.
+52|2. Información que recogemos
+53|2.1 Información que nos das directamente
+54|Nombre y correo electrónico del dueño del negocio
+55|Nombre, dirección, teléfono y zona de servicio del negocio
+56|Enlace e identificador de ubicación del Perfil de Negocio de Google
+57|Descripción del tono de marca, lista de servicios y preferencias de contenido
+58|Fotos e imágenes del negocio (cargadas a la carpeta designada en Google Drive o Cloud)
+59|Información de pago (la procesa Stripe; LBL nunca guarda los datos de la tarjeta)
+60|Correos enviados a LBL
+61|2.2 Información que se recoge de forma automática
+62|Tokens de actualización de Google OAuth (cifrados con AES-256-GCM)
+63|Estadísticas del perfil (vistas, llamadas, clics al sitio web, solicitudes de cómo llegar)
+64|Contenido de las reseñas de tu perfil (calificaciones y textos visibles al público)
+65|Respuestas a reseñas generadas y publicadas por LBL en tu nombre
+66|Contenido de las publicaciones y registros de publicación
+67|2.3 Información que no recogemos
+68|Números de tarjetas de pago (los maneja Stripe por completo)
+69|Datos personales de tus clientes más allá de lo que es visible al público en el perfil
+70|Analítica web ni cookies de seguimiento
+71|Hábitos de compra ni comunicaciones privadas de tus clientes
+72|3. Cómo usamos tu información
+73|Finalidades de la recogida y el tratamiento de datos
+74|Finalidad
+75|Datos usados
+76|Base legal
+77|Prestación del servicio: publicar en tu perfil y responder reseñas
+78|Token de OAuth del perfil, datos del negocio, configuración de tono, fotos
+79|Ejecución del contrato
+80|Gestión de la cuenta: registro, soporte, notificaciones
+81|Nombre, correo, datos del negocio
+82|Ejecución del contrato
+83|Facturación: cobro de la suscripción
+84|Correo (se envía a Stripe); Stripe maneja los datos de la tarjeta
+85|Ejecución del contrato
+86|Mejora del servicio: análisis de tendencias agregadas
+87|Métricas anonimizadas de publicaciones y reseñas
+88|Interés legítimo
+89|Cumplimiento legal: conservación de registros
+90|Registros de facturación y del servicio
+91|Obligación legal
+92|4. Con quién compartimos los datos
+93|Compartimos tus datos solo con los siguientes encargados, y únicamente para prestar el servicio. No vendemos tus datos.
+94|Encargados del tratamiento
+95|Encargado
+96|Finalidad
+97|Datos compartidos
+99|Procesamiento de pagos
+100|Correo, dirección de facturación
+101|Google (API del Perfil de Negocio)
+102|Publicar, leer y responder reseñas
+103|Token de OAuth, contenido de las publicaciones
+104|Anthropic (API de Claude)
+105|Generación con IA de publicaciones y borradores de respuestas
+106|Datos del negocio y configuración de tono (sin datos personales)
+107|OpenAI (API)
+108|Generación con IA de respuestas del asistente de WhatsApp
+109|Datos del negocio, contenido de los mensajes de clientes
+110|Meta Platforms (WhatsApp Business Platform)
+111|Envío y recepción de mensajes de WhatsApp del asistente
+112|Número de WhatsApp del negocio, teléfonos de los clientes, contenido de los mensajes
+113|API de Google Gemini
+114|Generación de imágenes con IA para las publicaciones
+115|Tipo de negocio, palabras clave de servicios
+116|Railway.app
+117|Alojamiento e infraestructura de la aplicación
+118|Datos de la aplicación cifrados
+119|Supabase
+120|Base de datos (región Este de EE. UU.)
+121|Todos los datos de la cuenta y del servicio
+122|Resend.com
+123|Envío de correos transaccionales
+124|Correo electrónico, contenido del mensaje
+125|Wise
+126|Pagos y desembolsos (si aplica)
+127|Nombre del negocio, datos bancarios
+128|No compartimos tus datos con redes de publicidad, plataformas de analítica, intermediarios de datos ni terceros que no estén en esta lista sin tu consentimiento expreso.
+129|5. Seguridad de los datos
+130|Aplicamos medidas de seguridad estándar del sector para proteger tus datos:
+131|Cifrado en reposo:
+132|Todos los tokens de OAuth y las credenciales sensibles se cifran con AES-256-GCM
+133|Cifrado en tránsito:
+134|Todos los datos viajan sobre TLS 1.2 o superior
+135|Seguridad de la base de datos:
+136|Supabase alojado en la región Este de EE. UU., con seguridad a nivel de fila activada
+137|Seguridad de los pagos:
+138|Todos los pagos los procesa Stripe, que cuenta con certificación PCI DSS nivel 1. LBL nunca guarda, transmite ni tiene acceso a los datos de la tarjeta.
+139|Aviso de incidentes:
+140|Si ocurre un incidente de seguridad que afecte tu información personal, te avisaremos por correo a tu dirección registrada dentro de las 72 horas siguientes a detectarlo.
+141|Control de accesos:
+142|El acceso del equipo de LBL a los datos de clientes se limita a quienes lo necesitan para su trabajo. Todos los accesos quedan registrados.
+143|6. Conservación de los datos
+144|Tiempos de conservación de los datos
+145|Tipo de dato
+146|Tiempo de conservación
+147|Información de la cuenta (nombre, correo, datos del negocio)
+148|12 meses después de cancelar la suscripción; luego se elimina
+149|Tokens de actualización de Google OAuth
+150|Se eliminan de inmediato al terminar la cuenta o revocar el acceso
+151|Contenido de publicaciones y registros de respuestas a reseñas
+152|12 meses; luego se eliminan o se anonimizan
+153|Registros de pago e historial de facturación
+154|7 años (exigido por la ley tributaria de EE. UU.)
+155|Correos
+156|3 años
+157|Fotos del negocio cargadas al almacenamiento en la nube
+158|Mientras la suscripción esté activa, más 30 días después de cancelar
+159|7. Tus derechos
+160|Tienes los siguientes derechos sobre tus datos personales. Para ejercer cualquiera de ellos, escribe a
+162|con tu solicitud. Respondemos en un plazo de 30 días.
+163|Derecho de acceso:
+164|Pedir una copia de los datos personales que tenemos sobre ti.
+165|Derecho de rectificación:
+166|Pedir que se corrijan datos inexactos o incompletos.
+167|Derecho de supresión:
+168|Pedir que se eliminen tus datos personales. Ten en cuenta que podemos conservar los datos que exige la ley (por ejemplo, los registros de facturación).
+169|Derecho de portabilidad:
+170|Pedir tus datos en un formato legible por máquina.
+171|Derecho de oposición:
+172|Oponerte a que tratemos tus datos con base en el interés legítimo.
+173|8. Cookies y sitio web
+174|El sitio de Local Boost Lab usa únicamente cookies esenciales. Son estrictamente necesarias para que funcionen el pago y el registro. No usamos:
+175|Cookies de analítica (por ejemplo, Google Analytics)
+176|Cookies de publicidad o remarketing
+177|Cookies de seguimiento de terceros
+178|Las cookies esenciales incluyen cookies de sesión que te permiten completar el pago y el formulario de registro. Caducan al terminar la sesión del navegador o a los 30 días, lo que ocurra primero.
+179|9. Residentes de California: derechos de la CCPA
+180|Si resides en California, la Ley de Privacidad del Consumidor de California de 2018 (CCPA) te da derechos específicos sobre tu información personal:
+181|Derecho a saber:
+182|Puedes pedir que te informemos las categorías y los datos concretos de información personal que hemos recogido sobre ti, las categorías de fuentes, la finalidad con la que los recogemos y las categorías de terceros con quienes los compartimos.
+183|Derecho a eliminar:
+184|Puedes pedir que se elimine la información personal que hemos recogido de ti, con ciertas excepciones.
+185|Derecho a excluirte de la venta:
+186|LBL no vende información personal. Este derecho no aplica a nuestros servicios.
+187|Derecho a no ser discriminado:
+188|No te discriminaremos por ejercer tus derechos de la CCPA.
+189|Para ejercer tus derechos de la CCPA, escríbenos a
+191|. Verificaremos tu identidad antes de tramitar la solicitud.
+192|10. Cambios en esta política
+193|Podemos actualizar esta Política de privacidad. Te avisaremos de los cambios importantes por correo a tu dirección registrada, al menos 30 días antes de que entren en vigencia. Si sigues usando el servicio después de esa fecha, se entiende que aceptas la política actualizada.
+194|Los cambios menores (como aclaraciones o correcciones) pueden hacerse sin aviso previo. La fecha de vigencia que aparece al inicio de esta página corresponde siempre a la última revisión.
+195|11. Asistente de WhatsApp con IA
+196|Esta sección aplica a los negocios que usan el asistente de WhatsApp con IA de Local Boost Lab y a los clientes que les escriben por WhatsApp. En lo que difiera de las secciones 2 a 6, que describen el servicio del Perfil de Negocio de Google, esta sección es la que rige para el asistente de WhatsApp.
+197|11.1 Servicio de mensajería por WhatsApp
+198|Al prestar el servicio del asistente de WhatsApp tratamos los mensajes y los datos de contacto de las conversaciones que tus clientes envían a tu número de WhatsApp Business. Lo hacemos solo en tu nombre y solo para prestarte el servicio: generar respuestas, contestar preguntas frecuentes, agendar y confirmar citas y enviar recordatorios. Usamos la plataforma WhatsApp Business de Meta Platforms, y Meta trata la información bajo sus propios términos. No vendemos esta información ni usamos los datos de un cliente en beneficio de otro. Quien le escribe a un negocio debe contactar directamente a ese negocio sobre su información. Conservamos estos datos solo el tiempo necesario para prestar el servicio y cumplir requisitos legales y operativos. Cumplimos los términos de la plataforma de Meta y las políticas de WhatsApp Business que apliquen.
+199|11.2 Nuestro papel
+200|El negocio que conecta su número de WhatsApp Business decide cómo se usan las conversaciones de sus clientes. Local Boost Lab trata esas conversaciones en nombre del negocio y solo para operar su asistente. Las conversaciones de un negocio nunca se usan para atender a otro, y no las vendemos.
+201|11.3 Información que tratamos
+202|El número de WhatsApp Business del negocio y el acceso que este concede al conectarlo
+203|Nombres y teléfonos de los clientes, tal como los entrega WhatsApp
+204|El contenido de los mensajes entre los clientes y el asistente o el equipo del negocio
+205|Datos de las citas, como fecha, hora y servicio solicitado
+206|Información del negocio que sirve para responder preguntas, como dirección, precios, horarios y servicios
+207|11.4 Para qué la usamos
+208|Responder en nombre del negocio las preguntas de sus clientes
+209|Agendar y confirmar citas y enviar recordatorios
+210|Pasarle la conversación al equipo del negocio cuando hace falta una persona
+211|Permitir que nuestro equipo supervise las respuestas del asistente y cuide la calidad
+212|11.5 Quién puede ver las conversaciones
+213|Las conversaciones las pueden ver el negocio dueño del número de WhatsApp y el personal de Local Boost Lab que supervisa el asistente, con los controles de acceso descritos en la sección 5. Los mensajes se entregan por la plataforma WhatsApp Business que opera Meta Platforms, Inc., y el texto de las respuestas lo generan los proveedores de IA listados en la sección 4. Esos proveedores reciben solo lo necesario para entregar y responder cada mensaje.
+214|11.6 Conservación y eliminación
+215|Los datos de conversaciones y citas se conservan mientras la suscripción del negocio esté activa y se eliminan dentro de los 30 días siguientes a la cancelación, salvo que la ley exija conservarlos más tiempo. El negocio puede pedirnos en cualquier momento que eliminemos sus conversaciones. Un cliente que quiera eliminar sus mensajes puede pedírselo directamente al negocio o escribir a
+217|, y atenderemos la solicitud junto con ese negocio.
+218|12. Contacto
+219|¿Dudas o solicitudes?
+220|Escríbenos a
+222|. Respondemos todas las consultas de privacidad en un plazo de 30 días.
+223|Local Boost Lab · Responsable del tratamiento · Estados Unidos

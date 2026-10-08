@@ -1,0 +1,88 @@
+0|Política de cookies | Local Boost Lab
+1|Política de cookies de Local Boost Lab: qué cookies usamos, para qué, cuánto duran y cómo gestionar tus preferencias.
+2|Política de cookies | Local Boost Lab
+3|Política de cookies de Local Boost Lab: solo cookies esenciales. Sin seguimiento ni publicidad.
+4|Política de cookies | Local Boost Lab
+37|Vigente desde el 1 de enero de 2025 &nbsp;·&nbsp; Local Boost Lab, LLC &nbsp;·&nbsp; Esta es una traducción de cortesía; si hay diferencias, prevalece la versión en inglés.
+38|1. Qué son las cookies
+39|Las cookies son pequeños archivos de texto que tu navegador guarda en tu dispositivo cuando visitas un sitio web. Le permiten al sitio recordar información entre páginas o visitas. Las cookies no pueden ejecutar código ni transmitir virus: son solo pequeños registros de datos asociados al sitio que los crea.
+40|2. Cómo usamos las cookies
+41|Local Boost Lab usa
+42|únicamente cookies estrictamente necesarias
+43|. No usamos cookies de analítica, de publicidad ni de seguimiento de terceros. Las únicas cookies de este sitio son las esenciales para que funcionen el pago y el registro.
+44|Estrictamente necesarias
+45|Siempre activas
+46|Estas cookies permiten las funciones básicas del sitio, que no puede operar sin ellas. No recogen información que pueda usarse con fines de marketing.
+47|Cookies estrictamente necesarias
+48|Nombre de la cookie
+49|Finalidad
+50|Duración
+51|Proveedor
+52|lbl_cookie_consent
+53|Guarda tu preferencia de cookies (aceptadas o personalizadas) para no mostrar el aviso en cada visita.
+54|12 meses
+55|localboostlab.com
+56|Cookies de sesión de Stripe
+57|Mantienen el estado de tu sesión durante el pago. Las crea y administra Stripe.
+58|Sesión
+59|stripe.com
+60|Vercel Speed Insights
+61|Medición anónima de rendimiento, sin datos personales ni seguimiento entre sitios. Sirve para detectar páginas lentas.
+62|Sesión
+63|vercel.com
+65|No se usan
+66|No usamos Google Analytics, Mixpanel, Segment ni ningún servicio de cookies de analítica. No se rastrea ni se perfila el comportamiento de los visitantes.
+67|Cookies de marketing y publicidad
+68|No se usan
+69|No usamos el píxel de Facebook, etiquetas de conversión de Google Ads, píxeles de remarketing ni ninguna cookie publicitaria. No se te rastrea en otros sitios después de visitar localboostlab.com.
+70|3. Cookies de terceros
+71|Cuando pasas a la página de pago de Stripe para comprar un plan, Stripe puede crear sus propias cookies en stripe.com. Esas cookies se rigen por la
+72|Política de privacidad de Stripe
+73|. No tenemos control ni responsabilidad sobre las cookies que crea Stripe.
+74|Este sitio carga Google Tag Manager (GTM). GTM por sí mismo no crea cookies y no hemos configurado ninguna etiqueta que las cree. Se usa solo para organizar los scripts que podamos agregar en el futuro.
+75|4. Tiempos de conservación de las cookies
+76|Resumen de conservación de cookies
+77|Categoría
+78|Conservación máxima
+79|Notas
+80|Preferencia de consentimiento (
+81|lbl_cookie_consent
+82|12 meses
+83|Se guarda en localStorage, no es una cookie de red
+84|Sesión de pago de Stripe
+85|Sesión (termina al cerrar la pestaña)
+86|Administrada por Stripe
+87|Vercel Speed Insights
+88|Sesión
+89|Sin seguimiento persistente ni entre sitios
+90|Nota:
+91|lbl_cookie_consent
+92|se guarda en el
+93|localStorage
+94|de tu navegador, no como una cookie HTTP. Funciona igual: se conserva entre sesiones hasta que se borra, pero nunca se envía a nuestros servidores.
+95|5. Cómo gestionar las cookies en tu navegador
+96|Puedes controlar y borrar las cookies desde la configuración de tu navegador. Rutas en los navegadores más comunes:
+97|Chrome:
+98|Configuración → Privacidad y seguridad → Cookies y otros datos de sitios
+99|Safari:
+100|Preferencias → Privacidad → Gestionar datos de sitios web
+101|Firefox:
+102|Ajustes → Privacidad y seguridad → Cookies y datos del sitio
+103|Edge:
+104|Configuración → Cookies y permisos del sitio → Administrar y eliminar cookies y datos del sitio
+105|Si bloqueas las cookies estrictamente necesarias, el pago y el registro no funcionarán bien. Como solo usamos cookies esenciales, bloquearlas todas te impedirá suscribirte al servicio.
+106|Para borrar tu preferencia de consentimiento guardada en
+107|localStorage
+108|, abre las herramientas de desarrollador del navegador (F12 o Cmd+Option+I), ve a la pestaña Application, elige Local Storage → localboostlab.com y borra la clave
+109|lbl_cookie_consent
+110|. El aviso de cookies volverá a aparecer en tu siguiente visita.
+111|6. No rastrear (Do Not Track)
+112|Algunos navegadores envían una señal de «No rastrear» (DNT). Como no rastreamos usuarios entre sitios ni creamos perfiles de comportamiento, nuestro sitio ya se comporta de acuerdo con esa preferencia, sin importar la señal que se envíe.
+113|7. Cambios en esta política
+114|Podemos actualizar esta Política de cookies si agregamos funciones que requieran cookies nuevas. Los cambios importantes se comunican en el aviso de cookies del sitio y se publican aquí con una nueva fecha de vigencia. La versión más reciente está siempre en
+115|localboostlab.com/cookies
+116|8. Contacto
+117|¿Dudas sobre las cookies?
+118|Escríbenos a
+120|y te respondemos en 2 días hábiles.
+121|Local Boost Lab · Estados Unidos
