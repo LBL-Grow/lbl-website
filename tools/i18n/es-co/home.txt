@@ -1,9 +1,9 @@
 0|Local Boost Lab: gestión del Perfil de Negocio de Google
-1|Gestión automatizada de tu Perfil de Negocio de Google (antes Google Mi Negocio): publicaciones, respuestas a reseñas e informe mensual. Desde US$97 al mes, sin contrato.
+1|Gestión automatizada de tu Perfil de Negocio de Google (antes Google Mi Negocio): publicaciones, respuestas a reseñas e informe mensual. $400.000 al mes, sin contrato.
 2|Local Boost Lab: gestión del Perfil de Negocio de Google
-3|Gestión automatizada del Perfil de Negocio de Google para negocios locales en Colombia. Publicaciones, respuestas a reseñas e informe mensual. Desde US$97 al mes, sin contrato.
+3|Gestión automatizada del Perfil de Negocio de Google para negocios locales en Colombia. Publicaciones, respuestas a reseñas e informe mensual. $400.000 al mes, sin contrato.
 4|Local Boost Lab: tu perfil de Google, por fin atendido.
-5|Gestión automatizada del Perfil de Negocio de Google para negocios locales en Colombia. Desde US$97 al mes.
+5|Gestión automatizada del Perfil de Negocio de Google para negocios locales en Colombia. $400.000 al mes.
 7|Mira cómo está tu Perfil de Negocio de Google: auditoría gratis y sin compromiso.
 8|Pide tu auditoría gratis →
 9|× Cerrar aviso
@@ -12,7 +12,7 @@
 43|Reseñas respondidas en menos de una hora. Tres publicaciones por semana. Informe mensual el día 5. Tú no tienes que tocar nada.
 44|Criterio humano en cada reseña que importa. Velocidad de la IA en lo demás.
 46|Cifrado AES-256 · Solo acceso de administrador · Lo revocas cuando quieras
-47|Mira qué incluye cada plan →
+47|Mira qué incluye el plan →
 48|Lista gratis para revisar tu perfil de Google
 49|Tu nombre
 50|Tu nombre
@@ -59,7 +59,7 @@
 105|Publicaciones lunes, miércoles y viernes. Todas las semanas, sin saltarnos ninguna.
 106|¿Una mala reseña? Aviso en minutos y borrador listo. Tú decides qué se publica.
 107|El informe llega a tu correo el día 5. Nadie te va a pedir una reunión para explicártelo.
-108|Mira qué incluye cada plan →
+108|Mira qué incluye el plan →
 109|SIEMPRE ACTIVO
 110|Gestión automatizada del
 111|Perfil de Negocio de Google
@@ -94,11 +94,11 @@
 145|Ilustración de la gestión del Perfil de Negocio de Google de Local Boost Lab
 146|Lo que te comprometemos, sin adornos.
 147|@@DROP:bento-cell@@
-148|al mes para empezar, sin contrato ni costo de instalación
+148|al mes, sin contrato ni costo de instalación
 149|10 min
 150|es lo que tardas en llenar la configuración inicial
-151|Elige tu plan. Sin contrato. Cancelas cuando quieras.
-152|Con el pago anual ahorras 15 %. Y si prefieres pagar mes a mes, también funciona.
+151|Un solo plan, con todo incluido. Sin contrato.
+152|Con el pago anual ahorras 15 %. Y si prefieres pagar mes a mes, también funciona. Precios en pesos colombianos.
 195|Las respuestas a reseñas se generan con IA. Tú apruebas todas las respuestas a reseñas de 3 estrellas o menos. Las de 4 y 5 estrellas se publican solas, con tu tono.
 197|Tu perfil de Google es tu mejor vendedor gratuito.
 198|Hoy casi nadie lo ve.

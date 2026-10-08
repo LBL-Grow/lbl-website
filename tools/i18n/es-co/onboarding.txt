@@ -7,13 +7,13 @@
 9|3. Fotos
 10|4. Finalizar
 11|Plan elegido:
-12|Cambiar de plan →
-13|Elige tu plan
-14|Reputación: US$97/mes · respuestas a reseñas + informe mensual
-15|Presencia: US$157/mes · 3 publicaciones por semana + informe mensual
-16|Autoridad: US$217/mes · reseñas, publicaciones y soporte prioritario
-17|¿No estás seguro?
-18|Compara los planes →
+12|Ver qué incluye →
+13|Tu plan
+14|@@DROP:option@@
+15|@@DROP:option@@
+16|Autoridad: $400.000/mes · reseñas, publicaciones, informe y soporte prioritario
+17|¿Quieres ver el detalle?
+18|Ver qué incluye →
 19|· Sin contrato, cancelas cuando quieras.
 20|Bienvenido a Local Boost Lab.
 21|Vamos a configurar tu perfil. Son entre 5 y 7 minutos. Después de enviarlo, empezamos en 24 horas.

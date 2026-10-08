@@ -22,6 +22,7 @@ SITE = 'https://localboostlab.com'
 I18N = ROOT / 'tools/i18n/es-co'
 SHARED = json.load(open(I18N / '_shared.json'))
 JS = json.load(open(I18N / '_js.json'))
+PATCHES = json.load(open(I18N / '_patches.json'))
 LINKS = {c['en']: c['es'] for c in PAGES.values()}
 VOID = {'br', 'img', 'input', 'meta', 'link', 'hr', 'source'}
 
@@ -146,6 +147,27 @@ def rewrite_links(html):
             return f'{m.group(1)}"{LINKS[norm]}{sep}{rest}"'
         return m.group(0)
     return re.sub(r'(\bhref=)"(/[^"]*)"', sub, html)
+
+
+def apply_patches(html, key):
+    """Ajustes propios de la versión Colombia que no son traducción (p. ej. plan único en pesos).
+
+    _patches.json: {"*": {...}, "<clave>": {...}} con
+      "drop":    [[texto, clase o etiqueta], ...]  elimina el elemento contenedor de cada aparición del texto
+      "replace": [[antes, después], ...]          reemplazo literal en el HTML final
+    """
+    for scope in ('*', key):
+        cfg = PATCHES.get(scope, {})
+        for marker, target in cfg.get('drop', []):
+            while marker in html:
+                a, b = element_bounds(html, html.index(marker), target)
+                html = html[:a] + html[b:]
+        for old, new in cfg.get('replace', []):
+            html = html.replace(old, new)
+    css = PATCHES.get('css')
+    if css:
+        html = html.replace('</head>', f'  <style data-es-co>{css}</style>\n</head>', 1)
+    return html
 
 
 def absolute_assets(html, src):
@@ -276,6 +298,7 @@ def main():
         html = head(html, cfg)
         html = js_strings(html, key)
         html = set_lang_link(html, cfg['en'], 'en', 'English')
+        html = apply_patches(html, key)
         if not check:
             dst = ROOT / cfg['dst']
             dst.parent.mkdir(parents=True, exist_ok=True)

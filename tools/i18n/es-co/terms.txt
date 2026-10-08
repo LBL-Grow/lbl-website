@@ -29,13 +29,13 @@
 62|Avisos de reseñas:
 63|Avisos automáticos y borradores de respuesta para las reseñas de 3 estrellas o menos, que requieren tu aprobación antes de publicarse.
 64|Publicación de contenido:
-65|Publicaciones optimizadas para SEO en tu perfil, con un calendario fijo (planes Presencia y Autoridad).
+65|Publicaciones optimizadas para SEO en tu perfil, con un calendario fijo.
 66|Imágenes generadas con IA:
-67|Imágenes creadas con IA para las publicaciones cuando no hay fotos del cliente (planes Presencia y Autoridad).
+67|Imágenes creadas con IA para las publicaciones cuando no hay fotos del cliente.
 68|Informe mensual de resultados:
 69|Se envía por correo el día 5 de cada mes.
 70|Seguimiento del estado del perfil:
-71|Vigilancia y alertas de riesgo de suspensión (solo plan Autoridad).
+71|Vigilancia y alertas de riesgo de suspensión.
 72|Los servicios se prestan por suscripción. LBL es un proveedor independiente y no está afiliado a Google LLC, ni cuenta con su respaldo ni es su socio. El uso del Perfil de Negocio de Google está sujeto a los términos del propio Google.
 73|3. Planes y facturación
 74|3.1 Planes y precios
@@ -43,12 +43,12 @@
 76|Plan
 77|Precio mensual
 78|Precio anual (por mes)
-80|US$97 al mes
-81|US$82 al mes (US$984 al año)
-83|US$157 al mes
-84|US$133 al mes (US$1.596 al año)
-86|US$217 al mes
-87|US$184 al mes (US$2.208 al año)
+80|@@DROP:tr@@
+81|@@EMPTY@@
+83|@@DROP:tr@@
+84|@@EMPTY@@
+86|$400.000 COP al mes
+87|$340.000 COP al mes ($4.080.000 COP al año)
 88|3.2 Condiciones de facturación
 89|Todos los cobros se procesan con Stripe. Al dar tus datos de pago autorizas a LBL a cobrar de forma recurrente a tu medio de pago.
 90|Las suscripciones se renuevan automáticamente salvo que se cancelen según la sección 7.
@@ -82,7 +82,7 @@
 119|Dentro de 5 minutos desde que se detecta la reseña
 120|Primera publicación después del registro
 121|Dentro de las 24 horas siguientes al envío del formulario de registro completo
-122|Calendario de publicaciones (Presencia y Autoridad)
+122|Calendario de publicaciones
 123|Lunes, miércoles y viernes a las 9:00 a. m., hora local del cliente
 125|Se envía por correo el día 5 de cada mes
 126|Estos compromisos suponen que tu perfil sigue conectado y accesible. Si no mantienes el acceso de administrador de LBL, el servicio puede retrasarse o suspenderse sin reembolso.
