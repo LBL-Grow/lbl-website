@@ -69,5 +69,17 @@
     "var(--authority-blue);\">$400.000<"
    ]
   ]
+ },
+ "about": {
+  "replace": [
+   [
+    "var(--authority-blue);\">US$97<",
+    "var(--authority-blue);\">$400.000<"
+   ],
+   [
+    "al mes para empezar, sin contrato",
+    "al mes, sin contrato"
+   ]
+  ]
  }
 }
