@@ -1,0 +1,767 @@
+[
+ {
+  "i": 0,
+  "k": "text",
+  "en": "Cookie Policy | Local Boost Lab"
+ },
+ {
+  "i": 1,
+  "k": "attr:content",
+  "en": "Local Boost Lab Cookie Policy — what cookies we use, why we use them, how long they last, and how to manage or opt out of your preferences."
+ },
+ {
+  "i": 2,
+  "k": "attr:content",
+  "en": "Cookie Policy | Local Boost Lab"
+ },
+ {
+  "i": 3,
+  "k": "attr:content",
+  "en": "Local Boost Lab Cookie Policy — essential cookies only. No tracking, no advertising."
+ },
+ {
+  "i": 4,
+  "k": "attr:content",
+  "en": "Cookie Policy | Local Boost Lab"
+ },
+ {
+  "i": 5,
+  "k": "attr:aria-label",
+  "en": "Main navigation"
+ },
+ {
+  "i": 6,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab - Home"
+ },
+ {
+  "i": 7,
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
+ },
+ {
+  "i": 8,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 9,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 10,
+  "k": "text",
+  "en": "Industries "
+ },
+ {
+  "i": 11,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 12,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 13,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 14,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 15,
+  "k": "text",
+  "en": "All Industries"
+ },
+ {
+  "i": 16,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 17,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 18,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 19,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 20,
+  "k": "text",
+  "en": "See Plans →"
+ },
+ {
+  "i": 21,
+  "k": "attr:aria-label",
+  "en": "Toggle menu"
+ },
+ {
+  "i": 22,
+  "k": "attr:aria-label",
+  "en": "Mobile menu"
+ },
+ {
+  "i": 23,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 24,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 25,
+  "k": "text",
+  "en": "Industries "
+ },
+ {
+  "i": 26,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 27,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 28,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 29,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 30,
+  "k": "text",
+  "en": "All Industries"
+ },
+ {
+  "i": 31,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 32,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 33,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 34,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 35,
+  "k": "text",
+  "en": "See Plans →"
+ },
+ {
+  "i": 36,
+  "k": "text",
+  "en": "Cookie Policy"
+ },
+ {
+  "i": 37,
+  "k": "text",
+  "en": "Effective: January 1, 2025 &nbsp;·&nbsp; Local Boost Lab, LLC"
+ },
+ {
+  "i": 38,
+  "k": "text",
+  "en": "1. What Are Cookies"
+ },
+ {
+  "i": 39,
+  "k": "text",
+  "en": "Cookies are small text files stored on your device by your browser when you visit a website. They allow the site to remember information between pages or visits. Cookies cannot execute code or deliver viruses; they are simply small data records linked to the website that set them."
+ },
+ {
+  "i": 40,
+  "k": "text",
+  "en": "2. How We Use Cookies"
+ },
+ {
+  "i": 41,
+  "k": "text",
+  "en": "Local Boost Lab uses "
+ },
+ {
+  "i": 42,
+  "k": "text",
+  "en": "strictly necessary cookies only"
+ },
+ {
+  "i": 43,
+  "k": "text",
+  "en": ". We do not deploy analytics, advertising, or third-party tracking cookies. The sole cookies set on this site are essential to make checkout and onboarding work."
+ },
+ {
+  "i": 44,
+  "k": "text",
+  "en": "Strictly Necessary "
+ },
+ {
+  "i": 45,
+  "k": "text",
+  "en": "Always Active"
+ },
+ {
+  "i": 46,
+  "k": "text",
+  "en": "These cookies enable core website functions. The site cannot operate without them. They do not collect information that could be used for marketing."
+ },
+ {
+  "i": 47,
+  "k": "attr:aria-label",
+  "en": "Strictly necessary cookies"
+ },
+ {
+  "i": 48,
+  "k": "text",
+  "en": "Cookie Name"
+ },
+ {
+  "i": 49,
+  "k": "text",
+  "en": "Purpose"
+ },
+ {
+  "i": 50,
+  "k": "text",
+  "en": "Duration"
+ },
+ {
+  "i": 51,
+  "k": "text",
+  "en": "Provider"
+ },
+ {
+  "i": 52,
+  "k": "text",
+  "en": "lbl_cookie_consent"
+ },
+ {
+  "i": 53,
+  "k": "text",
+  "en": "Stores your cookie preference (accepted / custom) so the banner isn't shown on repeat visits."
+ },
+ {
+  "i": 54,
+  "k": "text",
+  "en": "12 months"
+ },
+ {
+  "i": 55,
+  "k": "text",
+  "en": "localboostlab.com"
+ },
+ {
+  "i": 56,
+  "k": "text",
+  "en": "Stripe session cookies"
+ },
+ {
+  "i": 57,
+  "k": "text",
+  "en": "Maintains your checkout session state during payment. Set and managed entirely by Stripe."
+ },
+ {
+  "i": 58,
+  "k": "text",
+  "en": "Session"
+ },
+ {
+  "i": 59,
+  "k": "text",
+  "en": "stripe.com"
+ },
+ {
+  "i": 60,
+  "k": "text",
+  "en": "Vercel Speed Insights"
+ },
+ {
+  "i": 61,
+  "k": "text",
+  "en": "Anonymous performance timing — no personal data or cross-site tracking. Used to detect slow page loads."
+ },
+ {
+  "i": 62,
+  "k": "text",
+  "en": "Session"
+ },
+ {
+  "i": 63,
+  "k": "text",
+  "en": "vercel.com"
+ },
+ {
+  "i": 64,
+  "k": "text",
+  "en": "Analytics Cookies "
+ },
+ {
+  "i": 65,
+  "k": "text",
+  "en": "Not Used"
+ },
+ {
+  "i": 66,
+  "k": "text",
+  "en": "We do not use Google Analytics, Mixpanel, Segment, or any analytics cookie service. No visitor behavior is tracked or profiled."
+ },
+ {
+  "i": 67,
+  "k": "text",
+  "en": "Marketing &amp; Advertising Cookies "
+ },
+ {
+  "i": 68,
+  "k": "text",
+  "en": "Not Used"
+ },
+ {
+  "i": 69,
+  "k": "text",
+  "en": "We do not use Facebook Pixel, Google Ads conversion tags, retargeting pixels, or any advertising cookie. You will not be tracked across sites after visiting localboostlab.com."
+ },
+ {
+  "i": 70,
+  "k": "text",
+  "en": "3. Third-Party Cookies"
+ },
+ {
+  "i": 71,
+  "k": "text",
+  "en": "When you click through to Stripe's checkout page to purchase a plan, Stripe may set its own cookies on stripe.com. These are governed by "
+ },
+ {
+  "i": 72,
+  "k": "text",
+  "en": "Stripe's Privacy Policy"
+ },
+ {
+  "i": 73,
+  "k": "text",
+  "en": ". We have no control over, and are not responsible for, cookies set by Stripe."
+ },
+ {
+  "i": 74,
+  "k": "text",
+  "en": "Google Tag Manager (GTM) is loaded on this site. GTM itself does not set cookies, and we have not configured any GTM tags that set cookies. GTM is used only to manage the structure of any future scripts we may add."
+ },
+ {
+  "i": 75,
+  "k": "text",
+  "en": "4. Cookie Retention Periods"
+ },
+ {
+  "i": 76,
+  "k": "attr:aria-label",
+  "en": "Cookie retention summary"
+ },
+ {
+  "i": 77,
+  "k": "text",
+  "en": "Category"
+ },
+ {
+  "i": 78,
+  "k": "text",
+  "en": "Maximum Retention"
+ },
+ {
+  "i": 79,
+  "k": "text",
+  "en": "Notes"
+ },
+ {
+  "i": 80,
+  "k": "text",
+  "en": "Consent preference ("
+ },
+ {
+  "i": 81,
+  "k": "text",
+  "en": "lbl_cookie_consent"
+ },
+ {
+  "i": 82,
+  "k": "text",
+  "en": "12 months"
+ },
+ {
+  "i": 83,
+  "k": "text",
+  "en": "Stored in localStorage, not a network cookie"
+ },
+ {
+  "i": 84,
+  "k": "text",
+  "en": "Stripe checkout session"
+ },
+ {
+  "i": 85,
+  "k": "text",
+  "en": "Session (closes with browser tab)"
+ },
+ {
+  "i": 86,
+  "k": "text",
+  "en": "Managed by Stripe"
+ },
+ {
+  "i": 87,
+  "k": "text",
+  "en": "Vercel Speed Insights"
+ },
+ {
+  "i": 88,
+  "k": "text",
+  "en": "Session"
+ },
+ {
+  "i": 89,
+  "k": "text",
+  "en": "No cross-site or persistent tracking"
+ },
+ {
+  "i": 90,
+  "k": "text",
+  "en": "Note: "
+ },
+ {
+  "i": 91,
+  "k": "text",
+  "en": "lbl_cookie_consent"
+ },
+ {
+  "i": 92,
+  "k": "text",
+  "en": " is stored in your browser's "
+ },
+ {
+  "i": 93,
+  "k": "text",
+  "en": "localStorage"
+ },
+ {
+  "i": 94,
+  "k": "text",
+  "en": ", not as an HTTP cookie. It works the same way — it persists across browser sessions until cleared — but it is never transmitted to our servers."
+ },
+ {
+  "i": 95,
+  "k": "text",
+  "en": "5. Managing Cookies in Your Browser"
+ },
+ {
+  "i": 96,
+  "k": "text",
+  "en": "You can control and delete cookies through your browser settings. Instructions for common browsers:"
+ },
+ {
+  "i": 97,
+  "k": "text",
+  "en": "Chrome:"
+ },
+ {
+  "i": 98,
+  "k": "text",
+  "en": " Settings → Privacy and Security → Cookies and other site data"
+ },
+ {
+  "i": 99,
+  "k": "text",
+  "en": "Safari:"
+ },
+ {
+  "i": 100,
+  "k": "text",
+  "en": " Preferences → Privacy → Manage Website Data"
+ },
+ {
+  "i": 101,
+  "k": "text",
+  "en": "Firefox:"
+ },
+ {
+  "i": 102,
+  "k": "text",
+  "en": " Settings → Privacy &amp; Security → Cookies and Site Data"
+ },
+ {
+  "i": 103,
+  "k": "text",
+  "en": "Edge:"
+ },
+ {
+  "i": 104,
+  "k": "text",
+  "en": " Settings → Cookies and site permissions → Manage and delete cookies and site data"
+ },
+ {
+  "i": 105,
+  "k": "text",
+  "en": "Blocking strictly necessary cookies will prevent checkout and onboarding from working correctly. Because we only use essential cookies, blocking all cookies will impair your ability to subscribe to our service."
+ },
+ {
+  "i": 106,
+  "k": "text",
+  "en": "To clear your consent preference stored in "
+ },
+ {
+  "i": 107,
+  "k": "text",
+  "en": "localStorage"
+ },
+ {
+  "i": 108,
+  "k": "text",
+  "en": ", open your browser's developer tools (F12 or Cmd+Option+I), go to the Application tab, select Local Storage → localboostlab.com, and delete the "
+ },
+ {
+  "i": 109,
+  "k": "text",
+  "en": "lbl_cookie_consent"
+ },
+ {
+  "i": 110,
+  "k": "text",
+  "en": " key. The cookie banner will reappear on your next visit."
+ },
+ {
+  "i": 111,
+  "k": "text",
+  "en": "6. Do Not Track"
+ },
+ {
+  "i": 112,
+  "k": "text",
+  "en": "Some browsers offer a \"Do Not Track\" (DNT) signal. Because we do not track users across sites or build behavioral profiles, our site's behavior is already consistent with DNT preferences regardless of the signal sent."
+ },
+ {
+  "i": 113,
+  "k": "text",
+  "en": "7. Changes to This Policy"
+ },
+ {
+  "i": 114,
+  "k": "text",
+  "en": "We may update this Cookie Policy if we add new functionality that requires new cookies. Material changes will be communicated via the cookie banner on the site and updated here with a new effective date. The most current version is always at "
+ },
+ {
+  "i": 115,
+  "k": "text",
+  "en": "localboostlab.com/cookies"
+ },
+ {
+  "i": 116,
+  "k": "text",
+  "en": "8. Contact"
+ },
+ {
+  "i": 117,
+  "k": "text",
+  "en": "Questions about cookies?"
+ },
+ {
+  "i": 118,
+  "k": "text",
+  "en": "Email us at "
+ },
+ {
+  "i": 119,
+  "k": "text",
+  "en": "hello@localboostlab.com"
+ },
+ {
+  "i": 120,
+  "k": "text",
+  "en": " and we'll respond within 2 business days."
+ },
+ {
+  "i": 121,
+  "k": "text",
+  "en": "Local Boost Lab · United States"
+ },
+ {
+  "i": 122,
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
+ },
+ {
+  "i": 123,
+  "k": "text",
+  "en": "Your Google Profile. Finally handled."
+ },
+ {
+  "i": 124,
+  "k": "text",
+  "en": "hello@localboostlab.com"
+ },
+ {
+  "i": 125,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on LinkedIn"
+ },
+ {
+  "i": 126,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Instagram"
+ },
+ {
+  "i": 127,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on X"
+ },
+ {
+  "i": 128,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Facebook"
+ },
+ {
+  "i": 129,
+  "k": "text",
+  "en": "Product"
+ },
+ {
+  "i": 130,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 131,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 132,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 133,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 134,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 135,
+  "k": "text",
+  "en": "Privacy Policy"
+ },
+ {
+  "i": 136,
+  "k": "text",
+  "en": "Terms of Service"
+ },
+ {
+  "i": 137,
+  "k": "text",
+  "en": "Cookie Policy"
+ },
+ {
+  "i": 138,
+  "k": "text",
+  "en": "Payments secured by"
+ },
+ {
+  "i": 139,
+  "k": "attr:alt",
+  "en": "Stripe"
+ },
+ {
+  "i": 140,
+  "k": "text",
+  "en": "Local Boost Lab · Not affiliated with Google LLC"
+ },
+ {
+  "i": 141,
+  "k": "attr:alt",
+  "en": "Claire, Local Boost Lab Support"
+ },
+ {
+  "i": 142,
+  "k": "text",
+  "en": "Claire"
+ },
+ {
+  "i": 143,
+  "k": "text",
+  "en": "Online"
+ },
+ {
+  "i": 144,
+  "k": "attr:aria-label",
+  "en": "× Close chat"
+ },
+ {
+  "i": 145,
+  "k": "attr:placeholder",
+  "en": "Ask a question..."
+ },
+ {
+  "i": 146,
+  "k": "attr:aria-label",
+  "en": "Chat message"
+ },
+ {
+  "i": 147,
+  "k": "text",
+  "en": "Send"
+ },
+ {
+  "i": 148,
+  "k": "attr:aria-label",
+  "en": "Chat with support"
+ },
+ {
+  "i": 149,
+  "k": "text",
+  "en": "This site uses essential cookies. "
+ },
+ {
+  "i": 150,
+  "k": "text",
+  "en": "Learn more →"
+ },
+ {
+  "i": 151,
+  "k": "text",
+  "en": "Accept"
+ },
+ {
+  "i": 152,
+  "k": "text",
+  "en": "Preferences"
+ }
+]

@@ -1,0 +1,887 @@
+[
+ {
+  "i": 0,
+  "k": "text",
+  "en": "Welcome to Local Boost Lab — Set Up Your Profile"
+ },
+ {
+  "i": 1,
+  "k": "attr:content",
+  "en": "Set up your Local Boost Lab account. Connect your Google Business Profile and start automated posting, review management, and monthly reporting."
+ },
+ {
+  "i": 2,
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
+ },
+ {
+  "i": 3,
+  "k": "text",
+  "en": "Questions? "
+ },
+ {
+  "i": 4,
+  "k": "text",
+  "en": "hello@localboostlab.com"
+ },
+ {
+  "i": 5,
+  "k": "text",
+  "en": "Skip to main content"
+ },
+ {
+  "i": 6,
+  "k": "text",
+  "en": "Set Up Your Local Boost Lab Account"
+ },
+ {
+  "i": 7,
+  "k": "text",
+  "en": "1. Your Business"
+ },
+ {
+  "i": 8,
+  "k": "text",
+  "en": "2. Brand Voice"
+ },
+ {
+  "i": 9,
+  "k": "text",
+  "en": "3. Photos"
+ },
+ {
+  "i": 10,
+  "k": "text",
+  "en": "4. Finish Up"
+ },
+ {
+  "i": 11,
+  "k": "text",
+  "en": "Selected plan:"
+ },
+ {
+  "i": 12,
+  "k": "text",
+  "en": "Change plan →"
+ },
+ {
+  "i": 13,
+  "k": "text",
+  "en": "Choose your plan "
+ },
+ {
+  "i": 14,
+  "k": "text",
+  "en": "Reputation — $97/mo · review replies + monthly report"
+ },
+ {
+  "i": 15,
+  "k": "text",
+  "en": "Presence — $157/mo · everything in Reputation + 3 GBP posts/week"
+ },
+ {
+  "i": 16,
+  "k": "text",
+  "en": "Authority — $217/mo · everything in Presence + rank tracking &amp; SEO content"
+ },
+ {
+  "i": 17,
+  "k": "text",
+  "en": "Not sure? "
+ },
+ {
+  "i": 18,
+  "k": "text",
+  "en": "Compare plans →"
+ },
+ {
+  "i": 19,
+  "k": "text",
+  "en": " · No contract, cancel anytime."
+ },
+ {
+  "i": 20,
+  "k": "text",
+  "en": "Welcome to Local Boost Lab."
+ },
+ {
+  "i": 21,
+  "k": "text",
+  "en": "Let's set up your profile. This takes 5–7 minutes. After you submit, we go live within 24 hours."
+ },
+ {
+  "i": 22,
+  "k": "text",
+  "en": "Business Name "
+ },
+ {
+  "i": 23,
+  "k": "attr:placeholder",
+  "en": "Martinez HVAC"
+ },
+ {
+  "i": 24,
+  "k": "text",
+  "en": "Please enter your business name."
+ },
+ {
+  "i": 25,
+  "k": "text",
+  "en": "Business Type "
+ },
+ {
+  "i": 26,
+  "k": "text",
+  "en": "Select your industry..."
+ },
+ {
+  "i": 27,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 28,
+  "k": "text",
+  "en": "Plumbing"
+ },
+ {
+  "i": 29,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 30,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 31,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 32,
+  "k": "text",
+  "en": "Landscaping"
+ },
+ {
+  "i": 33,
+  "k": "text",
+  "en": "Auto Repair"
+ },
+ {
+  "i": 34,
+  "k": "text",
+  "en": "Med Spa"
+ },
+ {
+  "i": 35,
+  "k": "text",
+  "en": "Chiropractic"
+ },
+ {
+  "i": 36,
+  "k": "text",
+  "en": "Pest Control"
+ },
+ {
+  "i": 37,
+  "k": "text",
+  "en": "Roofing"
+ },
+ {
+  "i": 38,
+  "k": "text",
+  "en": "Other"
+ },
+ {
+  "i": 39,
+  "k": "text",
+  "en": "Please select your business type."
+ },
+ {
+  "i": 40,
+  "k": "text",
+  "en": "Primary City &amp; State "
+ },
+ {
+  "i": 41,
+  "k": "attr:placeholder",
+  "en": "Austin, TX"
+ },
+ {
+  "i": 42,
+  "k": "text",
+  "en": "Please enter your city and state."
+ },
+ {
+  "i": 43,
+  "k": "text",
+  "en": "Manager access only."
+ },
+ {
+  "i": 44,
+  "k": "text",
+  "en": " We can never transfer ownership, delete your listing, or access any other part of your Google account. You can revoke access at any time from your GBP settings.\n          "
+ },
+ {
+  "i": 45,
+  "k": "text",
+  "en": "Service Areas "
+ },
+ {
+  "i": 46,
+  "k": "attr:placeholder",
+  "en": "List the neighborhoods, cities, or zip codes you serve..."
+ },
+ {
+  "i": 47,
+  "k": "text",
+  "en": "Please list your service areas."
+ },
+ {
+  "i": 48,
+  "k": "text",
+  "en": "Business Website"
+ },
+ {
+  "i": 49,
+  "k": "text",
+  "en": "Years in Operation "
+ },
+ {
+  "i": 50,
+  "k": "text",
+  "en": "Select..."
+ },
+ {
+  "i": 51,
+  "k": "text",
+  "en": "Less than 1 year"
+ },
+ {
+  "i": 52,
+  "k": "text",
+  "en": "1–3 years"
+ },
+ {
+  "i": 53,
+  "k": "text",
+  "en": "3–10 years"
+ },
+ {
+  "i": 54,
+  "k": "text",
+  "en": "10+ years"
+ },
+ {
+  "i": 55,
+  "k": "text",
+  "en": "Please select."
+ },
+ {
+  "i": 56,
+  "k": "text",
+  "en": "Google Business Profile URL "
+ },
+ {
+  "i": 57,
+  "k": "text",
+  "en": "Please enter your GBP URL."
+ },
+ {
+  "i": 58,
+  "k": "text",
+  "en": "🔍 How to find your Google Business Profile URL"
+ },
+ {
+  "i": 59,
+  "k": "text",
+  "en": "Go to "
+ },
+ {
+  "i": 60,
+  "k": "text",
+  "en": "Google Maps"
+ },
+ {
+  "i": 61,
+  "k": "text",
+  "en": " and search for your business name."
+ },
+ {
+  "i": 62,
+  "k": "text",
+  "en": "Click on your business in the results."
+ },
+ {
+  "i": 63,
+  "k": "text",
+  "en": "Click "
+ },
+ {
+  "i": 64,
+  "k": "text",
+  "en": "\"Share\""
+ },
+ {
+  "i": 65,
+  "k": "text",
+  "en": " → then "
+ },
+ {
+  "i": 66,
+  "k": "text",
+  "en": "\"Copy link\""
+ },
+ {
+  "i": 67,
+  "k": "text",
+  "en": "Paste that link here. It usually starts with "
+ },
+ {
+  "i": 68,
+  "k": "text",
+  "en": "https://maps.google.com"
+ },
+ {
+  "i": 69,
+  "k": "text",
+  "en": " or "
+ },
+ {
+  "i": 70,
+  "k": "text",
+  "en": "https://g.page/"
+ },
+ {
+  "i": 71,
+  "k": "text",
+  "en": "Can't find it? Email us at "
+ },
+ {
+  "i": 72,
+  "k": "text",
+  "en": "grow@localboostlab.com"
+ },
+ {
+  "i": 73,
+  "k": "text",
+  "en": " — we'll look it up for you."
+ },
+ {
+  "i": 74,
+  "k": "text",
+  "en": "Continue to Brand Voice →"
+ },
+ {
+  "i": 75,
+  "k": "text",
+  "en": "Tell us how your business talks."
+ },
+ {
+  "i": 76,
+  "k": "text",
+  "en": "We use this to write review responses and posts that sound like YOU, not like a marketing agency."
+ },
+ {
+  "i": 77,
+  "k": "text",
+  "en": "Business Owner / Contact Name "
+ },
+ {
+  "i": 78,
+  "k": "attr:placeholder",
+  "en": "Mike Martinez"
+ },
+ {
+  "i": 79,
+  "k": "text",
+  "en": "Please enter the owner's name."
+ },
+ {
+  "i": 80,
+  "k": "text",
+  "en": "Email Address "
+ },
+ {
+  "i": 81,
+  "k": "attr:placeholder",
+  "en": "mike@martinezhvac.com"
+ },
+ {
+  "i": 82,
+  "k": "text",
+  "en": "Please enter a valid email."
+ },
+ {
+  "i": 83,
+  "k": "text",
+  "en": "Tone Description "
+ },
+ {
+  "i": 84,
+  "k": "text",
+  "en": "Select a tone..."
+ },
+ {
+  "i": 85,
+  "k": "text",
+  "en": "Friendly &amp; Warm"
+ },
+ {
+  "i": 86,
+  "k": "text",
+  "en": "Professional &amp; Formal"
+ },
+ {
+  "i": 87,
+  "k": "text",
+  "en": "Direct &amp; No-Nonsense"
+ },
+ {
+  "i": 88,
+  "k": "text",
+  "en": "Casual &amp; Conversational"
+ },
+ {
+  "i": 89,
+  "k": "text",
+  "en": "Witty &amp; Playful"
+ },
+ {
+  "i": 90,
+  "k": "text",
+  "en": "Bold &amp; Confident"
+ },
+ {
+  "i": 91,
+  "k": "text",
+  "en": "Empathetic &amp; Caring"
+ },
+ {
+  "i": 92,
+  "k": "text",
+  "en": "Please select a tone."
+ },
+ {
+  "i": 93,
+  "k": "text",
+  "en": "Things we should ALWAYS mention:"
+ },
+ {
+  "i": 94,
+  "k": "attr:placeholder",
+  "en": "e.g. We're family-owned. 20 years in business. Emergency service available."
+ },
+ {
+  "i": 95,
+  "k": "text",
+  "en": "Things we should NEVER mention:"
+ },
+ {
+  "i": 96,
+  "k": "attr:placeholder",
+  "en": "e.g. Never mention competitors. Don't use the word 'cheap.'"
+ },
+ {
+  "i": 97,
+  "k": "text",
+  "en": "Your top 3 services "
+ },
+ {
+  "i": 98,
+  "k": "text",
+  "en": "Service 1"
+ },
+ {
+  "i": 99,
+  "k": "attr:placeholder",
+  "en": "Service 1 (e.g. AC Installation)"
+ },
+ {
+  "i": 100,
+  "k": "text",
+  "en": "Service 2"
+ },
+ {
+  "i": 101,
+  "k": "attr:placeholder",
+  "en": "Service 2 (e.g. Furnace Repair)"
+ },
+ {
+  "i": 102,
+  "k": "text",
+  "en": "Service 3"
+ },
+ {
+  "i": 103,
+  "k": "attr:placeholder",
+  "en": "Service 3 (e.g. Emergency HVAC)"
+ },
+ {
+  "i": 104,
+  "k": "text",
+  "en": "Typical customer compliment "
+ },
+ {
+  "i": 105,
+  "k": "text",
+  "en": "(optional)"
+ },
+ {
+  "i": 106,
+  "k": "attr:placeholder",
+  "en": "How do your best customers usually describe you? e.g. 'Fast, clean, and honest.'"
+ },
+ {
+  "i": 107,
+  "k": "text",
+  "en": "← Back"
+ },
+ {
+  "i": 108,
+  "k": "text",
+  "en": "Continue to Photos →"
+ },
+ {
+  "i": 109,
+  "k": "text",
+  "en": "Add your business photos."
+ },
+ {
+  "i": 110,
+  "k": "text",
+  "en": "Posts with your real photos get noticed more than stock imagery. No photos on hand? We'll generate images for you — you can always add real ones later from your client portal."
+ },
+ {
+  "i": 111,
+  "k": "text",
+  "en": "Photo option"
+ },
+ {
+  "i": 112,
+  "k": "text",
+  "en": "I'll upload my own photos "
+ },
+ {
+  "i": 113,
+  "k": "text",
+  "en": "Recommended"
+ },
+ {
+  "i": 114,
+  "k": "text",
+  "en": "Your trucks, your team, your finished work. This is what makes posts look like you."
+ },
+ {
+  "i": 115,
+  "k": "attr:aria-label",
+  "en": "Upload photos"
+ },
+ {
+  "i": 116,
+  "k": "text",
+  "en": "Drag and drop photos here"
+ },
+ {
+  "i": 117,
+  "k": "text",
+  "en": "or tap to add photos"
+ },
+ {
+  "i": 118,
+  "k": "text",
+  "en": "JPG, PNG, WEBP, HEIC · Max 15MB per photo · Up to 100 photos · You can add from multiple folders"
+ },
+ {
+  "i": 119,
+  "k": "text",
+  "en": "I don't have photos right now — use AI-generated images"
+ },
+ {
+  "i": 120,
+  "k": "text",
+  "en": "We'll create on-brand images for your industry. You can swap in real photos any time from your portal."
+ },
+ {
+  "i": 121,
+  "k": "text",
+  "en": "Please choose one of the two options above."
+ },
+ {
+  "i": 122,
+  "k": "text",
+  "en": "← Back"
+ },
+ {
+  "i": 123,
+  "k": "text",
+  "en": "Continue to Final Step →"
+ },
+ {
+  "i": 124,
+  "k": "text",
+  "en": "Almost done. A few last details."
+ },
+ {
+  "i": 125,
+  "k": "text",
+  "en": "These settings control how we access your profile and respond to reviews."
+ },
+ {
+  "i": 126,
+  "k": "text",
+  "en": "GBP Access Method "
+ },
+ {
+  "i": 127,
+  "k": "text",
+  "en": "Connect via Google OAuth "
+ },
+ {
+  "i": 128,
+  "k": "text",
+  "en": "Recommended"
+ },
+ {
+  "i": 129,
+  "k": "text",
+  "en": "One click, done. Google's own secure authorization system."
+ },
+ {
+  "i": 130,
+  "k": "text",
+  "en": "I'll add grow@localboostlab.com as a Manager manually"
+ },
+ {
+  "i": 131,
+  "k": "text",
+  "en": "Go to your GBP, add our email as Manager (not Owner). We'll confirm once connected. Questions? "
+ },
+ {
+  "i": 132,
+  "k": "text",
+  "en": "support@localboostlab.com"
+ },
+ {
+  "i": 133,
+  "k": "text",
+  "en": "Review Response Preference "
+ },
+ {
+  "i": 134,
+  "k": "text",
+  "en": "Auto-respond to all 4–5 star reviews "
+ },
+ {
+  "i": 135,
+  "k": "text",
+  "en": "Recommended"
+ },
+ {
+  "i": 136,
+  "k": "text",
+  "en": "Fastest response time. We respond in your voice in under 1 hour."
+ },
+ {
+  "i": 137,
+  "k": "text",
+  "en": "Send me a preview before posting"
+ },
+ {
+  "i": 138,
+  "k": "text",
+  "en": "Adds 2–4 hours to response time but you see each draft before it goes live."
+ },
+ {
+  "i": 139,
+  "k": "text",
+  "en": "Anything else we should know? "
+ },
+ {
+  "i": 140,
+  "k": "text",
+  "en": "(optional)"
+ },
+ {
+  "i": 141,
+  "k": "attr:placeholder",
+  "en": "Any specific instructions, sensitivities, or things we should be aware of..."
+ },
+ {
+  "i": 142,
+  "k": "text",
+  "en": "I confirm I own or am authorized to manage this Google Business Profile "
+ },
+ {
+  "i": 143,
+  "k": "text",
+  "en": "I have read and agree to the "
+ },
+ {
+  "i": 144,
+  "k": "text",
+  "en": "Terms of Service"
+ },
+ {
+  "i": 145,
+  "k": "text",
+  "en": " and "
+ },
+ {
+  "i": 146,
+  "k": "text",
+  "en": "Privacy Policy"
+ },
+ {
+  "i": 147,
+  "k": "text",
+  "en": "\n          Complete Setup &amp; Pay →\n        "
+ },
+ {
+  "i": 148,
+  "k": "text",
+  "en": "\n          You'll be taken to Stripe's secure checkout. After payment, setup completes and your first post goes live within 24 hours.\n        "
+ },
+ {
+  "i": 149,
+  "k": "text",
+  "en": "← Back"
+ },
+ {
+  "i": 150,
+  "k": "text",
+  "en": "Payment confirmed — one step left!"
+ },
+ {
+  "i": 151,
+  "k": "text",
+  "en": "Connect your Google Business Profile and you're live. It takes about 30 seconds."
+ },
+ {
+  "i": 152,
+  "k": "text",
+  "en": "Preparing your secure Google link…"
+ },
+ {
+  "i": 153,
+  "k": "text",
+  "en": "Connect Your Google Business Profile →"
+ },
+ {
+  "i": 154,
+  "k": "text",
+  "en": "Manager access only. We can never transfer ownership or delete your listing."
+ },
+ {
+  "i": 155,
+  "k": "text",
+  "en": "📧 Check your inbox"
+ },
+ {
+  "i": 156,
+  "k": "text",
+  "en": "We sent you an email from "
+ },
+ {
+  "i": 157,
+  "k": "text",
+  "en": "grow@localboostlab.com"
+ },
+ {
+  "i": 158,
+  "k": "text",
+  "en": " with a blue button that says "
+ },
+ {
+  "i": 159,
+  "k": "text",
+  "en": "\"Connect Your Google Business Profile.\""
+ },
+ {
+  "i": 160,
+  "k": "text",
+  "en": "Don't see it? Check spam or email "
+ },
+ {
+  "i": 161,
+  "k": "text",
+  "en": "support@localboostlab.com"
+ },
+ {
+  "i": 162,
+  "k": "text",
+  "en": "Why connect Google?"
+ },
+ {
+  "i": 163,
+  "k": "text",
+  "en": "It lets us publish posts to your profile automatically"
+ },
+ {
+  "i": 164,
+  "k": "text",
+  "en": "It lets us monitor and reply to your reviews 24/7"
+ },
+ {
+  "i": 165,
+  "k": "text",
+  "en": "We only request access to your Business Profile — nothing else"
+ },
+ {
+  "i": 166,
+  "k": "text",
+  "en": "You can revoke access from Google at any time"
+ },
+ {
+  "i": 167,
+  "k": "text",
+  "en": "Step 1:"
+ },
+ {
+  "i": 168,
+  "k": "text",
+  "en": " Click the link in your email to connect Google"
+ },
+ {
+  "i": 169,
+  "k": "text",
+  "en": "Step 2:"
+ },
+ {
+  "i": 170,
+  "k": "text",
+  "en": " Your first post goes live on the next Monday, Wednesday, or Friday"
+ },
+ {
+  "i": 171,
+  "k": "text",
+  "en": " Review monitoring starts the moment you connect"
+ },
+ {
+  "i": 172,
+  "k": "text",
+  "en": " Your first monthly report arrives on the 5th"
+ },
+ {
+  "i": 173,
+  "k": "text",
+  "en": "Questions? Email "
+ },
+ {
+  "i": 174,
+  "k": "text",
+  "en": "support@localboostlab.com"
+ },
+ {
+  "i": 175,
+  "k": "text",
+  "en": " — we respond within a few hours."
+ },
+ {
+  "i": 176,
+  "k": "text",
+  "en": "Return to Homepage"
+ }
+]

@@ -1,0 +1,146 @@
+0|Bienvenido a Local Boost Lab: configura tu perfil
+1|Configura tu cuenta de Local Boost Lab. Conecta tu Perfil de Negocio de Google y empieza con las publicaciones, las respuestas a reseñas y el informe mensual.
+3|¿Dudas?
+6|Configura tu cuenta de Local Boost Lab
+7|1. Tu negocio
+8|2. Tono de marca
+9|3. Fotos
+10|4. Finalizar
+11|Plan elegido:
+12|Cambiar de plan →
+13|Elige tu plan
+14|Reputación: US$97/mes · respuestas a reseñas + informe mensual
+15|Presencia: US$157/mes · 3 publicaciones por semana + informe mensual
+16|Autoridad: US$217/mes · reseñas, publicaciones y soporte prioritario
+17|¿No estás seguro?
+18|Compara los planes →
+19|· Sin contrato, cancelas cuando quieras.
+20|Bienvenido a Local Boost Lab.
+21|Vamos a configurar tu perfil. Son entre 5 y 7 minutos. Después de enviarlo, empezamos en 24 horas.
+25|Tipo de negocio
+26|Elige tu industria...
+34|Medicina estética
+35|Quiropraxia
+36|Control de plagas
+39|Elige tu tipo de negocio.
+40|Ciudad principal y departamento
+41|Medellín, Antioquia
+42|Escribe tu ciudad y departamento.
+43|Solo acceso de administrador.
+44|Nunca podemos transferir la propiedad, eliminar tu ficha ni entrar a otra parte de tu cuenta de Google. Puedes retirar el acceso cuando quieras.
+45|Zonas de servicio
+46|Escribe los barrios, ciudades o zonas que atiendes...
+47|Escribe tus zonas de servicio.
+48|Sitio web del negocio
+49|Años de operación
+51|Menos de 1 año
+52|1 a 3 años
+53|3 a 10 años
+54|Más de 10 años
+55|Elige una opción.
+58|🔍 Cómo encontrar el enlace de tu Perfil de Negocio de Google
+59|Entra a
+60|Google Maps
+61|y busca el nombre de tu negocio.
+62|Haz clic en tu negocio en los resultados.
+63|Haz clic en
+64|«Compartir»
+65|→ y luego en
+66|«Copiar enlace»
+67|Pega ese enlace aquí. Normalmente empieza por
+68|https://maps.google.com
+69|o
+70|https://g.page/
+71|¿No lo encuentras? Escríbenos a
+73|y lo buscamos por ti.
+74|Continuar con el tono de marca →
+75|Cuéntanos cómo habla tu negocio.
+76|Con esto escribimos respuestas a reseñas y publicaciones que suenan a TI, no a una agencia de marketing.
+77|Nombre del dueño o persona de contacto
+79|Escribe el nombre del dueño.
+83|Tono
+84|Elige un tono...
+85|Amable y cálido
+86|Profesional y formal
+87|Directo y sin rodeos
+88|Informal y cercano
+89|Ingenioso y divertido
+90|Seguro y con carácter
+91|Empático y atento
+92|Elige un tono.
+93|Cosas que SIEMPRE debemos mencionar:
+94|Ej.: Somos una empresa familiar. 20 años de experiencia. Atendemos urgencias.
+95|Cosas que NUNCA debemos mencionar:
+96|Ej.: No mencionar a la competencia. No usar la palabra «barato».
+97|Tus 3 servicios principales
+98|Servicio 1
+99|Servicio 1 (ej.: instalación de aire acondicionado)
+100|Servicio 2
+101|Servicio 2 (ej.: mantenimiento preventivo)
+102|Servicio 3
+103|Servicio 3 (ej.: reparación de urgencia)
+104|El elogio típico de tus clientes
+106|¿Cómo te describen tus mejores clientes? Ej.: «Rápidos, limpios y honestos».
+107|← Atrás
+108|Continuar con las fotos →
+109|Agrega fotos de tu negocio.
+110|Las publicaciones con tus fotos reales llaman más la atención que las imágenes de banco. ¿No tienes fotos a la mano? Generamos imágenes para tu industria.
+111|Opción de fotos
+112|Voy a subir mis propias fotos
+113|Recomendado
+114|Tus vehículos, tu equipo, tus trabajos terminados. Es lo que hace que las publicaciones se vean tuyas.
+115|Subir fotos
+116|Arrastra y suelta las fotos aquí
+117|o toca para agregarlas
+118|JPG, PNG, WEBP, HEIC · Máximo 15 MB por foto · Hasta 100 fotos · Puedes agregar desde varias carpetas
+119|Ahora no tengo fotos: usen imágenes generadas con IA
+120|Creamos imágenes acordes con tu industria. Puedes cambiarlas por fotos reales cuando quieras desde tu portal.
+121|Elige una de las dos opciones de arriba.
+122|← Atrás
+123|Continuar con el último paso →
+124|Ya casi. Unos últimos detalles.
+125|Esto define cómo accedemos a tu perfil y cómo respondemos las reseñas.
+126|Cómo nos das acceso al perfil
+127|Conectar con el acceso seguro de Google (OAuth)
+128|Recomendado
+129|Un clic y listo. Es el sistema de autorización del propio Google.
+130|Voy a agregar grow@localboostlab.com como administrador manualmente
+131|Entra a tu perfil y agrega nuestro correo como administrador (no como propietario). Te confirmamos cuando quede conectado. ¿Dudas?
+133|Cómo quieres que respondamos las reseñas
+134|Responder solas todas las reseñas de 4 y 5 estrellas
+135|Recomendado
+136|La respuesta más rápida: respondemos con tu tono en menos de una hora.
+137|Envíenme una vista previa antes de publicar
+138|Suma entre 2 y 4 horas al tiempo de respuesta, pero ves cada borrador antes de que salga.
+139|¿Algo más que debamos saber?
+141|Instrucciones especiales, temas sensibles o cualquier cosa que debamos tener en cuenta...
+142|Confirmo que soy el propietario de este Perfil de Negocio de Google o que estoy autorizado para administrarlo
+143|He leído y acepto los
+145|y la
+147|Terminar y pagar →
+148|Vas a pasar al pago seguro de Stripe. Después del pago termina la configuración y tu primera publicación sale en 24 horas.
+149|← Atrás
+150|Pago confirmado: ¡falta un solo paso!
+151|Conecta tu Perfil de Negocio de Google y quedas activo. Toma unos 30 segundos.
+152|Preparando tu enlace seguro de Google…
+153|Conectar mi Perfil de Negocio de Google →
+154|Solo acceso de administrador. Nunca podemos transferir la propiedad ni eliminar tu ficha.
+155|📧 Revisa tu correo
+156|Te enviamos un correo desde
+158|con un botón azul para
+159|conectar tu Perfil de Negocio de Google.
+160|¿No lo ves? Revisa el correo no deseado o escribe a
+162|¿Por qué conectar Google?
+163|Nos permite publicar en tu perfil de forma automática
+164|Nos permite vigilar y responder tus reseñas a toda hora
+165|Solo pedimos acceso a tu Perfil de Negocio, a nada más
+166|Puedes retirar el acceso desde Google cuando quieras
+167|Paso 1:
+168|Haz clic en el enlace del correo para conectar Google
+169|Paso 2:
+170|Tu primera publicación sale el siguiente lunes, miércoles o viernes
+171|La vigilancia de reseñas empieza apenas conectas
+172|Tu primer informe mensual llega el día 5
+173|¿Dudas? Escribe a
+175|y te respondemos en pocas horas.
+176|Volver al inicio

@@ -71,5 +71,29 @@
   "dst": "es-co/auditoria-gratis.html",
   "en": "/free-audit",
   "es": "/es-co/auditoria-gratis"
+ },
+ "onboarding": {
+  "src": "onboarding.html",
+  "dst": "es-co/registro.html",
+  "en": "/onboarding",
+  "es": "/es-co/registro"
+ },
+ "privacy": {
+  "src": "privacy.html",
+  "dst": "es-co/privacidad.html",
+  "en": "/privacy",
+  "es": "/es-co/privacidad"
+ },
+ "terms": {
+  "src": "terms.html",
+  "dst": "es-co/terminos.html",
+  "en": "/terms",
+  "es": "/es-co/terminos"
+ },
+ "cookies": {
+  "src": "cookies.html",
+  "dst": "es-co/cookies.html",
+  "en": "/cookies",
+  "es": "/es-co/cookies"
  }
 }

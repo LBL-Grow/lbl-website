@@ -148,6 +148,14 @@ def rewrite_links(html):
     return re.sub(r'(\bhref=)"(/[^"]*)"', sub, html)
 
 
+def absolute_assets(html, src):
+    """Las rutas relativas (p. ej. `styles.css`) dejan de servir al mover la página a /es-co/: se vuelven absolutas."""
+    base = '/' + '/'.join(src.split('/')[:-1])
+    base = base.rstrip('/') + '/'
+    return re.sub(r'\b(href|src)="(?!/|#|[a-zA-Z][a-zA-Z0-9+.-]*:)([^"]+)"',
+                  lambda m: f'{m.group(1)}="{base}{m.group(2)}"', html)
+
+
 def hreflang_block(cfg):
     en, es = SITE + cfg['en'].rstrip('/'), SITE + cfg['es']
     en = en or SITE
@@ -263,6 +271,7 @@ def main():
         en_html = src.read_text()
         html = translate(clean(en_html), key, missing)
         html = apply_drops(html)
+        html = absolute_assets(html, cfg['src'])
         html = rewrite_links(html)
         html = head(html, cfg)
         html = js_strings(html, key)

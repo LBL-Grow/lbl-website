@@ -1,0 +1,193 @@
+0|Términos del servicio | Local Boost Lab
+1|Términos del servicio de Local Boost Lab: tus derechos y responsabilidades al usar nuestro servicio de gestión automatizada del Perfil de Negocio de Google.
+2|Términos del servicio | Local Boost Lab
+3|Términos del servicio de Local Boost Lab: tus derechos y responsabilidades al usar nuestro servicio de gestión automatizada del Perfil de Negocio de Google.
+4|Términos del servicio | Local Boost Lab
+37|Aceptación de los términos
+38|Descripción del servicio
+39|Planes y facturación
+40|Responsabilidades del cliente
+41|Prestación del servicio y compromisos
+42|Sin garantía de resultados
+43|Cancelación y reembolsos
+44|Acceso al Perfil de Negocio de Google
+45|Usos prohibidos
+46|Propiedad intelectual
+47|Datos y privacidad
+48|Limitación de responsabilidad
+49|Indemnidad
+50|Ley aplicable
+51|Cambios en los términos
+54|1. Aceptación de los términos
+55|Al suscribirte a los servicios de Local Boost Lab y completar el registro, tú («Cliente», «tú») aceptas quedar obligado por estos Términos del servicio («Términos»). Estos Términos son un acuerdo legalmente vinculante entre tú y Local Boost Lab («LBL», «Local Boost Lab», «nosotros»).
+56|Si no estás de acuerdo con estos Términos, no te suscribas ni uses el Servicio. Al completar el pago declaras que leíste, entendiste y aceptas estos Términos.
+57|Debes tener al menos 18 años y la capacidad legal para celebrar este acuerdo en nombre propio o del negocio que representas.
+58|2. Descripción del servicio
+59|Local Boost Lab presta servicios de gestión automatizada del Perfil de Negocio de Google («el perfil») para negocios locales de servicios. El Servicio incluye:
+60|Respuestas a reseñas:
+61|Respuestas generadas con IA a las reseñas positivas de tus clientes, publicadas en tu perfil según tu plan.
+62|Avisos de reseñas:
+63|Avisos automáticos y borradores de respuesta para las reseñas de 3 estrellas o menos, que requieren tu aprobación antes de publicarse.
+64|Publicación de contenido:
+65|Publicaciones optimizadas para SEO en tu perfil, con un calendario fijo (planes Presencia y Autoridad).
+66|Imágenes generadas con IA:
+67|Imágenes creadas con IA para las publicaciones cuando no hay fotos del cliente (planes Presencia y Autoridad).
+68|Informe mensual de resultados:
+69|Se envía por correo el día 5 de cada mes.
+70|Seguimiento del estado del perfil:
+71|Vigilancia y alertas de riesgo de suspensión (solo plan Autoridad).
+72|Los servicios se prestan por suscripción. LBL es un proveedor independiente y no está afiliado a Google LLC, ni cuenta con su respaldo ni es su socio. El uso del Perfil de Negocio de Google está sujeto a los términos del propio Google.
+73|3. Planes y facturación
+74|3.1 Planes y precios
+75|Planes y precios de suscripción
+76|Plan
+77|Precio mensual
+78|Precio anual (por mes)
+80|US$97 al mes
+81|US$82 al mes (US$984 al año)
+83|US$157 al mes
+84|US$133 al mes (US$1.596 al año)
+86|US$217 al mes
+87|US$184 al mes (US$2.208 al año)
+88|3.2 Condiciones de facturación
+89|Todos los cobros se procesan con Stripe. Al dar tus datos de pago autorizas a LBL a cobrar de forma recurrente a tu medio de pago.
+90|Las suscripciones se renuevan automáticamente salvo que se cancelen según la sección 7.
+91|Las suscripciones anuales se cobran completas al inicio de cada periodo anual.
+92|No hay reembolsos por periodos parciales, salvo a criterio exclusivo de LBL.
+93|LBL puede cambiar los precios avisando con 30 días de anticipación por correo a tu dirección registrada. Si sigues usando el servicio después de la fecha del cambio, se entiende que lo aceptas.
+94|Un pago fallido puede llevar a la suspensión del servicio después de 5 días hábiles.
+95|4. Responsabilidades del cliente
+96|Para usar el Servicio debes, y te comprometes a:
+97|Ser el propietario del Perfil de Negocio de Google que nos entregas, o estar legalmente autorizado para administrarlo
+98|Dar información del negocio exacta, completa y actualizada en el registro, y actualizarla pronto si cambia
+99|Mantener una cuenta de Google válida con acceso a tu perfil
+100|Dar y mantener el acceso de LBL como administrador (no como propietario) de tu perfil mientras dure la suscripción
+101|Cumplir en todo momento los términos de Google y las políticas aplicables al Perfil de Negocio
+102|Responder a tiempo los avisos de reseñas que requieren tu aprobación
+103|No usar los servicios de LBL para negocios de categorías prohibidas por las políticas de Google, entre ellas cerrajerías, empresas de fianzas y empresas de mudanzas, ni para negocios con suspensiones previas del perfil sin informarlo a LBL
+104|4.1 Seguridad de la cuenta
+105|Eres responsable de la seguridad de tu cuenta de Google y de las credenciales de acceso que compartas con LBL. Debes avisar de inmediato a LBL en
+107|si te enteras de un acceso no autorizado a tu cuenta o a tu perfil.
+108|5. Prestación del servicio y compromisos
+109|Importante:
+110|LBL NUNCA responde de forma automática las reseñas de 3 estrellas o menos. Todas las respuestas a esas reseñas requieren la aprobación expresa del cliente antes de publicarse.
+111|Compromisos de prestación del servicio
+112|Servicio
+113|Compromiso
+114|Respuesta automática a reseñas de 4 y 5 estrellas
+115|Dentro de 1 hora desde que se detecta la reseña
+116|Aviso por reseñas de 3 estrellas
+117|Dentro de 15 minutos desde que se detecta la reseña
+118|Aviso urgente por reseñas de 1 y 2 estrellas
+119|Dentro de 5 minutos desde que se detecta la reseña
+120|Primera publicación después del registro
+121|Dentro de las 24 horas siguientes al envío del formulario de registro completo
+122|Calendario de publicaciones (Presencia y Autoridad)
+123|Lunes, miércoles y viernes a las 9:00 a. m., hora local del cliente
+125|Se envía por correo el día 5 de cada mes
+126|Estos compromisos suponen que tu perfil sigue conectado y accesible. Si no mantienes el acceso de administrador de LBL, el servicio puede retrasarse o suspenderse sin reembolso.
+127|6. Sin garantía de resultados
+128|LBL no garantiza posiciones específicas en las búsquedas de Google, una cantidad determinada de clientes o contactos nuevos, una calificación mínima ni ningún resultado de negocio o de ingresos por el uso del Servicio.
+129|El algoritmo de búsqueda de Google, los factores de posicionamiento del perfil y la forma en que se muestran los resultados locales los controla exclusivamente Google LLC. LBL presta una gestión profesional del perfil siguiendo las buenas prácticas publicadas por Google, pero no puede controlar, predecir ni garantizar cómo Google posiciona o muestra tu perfil.
+130|Las estimaciones o proyecciones que entregue LBL (en material de marketing, informes de demostración u otros) se basan en datos históricos agregados y son solo ilustrativas. El desempeño de otros perfiles gestionados no garantiza resultados similares para el tuyo.
+131|7. Cancelación y reembolsos
+132|7.1 Cancelación por el cliente
+133|Puedes cancelar tu suscripción en cualquier momento escribiendo a
+135|con tu solicitud. LBL la tramita dentro de las 24 horas siguientes y te envía un correo de confirmación.
+136|La cancelación se hace efectiva al final del periodo de facturación en curso. Sigues teniendo el servicio hasta el final del periodo que ya pagaste. LBL retira su acceso a tu perfil apenas confirma la cancelación.
+137|No hay cargos por cancelar ni te pedimos explicaciones.
+138|7.2 Política de reembolsos
+139|LBL no hace reembolsos proporcionales por periodos parciales en los planes mensuales. Puede haber excepciones, a criterio exclusivo de LBL, en casos de falla del servicio documentada. Para pedir que se evalúe un reembolso, escribe a
+141|dentro de los 7 días siguientes a la fecha del cobro.
+142|7.3 Cancelación y reembolsos en planes anuales
+143|Cuando un cliente con plan anual cancela, el plan termina al final del ciclo de facturación en curso (el siguiente corte mensual después de la solicitud). Local Boost Lab reembolsa la parte no usada del pago anual de forma proporcional, equivalente a los meses completos que quedan después de la terminación. Por ejemplo: un cliente que usó el servicio 4 meses recibe, al terminar el cuarto mes, un reembolso equivalente a los 8 meses restantes del periodo anual. Los meses ya consumidos no se reembolsan.
+144|7.4 Cancelación por LBL
+145|LBL puede terminar tu suscripción de inmediato y sin reembolso en caso de incumplimiento grave de estos Términos, de una violación de las políticas de Google que afecte el acceso de LBL a su API, o del uso del Servicio con fines fraudulentos o engañosos.
+146|8. Acceso al Perfil de Negocio de Google
+147|Al usar el Servicio le das a LBL una autorización limitada para acceder a tu Perfil de Negocio de Google y administrarlo, con el único fin de prestar el servicio. Esta autorización:
+148|Se limita al nivel de administrador: LBL nunca pide, acepta ni exige acceso como propietario
+149|Autoriza a LBL a publicar, responder reseñas en tu nombre (con tu aprobación en las negativas), consultar las estadísticas del perfil y administrar su contenido dentro del alcance del Servicio
+150|No autoriza a LBL a cambiar la categoría principal, el nombre, la dirección o el teléfono del negocio, ni a hacer cambios fuera del alcance del Servicio, sin tu autorización expresa por escrito
+151|La puedes revocar cuando quieras retirando el acceso de administrador de LBL desde la configuración del perfil o pidiéndolo por correo
+152|Revocar el acceso de LBL sin cancelar la suscripción no da derecho a reembolso y puede llevar a la suspensión del servicio.
+153|9. Usos prohibidos
+154|Te comprometes a no usar el Servicio para:
+155|Generar, pedir, incentivar o publicar reseñas falsas, fraudulentas o engañosas en tu perfil
+156|Publicar contenido que viole las políticas de reseñas o de contenido de Google, como spam, discurso de odio o contenido ilegal
+157|Administrar perfiles de negocios de categorías prohibidas por Google (cerrajerías, fianzas, mudanzas, entretenimiento para adultos, venta de armas y las demás que indiquen sus políticas vigentes)
+158|Evadir o intentar evadir cualquier política o sistema de Google
+159|Hacer algo que ponga un perfil en riesgo de suspensión, como relleno de palabras clave, manipulación de geoetiquetas o contenido que viole las políticas
+160|Usar los sistemas de LBL para acceder a perfiles sobre los que no tienes autorización, o administrarlos
+161|Aplicar ingeniería inversa, copiar o reutilizar las instrucciones de IA, los sistemas de contenido o la infraestructura de LBL
+162|Incumplir esta sección puede llevar a la terminación inmediata sin reembolso y exponerte a responsabilidad legal.
+163|10. Propiedad intelectual
+164|10.1 Contenido del cliente
+165|Todo el contenido generado con IA (publicaciones, respuestas a reseñas, imágenes) que LBL produce y publica en tu perfil es tuyo desde el momento en que se publica. LBL no conserva derechos de propiedad sobre el contenido específico del cliente una vez entregado.
+166|10.2 Propiedad de LBL
+167|La marca, la plataforma, el sitio web, los sistemas de software, las instrucciones de IA, los flujos de trabajo y toda la propiedad intelectual asociada son propiedad exclusiva de Local Boost Lab. Nada en estos Términos te da una licencia para usar los sistemas, la marca o el contenido propios de LBL más allá de lo necesario para recibir el Servicio.
+168|10.3 Comentarios
+169|Si nos das comentarios, sugerencias o ideas sobre el Servicio, le concedes a LBL una licencia irrevocable, perpetua y gratuita para usarlos con cualquier fin, sin compensación.
+170|11. Datos y privacidad
+171|El uso del Servicio también se rige por la Política de privacidad de LBL, publicada en
+172|localboostlab.com/privacy
+173|, que se incorpora a estos Términos por referencia. Al aceptar estos Términos aceptas también la Política de privacidad.
+174|Declaras que tienes derecho a entregar todos los datos que das a LBL en el registro y que esa entrega no viola derechos de terceros ni la ley aplicable.
+175|12. Limitación de responsabilidad
+176|EN LA MÁXIMA MEDIDA QUE PERMITA LA LEY APLICABLE:
+177|La responsabilidad total de LBL frente a ti por cualquier reclamación relacionada con el Servicio o con estos Términos se limita al total de lo que le pagaste a LBL en los tres (3) meses calendario anteriores a la fecha en que surgió la reclamación.
+178|LBL NO RESPONDE POR:
+179|Cambios en el algoritmo de Google, en las políticas del perfil o en los sistemas de posicionamiento
+180|Suspensiones del perfil causadas por acciones del cliente, por violaciones de las políticas de Google o por factores fuera del control de LBL
+181|Pérdida de ingresos, contactos, clientes o utilidades
+182|Daños indirectos, incidentales, especiales, consecuenciales o punitivos
+183|Interrupciones del servicio causadas por caídas de la API de Google, fallas de infraestructura de terceros o fuerza mayor
+184|Las limitaciones de esta sección aplican sin importar el fundamento de la responsabilidad (contrato, responsabilidad extracontractual, negligencia, responsabilidad objetiva u otro), incluso si LBL fue advertido de la posibilidad de esos daños.
+185|13. Indemnidad
+186|Te comprometes a defender, indemnizar y mantener indemne a LBL y a sus directivos, empleados y agentes frente a reclamaciones, daños, pérdidas, obligaciones, costos y gastos (incluidos honorarios razonables de abogados) que surjan de:
+187|Tu incumplimiento de estos Términos
+188|Tu acceso a un Perfil de Negocio de Google, o su administración, sin autorización
+189|Tu violación de los términos de Google o de las políticas del perfil
+190|Cualquier contenido que entregues a LBL que infrinja derechos de terceros o viole la ley aplicable
+191|Cualquier reclamación de un tercero derivada de tu uso del Servicio
+192|14. Ley aplicable y solución de controversias
+193|Estos Términos se rigen por las leyes del estado de Wyoming, Estados Unidos, sin tener en cuenta sus normas sobre conflicto de leyes.
+194|Toda controversia o reclamación relacionada con estos Términos o con el Servicio se resolverá mediante arbitraje vinculante según las Reglas de Arbitraje Comercial de la American Arbitration Association (AAA). El arbitraje se llevará a cabo en inglés. El laudo será definitivo y vinculante, y podrá hacerse valer ante cualquier tribunal competente.
+195|No obstante lo anterior, cualquiera de las partes puede pedir medidas cautelares u otras medidas de equidad ante un tribunal competente para evitar un daño irreparable.
+196|TÚ Y LBL RENUNCIAN AL DERECHO A UN JUICIO CON JURADO Y AL DERECHO A PARTICIPAR EN UNA ACCIÓN COLECTIVA O DE CLASE.
+197|Si un tribunal competente declara inaplicable por cualquier razón la renuncia a las acciones de clase de esta sección, solo esa disposición se separará y el resto del acuerdo de arbitraje seguirá plenamente vigente. En ese caso, las reclamaciones colectivas o de clase se tramitarán ante un tribunal competente según la ley aplicable de la sección 14, y las reclamaciones individuales seguirán sujetas a arbitraje vinculante.
+198|15. Cambios en los términos
+199|LBL puede actualizar estos Términos. Te avisaremos de los cambios importantes por correo a tu dirección registrada, al menos 30 días antes de que entren en vigencia. Si sigues usando el Servicio después de esa fecha, se entiende que aceptas los Términos actualizados.
+200|Los cambios menores (correcciones, aclaraciones) pueden hacerse sin aviso previo. La fecha de vigencia de esta página corresponde siempre a la última revisión.
+201|16. Asistente de WhatsApp con IA
+202|Esta sección aplica a los clientes que se suscriben al asistente de WhatsApp con IA de Local Boost Lab (el «Servicio de WhatsApp»). Las demás secciones de estos Términos también aplican al Servicio de WhatsApp, salvo la 3.1 (Planes y precios), la 5 (Prestación del servicio y compromisos) y la 8 (Acceso al Perfil de Negocio de Google), que aplican solo al servicio del Perfil de Negocio de Google. Si esta sección entra en conflicto con otra, prevalece esta para el Servicio de WhatsApp.
+203|16.1 Qué hace el Servicio de WhatsApp
+204|LBL configura y opera en tu número de WhatsApp Business un asistente con IA que, con la información que entregas, responde las preguntas frecuentes de tus clientes, agenda y confirma citas, envía recordatorios y le pasa la conversación a tu equipo cuando hace falta una persona. El equipo de LBL supervisa el asistente. Las respuestas se generan con IA y, pese a esa supervisión, en ocasiones pueden ser incompletas o inexactas.
+205|16.2 Alcance, precio y facturación
+206|El alcance del Servicio de WhatsApp y su precio mensual se acuerdan contigo por escrito, por correo o cotización, antes de empezar. Cualquier cambio de alcance o de precio también se acuerda primero contigo por escrito.
+207|Las tarifas que cobra Meta por la mensajería de WhatsApp están incluidas en tu precio mensual. No se te cobran aparte.
+208|La facturación sigue la sección 3.2. No hay contrato de permanencia y puedes cancelar cuando quieras según la sección 7.
+209|16.3 Tus responsabilidades
+210|Ser el titular del número de WhatsApp Business que conectas, o estar autorizado para usarlo, y mantener tu cuenta de WhatsApp Business al día.
+211|Cumplir los términos de la plataforma de Meta, los términos de servicio de WhatsApp Business, la política de mensajería de WhatsApp Business y la política de comercio de WhatsApp.
+212|Obtener el consentimiento que exijan las políticas de WhatsApp o la ley aplicable antes de que tus clientes reciban mensajes iniciados por el negocio, como recordatorios de citas, y respetar las solicitudes de no recibirlos.
+213|Dar a tus clientes los avisos que exija la ley aplicable sobre cómo se manejan sus mensajes.
+214|Mantener exacta y actualizada la información que usa el asistente: precios, horarios, servicios, dirección y disponibilidad.
+215|Atender a tiempo las conversaciones que el asistente le pasa a tu equipo.
+216|16.4 No es asesoría profesional ni servicio de urgencias
+217|El asistente no da asesoría médica, legal, financiera ni de otro tipo profesional, y no es un servicio de urgencias. Está configurado para pasarle esas conversaciones a tu equipo. Tú sigues siendo responsable de la asesoría profesional que dé tu negocio y de atender las solicitudes urgentes de tus clientes.
+218|16.5 Usos prohibidos
+219|Además de lo previsto en la sección 9, te comprometes a no usar el Servicio de WhatsApp para enviar spam o mensajes masivos no solicitados, para escribirle a personas que no han elegido recibir mensajes de tu negocio, para promocionar productos o servicios que las políticas de WhatsApp no permiten, ni para suplantar a otra persona o negocio.
+220|16.6 Tu número y el acceso a WhatsApp
+221|Tu número de WhatsApp Business y la relación con tus clientes siguen siendo tuyos. LBL nunca asume la titularidad de tu número.
+222|Puedes desconectar el acceso de LBL cuando quieras. Desconectarlo sin cancelar la suscripción no da derecho a reembolso y hará que el asistente deje de funcionar.
+223|Cuando termina tu suscripción, LBL deja de operar el asistente en tu número y retira su acceso.
+224|Meta controla la plataforma WhatsApp Business y puede cambiar sus precios, políticas o funciones, o restringir un número que incumpla sus reglas. LBL no responde por las decisiones de Meta ni por las caídas de WhatsApp, y a ellas se les aplica la sección 12.
+225|16.7 Sin garantía de resultados
+226|Como se describe en la sección 6, LBL no garantiza una cantidad determinada de citas, contactos, clientes o ingresos por el Servicio de WhatsApp.
+227|16.8 Conversaciones de clientes y privacidad
+228|LBL trata las conversaciones de tus clientes solo en tu nombre y solo para prestar el Servicio de WhatsApp, como se describe en la sección 11 de nuestra
+230|. No vendemos esta información ni usamos los datos de un cliente en beneficio de otro.
+231|17. Contacto
+232|¿Dudas sobre estos Términos?
+235|. Respondemos todas las consultas legales en 5 días hábiles.
+236|Local Boost Lab · Estados Unidos · Vigente desde abril de 2026 · Esta es una traducción de cortesía; si hay diferencias, prevalece la versión en inglés.
