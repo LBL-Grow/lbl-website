@@ -170,8 +170,18 @@ PILL = 'border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:4px 12
 
 # El enlace de idioma ocupa sitio en el menú: se evita que los enlaces partan en dos líneas.
 # `.grid-3>*{min-width:0}` corrige un desborde lateral de las tarjetas de precios entre 1025 y 1200 px.
+# `.nav__lang-m` es el enlace de idioma de la cabecera en móvil (el menú de escritorio se oculta bajo 1024 px).
 NAV_CSS = ('  <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-space:nowrap}'
-           '@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}</style>')
+           '@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}'
+           '.nav__lang-m{display:none}'
+           '@media(max-width:1024px){.nav__lang-m{display:inline-flex;align-items:center;margin-left:auto;margin-right:14px;'
+           'color:#fff;font-size:.8rem;font-weight:600}}</style>')
+# La barra promocional de la home tapaba la mitad superior del menú fijo (y con él el enlace de idioma):
+# el menú se coloca justo debajo de la barra mientras esta se ve.
+NAV_JS = ('<script data-lang-nav>(function(){var p=document.getElementById("promo-bar"),n=document.querySelector("nav.nav");'
+          'if(!p||!n)return;function f(){n.style.top=(p.offsetParent===null?0:Math.max(0,p.getBoundingClientRect().bottom))+"px"}'
+          'f();addEventListener("scroll",f,{passive:true});addEventListener("resize",f);'
+          'p.addEventListener("click",function(){setTimeout(f,0)})})()</script>')
 
 
 def append_inside(html, cls, snippet):
@@ -189,14 +199,17 @@ def append_inside(html, cls, snippet):
 
 
 def set_lang_link(html, href, hreflang, label):
-    """Enlace de cambio de idioma en el menú (escritorio y móvil) y en el pie."""
+    """Enlace de cambio de idioma: cabecera (escritorio y móvil), menú móvil y pie."""
     attrs = f'href="{href}" hreflang="{hreflang}" lang="{hreflang[:2]}" data-lang-switch'
-    html = clean(html)
-    html = re.sub(r'\s*<style data-lang-nav>.*?</style>', '', html, flags=re.S)
-    html = html.replace('</head>', NAV_CSS + '\n</head>', 1)
     short = {'en': 'EN', 'es-CO': 'ES'}[hreflang]
-    html = append_inside(html, 'nav__links', f'  <a {attrs} style="{PILL}" title="{label}" aria-label="{label}">{short}</a>\n    ')
-    html = append_inside(html, 'nav__mobile-overlay', f'  <a {attrs}>{label}</a>\n')
+    pill = f'style="{PILL}" title="{label}" aria-label="{label}"'
+    html = clean(html)
+    html = re.sub(r'\s*<(style|script) data-lang-nav>.*?</\1>', '', html, flags=re.S)
+    html = html.replace('</head>', NAV_CSS + '\n</head>', 1)
+    html = html.replace('</body>', NAV_JS + '\n</body>', 1)
+    html = append_inside(html, 'nav__links', f'  <a {attrs} {pill}>{short}</a>\n    ')
+    html = re.sub(r'(<button class="nav__hamburger")', lambda m: f'<a {attrs} class="nav__lang-m" {pill}>{short}</a>\n    ' + m.group(1), html, count=1)
+    html = re.sub(r'(<div class="nav__mobile-overlay"[^>]*>)', lambda m: m.group(1) + f'\n  <a {attrs}>{label}</a>', html, count=1)
     return re.sub(r'(<div class="footer__bottom">)', lambda m: m.group(1) + f'\n      <span><a {attrs}>{label}</a></span>', html, count=1)
 
 
