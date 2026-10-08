@@ -61,5 +61,13 @@
     "JSON.stringify({ plan: 'authority', billing: billing, email: ownerEmail, locale: 'es-co' })"
    ]
   ]
+ },
+ "home": {
+  "replace": [
+   [
+    "var(--authority-blue);\">US$97<",
+    "var(--authority-blue);\">$400.000<"
+   ]
+  ]
  }
 }
