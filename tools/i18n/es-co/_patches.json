@@ -1,0 +1,65 @@
+{
+ "css": ".grid-3:has(> .pricing-card:only-child){grid-template-columns:minmax(0,440px);justify-content:center}",
+ "*": {
+  "drop": [
+   [
+    "pricing-card__name\">Reputación<",
+    "pricing-card"
+   ],
+   [
+    "pricing-card__name\">Presencia<",
+    "pricing-card"
+   ],
+   [
+    "★ El más elegido",
+    "pricing-card__badge"
+   ]
+  ],
+  "replace": [
+   [
+    "US$217<",
+    "$400.000<"
+   ],
+   [
+    "US$184<",
+    "$340.000<"
+   ],
+   [
+    "Todo lo del plan Reputación",
+    "Respuestas a reseñas de 4 y 5 estrellas, y aviso con borrador para las demás"
+   ],
+   [
+    "Todo lo del plan Presencia",
+    "3 publicaciones por semana e informe mensual el día 5"
+   ],
+   [
+    "Empezar con Autoridad →",
+    "Empezar →"
+   ],
+   [
+    "Ver el detalle de los planes →",
+    "Ver el detalle del plan →"
+   ],
+   [
+    "Ver planes →",
+    "Ver precio →"
+   ],
+   [
+    "Ver planes &#x2192;",
+    "Ver precio &#x2192;"
+   ]
+  ]
+ },
+ "onboarding": {
+  "replace": [
+   [
+    "plan:            plan,\n      language:",
+    "plan:            'authority',\n      language:"
+   ],
+   [
+    "JSON.stringify({ plan: plan, billing: billing, email: ownerEmail, locale: 'es-co' })",
+    "JSON.stringify({ plan: 'authority', billing: billing, email: ownerEmail, locale: 'es-co' })"
+   ]
+  ]
+ }
+}

@@ -255,6 +255,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   </script>
   <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-space:nowrap}@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}.nav__lang-m{display:none}@media(max-width:1024px){.nav__lang-m{display:inline-flex;align-items:center;margin-left:auto;margin-right:14px;color:#fff;font-size:.8rem;font-weight:600}}</style>
+  <style data-es-co>.grid-3:has(> .pricing-card:only-child){grid-template-columns:minmax(0,440px);justify-content:center}</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -291,19 +292,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="plan-banner" hidden style="background:var(--surface-light);border:1px solid var(--authority-blue);border-radius:var(--radius-sm);padding:10px 16px;margin-bottom:20px;align-items:center;gap:10px;flex-wrap:wrap;">
         <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">Plan elegido:</span>
         <span id="plan-banner-name" style="font-weight:700;color:var(--authority-blue);"></span>
-        <a href="/es-co/precios" style="font-size:0.78rem;color:var(--text-muted);margin-left:auto;">Cambiar de plan →</a>
+        <a href="/es-co/precios" style="font-size:0.78rem;color:var(--text-muted);margin-left:auto;">Ver qué incluye →</a>
       </div>
 
       <!-- Plan picker — shown only when the visitor arrived without a ?plan= param,
            so nobody is silently checked out on the cheapest tier. -->
       <div id="plan-picker-wrap" hidden style="background:var(--surface-light);border:1px solid var(--authority-blue);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:20px;">
-        <label for="plan-picker" class="form-label" style="display:block;margin-bottom:8px;">Elige tu plan <span class="req">*</span></label>
+        <label for="plan-picker" class="form-label" style="display:block;margin-bottom:8px;">Tu plan <span class="req">*</span></label>
         <select id="plan-picker" class="form-control">
-          <option value="reputation">Reputación: US$97/mes · respuestas a reseñas + informe mensual</option>
-          <option value="presence">Presencia: US$157/mes · 3 publicaciones por semana + informe mensual</option>
-          <option value="authority" selected>Autoridad: US$217/mes · reseñas, publicaciones y soporte prioritario</option>
+          
+          
+          <option value="authority" selected>Autoridad: $400.000/mes · reseñas, publicaciones, informe y soporte prioritario</option>
         </select>
-        <p style="margin:8px 0 0;font-size:0.78rem;color:var(--text-muted);">¿No estás seguro? <a href="/es-co/precios" style="color:var(--authority-blue);">Compara los planes →</a> · Sin contrato, cancelas cuando quieras.</p>
+        <p style="margin:8px 0 0;font-size:0.78rem;color:var(--text-muted);">¿Quieres ver el detalle? <a href="/es-co/precios" style="color:var(--authority-blue);">Ver qué incluye →</a> · Sin contrato, cancelas cuando quieras.</p>
       </div>
       <!-- STEP 1: Your Business -->
       <div class="step-form active" id="step-1">
@@ -913,7 +914,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var photoMode  = (document.querySelector('input[name="photo-mode"]:checked') || {}).value || '';
 
     var payload = {
-      plan:            plan,
+      plan:            'authority',
       language:        'es',
       locale:          'es-co',
       bizName:         (document.getElementById('s1-biz-name')     || {}).value || '',
@@ -976,7 +977,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return fetch(API + '/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: plan, billing: billing, email: ownerEmail, locale: 'es-co' }),
+        body: JSON.stringify({ plan: 'authority', billing: billing, email: ownerEmail, locale: 'es-co' }),
       });
     })
     .then(function(r) { return r.json(); })
@@ -1005,8 +1006,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var paid = params.get('paid');
 
     var billing = params.get('billing') || 'monthly';
-    var monthlyLabels = { reviews: 'Reputación: US$97/mes', reputation: 'Reputación: US$97/mes', presence: 'Presencia: US$157/mes', complete: 'Autoridad: US$217/mes', authority: 'Autoridad: US$217/mes' };
-    var annualLabels  = { reviews: 'Reputación: US$82/mes (anual)', reputation: 'Reputación: US$82/mes (anual)', presence: 'Presencia: US$133/mes (anual)', complete: 'Autoridad: US$184/mes (anual)', authority: 'Autoridad: US$184/mes (anual)' };
+    var monthlyLabels = { reviews: 'Autoridad: $400.000/mes', reputation: 'Autoridad: $400.000/mes', presence: 'Autoridad: $400.000/mes', complete: 'Autoridad: $400.000/mes', authority: 'Autoridad: $400.000/mes' };
+    var annualLabels  = { reviews: 'Autoridad: $340.000/mes (anual)', reputation: 'Autoridad: $340.000/mes (anual)', presence: 'Autoridad: $340.000/mes (anual)', complete: 'Autoridad: $340.000/mes (anual)', authority: 'Autoridad: $340.000/mes (anual)' };
     var labels = (billing === 'annual') ? annualLabels : monthlyLabels;
     var banner = document.getElementById('plan-banner');
     var name   = document.getElementById('plan-banner-name');
