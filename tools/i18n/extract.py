@@ -8,7 +8,7 @@ TOK = re.compile(r'(<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->|<[^>]+>
 ATTR = re.compile(r'\b(alt|aria-label|placeholder|title|content|value|data-label)="([^"]*)"')
 META_OK = re.compile(r'(name|property)="(description|og:title|og:description|twitter:title|twitter:description|og:image:alt)"')
 
-SWITCH = re.compile(r'\s*<span><a [^>]*data-lang-switch>[^<]*</a></span>')
+SWITCH = re.compile(r'\s*(?:<span>)?<a [^>]*data-lang-switch[^>]*>[^<]*</a>(?:</span>)?')
 
 
 def clean(html):
