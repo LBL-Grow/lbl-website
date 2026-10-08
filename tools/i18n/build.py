@@ -180,7 +180,7 @@ NAV_CSS = ('  <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-spa
 # el menú se coloca justo debajo de la barra mientras esta se ve.
 NAV_JS = ('<script data-lang-nav>(function(){var p=document.getElementById("promo-bar"),n=document.querySelector("nav.nav");'
           'if(!p||!n)return;function f(){n.style.top=(p.offsetParent===null?0:Math.max(0,p.getBoundingClientRect().bottom))+"px"}'
-          'f();addEventListener("scroll",f,{passive:true});addEventListener("resize",f);'
+          'f();addEventListener("load",f);addEventListener("scroll",f,{passive:true});addEventListener("resize",f);'
           'p.addEventListener("click",function(){setTimeout(f,0)})})()</script>')
 
 
