@@ -19,13 +19,13 @@
 50|Ley aplicable
 51|Cambios en los términos
 54|1. Aceptación de los términos
-55|Al suscribirte a los servicios de Local Boost Lab y completar el registro, tú («Cliente», «tú») aceptas quedar obligado por estos Términos del servicio («Términos»). Estos Términos son un acuerdo legalmente vinculante entre tú y Local Boost Lab («LBL», «Local Boost Lab», «nosotros»).
-56|Si no estás de acuerdo con estos Términos, no te suscribas ni uses el Servicio. Al completar el pago declaras que leíste, entendiste y aceptas estos Términos.
+55|Al contratar los servicios de Local Boost Lab, ya sea por escrito, por WhatsApp, por correo o completando el registro, tú («Cliente», «tú») aceptas quedar obligado por estos Términos del servicio («Términos»). Estos Términos son un acuerdo legalmente vinculante entre tú y Local Boost Lab («LBL», «Local Boost Lab», «nosotros»).
+56|Si no estás de acuerdo con estos Términos, no contrates ni uses el Servicio. Al aceptar la propuesta, hacer el primer pago o empezar a usar el Servicio declaras que leíste, entendiste y aceptas estos Términos.
 57|Debes tener al menos 18 años y la capacidad legal para celebrar este acuerdo en nombre propio o del negocio que representas.
 58|2. Descripción del servicio
 59|Local Boost Lab presta servicios de gestión automatizada del Perfil de Negocio de Google («el perfil») para negocios locales de servicios. El Servicio incluye:
 60|Respuestas a reseñas:
-61|Respuestas generadas con IA a las reseñas positivas de tus clientes, publicadas en tu perfil según tu plan.
+61|Respuestas generadas con IA a las reseñas positivas de tus clientes, publicadas en tu perfil según lo acordado.
 62|Avisos de reseñas:
 63|Avisos automáticos y borradores de respuesta para las reseñas de 3 estrellas o menos, que requieren tu aprobación antes de publicarse.
 64|Publicación de contenido:
@@ -53,8 +53,8 @@
 89|El cobro se coordina directamente con LBL. Al aceptar el servicio autorizas a LBL a cobrar de forma recurrente por el medio de pago que acordemos.
 90|Las suscripciones se renuevan automáticamente salvo que se cancelen según la sección 7.
 91|Por ahora el servicio se cobra mes a mes.
-92|No hay reembolsos por periodos parciales, salvo a criterio exclusivo de LBL.
-93|LBL puede cambiar los precios avisando con 30 días de anticipación por correo a tu dirección registrada. Si sigues usando el servicio después de la fecha del cambio, se entiende que lo aceptas.
+92|No hay reembolsos por periodos parciales, salvo a criterio exclusivo de LBL y sin perjuicio de los derechos que la ley colombiana te reconozca como consumidor (ver sección 14.1). Los precios no incluyen impuestos; si te aplica IVA u otro impuesto, te lo indicaremos antes del primer cobro.
+93|LBL puede cambiar los precios avisando con 30 días de anticipación por correo a tu dirección registrada. Puedes cancelar antes de que el cambio entre en vigor y, si sigues usando el servicio después de esa fecha, se entiende que lo aceptas.
 94|Un pago fallido puede llevar a la suspensión del servicio después de 5 días hábiles.
 95|4. Responsabilidades del cliente
 96|Para usar el Servicio debes, y te comprometes a:
@@ -99,8 +99,8 @@
 138|7.2 Política de reembolsos
 139|LBL no hace reembolsos proporcionales por periodos parciales en los planes mensuales. Puede haber excepciones, a criterio exclusivo de LBL, en casos de falla del servicio documentada. Para pedir que se evalúe un reembolso, escribe a
 141|dentro de los 7 días siguientes a la fecha del cobro.
-142|7.3 Cancelación y reembolsos en planes anuales
-143|Cuando un cliente con plan anual cancela, el plan termina al final del ciclo de facturación en curso (el siguiente corte mensual después de la solicitud). Local Boost Lab reembolsa la parte no usada del pago anual de forma proporcional, equivalente a los meses completos que quedan después de la terminación. Por ejemplo: un cliente que usó el servicio 4 meses recibe, al terminar el cuarto mes, un reembolso equivalente a los 8 meses restantes del periodo anual. Los meses ya consumidos no se reembolsan.
+142|7.3 Planes anuales
+143|Por ahora no ofrecemos planes anuales en Colombia. Si los ofrecemos más adelante, las condiciones de cancelación y reembolso se te informarán por escrito antes de contratar.
 144|7.4 Cancelación por LBL
 145|LBL puede terminar tu suscripción de inmediato y sin reembolso en caso de incumplimiento grave de estos Términos, de una violación de las políticas de Google que afecte el acceso de LBL a su API, o del uso del Servicio con fines fraudulentos o engañosos.
 146|8. Acceso al Perfil de Negocio de Google
@@ -129,7 +129,7 @@
 169|Si nos das comentarios, sugerencias o ideas sobre el Servicio, le concedes a LBL una licencia irrevocable, perpetua y gratuita para usarlos con cualquier fin, sin compensación.
 170|11. Datos y privacidad
 171|El uso del Servicio también se rige por la Política de privacidad de LBL, publicada en
-172|localboostlab.com/privacy
+172|localboostlab.com/es-co/privacidad
 173|, que se incorpora a estos Términos por referencia. Al aceptar estos Términos aceptas también la Política de privacidad.
 174|Declaras que tienes derecho a entregar todos los datos que das a LBL en el registro y que esa entrega no viola derechos de terceros ni la ley aplicable.
 175|12. Limitación de responsabilidad
