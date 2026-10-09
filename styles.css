@@ -2900,21 +2900,25 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
 @media (max-width: 768px) { .hero__side { margin-top: -16px; } }
 
 /* ─── About: founders ──────────────────────────────────── */
-.about-founders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.about-founders { display: grid; grid-template-columns: 1fr; gap: 20px; }
 .about-founder-card {
+  display: grid; grid-template-columns: 112px 1fr; gap: 28px; align-items: start; text-align: left;
   background: var(--surface-light); border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg); padding: 28px; text-align: center;
+  border-radius: var(--radius-lg); padding: 28px 32px;
 }
 .about-founder-card__photo {
   display: flex; align-items: center; justify-content: center;
-  width: 112px; height: 112px; margin: 0 auto 16px; border-radius: 50%;
+  width: 112px; height: 112px; border-radius: 50%;
   object-fit: cover; object-position: center top; border: 3px solid var(--signal-amber);
 }
 .about-founder-card__photo--initials {
   background: var(--authority-blue); color: #fff; font-family: var(--font-heading);
   font-weight: 800; font-size: 2rem; letter-spacing: 0.02em;
 }
-.about-founder-card__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--authority-blue); }
-.about-founder-card__role { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin: 2px 0 12px; }
-.about-founder-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
-@media (max-width: 640px) { .about-founders { grid-template-columns: 1fr; } }
+.about-founder-card__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; line-height: 1.2; color: var(--authority-blue); margin-bottom: 4px; }
+.about-founder-card__role { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--signal-amber); margin-bottom: 12px; }
+.about-founder-card p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin: 0; }
+@media (max-width: 640px) {
+  .about-founder-card { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+  .about-founder-card__photo { width: 88px; height: 88px; }
+}
