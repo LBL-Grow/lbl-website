@@ -41,17 +41,7 @@
 74|Las reseñas positivas (4 y 5 estrellas) se publican solas, con tu tono
 75|Respuestas en menos de una hora, no en 3 días hábiles
 76|Cada respuesta refleja tu negocio, no un algoritmo
-77|Lo que ha hecho Juan
-78|Más de 15 años armando sistemas de marketing para empresas de Estados Unidos
-79|Manejó más de 70 perfiles de Google en una agencia digital de Estados Unidos
-80|Experiencia directa en Google Ads y Meta Ads, SEO local y optimización de conversión
-81|Armó y dirigió equipos de marketing distribuidos entre Latinoamérica y Estados Unidos
-82|Lo que te entrega Local Boost Lab
-83|@@DROP:li@@
-84|13 publicaciones al mes por perfil, hechas por nosotros
-85|Arranque en 24 horas
-86|Cero contratos, cero costos de instalación y cancelas cuando quieras
-87|¿Listo para ver qué pasa cuando el servicio lo maneja alguien que conoce el trabajo?
-88|Pide una auditoría gratis de tu perfil de Google y mira exactamente qué lo está frenando. Sin llamadas y sin contratos.
-90|Ver planes →
-109|Legal
+77|¿Listo para ver qué pasa cuando el servicio lo maneja alguien que conoce el trabajo?
+78|Pide una auditoría gratis de tu perfil de Google y mira exactamente qué lo está frenando. Sin llamadas y sin contratos.
+80|Ver planes →
+99|Legal

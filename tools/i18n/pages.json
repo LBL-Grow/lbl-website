@@ -95,5 +95,17 @@
   "dst": "es-co/cookies.html",
   "en": "/cookies",
   "es": "/es-co/cookies"
+ },
+ "blog": {
+  "src": "blog/index.html",
+  "dst": "es-co/blog/index.html",
+  "en": "/blog",
+  "es": "/es-co/blog"
+ },
+ "blogpost": {
+  "src": "blog/post.html",
+  "dst": "es-co/blog/articulo.html",
+  "en": "/blog/post",
+  "es": "/es-co/blog/articulo"
  }
 }

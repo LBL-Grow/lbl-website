@@ -524,5 +524,57 @@
    "      plan:            plan,\n      bizName:",
    "      plan:            plan,\n      language:        'es',\n      locale:          'es-co',\n      bizName:"
   ]
+ ],
+ "blog": [
+  [
+   "fetch(API + '/api/blog')",
+   "fetch('/es-co/blog/posts.json')"
+  ],
+  [
+   "'/blog/post.html?slug=' + encodeURIComponent(post.slug)",
+   "'/es-co/blog/' + encodeURIComponent(post.slug)"
+  ],
+  [
+   "toLocaleDateString('en-US'",
+   "toLocaleDateString('es-CO'"
+  ],
+  [
+   "'Article'",
+   "'Artículo'"
+  ],
+  [
+   "'Local Boost Lab Team'",
+   "'Equipo de Local Boost Lab'"
+  ],
+  [
+   "Coming soon — our first posts are on the way. Check back shortly.",
+   "Próximamente: nuestros primeros artículos están en camino."
+  ],
+  [
+   "Coming soon — check back shortly.",
+   "Próximamente."
+  ]
+ ],
+ "blogpost": [
+  [
+   "if (!slug) { show404(); return; }",
+   "if (window.__LBL_POST__) { showPost(window.__LBL_POST__); return; } show404(); return;"
+  ],
+  [
+   "toLocaleDateString('en-US'",
+   "toLocaleDateString('es-CO'"
+  ],
+  [
+   "'Post Not Found | Local Boost Lab Blog'",
+   "'Artículo no encontrado | Blog de Local Boost Lab'"
+  ],
+  [
+   "'Article'",
+   "'Artículo'"
+  ],
+  [
+   "' | Local Boost Lab Blog'",
+   "' | Blog de Local Boost Lab'"
+  ]
  ]
 }
