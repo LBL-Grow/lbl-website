@@ -23,41 +23,35 @@
 56|Durante años, Juan armó áreas de marketing para empresas de Estados Unidos. Vio a dueños de negocios contratar agencias, firmar contratos de 12 meses y esperar 3 o 4 semanas por entregas básicas. Los perfiles de Google quedaban abandonados. Las reseñas, sin respuesta. Los clientes potenciales se perdían.
 57|Entonces preguntaba: «¿Por qué no lo manejan ustedes?». La respuesta era siempre la misma: «Es demasiado para estar pendientes. Necesitamos a alguien dedicado, pero no podemos pagar US$1.500 al mes».
 58|Juan entendió que el problema no era el servicio, sino el modelo de precios. Las agencias cobran caro porque contratan ejecutivos de cuenta, hacen reuniones y pierden tiempo en trámites internos. ¿Y si se quitaba todo eso y se entregaba el mismo trabajo por una fracción del costo? Eso es Local Boost Lab.
-59|Juan O., fundador de Local Boost Lab
-60|Juan O.
-61|Fundador y estratega de crecimiento
-62|Confianza y trayectoria
-63|Juan O.
-64|Director de crecimiento y marketing digital
-65|Juan lleva años construyendo operaciones de marketing rentables para empresas de Estados Unidos, desde emprendimientos en etapa temprana hasta compañías consolidadas. Es bilingüe (inglés y español), dirige equipos distribuidos entre Latinoamérica y Norteamérica, y es de los que de verdad se emocionan con un Perfil de Negocio de Google bien trabajado. (Sí, eso existe.)
-66|Crecimiento y captación de clientes
-67|Captación de clientes con SEO, Perfil de Negocio de Google y optimización de conversión para negocios de servicios.
-68|Estrategia de embudo completo
-69|Posicionamiento de marca, identidad visual, pauta, automatización de CRM y optimización de comercio electrónico en Shopify, WordPress y Amazon FBA.
-70|Liderazgo y equipos
-71|Ha armado y dirigido equipos multidisciplinarios (diseño, marketing y desarrollo) entre Latinoamérica y Norteamérica, en remoto desde antes de que fuera lo normal.
-72|Herramientas
-73|Google Ads y Meta Ads, Perfil de Negocio de Google, Google Analytics, HubSpot, Zoho CRM, correo de marketing, pruebas A/B, WordPress, Shopify, Squarespace, Amazon FBA, Node.js, Supabase, Railway, Vercel, las API de Google, Resend y la API de Claude de Anthropic.
-74|Por qué te importa
-75|Juan no vende lo que no conoce. Cada función de Local Boost Lab sale de años de marketing real, con equipos reales y resultados reales. Sabe qué es lo que de verdad mueve un perfil de Google, y qué es ruido, porque ha hecho ese trabajo con sus propias manos. Armó este servicio para saltarse el ruido: sin reuniones, sin presentaciones y sin misterios.
-76|Innegociable
-77|Nunca respondemos solos una reseña negativa
-78|Muchas agencias y herramientas publican respuestas automáticas a reseñas negativas sin que el dueño las vea. Juan no lo hace: ha visto los desastres que vienen después. Una respuesta desatinada a una reseña de 3 estrellas puede convertir a un cliente algo molesto en una cruzada de una estrella.
-79|Las reseñas negativas pasan primero por tu aprobación, siempre
-80|Las reseñas positivas (4 y 5 estrellas) se publican solas, con tu tono
-81|Respuestas en menos de una hora, no en 3 días hábiles
-82|Cada respuesta refleja tu negocio, no un algoritmo
-83|Lo que ha hecho Juan
-84|Más de 15 años armando sistemas de marketing para empresas de Estados Unidos
-85|Manejó más de 70 perfiles de Google en una agencia digital de Estados Unidos
-86|Experiencia directa en Google Ads y Meta Ads, SEO local y optimización de conversión
-87|Armó y dirigió equipos de marketing distribuidos entre Latinoamérica y Estados Unidos
-88|Lo que te entrega Local Boost Lab
-89|@@DROP:li@@
-90|13 publicaciones al mes por perfil, hechas por nosotros
-91|Arranque en 24 horas
-92|Cero contratos, cero costos de instalación y cancelas cuando quieras
-93|¿Listo para ver qué pasa cuando el servicio lo maneja alguien que conoce el trabajo?
-94|Pide una auditoría gratis de tu perfil de Google y mira exactamente qué lo está frenando. Sin llamadas y sin contratos.
-96|Ver planes →
-115|Legal
+59|Los fundadores
+60|Dos fundadores, un equipo al que le puedes escribir.
+61|Juan O., fundador de Local Boost Lab
+62|Juan O.
+63|Fundador y estratega de crecimiento
+64|Lidera la parte de marketing de Local Boost Lab. Define cómo funciona el servicio: qué se automatiza y qué siempre necesita tu aprobación.
+65|Stiven R.
+66|SR
+67|Stiven R.
+68|Fundador técnico
+69|Lidera la tecnología detrás de Local Boost Lab: la plataforma, las integraciones y la automatización que publican, responden y reportan en tu perfil cada semana.
+70|Innegociable
+71|Nunca respondemos solos una reseña negativa
+72|Muchas agencias y herramientas publican respuestas automáticas a reseñas negativas sin que el dueño las vea. Juan no lo hace: ha visto los desastres que vienen después. Una respuesta desatinada a una reseña de 3 estrellas puede convertir a un cliente algo molesto en una cruzada de una estrella.
+73|Las reseñas negativas pasan primero por tu aprobación, siempre
+74|Las reseñas positivas (4 y 5 estrellas) se publican solas, con tu tono
+75|Respuestas en menos de una hora, no en 3 días hábiles
+76|Cada respuesta refleja tu negocio, no un algoritmo
+77|Lo que ha hecho Juan
+78|Más de 15 años armando sistemas de marketing para empresas de Estados Unidos
+79|Manejó más de 70 perfiles de Google en una agencia digital de Estados Unidos
+80|Experiencia directa en Google Ads y Meta Ads, SEO local y optimización de conversión
+81|Armó y dirigió equipos de marketing distribuidos entre Latinoamérica y Estados Unidos
+82|Lo que te entrega Local Boost Lab
+83|@@DROP:li@@
+84|13 publicaciones al mes por perfil, hechas por nosotros
+85|Arranque en 24 horas
+86|Cero contratos, cero costos de instalación y cancelas cuando quieras
+87|¿Listo para ver qué pasa cuando el servicio lo maneja alguien que conoce el trabajo?
+88|Pide una auditoría gratis de tu perfil de Google y mira exactamente qué lo está frenando. Sin llamadas y sin contratos.
+90|Ver planes →
+109|Legal
