@@ -22,8 +22,8 @@
 53|Guarda tu preferencia de cookies (aceptadas o personalizadas) para no mostrar el aviso en cada visita.
 54|12 meses
 55|localboostlab.com
-56|Cookies de sesión de Stripe
-57|Mantienen el estado de tu sesión durante el pago. Las crea y administra Stripe.
+56|Cookies de sesión del proveedor de pagos
+57|Mantienen el estado de tu sesión durante un pago con tarjeta, cuando aplica. Las crea y administra el proveedor de pagos.
 58|Sesión
 59|stripe.com
 60|Vercel Speed Insights
@@ -36,9 +36,9 @@
 68|No se usan
 69|No usamos el píxel de Facebook, etiquetas de conversión de Google Ads, píxeles de remarketing ni ninguna cookie publicitaria. No se te rastrea en otros sitios después de visitar localboostlab.com.
 70|3. Cookies de terceros
-71|Cuando pasas a la página de pago de Stripe para comprar un plan, Stripe puede crear sus propias cookies en stripe.com. Esas cookies se rigen por la
-72|Política de privacidad de Stripe
-73|. No tenemos control ni responsabilidad sobre las cookies que crea Stripe.
+71|Si llegas a pagar con tarjeta en la página de un proveedor de pagos como Stripe, ese proveedor puede crear sus propias cookies en su dominio. Esas cookies se rigen por la
+72|política de privacidad de ese proveedor
+73|. No tenemos control ni responsabilidad sobre las cookies que crea.
 74|Este sitio carga Google Tag Manager (GTM). GTM por sí mismo no crea cookies y no hemos configurado ninguna etiqueta que las cree. Se usa solo para organizar los scripts que podamos agregar en el futuro.
 75|4. Tiempos de conservación de las cookies
 76|Resumen de conservación de cookies
@@ -49,9 +49,9 @@
 81|lbl_cookie_consent
 82|12 meses
 83|Se guarda en localStorage, no es una cookie de red
-84|Sesión de pago de Stripe
+84|Sesión de pago con tarjeta
 85|Sesión (termina al cerrar la pestaña)
-86|Administrada por Stripe
+86|Administrada por el proveedor de pagos
 87|Vercel Speed Insights
 88|Sesión
 89|Sin seguimiento persistente ni entre sitios
