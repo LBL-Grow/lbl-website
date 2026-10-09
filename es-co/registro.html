@@ -256,6 +256,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </script>
   <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-space:nowrap}@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}.nav__lang-m{display:none}@media(max-width:1024px){.nav__lang-m{display:inline-flex;align-items:center;margin-left:auto;margin-right:14px;color:#fff;font-size:.8rem;font-weight:600}}</style>
   <style data-es-co>.grid-3:has(> .pricing-card:only-child){grid-template-columns:minmax(0,440px);justify-content:center}</style>
+  <link rel="stylesheet" href="/es-co/es-co.css?v=5">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -302,7 +303,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <select id="plan-picker" class="form-control">
           
           
-          <option value="authority" selected>Autoridad: $400.000/mes · reseñas, publicaciones, informe y soporte prioritario</option>
+          <option value="authority" selected>Autoridad: $425.000/mes · reseñas, publicaciones, informe y soporte prioritario</option>
         </select>
         <p style="margin:8px 0 0;font-size:0.78rem;color:var(--text-muted);">¿Quieres ver el detalle? <a href="/es-co/precios" style="color:var(--authority-blue);">Ver qué incluye →</a> · Sin contrato, cancelas cuando quieras.</p>
       </div>
@@ -574,7 +575,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
         </div>
         <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:12px;">
-          Vas a pasar al pago seguro de Stripe. Después del pago termina la configuración y tu primera publicación sale en 24 horas.
+          Después de enviar el formulario, Local Boost Lab se comunica contigo para confirmar el servicio y acordar el pago. Tu primera publicación sale en 24 horas.
         </p>
 
         <div class="onboarding-nav" style="border-top:none;padding-top:0;margin-top:8px;">
@@ -1006,7 +1007,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var paid = params.get('paid');
 
     var billing = params.get('billing') || 'monthly';
-    var monthlyLabels = { reviews: 'Autoridad: $400.000/mes', reputation: 'Autoridad: $400.000/mes', presence: 'Autoridad: $400.000/mes', complete: 'Autoridad: $400.000/mes', authority: 'Autoridad: $400.000/mes' };
+    var monthlyLabels = { reviews: 'Autoridad: $425.000/mes', reputation: 'Autoridad: $425.000/mes', presence: 'Autoridad: $425.000/mes', complete: 'Autoridad: $425.000/mes', authority: 'Autoridad: $425.000/mes' };
     var annualLabels  = { reviews: 'Autoridad: $340.000/mes (anual)', reputation: 'Autoridad: $340.000/mes (anual)', presence: 'Autoridad: $340.000/mes (anual)', complete: 'Autoridad: $340.000/mes (anual)', authority: 'Autoridad: $340.000/mes (anual)' };
     var labels = (billing === 'annual') ? annualLabels : monthlyLabels;
     var banner = document.getElementById('plan-banner');

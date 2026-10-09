@@ -13,16 +13,20 @@
    [
     "★ El más elegido",
     "pricing-card__badge"
+   ],
+   [
+    "Pagos protegidos por",
+    "div"
    ]
   ],
   "replace": [
    [
     "US$217<",
-    "$400.000<"
+    "$425.000<"
    ],
    [
     "US$184<",
-    "$340.000<"
+    "$425.000<"
    ],
    [
     "Todo lo del plan Reputación",
@@ -34,11 +38,11 @@
    ],
    [
     "Empezar con Autoridad →",
-    "Empezar →"
+    "Hablemos →"
    ],
    [
     "Ver el detalle de los planes →",
-    "Ver el detalle del plan →"
+    "Ver el detalle →"
    ],
    [
     "Ver planes →",
@@ -47,6 +51,18 @@
    [
     "Ver planes &#x2192;",
     "Ver precio &#x2192;"
+   ],
+   [
+    "<div class=\"pricing-card__name\">Autoridad</div>",
+    "<div class=\"pricing-card__name\">Precio único</div>"
+   ],
+   [
+    "href=\"/es-co/registro?plan=authority\"",
+    "href=\"/es-co/contacto?tema=precio\""
+   ],
+   [
+    ">Empezar →<",
+    ">Hablemos →<"
    ]
   ]
  },
@@ -66,7 +82,7 @@
   "replace": [
    [
     "var(--authority-blue);\">US$97<",
-    "var(--authority-blue);\">$400.000<"
+    "var(--authority-blue);\">$425.000<"
    ]
   ]
  },
@@ -74,11 +90,19 @@
   "replace": [
    [
     "var(--authority-blue);\">US$97<",
-    "var(--authority-blue);\">$400.000<"
+    "var(--authority-blue);\">$425.000<"
    ],
    [
     "al mes para empezar, sin contrato",
     "al mes, sin contrato"
+   ]
+  ]
+ },
+ "contact": {
+  "replace": [
+   [
+    "</body>",
+    "<script>(function(){if(new URLSearchParams(location.search).get('tema')!=='precio')return;var s=document.getElementById('c-subject');if(s)s.value='Quiero empezar con el servicio';})();</script>\n</body>"
    ]
   ]
  }

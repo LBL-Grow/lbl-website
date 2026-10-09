@@ -1,17 +1,17 @@
-0|Precio | Local Boost Lab: Perfil de Negocio de Google por $400.000 al mes
-1|Gestión completa del Perfil de Negocio de Google por $400.000 al mes: respuestas a reseñas, 3 publicaciones por semana e informe mensual. Sin contrato.
-2|Precio | Local Boost Lab: $400.000 al mes
-3|Un solo plan con todo incluido por $400.000 al mes. Sin contrato, sin costo de instalación y cancelas cuando quieras.
-4|Gestión del Perfil de Negocio de Google: $400.000 al mes
-5|Gestión automatizada del Perfil de Negocio de Google. Un solo plan: $400.000 al mes. Cancelas cuando quieras.
+0|Precio | Local Boost Lab: Perfil de Negocio de Google por $425.000 al mes
+1|Gestión completa del Perfil de Negocio de Google por $425.000 al mes: respuestas a reseñas, 3 publicaciones por semana e informe mensual. Sin contrato.
+2|Precio | Local Boost Lab: $425.000 al mes
+3|Un solo plan con todo incluido por $425.000 al mes. Sin contrato, sin costo de instalación y cancelas cuando quieras.
+4|Gestión del Perfil de Negocio de Google: $425.000 al mes
+5|Gestión automatizada del Perfil de Negocio de Google. Un solo plan: $425.000 al mes. Cancelas cuando quieras.
 21|Ver planes &#x2192;
 35|Ver planes &#x2192;
 39|Un precio claro y honesto.
 40|Sin costo de instalación, sin contrato y sin sobrecostos de agencia. Cancelas cuando quieras y lo tramitamos en 24 horas. Precios en pesos colombianos.
 41|@@DROP:section@@
 42-49|@@EMPTY@@
-50|Un solo plan, con todo incluido
-51|Con el pago anual ahorras 15 %.
+50|Un solo precio, con todo incluido
+51|Precio único para Colombia, en pesos colombianos.
 56|Ahorra 15 %
 58|Tu reputación cuidada en piloto automático.
 61|US$984 al año (pago anual)
@@ -54,19 +54,19 @@
 112-133|@@EMPTY@@
 134|Preguntas sobre precios
 135|¿Hay costo de instalación?
-136|No. No hay costo de instalación, de registro ni cargos sorpresa. Pagas el precio mensual o anual del plan y nada más.
+136|No. No hay costo de instalación, de registro ni cargos sorpresa. Pagas el precio mensual y nada más.
 137|¿Hay más de un plan?
-138|No. En Colombia hay un solo plan, con todo incluido. Si tienes dudas sobre qué trae, escríbenos a
+138|No. En Colombia hay un solo precio, con todo incluido. Si tienes dudas sobre qué trae, escríbenos a
 140|y te respondemos en menos de 24 horas.
 141|¿Qué medios de pago aceptan?
-142|Todos los pagos se hacen con Stripe, con tarjeta de crédito o débito (Visa, Mastercard, American Express). El cobro se hace en pesos colombianos. Por ahora no recibimos PSE, transferencias ni efectivo.
+142|Coordinamos el pago contigo directamente cuando acordemos el servicio, y te confirmamos por escrito las opciones disponibles. No cobramos nada sin tu confirmación. El valor es en pesos colombianos.
 143|¿Qué pasa si cancelo a mitad de mes?
 144|No hacemos devoluciones proporcionales por periodos parciales. El servicio sigue activo hasta el final del periodo que ya pagaste. Retiramos nuestro acceso a tu perfil apenas confirmamos la cancelación.
 145|¿Hay descuento por varias sedes?
 146|Sí: si tienes 3 sedes o más, escríbenos a
 148|y te cotizamos. Por lo general damos entre 15 % y 25 % de descuento por sede adicional.
 149|¿Los precios incluyen impuestos?
-150|No. Los precios se muestran sin impuestos. Stripe calcula y aplica los que correspondan según tu dirección de facturación al momento del pago.
+150|No. El precio se muestra sin impuestos. Si te aplica IVA, te lo indicamos antes del primer cobro.
 151|¿Listo para empezar?
 152|Sin costo de instalación, sin contrato y cancelas cuando quieras. Tu perfil queda activo y atendido en 24 horas.
 153|Empezar →

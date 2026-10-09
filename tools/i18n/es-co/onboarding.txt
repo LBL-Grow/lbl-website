@@ -11,7 +11,7 @@
 13|Tu plan
 14|@@DROP:option@@
 15|@@DROP:option@@
-16|Autoridad: $400.000/mes · reseñas, publicaciones, informe y soporte prioritario
+16|Autoridad: $425.000/mes · reseñas, publicaciones, informe y soporte prioritario
 17|¿Quieres ver el detalle?
 18|Ver qué incluye →
 19|· Sin contrato, cancelas cuando quieras.
@@ -118,7 +118,7 @@
 143|He leído y acepto los
 145|y la
 147|Terminar y pagar →
-148|Vas a pasar al pago seguro de Stripe. Después del pago termina la configuración y tu primera publicación sale en 24 horas.
+148|Después de enviar el formulario, Local Boost Lab se comunica contigo para confirmar el servicio y acordar el pago. Tu primera publicación sale en 24 horas.
 149|← Atrás
 150|Pago confirmado: ¡falta un solo paso!
 151|Conecta tu Perfil de Negocio de Google y quedas activo. Toma unos 30 segundos.
