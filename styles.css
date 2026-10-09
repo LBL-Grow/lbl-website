@@ -1969,6 +1969,9 @@ select.form-control { background-image: url("data:image/svg+xml,%3Csvg xmlns='ht
   max-width: 560px;
   padding-left: 48px;
 }
+@media (min-width: 1025px) {
+  .service-accordion__desc { max-width: 860px; font-size: 1.05rem; }
+}
 .section--ink .service-accordion__desc,
 .section--dark .service-accordion__desc { color: rgba(255,255,255,0.6); }
 .service-accordion__thumb {
@@ -2889,3 +2892,29 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
   .ai-advantage__layout > * { min-width: 0; }
   .ai-advantage__text .btn { white-space: normal; }
 }
+
+/* ─── Hero: right column = mockup + lead form ─────────── */
+.nav__logo { flex-shrink: 0; }
+.hero__side { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.hero__side .hero-lead-form { margin-top: 0; max-width: none; }
+@media (max-width: 768px) { .hero__side { margin-top: -16px; } }
+
+/* ─── About: founders ──────────────────────────────────── */
+.about-founders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.about-founder-card {
+  background: var(--surface-light); border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg); padding: 28px; text-align: center;
+}
+.about-founder-card__photo {
+  display: flex; align-items: center; justify-content: center;
+  width: 112px; height: 112px; margin: 0 auto 16px; border-radius: 50%;
+  object-fit: cover; object-position: center top; border: 3px solid var(--signal-amber);
+}
+.about-founder-card__photo--initials {
+  background: var(--authority-blue); color: #fff; font-family: var(--font-heading);
+  font-weight: 800; font-size: 2rem; letter-spacing: 0.02em;
+}
+.about-founder-card__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--authority-blue); }
+.about-founder-card__role { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin: 2px 0 12px; }
+.about-founder-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+@media (max-width: 640px) { .about-founders { grid-template-columns: 1fr; } }

@@ -68,6 +68,7 @@ The pages under `es-co/` are **generated** from the English pages. Do not edit t
 ```bash
 python3 tools/i18n/extract.py   # after changing an English page: refresh the list of strings
 python3 tools/i18n/build.py     # regenerate es-co/ (fails listing any untranslated string)
+python3 tools/i18n/remap.py <page>  # after extract.py, if you moved/removed English markup: realigns the translation positions (run BEFORE editing the .txt by hand; reads the old ones from git HEAD)
 ```
 
 - Page map (English file → Spanish URL): `tools/i18n/pages.json`

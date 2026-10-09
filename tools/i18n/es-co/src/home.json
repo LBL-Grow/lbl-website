@@ -242,137 +242,137 @@
  {
   "i": 48,
   "k": "text",
-  "en": "Free GBP Audit Checklist"
- },
- {
-  "i": 49,
-  "k": "attr:placeholder",
-  "en": "Your name"
- },
- {
-  "i": 50,
-  "k": "attr:aria-label",
-  "en": "Your name"
- },
- {
-  "i": 51,
-  "k": "text",
-  "en": "Select your industry"
- },
- {
-  "i": 52,
-  "k": "text",
-  "en": "Industry"
- },
- {
-  "i": 53,
-  "k": "text",
-  "en": "HVAC"
- },
- {
-  "i": 54,
-  "k": "text",
-  "en": "Dental"
- },
- {
-  "i": 55,
-  "k": "text",
-  "en": "Legal"
- },
- {
-  "i": 56,
-  "k": "text",
-  "en": "Cleaning"
- },
- {
-  "i": 57,
-  "k": "text",
-  "en": "Plumbing"
- },
- {
-  "i": 58,
-  "k": "text",
-  "en": "Roofing"
- },
- {
-  "i": 59,
-  "k": "text",
-  "en": "Landscaping"
- },
- {
-  "i": 60,
-  "k": "text",
-  "en": "Auto Repair"
- },
- {
-  "i": 61,
-  "k": "text",
-  "en": "Other"
- },
- {
-  "i": 62,
-  "k": "attr:placeholder",
-  "en": "Email address"
- },
- {
-  "i": 63,
-  "k": "attr:aria-label",
-  "en": "Email address"
- },
- {
-  "i": 64,
-  "k": "text",
-  "en": "Send me the checklist →"
- },
- {
-  "i": 65,
-  "k": "text",
-  "en": "No spam. Unsubscribe anytime."
- },
- {
-  "i": 66,
-  "k": "text",
   "en": "Martinez HVAC"
  },
  {
-  "i": 67,
+  "i": 49,
   "k": "text",
-  "en": " Auto-managed by Local Boost Lab\n        "
+  "en": " Auto-managed by Local Boost Lab\n          "
  },
  {
-  "i": 68,
+  "i": 50,
   "k": "text",
   "en": "★★★★★ Mike T. · 28 min ago"
  },
  {
-  "i": 69,
+  "i": 51,
   "k": "text",
   "en": "\"Best HVAC crew in Phoenix, showed up on time and fixed it right.\""
  },
  {
-  "i": 70,
+  "i": 52,
   "k": "text",
   "en": " Response published · just now"
  },
  {
-  "i": 71,
+  "i": 53,
   "k": "text",
   "en": "\"Thank you so much, Mike! That means the world to our team...\""
  },
  {
-  "i": 72,
+  "i": 54,
   "k": "text",
   "en": "Last post: "
  },
  {
-  "i": 73,
+  "i": 55,
   "k": "text",
   "en": "2 hours ago"
  },
  {
-  "i": 74,
+  "i": 56,
   "k": "text",
   "en": "✓ On schedule"
+ },
+ {
+  "i": 57,
+  "k": "text",
+  "en": "Free GBP Audit Checklist"
+ },
+ {
+  "i": 58,
+  "k": "attr:placeholder",
+  "en": "Your name"
+ },
+ {
+  "i": 59,
+  "k": "attr:aria-label",
+  "en": "Your name"
+ },
+ {
+  "i": 60,
+  "k": "text",
+  "en": "Select your industry"
+ },
+ {
+  "i": 61,
+  "k": "text",
+  "en": "Industry"
+ },
+ {
+  "i": 62,
+  "k": "text",
+  "en": "HVAC"
+ },
+ {
+  "i": 63,
+  "k": "text",
+  "en": "Dental"
+ },
+ {
+  "i": 64,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 65,
+  "k": "text",
+  "en": "Cleaning"
+ },
+ {
+  "i": 66,
+  "k": "text",
+  "en": "Plumbing"
+ },
+ {
+  "i": 67,
+  "k": "text",
+  "en": "Roofing"
+ },
+ {
+  "i": 68,
+  "k": "text",
+  "en": "Landscaping"
+ },
+ {
+  "i": 69,
+  "k": "text",
+  "en": "Auto Repair"
+ },
+ {
+  "i": 70,
+  "k": "text",
+  "en": "Other"
+ },
+ {
+  "i": 71,
+  "k": "attr:placeholder",
+  "en": "Email address"
+ },
+ {
+  "i": 72,
+  "k": "attr:aria-label",
+  "en": "Email address"
+ },
+ {
+  "i": 73,
+  "k": "text",
+  "en": "Send me the checklist →"
+ },
+ {
+  "i": 74,
+  "k": "text",
+  "en": "No spam. Unsubscribe anytime."
  },
  {
   "i": 75,

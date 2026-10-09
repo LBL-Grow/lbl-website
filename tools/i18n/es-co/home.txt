@@ -13,20 +13,20 @@
 44|Criterio humano en cada reseña que importa. Velocidad de la IA en lo demás.
 46|Cifrado AES-256 · Solo acceso de administrador · Lo revocas cuando quieras
 47|Mira qué incluye y cuánto cuesta →
-48|Lista gratis para revisar tu perfil de Google
-49|Tu nombre
-50|Tu nombre
-51|Elige tu industria
-64|Enviarme la lista →
-65|Sin spam. Te das de baja cuando quieras.
-67|Ejemplo · gestionado por Local Boost Lab
-68|★★★★★ Reseña de ejemplo · hace 28 min
-69|“Llegaron puntuales y dejaron el aire funcionando perfecto.”
-70|Respuesta publicada · ahora mismo
-71|“¡Muchas gracias! Nos alegra mucho haberte ayudado...”
-72|Última publicación:
-73|hace 2 horas
-74|✓ Al día
+49|Ejemplo · gestionado por Local Boost Lab
+50|★★★★★ Reseña de ejemplo · hace 28 min
+51|“Llegaron puntuales y dejaron el aire funcionando perfecto.”
+52|Respuesta publicada · ahora mismo
+53|“¡Muchas gracias! Nos alegra mucho haberte ayudado...”
+54|Última publicación:
+55|hace 2 horas
+56|✓ Al día
+57|Lista gratis para revisar tu perfil de Google
+58|Tu nombre
+59|Tu nombre
+60|Elige tu industria
+73|Enviarme la lista →
+74|Sin spam. Te das de baja cuando quieras.
 76|Configuración en unos 10 minutos. En serio.
 77|Tu perfil atendido 24/7, también en festivos
 78|Primera publicación en 24 horas
@@ -104,6 +104,7 @@
 198|Hoy casi nadie lo ve.
 199|Cada día sin actividad es un cliente que encontró primero a otro. Mira exactamente cómo estás con una auditoría gratis de tu perfil.
 212|Enlaces de producto
+220|Legal
 221|Enlaces legales
 229|Chat de atención al cliente
 230|Chat de soporte
@@ -122,4 +123,3 @@
 253|Aceptar cookies de marketing
 254|Guardar preferencias
 255|Cancelar
-220|Legal

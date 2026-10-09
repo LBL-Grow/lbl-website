@@ -6,14 +6,11 @@ html[lang="es-CO"] { --text-muted: #4B5563; }
 /* Hay un solo precio: sin interruptor mensual/anual */
 html[lang="es-CO"] .pricing-toggle { display: none; }
 
-/* La ilustración del paso 1 muestra una tarifa en dólares */
-html[lang="es-CO"] img[src*="01_Choose_plan"] { display: none; }
+/* La ilustración original del paso 1 mostraba una tarifa en dólares: se reemplaza por un SVG propio (patch) */
 
 /* Zonas táctiles de 44 px como mínimo */
 html[lang="es-CO"] .promo-bar__cta,
 html[lang="es-CO"] .promo-bar__close,
-html[lang="es-CO"] .nav__lang-m,
-html[lang="es-CO"] .nav__hamburger,
 html[lang="es-CO"] .m-carousel__btn,
 html[lang="es-CO"] .footer__links a,
 html[lang="es-CO"] .footer__email a,
@@ -82,3 +79,12 @@ html[lang="es-CO"] .audit-body > * { min-width: 0; }
 @media (max-width: 900px) {
   html[lang="es-CO"] .audit-body { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Menú móvil: zonas táctiles (solo cuando el menú de hamburguesa está activo) */
+@media (max-width: 1024px) {
+  html[lang="es-CO"] .nav__lang-m { min-height: 44px; min-width: 44px; justify-content: center; }
+  html[lang="es-CO"] .nav__hamburger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+}
+
+/* Cifras en español son más largas ("30 días", "Cada semana"): evitar que se partan */
+html[lang="es-CO"] .stat-mega__number { font-size: clamp(1.9rem, 2.6vw, 2.75rem); line-height: 1.1; overflow-wrap: normal; }
