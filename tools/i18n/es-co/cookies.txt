@@ -9,7 +9,7 @@
 40|2. Cómo usamos las cookies
 41|Local Boost Lab usa
 42|únicamente cookies estrictamente necesarias
-43|. No usamos cookies de analítica, de publicidad ni de seguimiento de terceros. Las únicas cookies de este sitio son las esenciales para que funcionen el pago y el registro.
+43|. No usamos cookies de analítica, de publicidad ni de seguimiento de terceros. Las únicas cookies de este sitio son las esenciales. Además medimos las visitas y el rendimiento de forma agregada con Vercel, sin cookies y sin identificarte.
 44|Estrictamente necesarias
 45|Siempre activas
 46|Estas cookies permiten las funciones básicas del sitio, que no puede operar sin ellas. No recogen información que pueda usarse con fines de marketing.
@@ -20,15 +20,15 @@
 51|Proveedor
 52|lbl_cookie_consent
 53|Guarda tu preferencia de cookies (aceptadas o personalizadas) para no mostrar el aviso en cada visita.
-54|12 meses
+54|Hasta que la borres
 55|localboostlab.com
 56|Cookies de sesión del proveedor de pagos
 57|Mantienen el estado de tu sesión durante un pago con tarjeta, cuando aplica. Las crea y administra el proveedor de pagos.
 58|Sesión
 59|stripe.com
-60|Vercel Speed Insights
-61|Medición anónima de rendimiento, sin datos personales ni seguimiento entre sitios. Sirve para detectar páginas lentas.
-62|Sesión
+60|Vercel Web Analytics y Speed Insights
+61|Medición agregada de visitas y de rendimiento, sin cookies, sin datos personales y sin seguimiento entre sitios. Sirve para saber qué páginas se visitan y detectar las lentas.
+62|Sin cookies
 63|vercel.com
 65|No se usan
 66|No usamos Google Analytics, Mixpanel, Segment ni ningún servicio de cookies de analítica. No se rastrea ni se perfila el comportamiento de los visitantes.
@@ -47,13 +47,13 @@
 79|Notas
 80|Preferencia de consentimiento (
 81|lbl_cookie_consent
-82|12 meses
+82|Hasta que la borres
 83|Se guarda en localStorage, no es una cookie de red
 84|Sesión de pago con tarjeta
 85|Sesión (termina al cerrar la pestaña)
 86|Administrada por el proveedor de pagos
-87|Vercel Speed Insights
-88|Sesión
+87|Vercel Web Analytics y Speed Insights
+88|Sin cookies
 89|Sin seguimiento persistente ni entre sitios
 90|Nota:
 91|lbl_cookie_consent

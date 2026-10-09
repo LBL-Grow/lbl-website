@@ -17,7 +17,7 @@
 46|Cambios en esta política
 49|1. Introducción
 50|Local Boost Lab («LBL», «Local Boost Lab», «nosotros») se compromete a proteger la privacidad y la seguridad de la información personal y de negocio de sus clientes. Esta Política de privacidad explica qué datos recogemos, cómo los usamos, cómo los protegemos y cuáles son tus derechos. Aplica a todos los clientes de LBL, a los visitantes del sitio y a cualquier persona cuya información tratemos al prestar nuestros servicios de gestión del Perfil de Negocio de Google.
-51|LBL es una empresa con sede en Estados Unidos. Si resides en California, la Ley de Privacidad del Consumidor de California (CCPA) te da derechos adicionales, descritos en la sección 9. LBL no recoge de forma intencional datos de residentes de la Unión Europea; si resides allí y usas nuestros servicios, escríbenos antes de suscribirte.
+51|LBL es una empresa con sede en Estados Unidos. Si estás en Colombia, el «Aviso para titulares de datos en Colombia» de esta política también te aplica y prevalece sobre el resto en caso de diferencias. Si resides en California, la Ley de Privacidad del Consumidor de California (CCPA) te da derechos adicionales, descritos en la sección 9. LBL no recoge de forma intencional datos de residentes de la Unión Europea; si resides allí y usas nuestros servicios, escríbenos antes de suscribirte.
 52|2. Información que recogemos
 53|2.1 Información que nos das directamente
 54|Nombre y correo electrónico del dueño del negocio
@@ -26,7 +26,7 @@
 57|Descripción del tono de marca, lista de servicios y preferencias de contenido
 58|Fotos e imágenes del negocio (cargadas a la carpeta designada en Google Drive o Cloud)
 59|Información de pago (si pagas con tarjeta, la procesa un proveedor de pagos como Stripe; LBL nunca guarda los datos de la tarjeta)
-60|Correos enviados a LBL
+60|Correos, mensajes de WhatsApp y mensajes del chat de soporte enviados a LBL, y los datos que escribes en los formularios del sitio (contacto, auditoría gratis y lista de revisión)
 61|2.2 Información que se recoge de forma automática
 62|Tokens de actualización de Google OAuth (cifrados con AES-256-GCM)
 63|Estadísticas del perfil (vistas, llamadas, clics al sitio web, solicitudes de cómo llegar)
@@ -36,7 +36,7 @@
 67|2.3 Información que no recogemos
 68|Números de tarjetas de pago (los maneja por completo el proveedor de pagos)
 69|Datos personales de tus clientes más allá de lo que es visible al público en el perfil
-70|Analítica web ni cookies de seguimiento
+70|Analítica web que te identifique ni cookies de seguimiento (solo medimos visitas y rendimiento de forma agregada y sin cookies)
 71|Hábitos de compra ni comunicaciones privadas de tus clientes
 72|3. Cómo usamos tu información
 73|Finalidades de la recogida y el tratamiento de datos
@@ -50,7 +50,7 @@
 81|Nombre, correo, datos del negocio
 82|Ejecución del contrato
 83|Facturación: cobro de la suscripción
-84|Correo (se envía a Stripe); Stripe maneja los datos de la tarjeta
+84|Correo y datos de facturación (si pagas con tarjeta, se envían al proveedor de pagos, que maneja los datos de la tarjeta)
 85|Ejecución del contrato
 86|Mejora del servicio: análisis de tendencias agregadas
 87|Métricas anonimizadas de publicaciones y reseñas
@@ -71,7 +71,7 @@
 103|Token de OAuth, contenido de las publicaciones
 104|Anthropic (API de Claude)
 105|Generación con IA de publicaciones y borradores de respuestas
-106|Datos del negocio y configuración de tono (sin datos personales)
+106|Datos del negocio y configuración de tono; en el chat de soporte, también el texto que escribes en el chat
 107|OpenAI (API)
 108|Generación con IA de respuestas del asistente de WhatsApp
 109|Datos del negocio, contenido de los mensajes de clientes
@@ -119,14 +119,14 @@
 151|Contenido de publicaciones y registros de respuestas a reseñas
 152|12 meses; luego se eliminan o se anonimizan
 153|Registros de pago e historial de facturación
-154|7 años (exigido por la ley tributaria de EE. UU.)
+154|7 años (exigido por la ley tributaria de EE. UU.), o el plazo mayor que exija la ley colombiana cuando aplique
 155|Correos
 156|3 años
 157|Fotos del negocio cargadas al almacenamiento en la nube
 158|Mientras la suscripción esté activa, más 30 días después de cancelar
 159|7. Tus derechos
 160|Tienes los siguientes derechos sobre tus datos personales. Para ejercer cualquiera de ellos, escribe a
-162|con tu solicitud. Respondemos en un plazo de 30 días.
+162|con tu solicitud. Respondemos en un plazo de 30 días. Si eres titular en Colombia, aplican los plazos del Aviso para titulares de datos en Colombia.
 163|Derecho de acceso:
 164|Pedir una copia de los datos personales que tenemos sobre ti.
 165|Derecho de rectificación:
@@ -183,5 +183,5 @@
 218|12. Contacto
 219|¿Dudas o solicitudes?
 220|Escríbenos a
-222|. Respondemos todas las consultas de privacidad en un plazo de 30 días.
-223|Local Boost Lab · Responsable del tratamiento · Estados Unidos
+222|. Respondemos todas las consultas de privacidad en un plazo de 30 días (en Colombia, en los plazos del aviso para titulares).
+223|Local Boost Lab · Responsable del tratamiento · Miami, Florida, Estados Unidos
