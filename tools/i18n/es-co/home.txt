@@ -84,19 +84,19 @@
 135|La constancia es lo que separa a los negocios que aparecen de los que no. No prometemos posiciones: hacemos el trabajo todas las semanas, sin pausas.
 136|Meses
 137|no días: eso es lo que suele tardar en notarse una mejora en el mapa
-138|@@DROP:bento-cell@@
+138|para tu primera publicación, desde que tenemos la información de tu negocio
 139|@@EMPTY@@
-140|@@DROP:bento-cell@@
+140|sin repetir tema en tus publicaciones
 141|@@EMPTY@@
 142|Cada semana
 143|un perfil con actividad constante es un perfil que se mantiene visible
 144|Empieza antes que tu competencia →
 145|Ilustración de la gestión del Perfil de Negocio de Google de Local Boost Lab
-146|Lo que te comprometemos, sin adornos.
-147|@@DROP:bento-cell@@
-148|al mes, sin contrato ni costo de instalación
-149|10 min
-150|es lo que tardas en llenar la configuración inicial
+146|Lo que ya hemos hecho con negocios de Colombia.
+147|reseñas respondidas a nuestros clientes: el 99,5 % de todas las recibidas
+148|publicaciones publicadas en los perfiles de nuestros clientes
+149|países con operación activa: Colombia y Estados Unidos
+150|Cifras de las cuentas de clientes de Local Boost Lab, a octubre de 2026.
 151|Un solo precio, con todo incluido. Sin contrato.
 152|Precio único para Colombia, en pesos colombianos. Sin costo de instalación y cancelas cuando quieras.
 195|Las respuestas a reseñas se generan con IA. Tú apruebas todas las respuestas a reseñas de 3 estrellas o menos. Las de 4 y 5 estrellas se publican solas, con tu tono.

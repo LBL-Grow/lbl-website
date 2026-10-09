@@ -245,6 +245,14 @@ def set_lang_link(html, href, hreflang, label):
     return re.sub(r'(<div class="footer__bottom">)', lambda m: m.group(1) + f'\n      <span><a {attrs}>{label}</a></span>', html, count=1)
 
 
+def strip_lang_link(html):
+    """La versión en español es solo para Colombia: las páginas en inglés no llevan enlace de idioma
+    (siguen los hreflang, para que Google muestre /es-co a quien corresponda)."""
+    html = re.sub(r'[ \t]*<span><a [^>]*data-lang-switch[^>]*>[^<]*</a></span>\n?', '', html)
+    html = re.sub(r'[ \t]*<a [^>]*data-lang-switch[^>]*>[^<]*</a>\n?', '', html)
+    return html
+
+
 def jsonld(cfg, title, desc):
     data = {
         '@context': 'https://schema.org',
@@ -268,8 +276,8 @@ def head(html, cfg):
     if 'og:locale' not in html:
         html = re.sub(r'(<link rel="canonical"[^>]*>)', r'\1\n  <meta property="og:locale" content="es_CO">', html, count=1)
     # El marcado en inglés trae datos que no se pueden sostener (calificación 4.9 / 47): se reemplaza por uno mínimo.
-    title = re.search(r'<title>(.*?)</title>', html, re.S).group(1).strip()
-    desc = re.search(r'<meta name="description" content="([^"]*)"', html).group(1)
+    title = re.search(r'<title[^>]*>(.*?)</title>', html, re.S).group(1).strip()
+    desc = re.search(r'<meta name="description"[^>]*?content="([^"]*)"', html).group(1)
     blocks = list(re.finditer(r'[ \t]*(<!--[^>]*JSON-LD[^>]*-->\s*)?<script type="application/ld\+json">.*?</script>\n?', html, re.S))
     for m in reversed(blocks):
         html = html[:m.start()] + html[m.end():]
@@ -287,8 +295,65 @@ def js_strings(html, key):
     return re.sub(r'<script\b(?![^>]*ld\+json)[^>]*>.*?</script>', sub, html, flags=re.S)
 
 
+import html as _html
+html_escape = lambda t: _html.escape(t, quote=True)
+BLOG_DIR = I18N / 'blog'
+
+
+def load_posts():
+    posts = [json.load(open(f)) for f in sorted(BLOG_DIR.glob('*.json'))]
+    return sorted(posts, key=lambda x: x['published_at'], reverse=True)
+
+
+def article_jsonld(post, url):
+    data = {
+        '@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': post['title'],
+        'description': post.get('meta_description') or post['excerpt'], 'inLanguage': 'es-CO',
+        'datePublished': post['published_at'], 'dateModified': post['published_at'],
+        'mainEntityOfPage': url, 'image': SITE + post['cover_image_url'] if post.get('cover_image_url', '').startswith('/') else post.get('cover_image_url'),
+        'author': {'@type': 'Organization', 'name': 'Local Boost Lab', 'url': SITE},
+        'publisher': {'@type': 'Organization', 'name': 'Local Boost Lab', 'url': SITE,
+                      'logo': {'@type': 'ImageObject', 'url': SITE + '/Logo_vertical_yellow_white_60.png'}},
+    }
+    return '<script type="application/ld+json">\n' + json.dumps(data, ensure_ascii=False, indent=2) + '\n</script>'
+
+
+def build_blog(shell):
+    """Blog en español: índice (posts.json) y una página estática por artículo, generada a partir de la plantilla traducida.
+    Los artículos viven en tools/i18n/es-co/blog/<slug>.json (no se traducen automáticamente: se redactan para Colombia)."""
+    posts = load_posts()
+    out = ROOT / 'es-co/blog'
+    out.mkdir(parents=True, exist_ok=True)
+    keep = ('slug', 'title', 'excerpt', 'tags', 'published_at', 'cover_image_url')
+    (out / 'posts.json').write_text(json.dumps([{**{k: p.get(k) for k in keep}, 'status': 'published'} for p in posts],
+                                              ensure_ascii=False, indent=1))
+    for p in posts:
+        url = f"{SITE}/es-co/blog/{p['slug']}"
+        title = f"{p['title']} | Blog de Local Boost Lab"
+        desc = (p.get('meta_description') or p['excerpt']).replace('"', '&quot;')
+        h = shell.replace('noindex, follow', 'index, follow').replace('href="/blog/post"', 'href="/blog"')
+        h = re.sub(r'(<title[^>]*>).*?(</title>)', lambda m: m.group(1) + title.replace('&', '&amp;') + m.group(2), h, count=1, flags=re.S)
+        h = re.sub(r'(<meta name="description"[^>]*?content=")[^"]*"', lambda m: m.group(1) + desc + '"', h, count=1)
+        h = re.sub(r'<link rel="canonical"[^>]*>', '', h)
+        h = h.replace('</head>', f'  <link rel="canonical" href="{url}">\n  <meta property="og:locale" content="es_CO">\n  <meta property="og:type" content="article">\n  <meta property="og:title" content="{html_escape(title)}">\n  <meta property="og:description" content="{desc}">\n  <meta property="og:url" content="{url}">\n</head>', 1)
+        h = re.sub(r'(<meta property="og:url" content=")[^"]*"', rf'\g<1>{url}"', h)
+        h = re.sub(r'<!-- hreflang:start -->.*?<!-- hreflang:end -->\n?\s*', '', h, flags=re.S)
+        h = re.sub(r'<script type="application/ld\+json">.*?</script>\n?\s*', '', h, flags=re.S)
+        data = json.dumps({k: p[k] for k in ('title', 'excerpt', 'body', 'tags', 'published_at', 'cover_image_url')}, ensure_ascii=False).replace('</', '<\\/')
+        h = h.replace('</head>', '  ' + article_jsonld(p, url) + '\n  <script>window.__LBL_POST__=' + data + ';</script>\n</head>', 1)
+        h = re.sub(r'(<main[^>]*>)', lambda m: m.group(1) + f'\n<noscript><div style="max-width:760px;margin:0 auto;padding:120px 24px 40px;"><h1>{p["title"]}</h1>{p["body"]}</div></noscript>', h, count=1)
+        (out / f"{p['slug']}.html").write_text(h)
+    # sitemap estático
+    sm = ROOT / 'sitemap.xml'
+    t = re.sub(r'  <url>\n    <loc>https://localboostlab\.com/es-co/blog[^<]*</loc>.*?</url>\n', '', sm.read_text(), flags=re.S)
+    add = ''.join(f"  <url>\n    <loc>{SITE}{u}</loc>\n    <lastmod>{d}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
+                  for u, d, pr in [('/es-co/blog', max(p['published_at'][:10] for p in posts), '0.7')] + [(f"/es-co/blog/{p['slug']}", p['published_at'][:10], '0.6') for p in posts])
+    sm.write_text(t.replace('</urlset>', add + '</urlset>'))
+
+
 def main():
     check = '--check' in sys.argv
+    shell = None
     missing = []
     for key, cfg in PAGES.items():
         src = ROOT / cfg['src']
@@ -301,6 +366,8 @@ def main():
         html = js_strings(html, key)
         html = set_lang_link(html, cfg['en'], 'en', 'English')
         html = apply_patches(html, key)
+        if key == 'blogpost':
+            shell = html
         if not check:
             dst = ROOT / cfg['dst']
             dst.parent.mkdir(parents=True, exist_ok=True)
@@ -308,9 +375,11 @@ def main():
             # `tag`: la página en inglés que se sirve en esa URL cuando no es la misma que se usó como fuente.
             en_file = ROOT / cfg.get('tag', cfg['src'])
             en_old = en_file.read_text()
-            en_new = set_lang_link(set_hreflang(en_old, cfg), cfg['es'], 'es-CO', 'Español')
+            en_new = strip_lang_link(set_lang_link(set_hreflang(en_old, cfg), cfg['es'], 'es-CO', 'Español'))
             if en_new != en_old:
                 en_file.write_text(en_new)
+    if shell and not check:
+        build_blog(shell)
     if missing:
         print(f'{len(missing)} textos sin traducir:')
         for key, i, en in missing:

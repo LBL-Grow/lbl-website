@@ -135,10 +135,6 @@
    [
     ">4×</div>",
     ">30 días</div>"
-   ],
-   [
-    ">94%</div>",
-    ">&lt;1 h</div>"
    ]
   ]
  },
@@ -195,6 +191,31 @@
    [
     "<h2 id=\"s15\">15. Cambios en los términos</h2>",
     "<h3 id=\"colombia\">14.1 Clientes en Colombia</h3>\n    <p>Si contratas el Servicio desde Colombia, aplican además estas reglas, que prevalecen sobre cualquier otra disposición de estos Términos en caso de conflicto:</p>\n    <ul role=\"list\">\n      <li><strong>Derechos irrenunciables.</strong> Nada de estos Términos limita los derechos que la ley colombiana te reconoce y que no se pueden renunciar, incluidos los de protección de datos personales (Ley 1581 de 2012) y, si eres consumidor, los de protección al consumidor (Ley 1480 de 2011). Las cláusulas que esa ley declare ineficaces no te obligan.</li>\n      <li><strong>Ley aplicable, arbitraje y acciones colectivas.</strong> Si eres consumidor según la ley colombiana, las cláusulas de ley aplicable, arbitraje y renuncia a juicio con jurado y a acciones de clase de la sección 14 no te obligan en la medida en que la ley colombiana lo prohíba o te impida acudir a la Superintendencia de Industria y Comercio o a los jueces colombianos. Las acciones populares y de grupo que la ley colombiana te reconozca no se renuncian.</li>\n      <li><strong>Idioma del arbitraje.</strong> Cuando el arbitraje de la sección 14 aplique a un cliente en Colombia, se llevará a cabo en español y podrá hacerse por medios virtuales.</li>\n      <li><strong>Derecho de retracto.</strong> Si eres consumidor y contratas a distancia, puedes retractarte dentro de los 5 días hábiles siguientes a la contratación, salvo que el servicio ya haya empezado a prestarse con tu consentimiento expreso. Si te retractas a tiempo, te devolvemos lo pagado dentro de los 30 días calendario siguientes.</li>\n      <li><strong>Impuestos.</strong> Los precios no incluyen impuestos. Si te aplica IVA u otro impuesto, te lo indicamos antes del primer cobro.</li>\n      <li><strong>Asistente de WhatsApp.</strong> Eres responsable de los datos de tus clientes: debes obtener su autorización, contar con tu propia política de tratamiento de datos y cumplir la Ley 2300 de 2023 en tus contactos comerciales (canales, horarios y consentimiento). LBL actúa como encargado del tratamiento, como explica nuestra Política de privacidad.</li>\n      <li><strong>Idioma.</strong> Para clientes en Colombia prevalece esta versión en español.</li>\n    </ul>\n\n    <h2 id=\"s15\">15. Cambios en los términos</h2>"
+   ]
+  ]
+ },
+ "blog": {
+  "drop": [
+   [
+    "Recibe novedades",
+    "blog-sidebar__card"
+   ]
+  ],
+  "replace": []
+ },
+ "blogpost": {
+  "replace": [
+   [
+    "<meta name=\"robots\" content=\"index, follow\">",
+    "<meta name=\"robots\" content=\"noindex, follow\">"
+   ],
+   [
+    "this.textContent='Copied!'",
+    "this.textContent='¡Copiado!'"
+   ],
+   [
+    "this.textContent='Copy Link'",
+    "this.textContent='Copiar enlace'"
    ]
   ]
  }
