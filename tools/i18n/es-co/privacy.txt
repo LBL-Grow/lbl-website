@@ -25,7 +25,7 @@
 56|Enlace e identificador de ubicación del Perfil de Negocio de Google
 57|Descripción del tono de marca, lista de servicios y preferencias de contenido
 58|Fotos e imágenes del negocio (cargadas a la carpeta designada en Google Drive o Cloud)
-59|Información de pago (la procesa Stripe; LBL nunca guarda los datos de la tarjeta)
+59|Información de pago (si pagas con tarjeta, la procesa un proveedor de pagos como Stripe; LBL nunca guarda los datos de la tarjeta)
 60|Correos enviados a LBL
 61|2.2 Información que se recoge de forma automática
 62|Tokens de actualización de Google OAuth (cifrados con AES-256-GCM)
@@ -34,7 +34,7 @@
 65|Respuestas a reseñas generadas y publicadas por LBL en tu nombre
 66|Contenido de las publicaciones y registros de publicación
 67|2.3 Información que no recogemos
-68|Números de tarjetas de pago (los maneja Stripe por completo)
+68|Números de tarjetas de pago (los maneja por completo el proveedor de pagos)
 69|Datos personales de tus clientes más allá de lo que es visible al público en el perfil
 70|Analítica web ni cookies de seguimiento
 71|Hábitos de compra ni comunicaciones privadas de tus clientes
@@ -103,7 +103,7 @@
 135|Seguridad de la base de datos:
 136|Supabase alojado en la región Este de EE. UU., con seguridad a nivel de fila activada
 137|Seguridad de los pagos:
-138|Todos los pagos los procesa Stripe, que cuenta con certificación PCI DSS nivel 1. LBL nunca guarda, transmite ni tiene acceso a los datos de la tarjeta.
+138|Los pagos con tarjeta los procesa un proveedor de pagos con certificación PCI DSS nivel 1, como Stripe. LBL nunca guarda, transmite ni tiene acceso a los datos de la tarjeta. Si pagas por transferencia, solo conservamos el comprobante.
 139|Aviso de incidentes:
 140|Si ocurre un incidente de seguridad que afecte tu información personal, te avisaremos por correo a tu dirección registrada dentro de las 72 horas siguientes a detectarlo.
 141|Control de accesos:

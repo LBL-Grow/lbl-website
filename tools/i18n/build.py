@@ -167,6 +167,8 @@ def apply_patches(html, key):
     css = PATCHES.get('css')
     if css:
         html = html.replace('</head>', f'  <style data-es-co>{css}</style>\n</head>', 1)
+    # Ajustes de accesibilidad y uso táctil solo para es-CO (archivo aparte, no se duplica en cada página).
+    html = html.replace('</head>', '  <link rel="stylesheet" href="/es-co/es-co.css?v=8">\n</head>', 1)
     return html
 
 

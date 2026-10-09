@@ -1,23 +1,23 @@
 0|Contacto | Local Boost Lab: soporte del Perfil de Negocio de Google
-1|Escríbele a Local Boost Lab. Soporte con IA supervisado por personas. Sin tiquetes ni menús telefónicos: nos escribes directo por correo.
-2|Contacto | Local Boost Lab: respondemos todos los correos
-3|¿Dudas sobre la gestión del Perfil de Negocio de Google? Escríbenos. Soporte con IA supervisado por personas, sin tiquetes ni esperas.
-4|Contacto | Local Boost Lab: respondemos todos los correos
-5|¿Dudas sobre la gestión de tu perfil de Google? Escríbenos a hello@localboostlab.com. Soporte con IA supervisado por personas.
-39|Respondemos todos los correos. Siempre.
-40|Sin tiquetes de soporte. Atención con un agente de IA entrenado y supervisado por personas reales.
+1|Escríbele a Local Boost Lab. Soporte con IA supervisado por personas. Sin tickets ni menús telefónicos: nos escribes por WhatsApp o por correo.
+2|Contacto | Local Boost Lab: respondemos por WhatsApp y por correo
+3|¿Dudas sobre la gestión del Perfil de Negocio de Google? Escríbenos. Soporte con IA supervisado por personas, sin tickets ni esperas.
+4|Contacto | Local Boost Lab: respondemos por WhatsApp y por correo
+5|¿Dudas sobre la gestión de tu perfil de Google? Escríbenos por WhatsApp al +57 300 488 6566 o a hello@localboostlab.com.
+39|Respondemos todos los mensajes. Siempre.
+40|Sin tickets de soporte. Atención con un agente de IA entrenado y supervisado por personas reales.
 41|Escríbenos
-42|Ya sea que tengas una duda de precios, necesites ayuda con tu registro o quieras conversar si esto le sirve a tu negocio.
+42|Ya sea que tengas una duda de precios, quieras empezar o quieras conversar si esto le sirve a tu negocio.
 45|Tiempo de respuesta
 46|Menos de 24 horas
 47|Dónde estamos
-48|Miami, FL. Atendemos negocios en Colombia y Estados Unidos, en español y en inglés
+48|Equipo en Miami, FL. Atendemos negocios en Colombia y Estados Unidos, en español y en inglés
 49|¿Ya eres cliente? Escríbenos con el nombre de tu negocio en el asunto y le damos prioridad a tu mensaje.
 50|Envíanos un mensaje
 57|Asunto
 58|Elige un tema...
 59|Pregunta sobre precios
-60|Ayuda con el registro
+60|Quiero empezar con el servicio
 61|Soporte para clientes
 62|Demostración del asistente de WhatsApp
 63|Otro tema
@@ -26,8 +26,8 @@
 66|Enviar mensaje →
 67|Te respondemos en menos de 24 horas.
 68|Preguntas comunes antes de escribirnos
-69|¿Tienen soporte por teléfono?
-70|No. Todo el soporte es por correo, y es a propósito: así queda registro claro de cada solicitud, cada respuesta y cada decisión. La primera respuesta llega en 12 horas.
+69|¿Tienen línea de atención telefónica?
+70|No tenemos línea de llamadas. Atendemos por WhatsApp (+57 300 488 6566) y por correo, y así queda registro claro de cada solicitud, cada respuesta y cada decisión. La primera respuesta llega en 12 horas.
 71|Ya soy cliente. ¿Cómo los contacto?
 72|Escribe a support@localboostlab.com con el nombre de tu negocio en el asunto. Si tu solicitud es sobre el perfil, incluye el enlace. Les damos prioridad a los correos de clientes y respondemos en menos de 24 horas, casi siempre mucho antes.
 73|Quiero cancelar. ¿Qué hago?

@@ -13,16 +13,20 @@
    [
     "★ El más elegido",
     "pricing-card__badge"
+   ],
+   [
+    "Pagos protegidos por",
+    "div"
    ]
   ],
   "replace": [
    [
     "US$217<",
-    "$400.000<"
+    "$425.000<"
    ],
    [
     "US$184<",
-    "$340.000<"
+    "$425.000<"
    ],
    [
     "Todo lo del plan Reputación",
@@ -34,11 +38,11 @@
    ],
    [
     "Empezar con Autoridad →",
-    "Empezar →"
+    "Hablemos →"
    ],
    [
     "Ver el detalle de los planes →",
-    "Ver el detalle del plan →"
+    "Ver el detalle →"
    ],
    [
     "Ver planes →",
@@ -47,6 +51,22 @@
    [
     "Ver planes &#x2192;",
     "Ver precio &#x2192;"
+   ],
+   [
+    "<div class=\"pricing-card__name\">Autoridad</div>",
+    "<div class=\"pricing-card__name\">Precio único</div>"
+   ],
+   [
+    "href=\"/es-co/registro?plan=authority\"",
+    "href=\"/es-co/contacto?tema=precio\""
+   ],
+   [
+    ">Empezar →<",
+    ">Hablemos →<"
+   ],
+   [
+    "<div class=\"footer__email\"><a href=\"mailto:hello@localboostlab.com\">hello@localboostlab.com</a></div>",
+    "<div class=\"footer__email\"><a href=\"mailto:hello@localboostlab.com\">hello@localboostlab.com</a></div>\n        <div class=\"footer__email\"><a href=\"https://wa.me/573004886566?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Local%20Boost%20Lab\" target=\"_blank\" rel=\"noopener\">WhatsApp +57 300 488 6566</a></div>"
    ]
   ]
  },
@@ -66,7 +86,7 @@
   "replace": [
    [
     "var(--authority-blue);\">US$97<",
-    "var(--authority-blue);\">$400.000<"
+    "var(--authority-blue);\">$425.000<"
    ]
   ]
  },
@@ -74,11 +94,43 @@
   "replace": [
    [
     "var(--authority-blue);\">US$97<",
-    "var(--authority-blue);\">$400.000<"
+    "var(--authority-blue);\">$425.000<"
    ],
    [
     "al mes para empezar, sin contrato",
     "al mes, sin contrato"
+   ]
+  ]
+ },
+ "contact": {
+  "replace": [
+   [
+    "<div class=\"contact-info__item\">\n          <div class=\"contact-info__icon\">\n            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4h16",
+    "<div class=\"contact-info__item\">\n          <div class=\"contact-info__icon\">\n            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 21l1.65-4.9A8.5 8.5 0 1112 20.5a8.4 8.4 0 01-4.1-1.05L3 21z\" stroke=\"#0F172A\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>\n          </div>\n          <div>\n            <div class=\"contact-info__label\">WhatsApp</div>\n            <div class=\"contact-info__value\"><a href=\"https://wa.me/573004886566?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Local%20Boost%20Lab\" target=\"_blank\" rel=\"noopener\">+57 300 488 6566</a></div>\n          </div>\n        </div>\n\n        <div class=\"contact-info__item\">\n          <div class=\"contact-info__icon\">\n            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4h16"
+   ],
+   [
+    "</body>",
+    "<script>(function(){if(new URLSearchParams(location.search).get('tema')!=='precio')return;var s=document.getElementById('c-subject');if(s)s.value='Quiero empezar con el servicio';})();</script>\n</body>"
+   ]
+  ]
+ },
+ "privacy": {
+  "replace": [
+   [
+    "<li><a href=\"#s10\">Cambios en esta política</a></li>",
+    "<li><a href=\"#colombia\">Aviso para titulares de datos en Colombia</a></li>\n        <li><a href=\"#s10\">Cambios en esta política</a></li>"
+   ],
+   [
+    "<h2 id=\"s10\">10. Cambios en esta política</h2>",
+    "<h2 id=\"colombia\">Aviso para titulares de datos en Colombia</h2>\n    <p>Este aviso aplica a las personas que nos entregan datos personales desde Colombia y complementa el resto de esta política. Se rige por la Ley 1581 de 2012, el Decreto 1074 de 2015 (que compila el Decreto 1377 de 2013) y las demás normas colombianas de protección de datos personales.</p>\n\n    <h3>Responsable del tratamiento</h3>\n    <p>Local Boost Lab («LBL»), con sede en Miami, Florida (Estados Unidos). Puedes escribirnos a <a href=\"mailto:hello@localboostlab.com\">hello@localboostlab.com</a> o por WhatsApp al +57 300 488 6566.</p>\n\n    <h3>Finalidades del tratamiento</h3>\n    <p>Tratamos tus datos para prestarte el servicio contratado, gestionar tu Perfil de Negocio de Google, atender tus solicitudes de soporte, facturar y cobrar, enviarte informes y comunicaciones sobre el servicio, y cumplir obligaciones legales. Las finalidades específicas se describen en las secciones 2 a 4.</p>\n\n    <h3>Autorización</h3>\n    <p>Al enviarnos tus datos por el sitio, por WhatsApp o por correo, o al contratar el servicio, nos das tu autorización previa, expresa e informada para tratarlos con estas finalidades. No te pedimos datos sensibles. Si alguna conversación llegara a incluirlos, responderlos es facultativo y solo los usamos para atender esa solicitud.</p>\n\n    <h3>Tus derechos como titular</h3>\n    <ul role=\"list\">\n      <li>Conocer, actualizar y rectificar tus datos personales.</li>\n      <li>Solicitar prueba de la autorización que nos diste.</li>\n      <li>Ser informado, previa solicitud, del uso que se ha dado a tus datos.</li>\n      <li>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) por infracciones a la ley.</li>\n      <li>Revocar la autorización y solicitar la supresión de tus datos cuando no se respeten los principios, derechos y garantías legales.</li>\n      <li>Acceder de forma gratuita a tus datos personales.</li>\n    </ul>\n\n    <h3>Cómo ejercer tus derechos</h3>\n    <p>Escríbenos a <a href=\"mailto:hello@localboostlab.com\">hello@localboostlab.com</a> con tu nombre, el nombre de tu negocio y lo que necesitas. Respondemos las consultas en máximo 10 días hábiles y los reclamos en máximo 15 días hábiles. Si necesitamos más tiempo, te lo avisamos con el motivo y la nueva fecha, dentro de los plazos que fija la ley.</p>\n\n    <h3>Transferencia y transmisión internacional</h3>\n    <p>LBL opera desde Estados Unidos y usa proveedores tecnológicos que procesan datos en ese país y en otros (por ejemplo Google, OpenAI, Supabase, Resend y Meta, según el servicio). Al autorizarnos el tratamiento aceptas que tus datos se transfieran o se transmitan fuera de Colombia para prestar el servicio. Exigimos a esos proveedores medidas de seguridad acordes con esta política.</p>\n\n    <h3>Vigencia</h3>\n    <p>Conservamos tus datos mientras tengas una relación con LBL y durante el tiempo que exijan la ley o la defensa de nuestros derechos, como se explica en la sección 6.</p>\n\n    <h2 id=\"s10\">10. Cambios en esta política</h2>"
+   ]
+  ]
+ },
+ "terms": {
+  "replace": [
+   [
+    "<h2 id=\"s15\">15. Cambios en los términos</h2>",
+    "<h3>Clientes en Colombia</h3>\n    <p>Si contratas el Servicio desde Colombia, lo anterior no limita los derechos irrenunciables que la ley colombiana te reconozca, incluidos los de protección de datos personales (Ley 1581 de 2012) y, cuando aplique, los de protección al consumidor (Ley 1480 de 2011). Puedes presentar cualquier queja ante la Superintendencia de Industria y Comercio.</p>\n\n    <h2 id=\"s15\">15. Cambios en los términos</h2>"
    ]
   ]
  }

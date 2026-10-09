@@ -42,17 +42,17 @@
 75|Planes y precios de suscripción
 76|Plan
 77|Precio mensual
-78|Precio anual (por mes)
+78|Precio anual
 80|@@DROP:tr@@
 81|@@EMPTY@@
 83|@@DROP:tr@@
 84|@@EMPTY@@
-86|$400.000 COP al mes
-87|$340.000 COP al mes ($4.080.000 COP al año)
+86|$425.000 COP al mes
+87|No disponible por ahora
 88|3.2 Condiciones de facturación
-89|Todos los cobros se procesan con Stripe. Al dar tus datos de pago autorizas a LBL a cobrar de forma recurrente a tu medio de pago.
+89|El cobro se coordina directamente con LBL. Al aceptar el servicio autorizas a LBL a cobrar de forma recurrente por el medio de pago que acordemos.
 90|Las suscripciones se renuevan automáticamente salvo que se cancelen según la sección 7.
-91|Las suscripciones anuales se cobran completas al inicio de cada periodo anual.
+91|Por ahora el servicio se cobra mes a mes.
 92|No hay reembolsos por periodos parciales, salvo a criterio exclusivo de LBL.
 93|LBL puede cambiar los precios avisando con 30 días de anticipación por correo a tu dirección registrada. Si sigues usando el servicio después de la fecha del cambio, se entiende que lo aceptas.
 94|Un pago fallido puede llevar a la suspensión del servicio después de 5 días hábiles.

@@ -2881,3 +2881,11 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
 .exit-overlay--sheet .exit-modal__form input { font-size: 16px; } /* below 16px iOS zooms in on focus */
 @keyframes exit-sheet-up { from { transform: translateY(100%); } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .exit-overlay--sheet .exit-modal { animation: none; } }
+
+/* Inline 3-column grids (industry stat cards) and the AI-advantage block
+   overflowed 375px phones, which made the whole page scroll sideways. */
+@media (max-width: 768px) {
+  .grid-3-stack { grid-template-columns: 1fr !important; }
+  .ai-advantage__layout > * { min-width: 0; }
+  .ai-advantage__text .btn { white-space: normal; }
+}

@@ -1,0 +1,84 @@
+/* Ajustes de accesibilidad y uso táctil solo para la versión en español (Colombia).
+   Se carga después de styles.css. Fuente: tools/i18n/build.py (apply_patches). */
+
+html[lang="es-CO"] { --text-muted: #4B5563; }
+
+/* Hay un solo precio: sin interruptor mensual/anual */
+html[lang="es-CO"] .pricing-toggle { display: none; }
+
+/* La ilustración del paso 1 muestra una tarifa en dólares */
+html[lang="es-CO"] img[src*="01_Choose_plan"] { display: none; }
+
+/* Zonas táctiles de 44 px como mínimo */
+html[lang="es-CO"] .promo-bar__cta,
+html[lang="es-CO"] .promo-bar__close,
+html[lang="es-CO"] .nav__lang-m,
+html[lang="es-CO"] .nav__hamburger,
+html[lang="es-CO"] .m-carousel__btn,
+html[lang="es-CO"] .footer__links a,
+html[lang="es-CO"] .footer__email a,
+html[lang="es-CO"] .footer__social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; min-width: 44px;
+}
+html[lang="es-CO"] .promo-bar__cta { padding-inline: 14px; }
+html[lang="es-CO"] .footer__links a { display: flex; justify-content: flex-start; }
+html[lang="es-CO"] .footer__email a { justify-content: flex-start; }
+html[lang="es-CO"] .toggle-switch { min-height: 44px; }
+html[lang="es-CO"] .m-carousel__dot { position: relative; }
+html[lang="es-CO"] .m-carousel__dot::after { content: ""; position: absolute; inset: -18px -10px; }
+
+/* Enlaces sueltos (no dentro de un párrafo): también 44 px */
+html[lang="es-CO"] main p > a:only-child,
+html[lang="es-CO"] .footer__bottom a,
+html[lang="es-CO"] .pricing-trust a {
+  display: inline-flex; align-items: center; min-height: 44px;
+}
+
+/* Formulario del hero: 16 px evita el zoom automático en iPhone */
+html[lang="es-CO"] .hero-lead-form input,
+html[lang="es-CO"] .hero-lead-form select,
+html[lang="es-CO"] .hero-lead-form__submit {
+  font-size: 16px; min-height: 48px;
+}
+html[lang="es-CO"] .hero-lead-form label { color: #fff; }
+
+/* Texto mínimo legible */
+html[lang="es-CO"] .hero-lead-form__note,
+html[lang="es-CO"] .ai-badge-card__label,
+html[lang="es-CO"] .gbp-card__post-status { font-size: 12.8px; }
+html[lang="es-CO"] .ai-badge-card__stat-num { color: #FCD34D; }
+
+/* Contraste: enlaces ámbar sobre fondo claro */
+html[lang="es-CO"] .pricing-trust a { color: #1741B5; text-decoration: underline; text-underline-offset: 3px; }
+html[lang="es-CO"] .pricing-card__check { color: #047857; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[lang="es-CO"] * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* Barra de aviso: compacta en móvil */
+@media (max-width: 640px) {
+  html[lang="es-CO"] .promo-bar { padding-block: 4px; gap: 4px 12px; }
+  html[lang="es-CO"] .promo-bar__cta { min-height: 40px; }
+}
+
+/* Aviso de cookies: los botones en español son más largos y se salían de la pantalla */
+@media (max-width: 640px) {
+  html[lang="es-CO"] .cookie-bar { box-sizing: border-box; padding: 16px; }
+  html[lang="es-CO"] .cookie-bar__actions { flex-shrink: 1; flex-wrap: wrap; width: 100%; }
+  html[lang="es-CO"] .cookie-bar__actions > * { flex: 1 1 160px; min-height: 44px; }
+}
+
+/* El punto de miles ($425.000) se veía separado en la tipografía monoespaciada del precio */
+html[lang="es-CO"] .pricing-card__amount { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+html[lang="es-CO"] .pricing-card__amount span { letter-spacing: 0; }
+
+/* El encabezado de Precios no tenía margen lateral en móvil */
+html[lang="es-CO"] .pricing-hero { padding-inline: 20px; }
+
+/* Auditoría gratis: la columna se ensanchaba más que la pantalla con los textos en español */
+html[lang="es-CO"] .audit-body > * { min-width: 0; }
+@media (max-width: 900px) {
+  html[lang="es-CO"] .audit-body { grid-template-columns: minmax(0, 1fr); }
+}

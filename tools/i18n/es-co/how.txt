@@ -11,7 +11,7 @@
 43|Tu parte de la configuración toma menos de 10 minutos. La nuestra, 24 horas.
 44|@@DROP:hiw-stat-grid@@
 45-49|@@EMPTY@@
-52|Elige tu plan y paga con Stripe. Menos de 60 segundos. Sin cargos ocultos y sin contrato.
+52|Hablamos, resolvemos tus dudas y acordamos contigo cómo pagar. Sin cargos ocultos y sin contrato.
 55|Cuéntanos de tu negocio, el tono de tu marca y tus servicios. Sube fotos si tienes. Son entre 4 y 7 minutos.
 57|Empezamos en 24 horas
 58|Configuramos tu perfil, cargamos tu tono y dejamos lista la primera publicación. De ahí en adelante todo es automático.
@@ -105,6 +105,6 @@
 147|Escríbenos a
 149|y tramitamos tu cancelación en 24 horas, sin preguntas. El servicio sigue activo hasta el final del periodo que ya pagaste. Retiramos nuestro acceso a tu perfil apenas cancelas.
 150|¿Listo para dejar de pensar en tu perfil de Google?
-151|Sin contrato. $400.000 al mes, con todo incluido.
+151|Sin contrato. $425.000 al mes, con todo incluido.
 191|Una lista de 12 puntos con lo que está frenando tu Perfil de Negocio de Google y qué arreglar primero.
 168|Legal

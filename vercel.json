@@ -28,6 +28,11 @@
       "permanent": true
     },
     {
+      "source": "/es-co/registro",
+      "destination": "/es-co/contacto?tema=precio",
+      "permanent": false
+    },
+    {
       "source": "/whatsapp",
       "destination": "/whatsapp-ai-assistant",
       "permanent": true
