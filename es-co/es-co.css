@@ -71,5 +71,14 @@ html[lang="es-CO"] .pricing-card__check { color: #047857; }
 }
 
 /* El punto de miles ($425.000) se veía separado en la tipografía monoespaciada del precio */
-html[lang="es-CO"] .pricing-card__amount { letter-spacing: -0.06em; word-spacing: -0.1em; }
+html[lang="es-CO"] .pricing-card__amount { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 html[lang="es-CO"] .pricing-card__amount span { letter-spacing: 0; }
+
+/* El encabezado de Precios no tenía margen lateral en móvil */
+html[lang="es-CO"] .pricing-hero { padding-inline: 20px; }
+
+/* Auditoría gratis: la columna se ensanchaba más que la pantalla con los textos en español */
+html[lang="es-CO"] .audit-body > * { min-width: 0; }
+@media (max-width: 900px) {
+  html[lang="es-CO"] .audit-body { grid-template-columns: minmax(0, 1fr); }
+}

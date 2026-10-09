@@ -58,8 +58,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
   <!-- Non-critical styles deferred -->
     <link rel="preload" as="image" href="/Logo_vertical_yellow_white_60.png" fetchpriority="high">
-  <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+  <link rel="preload" href="/styles.css?v=20261006b" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/styles.css?v=20261006b"></noscript>
   <style>
     .ind-hero { background: var(--authority-blue); padding: 130px 0 72px; position: relative; overflow: hidden; }
     .ind-hero::before { content:''; position:absolute; top:-30%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,rgba(42,80,128,0.5) 0%,transparent 70%); pointer-events:none; }
@@ -125,7 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </script>
   <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-space:nowrap}@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}.nav__lang-m{display:none}@media(max-width:1024px){.nav__lang-m{display:inline-flex;align-items:center;margin-left:auto;margin-right:14px;color:#fff;font-size:.8rem;font-weight:600}}</style>
   <style data-es-co>.grid-3:has(> .pricing-card:only-child){grid-template-columns:minmax(0,440px);justify-content:center}</style>
-  <link rel="stylesheet" href="/es-co/es-co.css?v=5">
+  <link rel="stylesheet" href="/es-co/es-co.css?v=7">
 </head>
 <body>
 
@@ -530,13 +530,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      interstitial, which Google penalises on mobile) once the visitor has
      read half the page or spent 30s on it */
   if (exitOverlay && window.innerWidth <= 768 && !exitShown) {
+    var sheetRetry = null;
     var onSheetScroll = function () {
       var h = document.documentElement.scrollHeight - window.innerHeight;
       if (h > 0 && window.scrollY / h >= 0.5) showSheet();
     };
     var showSheet = function () {
-      window.removeEventListener('scroll', onSheetScroll);
       if (exitShown) return;
+      /* Wait for the cookie bar to go; both live at the bottom of the screen */
+      var cookieBar = document.querySelector('.cookie-bar');
+      if (cookieBar && cookieBar.offsetHeight && !cookieBar.classList.contains('hidden')) {
+        if (!sheetRetry) sheetRetry = setTimeout(function () { sheetRetry = null; showSheet(); }, 5000);
+        return;
+      }
+      window.removeEventListener('scroll', onSheetScroll);
       exitShown = true;
       exitOverlay.classList.add('exit-overlay--sheet', 'active');
       exitOverlay.setAttribute('aria-modal', 'false');
