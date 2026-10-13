@@ -16,6 +16,13 @@
     }
   ],
   "redirects": [
+    { "source": "/blog/post", "has": [{ "type": "query", "key": "slug", "value": "cheat-sheet-how-to-read-your-gbp-insights-without-fooling-yourself-1783609316153" }], "destination": "/blog/cheat-sheet-how-to-read-your-gbp-insights-without-fooling-yourself-1783609316153", "permanent": true },
+    { "source": "/blog/post", "has": [{ "type": "query", "key": "slug", "value": "gbp-management-for-landscapers-manual-vs-automated-in-2026" }], "destination": "/blog/gbp-management-for-landscapers-manual-vs-automated-in-2026", "permanent": true },
+    { "source": "/blog/post", "has": [{ "type": "query", "key": "slug", "value": "automated-local-marketing-setup" }], "destination": "/blog/automated-local-marketing-setup", "permanent": true },
+    { "source": "/blog/post", "has": [{ "type": "query", "key": "slug", "value": "geotagging-photos-for-local-seo" }], "destination": "/blog/geotagging-photos-for-local-seo", "permanent": true },
+    { "source": "/blog/post", "has": [{ "type": "query", "key": "slug", "value": "managing-negative-google-reviews" }], "destination": "/blog/managing-negative-google-reviews", "permanent": true },
+    { "source": "/blog/post", "has": [{ "type": "query", "key": "slug", "value": "google-business-profile-photo-mistakes" }], "destination": "/blog/google-business-profile-photo-mistakes", "permanent": true },
+    { "source": "/blog/post", "has": [{ "type": "query", "key": "slug", "value": "Your-Google-Business-Profile-Is-Costing-you-Jobs" }], "destination": "/blog/Your-Google-Business-Profile-Is-Costing-you-Jobs", "permanent": true },
     {
       "source": "/waitlist",
       "destination": "/pricing",
