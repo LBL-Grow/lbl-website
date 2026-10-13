@@ -246,11 +246,9 @@ def set_lang_link(html, href, hreflang, label):
 
 
 def strip_lang_link(html):
-    """La versión en español es solo para Colombia: las páginas en inglés no llevan enlace de idioma
-    (siguen los hreflang, para que Google muestre /es-co a quien corresponda)."""
-    html = re.sub(r'[ \t]*<span><a [^>]*data-lang-switch[^>]*>[^<]*</a></span>\n?', '', html)
-    html = re.sub(r'[ \t]*<a [^>]*data-lang-switch[^>]*>[^<]*</a>\n?', '', html)
-    return html
+    """El cambio de idioma vive solo en el pie (en inglés y en español): se quitan los enlaces de la cabecera
+    y del menú móvil, que estiraban el menú. Siguen los hreflang, para que Google muestre /es-co a quien corresponda."""
+    return re.sub(r'[ \t]*(?<!<span>)<a [^>]*data-lang-switch[^>]*>[^<]*</a>\n?', '', html)
 
 
 def jsonld(cfg, title, desc):
@@ -364,7 +362,7 @@ def main():
         html = rewrite_links(html)
         html = head(html, cfg)
         html = js_strings(html, key)
-        html = set_lang_link(html, cfg['en'], 'en', 'English')
+        html = strip_lang_link(set_lang_link(html, cfg['en'], 'en', 'English'))
         html = apply_patches(html, key)
         if key == 'blogpost':
             shell = html
