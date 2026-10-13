@@ -1,4 +1,4 @@
-0|Precio | Local Boost Lab: Perfil de Negocio de Google por $425.000 al mes
+0|Precio: gestión del Perfil de Negocio de Google | Local Boost Lab
 1|Gestión completa del Perfil de Negocio de Google por $425.000 al mes: respuestas a reseñas, 3 publicaciones por semana e informe mensual. Sin contrato.
 2|Precio | Local Boost Lab: $425.000 al mes
 3|Un solo plan con todo incluido por $425.000 al mes. Sin contrato, sin costo de instalación y cancelas cuando quieras.
@@ -6,7 +6,7 @@
 5|Gestión automatizada del Perfil de Negocio de Google. Un solo plan: $425.000 al mes. Cancelas cuando quieras.
 21|Ver planes &#x2192;
 35|Ver planes &#x2192;
-39|Un precio claro y honesto.
+39|Un precio claro y honesto para gestionar tu Perfil de Negocio de Google.
 40|Sin costo de instalación, sin contrato y sin sobrecostos de agencia. Cancelas cuando quieras y lo tramitamos en 24 horas. Precios en pesos colombianos.
 41|@@DROP:section@@
 42-49|@@EMPTY@@
