@@ -17,6 +17,8 @@ import json, pathlib, re, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from extract import ROOT, PAGES, TOK, ATTR, META_OK, clean
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'seo'))
+from faq_schema import faq_schema
 
 SITE = 'https://localboostlab.com'
 I18N = ROOT / 'tools/i18n/es-co'
@@ -364,6 +366,7 @@ def main():
         html = js_strings(html, key)
         html = strip_lang_link(set_lang_link(html, cfg['en'], 'en', 'English'))
         html = apply_patches(html, key)
+        html = faq_schema(html)
         if key == 'blogpost':
             shell = html
         if not check:
