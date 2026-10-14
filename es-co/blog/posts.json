@@ -1,5 +1,41 @@
 [
  {
+  "slug": "como-aparecer-en-google-maps-negocio-local",
+  "title": "Cómo aparecer en Google Maps con tu negocio local",
+  "excerpt": "Los tres factores que usa Google para ordenar los negocios cercanos y qué puedes hacer tú en cada uno, sin pagar publicidad.",
+  "tags": [
+   "Google Maps",
+   "SEO local"
+  ],
+  "published_at": "2026-10-14T12:00:00+00:00",
+  "cover_image_url": "/Businness_Truck.webp",
+  "status": "published"
+ },
+ {
+  "slug": "como-responder-resenas-de-google",
+  "title": "Cómo responder reseñas de Google: ejemplos listos y cuándo automatizarlo",
+  "excerpt": "Qué decir en una reseña de 5, 4, 3 o 1 estrella, qué errores evitar y en qué casos tiene sentido que una IA responda por ti y en cuáles no.",
+  "tags": [
+   "Reseñas",
+   "Guía"
+  ],
+  "published_at": "2026-10-14T12:00:00+00:00",
+  "cover_image_url": "/3_star_review.webp",
+  "status": "published"
+ },
+ {
+  "slug": "como-verificar-tu-negocio-en-google",
+  "title": "Cómo verificar tu negocio en Google y qué hacer si no puedes",
+  "excerpt": "Para qué sirve verificar tu perfil, qué métodos ofrece Google, por qué falla casi siempre y cómo corregirlo sin perder semanas.",
+  "tags": [
+   "Verificación",
+   "Guía"
+  ],
+  "published_at": "2026-10-14T12:00:00+00:00",
+  "cover_image_url": "/03_GBP_Profile.webp",
+  "status": "published"
+ },
+ {
   "slug": "como-leer-las-estadisticas-de-tu-perfil-de-google",
   "title": "Guía rápida: cómo leer las estadísticas de tu Perfil de Google sin engañarte",
   "excerpt": "Muchas vistas se ven bien, pero no pagan la nómina ni el arriendo. Aprende a leer los datos que sí importan, como llamadas, solicitudes de ruta y búsquedas, para saber si tu perfil de verdad te trae clientes.",
