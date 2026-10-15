@@ -236,146 +236,151 @@
  },
  {
   "i": 47,
+  "k": "text",
+  "en": "Get a Free Audit →"
+ },
+ {
+  "i": 48,
   "k": "attr:alt",
   "en": "Local Boost Lab"
  },
  {
-  "i": 48,
+  "i": 49,
   "k": "text",
   "en": "Your Google Profile. Finally handled."
  },
  {
-  "i": 49,
+  "i": 50,
   "k": "text",
   "en": "hello@localboostlab.com"
  },
  {
-  "i": 50,
+  "i": 51,
   "k": "text",
   "en": "Product"
  },
  {
-  "i": 51,
+  "i": 52,
   "k": "text",
   "en": "How It Works"
  },
  {
-  "i": 52,
+  "i": 53,
   "k": "text",
   "en": "WhatsApp AI"
  },
  {
-  "i": 53,
+  "i": 54,
   "k": "text",
   "en": "Industries"
  },
  {
-  "i": 54,
+  "i": 55,
   "k": "text",
   "en": "Pricing"
  },
  {
-  "i": 55,
+  "i": 56,
   "k": "text",
   "en": "Blog"
  },
  {
-  "i": 56,
+  "i": 57,
   "k": "text",
   "en": "About"
  },
  {
-  "i": 57,
+  "i": 58,
   "k": "text",
   "en": "Contact"
  },
  {
-  "i": 58,
+  "i": 59,
   "k": "text",
   "en": "Legal"
  },
  {
-  "i": 59,
+  "i": 60,
   "k": "text",
   "en": "Privacy Policy"
  },
  {
-  "i": 60,
+  "i": 61,
   "k": "text",
   "en": "Terms of Service"
  },
  {
-  "i": 61,
+  "i": 62,
   "k": "text",
   "en": "Payments secured by"
  },
  {
-  "i": 62,
+  "i": 63,
   "k": "attr:alt",
   "en": "Stripe"
  },
  {
-  "i": 63,
+  "i": 64,
   "k": "text",
   "en": "Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses"
  },
  {
-  "i": 64,
-  "k": "attr:alt",
-  "en": "Claire"
- },
- {
   "i": 65,
-  "k": "text",
+  "k": "attr:alt",
   "en": "Claire"
  },
  {
   "i": 66,
   "k": "text",
-  "en": "Online 24/7 · AI support"
+  "en": "Claire"
  },
  {
   "i": 67,
+  "k": "text",
+  "en": "Online 24/7 · AI support"
+ },
+ {
+  "i": 68,
   "k": "attr:aria-label",
   "en": "× Close chat"
  },
  {
-  "i": 68,
+  "i": 69,
   "k": "attr:placeholder",
   "en": "Ask a question..."
  },
  {
-  "i": 69,
+  "i": 70,
   "k": "attr:aria-label",
   "en": "Chat message"
  },
  {
-  "i": 70,
+  "i": 71,
   "k": "text",
   "en": "Send"
  },
  {
-  "i": 71,
+  "i": 72,
   "k": "attr:aria-label",
   "en": "Chat with support"
  },
  {
-  "i": 72,
+  "i": 73,
   "k": "text",
   "en": "This site uses essential cookies. "
  },
  {
-  "i": 73,
+  "i": 74,
   "k": "text",
   "en": "Learn more →"
  },
  {
-  "i": 74,
+  "i": 75,
   "k": "text",
   "en": "Accept"
  },
  {
-  "i": 75,
+  "i": 76,
   "k": "text",
   "en": "Preferences"
  }
