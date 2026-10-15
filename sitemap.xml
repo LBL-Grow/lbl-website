@@ -236,9 +236,27 @@
   </url>
   <url>
     <loc>https://localboostlab.com/es-co/blog</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://localboostlab.com/es-co/blog/como-aparecer-en-google-maps-negocio-local</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localboostlab.com/es-co/blog/como-responder-resenas-de-google</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localboostlab.com/es-co/blog/como-verificar-tu-negocio-en-google</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localboostlab.com/es-co/blog/como-leer-las-estadisticas-de-tu-perfil-de-google</loc>
