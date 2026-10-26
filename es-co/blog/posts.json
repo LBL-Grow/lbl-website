@@ -1,5 +1,29 @@
 [
  {
+  "slug": "como-administrar-tu-perfil-de-negocio-de-google",
+  "title": "Cómo administrar y editar tu Perfil de Negocio de Google",
+  "excerpt": "Cómo entrar a tu perfil, qué puedes editar, qué revisar cada mes, cómo dar acceso a otra persona y qué hacer si no puedes editar.",
+  "tags": [
+   "Google Mi Negocio",
+   "Guía"
+  ],
+  "published_at": "2026-10-23T14:00:00+00:00",
+  "cover_image_url": "/Hero_Banner_Leaking_faucet.webp",
+  "status": "published"
+ },
+ {
+  "slug": "como-responder-resenas-de-google-con-ia",
+  "title": "Cómo responder reseñas de Google con IA sin que suene a robot",
+  "excerpt": "Qué reseñas conviene automatizar, cuáles revisar tú, cómo configurar el tono y qué riesgos tiene responder con inteligencia artificial.",
+  "tags": [
+   "Reseñas",
+   "IA"
+  ],
+  "published_at": "2026-10-23T13:00:00+00:00",
+  "cover_image_url": "/Hero_Banner_Leaking_faucet.webp",
+  "status": "published"
+ },
+ {
   "slug": "google-mi-negocio-es-gratis-que-si-cuesta",
   "title": "Google Mi Negocio es gratis: lo que sí cuesta mantener tu perfil",
   "excerpt": "Crear y administrar tu Perfil de Negocio de Google no cuesta nada. Lo que se paga es el tiempo. Qué tareas se repiten cada mes y cuándo conviene delegarlas.",
