@@ -28,6 +28,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools' / 'pages'))
 sys.path.insert(0, str(ROOT / 'tools' / 'seo'))
 from industries_data import INDUSTRIES  # noqa: E402
+from comparisons_data import COMPARISONS  # noqa: E402
 from faq_schema import faq_schema  # noqa: E402
 
 SITE = 'https://localboostlab.com'
@@ -46,11 +47,13 @@ UI = {
 
 
 def url_for(ind, lang):
+    if ind.get('kind') == 'comparison':
+        return f"/compare/{ind['slug_en']}" if lang == 'en' else f"/es-co/comparar/{ind['slug_es']}"
     return f"/industries/{ind['slug_en']}" if lang == 'en' else f"/es-co/industrias/{ind['slug_es']}"
 
 
 def out_path(ind, lang):
-    return ROOT / (f"industries/{ind['slug_en']}/index.html" if lang == 'en' else f"es-co/industrias/{ind['slug_es']}/index.html")
+    return ROOT / (url_for(ind, lang).lstrip('/') + '/index.html')
 
 
 def esc(s):
@@ -78,6 +81,13 @@ def icons(main):
 def jsonld(ind, lang, data, others):
     u = SITE + url_for(ind, lang)
     ui = UI[lang]
+    if ind.get('kind') == 'comparison':
+        page = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': data['title'], 'description': data['desc'], 'url': u,
+                'inLanguage': ui['lang'], 'isPartOf': {'@type': 'WebSite', 'name': 'Local Boost Lab', 'url': SITE}}
+        crumbs = {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': ui['home'], 'item': SITE + ui['home_url'].rstrip('/')},
+            {'@type': 'ListItem', 'position': 2, 'name': data['name'], 'item': u}]}
+        return ''.join(f'\n  <script type="application/ld+json">\n  {json.dumps(d, ensure_ascii=False, indent=2)}\n  </script>' for d in (page, crumbs))
     service = {
         '@context': 'https://schema.org', '@type': 'Service', 'name': data['title'].split(' | ')[0],
         'description': data['service_desc'], 'url': u, 'serviceType': 'Google Business Profile management',
@@ -135,6 +145,50 @@ def build_main(ind, lang, ref_main):
            f'      <h2 id="cta-heading">{esc(d["cta_h2"])}</h2>\n      <p>{esc(d["cta_p"])}</p>\n'
            f'      <a href="{ui["cta1_url"]}" class="btn btn-amber btn-xl">{ui["cta1"]}</a>\n      <div class="lbl-cta-trust">{trust}\n      </div>\n    </div>\n  </div>\n</section>')
     return '<main id="main" role="main">\n' + '\n'.join([crumb, hero, serve, pricing, faq, cta]) + '\n</main>'
+
+
+COMPARE_CSS = """<style>
+.cmp-table{width:100%;border-collapse:collapse;margin-top:32px;background:#fff}
+.cmp-table th{padding:14px 16px;font-family:var(--font-heading);font-size:.95rem;color:var(--authority-blue);border-bottom:2px solid var(--border-color);text-align:left}
+.cmp-table td{padding:14px 16px;border-bottom:1px solid var(--surface-mid);font-size:.9rem;color:var(--slate-core);vertical-align:top;line-height:1.55}
+.cmp-table td:first-child{font-weight:700;color:var(--authority-blue);width:22%}
+.cmp-table .cmp-lbl{background:rgba(245,158,11,.06)}
+.cmp-table thead th.cmp-lbl{background:rgba(245,158,11,.12)}
+.cmp-list{margin:14px 0 0 0;padding:0 0 0 22px;line-height:1.7;color:var(--slate-core);list-style:disc}
+.cmp-list--ol{list-style:decimal}
+.cmp-list li{margin-bottom:8px}
+@media (max-width:700px){.cmp-table th,.cmp-table td{padding:10px 8px;font-size:.8rem}}
+</style>"""
+
+
+def build_comparison_main(cmp, lang, ref_main):
+    d, ui = cmp[lang], UI[lang]
+    c0, c1, c2 = d['table_cols']
+    rows = '\n'.join(f'          <tr><td>{esc(a)}</td><td>{esc(b)}</td><td class="cmp-lbl">{esc(c)}</td></tr>' for a, b, c in d['rows'])
+    table = (f'<section class="section section--white" aria-labelledby="table-heading">\n  <div class="container" style="max-width:1000px;">\n'
+             f'    <h2 id="table-heading" class="section-title fade-up">{esc(d["table_h2"])}</h2>\n    <div style="overflow-x:auto;" class="fade-up">\n'
+             f'      <table class="cmp-table">\n        <thead><tr><th>{esc(c0)}</th><th>{esc(c1)}</th><th class="cmp-lbl">{esc(c2)}</th></tr></thead>\n'
+             f'        <tbody>\n{rows}\n        </tbody>\n      </table>\n    </div>\n  </div>\n</section>')
+
+    def card(h2, items, ordered=False):
+        tag = 'ol' if ordered else 'ul'
+        li = ''.join(f'<li>{esc(x)}</li>' for x in items)
+        cls = 'cmp-list cmp-list--ol' if ordered else 'cmp-list'
+        return f'<div class="ind-serve-card"><div class="ind-serve-card__label">{esc(h2)}</div><{tag} class="{cls}">{li}</{tag}></div>'
+    two = (f'<section class="section" style="background:var(--surface-light);border-top:1px solid var(--border-color);" aria-labelledby="fit-heading">\n'
+           f'  <div class="container" style="max-width:960px;">\n    <h2 id="fit-heading" class="section-title fade-up">{esc(d["fit_h2"])}</h2>\n'
+           f'    <div class="ind-serve-grid fade-up" style="margin-top:40px;">\n      {card(d["agency_h2"], d["agency_items"])}\n      {card(d["lbl_h2"], d["lbl_items"])}\n    </div>\n  </div>\n</section>')
+    decide = (f'<section class="section section--white" aria-labelledby="decide-heading">\n  <div class="container" style="max-width:960px;">\n'
+              f'    <h2 id="decide-heading" class="section-title fade-up">{esc(d["decide_h2"])}</h2>\n    <div class="ind-serve-grid fade-up" style="margin-top:40px;">\n'
+              f'      {card(d["decide_h2"], d["decide"], True)}\n      {card(d["ask_h2"], d["ask"])}\n    </div>\n  </div>\n</section>')
+    # Migas de 2 niveles y hero iguales a las de industria.
+    crumb = (f'<nav aria-label="{ui["crumb_label"]}" style="background:var(--surface-mid);padding:10px 0;border-bottom:1px solid var(--border-color);">\n'
+             f'  <div class="container" style="font-size:0.8rem;color:var(--text-muted);">\n'
+             f'    <a href="{ui["home_url"]}" style="color:var(--text-muted);text-decoration:none;">{ui["home"]}</a>\n    <span style="margin:0 8px;opacity:0.5;">›</span>\n'
+             f'    <span style="color:var(--authority-blue);font-weight:600;">{esc(d["name"])}</span>\n  </div>\n</nav>')
+    base = build_main({**cmp, lang: {**d, 'cards': [], 'short': '', 'serve_h2': '', 'serve_sub': ''}}, lang, ref_main)  # reutiliza hero, precios, FAQ y CTA
+    parts = {k: re.search(r'<section[^>]*aria-labelledby="%s".*?</section>' % k, base, re.S).group(0) for k in ('hero-heading', 'pricing-heading', 'faq-heading', 'cta-heading')}
+    return '<main id="main" role="main">\n' + COMPARE_CSS + '\n' + '\n'.join([crumb, parts['hero-heading'], table, two, decide, parts['pricing-heading'], parts['faq-heading'], parts['cta-heading']]) + '\n</main>'
 
 
 def patch_head(pre, ind, lang, data):
@@ -215,11 +269,31 @@ def patch_hubs():
     return changed
 
 
+# La página de precios ya tiene una tabla "LBL vs. una agencia": su título pasa a enlazar la comparativa completa.
+PRICING_LINKS = {'pricing.html': 'en', 'es-co/precios.html': 'es'}
+
+
+def patch_pricing_links():
+    cmp = COMPARISONS[0]
+    changed = {}
+    for rel, lang in PRICING_LINKS.items():
+        path = ROOT / rel
+        text = path.read_text()
+        href = url_for({**cmp, 'kind': 'comparison'}, lang)
+        if f'href="{href}"' in text:
+            continue
+        new, n = re.subn(r'(<h2 id="compare2-heading">)(.*?)(</h2>)', lambda m: f'{m.group(1)}<a href="{href}" style="color:inherit;text-decoration:none;">{m.group(2)}</a>{m.group(3)}', text, count=1, flags=re.S)
+        if n:
+            changed[path] = new
+    return changed
+
+
 def render(ind, lang):
     pre, ref_main, post = split_ref(lang)
     data = ind[lang]
     order_inds = sorted(INDUSTRIES, key=lambda i: i['order'])
-    page = patch_head(pre, ind, lang, data) + build_main(ind, lang, ref_main) + post
+    body = build_comparison_main(ind, lang, ref_main) if ind.get('kind') == 'comparison' else build_main(ind, lang, ref_main)
+    page = patch_head(pre, ind, lang, data) + body + post
     page = patch_post_and_nav(page, lang, ind, order_inds)
     return faq_schema(page)
 
@@ -227,7 +301,9 @@ def render(ind, lang):
 def main():
     check = '--check' in sys.argv
     urls, diffs = [], []
-    for ind in sorted(INDUSTRIES, key=lambda i: i['order']):
+    for c in COMPARISONS:
+        c['kind'] = 'comparison'
+    for ind in sorted(INDUSTRIES, key=lambda i: i['order']) + COMPARISONS:
         for lang in ('en', 'es'):
             path, page = out_path(ind, lang), render(ind, lang)
             urls.append(SITE + url_for(ind, lang))
@@ -237,7 +313,7 @@ def main():
             else:
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(page)
-    hubs = patch_hubs()
+    hubs = {**patch_hubs(), **patch_pricing_links()}
     if check:
         diffs += [str(p.relative_to(ROOT)) for p in hubs]
         if diffs:

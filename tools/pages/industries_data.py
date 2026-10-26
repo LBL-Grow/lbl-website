@@ -15,7 +15,7 @@ INDUSTRIES = [
         'en': {
             'name': 'Beauty Salons & Aesthetics', 'short': 'beauty salons',
             'title': 'Google Business Profile Management for Beauty Salons & Aesthetics | Local Boost Lab',
-            'desc': 'Google Business Profile management for hair salons, barbershops, nail studios and aesthetics clinics. Review replies in under 1 hour, 3 posts a week, monthly report. From $97/month.',
+            'desc': 'Google Business Profile management for hair salons, barbershops, nail studios and aesthetics clinics. Review replies in under 1 hour, 3 posts a week (Presence plan and up), monthly report. From $97/month.',
             'og': 'Clients choose a salon by its photos and its reviews. LBL keeps your Google profile active, answered and full of your best work.',
             'service_desc': 'Local Boost Lab manages Google Business Profiles for beauty salons, barbershops, nail studios and aesthetics clinics: replies to reviews, 3 posts a week and a monthly report.',
             'eyebrow': 'Beauty & Aesthetics · Google Business Profile Management',
@@ -25,7 +25,7 @@ INDUSTRIES = [
             'serve_sub': 'Review replies, steady posts with your work, and a monthly report, all done for you.',
             'cards': [
                 ('Warm replies to every good review', 'Each 4 and 5-star review gets a personal reply within 1 hour. We mention what the client liked, whether it was the color, the cut, the nails or the team, so the next person reading sees a salon that pays attention. Negative reviews come to you for approval first.'),
-                ('3 posts a week built around your work', 'Posts go live Monday, Wednesday and Friday at 9 AM: new looks, team introductions, services and seasonal reminders such as wedding season or back to school. Topics do not repeat within 30 days. You keep control of what gets shown.'),
+                ('3 posts a week built around your work', 'On the Presence and Authority plans, posts go live Monday, Wednesday and Friday at 9 AM: new looks, team introductions, services and seasonal reminders such as wedding season or back to school. Topics do not repeat within 30 days. You keep control of what gets shown.'),
                 ('A monthly report you can read in two minutes', 'On the 5th of each month: new reviews and rating, profile views, calls and website clicks. You see what is moving and what to fix without opening a dashboard.'),
             ],
             'faqs': [
@@ -33,7 +33,7 @@ INDUSTRIES = [
                 ('Can you reply to reviews in my own voice?', 'Yes. Replies to 4 and 5-star reviews are written to sound like you and mention what the client praised. 3-star reviews arrive as a draft for you to approve, and 1 and 2-star reviews are escalated to you. We never auto-reply to those.'),
                 ('What kind of posts work for a salon or aesthetics studio?', 'Posts about the work itself: new styles, services, team members, offers and seasonal reminders. We keep the topics varied, and you can tell us what to avoid.'),
                 ('Do you need photos from me?', 'It helps. Real photos of your space and your work beat stock images. Always make sure the client agrees before a photo of their face is published.'),
-                ('What does it cost and is there a contract?', 'Plans start at $97/month with no setup fee and no contract. You can cancel anytime.'),
+                ('What does it cost and is there a contract?', 'Plans start at $97/month for review replies and the monthly report; the 3 weekly posts are part of the $157 Presence plan and the Authority plan. No setup fee and no contract. You can cancel anytime.'),
             ],
             'cta_h2': 'Clients are choosing a salon on Google right now. Are you showing up?',
             'cta_p': 'Every day your profile sits idle, a ready-to-book client picks another salon. No contracts. Cancel anytime.',
@@ -71,7 +71,7 @@ INDUSTRIES = [
         'en': {
             'name': 'Auto Repair Shops', 'short': 'auto repair shops',
             'title': 'Google Business Profile Management for Auto Repair Shops | Local Boost Lab',
-            'desc': 'Google Business Profile management for auto repair and mechanic shops. Review replies in under 1 hour, 3 posts a week, monthly report. From $97/month.',
+            'desc': 'Google Business Profile management for auto repair and mechanic shops. Review replies in under 1 hour, 3 posts a week (Presence plan and up), monthly report. From $97/month.',
             'og': 'Drivers search for a mechanic they can trust. LBL keeps your Google profile active, answered and easy to choose.',
             'service_desc': 'Local Boost Lab manages Google Business Profiles for auto repair and mechanic shops: replies to reviews, 3 posts a week and a monthly report.',
             'eyebrow': 'Auto Repair · Google Business Profile Management',
@@ -81,7 +81,7 @@ INDUSTRIES = [
             'serve_sub': 'Review replies, regular posts about your services, and a monthly report, all done for you.',
             'cards': [
                 ('Replies that show you listen', 'Each 4 and 5-star review gets a personal reply within 1 hour that mentions what the customer said, whether it was an honest quote, a quick fix or good communication. Negative reviews come to you for approval first, because a rushed reply to an angry customer can do more harm than silence.'),
-                ('3 posts a week about what you do', 'Posts go live Monday, Wednesday and Friday at 9 AM: maintenance reminders, services, seasonal checks and team introductions. Topics do not repeat within 30 days.'),
+                ('3 posts a week about what you do', 'On the Presence and Authority plans, posts go live Monday, Wednesday and Friday at 9 AM: maintenance reminders, services, seasonal checks and team introductions. Topics do not repeat within 30 days.'),
                 ('A monthly report with the numbers that matter', 'On the 5th of each month: reviews and rating, profile views, calls, direction requests and website clicks, in a two-minute read.'),
             ],
             'faqs': [
@@ -89,7 +89,7 @@ INDUSTRIES = [
                 ('How do you handle angry reviews?', 'We never auto-reply to 1 and 2-star reviews. You get an urgent alert and decide how to answer. 3-star reviews arrive as a draft you approve.'),
                 ('What do you post for a repair shop?', 'Maintenance reminders, services, seasonal checks, team introductions and offers you approve. We do not make claims we cannot back up.'),
                 ('Can you list my services and hours?', 'Setup includes checking that your categories, services, hours and contact details are complete and consistent.'),
-                ('What does it cost and is there a contract?', 'Plans start at $97/month with no setup fee and no contract. You can cancel anytime.'),
+                ('What does it cost and is there a contract?', 'Plans start at $97/month for review replies and the monthly report; the 3 weekly posts are part of the $157 Presence plan and the Authority plan. No setup fee and no contract. You can cancel anytime.'),
             ],
             'cta_h2': 'Drivers are searching for a mechanic right now. Are you the one they find?',
             'cta_p': 'Every day your profile sits idle, a driver who needs a repair calls another shop. No contracts. Cancel anytime.',
@@ -127,7 +127,7 @@ INDUSTRIES = [
         'en': {
             'name': 'Plumbing Companies', 'short': 'plumbing companies',
             'title': 'Google Business Profile Management for Plumbing Companies | Local Boost Lab',
-            'desc': 'Google Business Profile management for plumbers and plumbing companies. Review replies in under 1 hour, 3 posts a week, monthly report. From $97/month.',
+            'desc': 'Google Business Profile management for plumbers and plumbing companies. Review replies in under 1 hour, 3 posts a week (Presence plan and up), monthly report. From $97/month.',
             'og': 'When a pipe bursts, people call the first plumber they trust. LBL keeps your Google profile active, answered and easy to choose.',
             'service_desc': 'Local Boost Lab manages Google Business Profiles for plumbers and plumbing companies: replies to reviews, 3 posts a week and a monthly report.',
             'eyebrow': 'Plumbing · Google Business Profile Management',
@@ -137,7 +137,7 @@ INDUSTRIES = [
             'serve_sub': 'Review replies, regular posts and a monthly report, all done for you.',
             'cards': [
                 ('Replies that build trust fast', 'Each 4 and 5-star review gets a personal reply within 1 hour. We mention what the customer noticed, such as showing up on time, a clear price or a clean job site. Negative reviews come to you for approval first.'),
-                ('3 posts a week, tied to the season', 'Posts go live Monday, Wednesday and Friday at 9 AM: services, seasonal reminders about water heaters, drains and exposed pipes, and team introductions. Topics do not repeat within 30 days.'),
+                ('3 posts a week, tied to the season', 'On the Presence and Authority plans, posts go live Monday, Wednesday and Friday at 9 AM: services, seasonal reminders about water heaters, drains and exposed pipes, and team introductions. Topics do not repeat within 30 days.'),
                 ('A monthly report in two minutes', 'On the 5th of each month: reviews and rating, profile views, calls and direction requests.'),
             ],
             'faqs': [
@@ -145,7 +145,7 @@ INDUSTRIES = [
                 ('Do you handle emergency or 24-hour wording?', 'We only publish what you tell us is true about your service hours. If you offer emergency calls, we can say so; we will not claim a service you do not provide.'),
                 ('How are negative reviews handled?', '3-star reviews arrive as a draft you approve. 1 and 2-star reviews are escalated to you and are never auto-answered.'),
                 ('Does this work for a company that travels to the customer?', 'Yes. We can help set up your service area so the profile reflects where you actually work.'),
-                ('What does it cost and is there a contract?', 'Plans start at $97/month with no setup fee and no contract. You can cancel anytime.'),
+                ('What does it cost and is there a contract?', 'Plans start at $97/month for review replies and the monthly report; the 3 weekly posts are part of the $157 Presence plan and the Authority plan. No setup fee and no contract. You can cancel anytime.'),
             ],
             'cta_h2': 'Someone is searching for a plumber right now. Are you the one they call?',
             'cta_p': 'Every day your profile sits idle, a customer with a leak calls your competitor. No contracts. Cancel anytime.',
@@ -183,7 +183,7 @@ INDUSTRIES = [
         'en': {
             'name': 'Landscaping Companies', 'short': 'landscaping companies',
             'title': 'Google Business Profile Management for Landscaping Companies | Local Boost Lab',
-            'desc': 'Google Business Profile management for landscapers and lawn care companies. Review replies in under 1 hour, 3 posts a week, monthly report. From $97/month.',
+            'desc': 'Google Business Profile management for landscapers and lawn care companies. Review replies in under 1 hour, 3 posts a week (Presence plan and up), monthly report. From $97/month.',
             'og': 'Landscaping is visual and seasonal. LBL keeps your Google profile full of your work and answered all year.',
             'service_desc': 'Local Boost Lab manages Google Business Profiles for landscapers and lawn care companies: replies to reviews, 3 posts a week and a monthly report.',
             'eyebrow': 'Landscaping · Google Business Profile Management',
@@ -193,7 +193,7 @@ INDUSTRIES = [
             'serve_sub': 'Review replies, seasonal posts with your projects and a monthly report, all done for you.',
             'cards': [
                 ('Replies that reference the work', 'Each 4 and 5-star review gets a personal reply within 1 hour that mentions what the customer liked, such as a clean yard, a reliable crew or a finished project. Negative reviews come to you for approval first.'),
-                ('3 posts a week that follow the seasons', 'Posts go live Monday, Wednesday and Friday at 9 AM: before-and-after projects, seasonal services and care tips. Topics do not repeat within 30 days.'),
+                ('3 posts a week that follow the seasons', 'On the Presence and Authority plans, posts go live Monday, Wednesday and Friday at 9 AM: before-and-after projects, seasonal services and care tips. Topics do not repeat within 30 days.'),
                 ('A monthly report in two minutes', 'On the 5th of each month: reviews and rating, profile views, calls and website clicks.'),
             ],
             'faqs': [
@@ -201,7 +201,7 @@ INDUSTRIES = [
                 ('Do the posts change with the season?', 'Yes. Topics follow the time of year and the services you offer. You can tell us what you do and what you do not do.'),
                 ('Can you use photos of my projects?', 'Yes, and real project photos work best. We recommend asking property owners before publishing identifiable addresses.'),
                 ('How are negative reviews handled?', '3-star reviews arrive as a draft you approve. 1 and 2-star reviews are escalated to you and are never auto-answered.'),
-                ('What does it cost and is there a contract?', 'Plans start at $97/month with no setup fee and no contract. You can cancel anytime.'),
+                ('What does it cost and is there a contract?', 'Plans start at $97/month for review replies and the monthly report; the 3 weekly posts are part of the $157 Presence plan and the Authority plan. No setup fee and no contract. You can cancel anytime.'),
             ],
             'cta_h2': 'Homeowners are looking for a landscaper right now. Are they finding you?',
             'cta_p': 'Every day your profile sits idle, a customer ready to hire picks another crew. No contracts. Cancel anytime.',
@@ -239,7 +239,7 @@ INDUSTRIES = [
         'en': {
             'name': 'Roofing Companies', 'short': 'roofing companies',
             'title': 'Google Business Profile Management for Roofing Companies | Local Boost Lab',
-            'desc': 'Google Business Profile management for roofers and roofing contractors. Review replies in under 1 hour, 3 posts a week, monthly report. From $97/month.',
+            'desc': 'Google Business Profile management for roofers and roofing contractors. Review replies in under 1 hour, 3 posts a week (Presence plan and up), monthly report. From $97/month.',
             'og': 'A roof is a big decision, so people check who they can trust. LBL keeps your Google profile active, answered and credible.',
             'service_desc': 'Local Boost Lab manages Google Business Profiles for roofers and roofing contractors: replies to reviews, 3 posts a week and a monthly report.',
             'eyebrow': 'Roofing · Google Business Profile Management',
@@ -249,7 +249,7 @@ INDUSTRIES = [
             'serve_sub': 'Review replies, posts about your projects and a monthly report, all done for you.',
             'cards': [
                 ('Replies that reinforce credibility', 'Each 4 and 5-star review gets a personal reply within 1 hour that mentions what the customer valued, such as a clear estimate, a clean job site or a finished roof on schedule. Negative reviews come to you for approval first.'),
-                ('3 posts a week about real projects', 'Posts go live Monday, Wednesday and Friday at 9 AM: finished roofs, services, maintenance tips and team introductions. Topics do not repeat within 30 days. We do not publish claims about licenses or warranties you have not confirmed.'),
+                ('3 posts a week about real projects', 'On the Presence and Authority plans, posts go live Monday, Wednesday and Friday at 9 AM: finished roofs, services, maintenance tips and team introductions. Topics do not repeat within 30 days. We do not publish claims about licenses or warranties you have not confirmed.'),
                 ('A monthly report in two minutes', 'On the 5th of each month: reviews and rating, profile views, calls and direction requests.'),
             ],
             'faqs': [
@@ -257,7 +257,7 @@ INDUSTRIES = [
                 ('Do you publish license or warranty claims?', 'Only what you confirm to us. We will not invent credentials, warranties or awards.'),
                 ('Can you work with storm or seasonal demand?', 'Yes. We can adjust topics to the season, as long as the services are ones you actually offer.'),
                 ('How are negative reviews handled?', '3-star reviews arrive as a draft you approve. 1 and 2-star reviews are escalated to you and are never auto-answered.'),
-                ('What does it cost and is there a contract?', 'Plans start at $97/month with no setup fee and no contract. You can cancel anytime.'),
+                ('What does it cost and is there a contract?', 'Plans start at $97/month for review replies and the monthly report; the 3 weekly posts are part of the $157 Presence plan and the Authority plan. No setup fee and no contract. You can cancel anytime.'),
             ],
             'cta_h2': 'Homeowners are comparing roofers on Google right now. Are you on the list?',
             'cta_p': 'Every day your profile sits idle, a homeowner ready to request an estimate picks another company. No contracts. Cancel anytime.',
@@ -295,7 +295,7 @@ INDUSTRIES = [
         'en': {
             'name': 'Pest Control Companies', 'short': 'pest control companies',
             'title': 'Google Business Profile Management for Pest Control Companies | Local Boost Lab',
-            'desc': 'Google Business Profile management for pest control and fumigation companies. Review replies in under 1 hour, 3 posts a week, monthly report. From $97/month.',
+            'desc': 'Google Business Profile management for pest control and fumigation companies. Review replies in under 1 hour, 3 posts a week (Presence plan and up), monthly report. From $97/month.',
             'og': 'People searching for pest control want it handled soon and by someone they trust. LBL keeps your Google profile active and answered.',
             'service_desc': 'Local Boost Lab manages Google Business Profiles for pest control and fumigation companies: replies to reviews, 3 posts a week and a monthly report.',
             'eyebrow': 'Pest Control · Google Business Profile Management',
@@ -305,7 +305,7 @@ INDUSTRIES = [
             'serve_sub': 'Review replies, helpful posts and a monthly report, all done for you.',
             'cards': [
                 ('Replies that reassure', 'Each 4 and 5-star review gets a personal reply within 1 hour that mentions what the customer valued, such as a fast visit, a clear explanation or a respectful team. Negative reviews come to you for approval first.'),
-                ('3 posts a week with useful tips', 'Posts go live Monday, Wednesday and Friday at 9 AM: services, seasonal prevention tips and team introductions. Topics do not repeat within 30 days. We stay away from claims about products or results that you have not approved.'),
+                ('3 posts a week with useful tips', 'On the Presence and Authority plans, posts go live Monday, Wednesday and Friday at 9 AM: services, seasonal prevention tips and team introductions. Topics do not repeat within 30 days. We stay away from claims about products or results that you have not approved.'),
                 ('A monthly report in two minutes', 'On the 5th of each month: reviews and rating, profile views, calls and website clicks.'),
             ],
             'faqs': [
@@ -313,7 +313,7 @@ INDUSTRIES = [
                 ('Do you make claims about products or results?', 'No. We only publish what you have approved, and we avoid promising results or naming products you have not confirmed.'),
                 ('Do the posts follow the season?', 'Yes. Topics follow the time of year and the services you offer.'),
                 ('How are negative reviews handled?', '3-star reviews arrive as a draft you approve. 1 and 2-star reviews are escalated to you and are never auto-answered.'),
-                ('What does it cost and is there a contract?', 'Plans start at $97/month with no setup fee and no contract. You can cancel anytime.'),
+                ('What does it cost and is there a contract?', 'Plans start at $97/month for review replies and the monthly report; the 3 weekly posts are part of the $157 Presence plan and the Authority plan. No setup fee and no contract. You can cancel anytime.'),
             ],
             'cta_h2': 'Someone is searching for pest control right now. Are they finding you?',
             'cta_p': 'Every day your profile sits idle, a customer with a problem calls another company. No contracts. Cancel anytime.',
@@ -351,7 +351,7 @@ INDUSTRIES = [
         'en': {
             'name': 'Chiropractic Clinics', 'short': 'chiropractic clinics',
             'title': 'Google Business Profile Management for Chiropractors | Local Boost Lab',
-            'desc': 'Google Business Profile management for chiropractors and chiropractic clinics. Review replies in under 1 hour, 3 posts a week, monthly report. From $97/month.',
+            'desc': 'Google Business Profile management for chiropractors and chiropractic clinics. Review replies in under 1 hour, 3 posts a week (Presence plan and up), monthly report. From $97/month.',
             'og': 'Patients look for a chiropractor they can trust. LBL keeps your Google profile active, answered and compliant with your approval.',
             'service_desc': 'Local Boost Lab manages Google Business Profiles for chiropractors and chiropractic clinics: replies to reviews, 3 posts a week and a monthly report.',
             'eyebrow': 'Chiropractic · Google Business Profile Management',
@@ -361,7 +361,7 @@ INDUSTRIES = [
             'serve_sub': 'Review replies, careful posts and a monthly report, all done for you.',
             'cards': [
                 ('Replies that respect patient privacy', 'Each 4 and 5-star review gets a personal reply within 1 hour. We thank the patient and never confirm anything about their treatment or health. Negative reviews come to you for approval first.'),
-                ('3 posts a week, kept general and careful', 'Posts go live Monday, Wednesday and Friday at 9 AM: your services, team introductions, general wellness reminders and clinic news. We do not promise outcomes or make medical claims.'),
+                ('3 posts a week, kept general and careful', 'On the Presence and Authority plans, posts go live Monday, Wednesday and Friday at 9 AM: your services, team introductions, general wellness reminders and clinic news. We do not promise outcomes or make medical claims.'),
                 ('A monthly report in two minutes', 'On the 5th of each month: reviews and rating, profile views, calls, direction requests and website clicks.'),
             ],
             'faqs': [
@@ -369,7 +369,7 @@ INDUSTRIES = [
                 ('How do you handle patient privacy in review replies?', 'We reply in general terms, thank the patient and never confirm that they are a patient or mention any treatment. If a review needs a more careful answer, it goes to you.'),
                 ('Do you make health claims in posts?', 'No. We do not promise results or make medical claims. You approve anything sensitive, and you are responsible for compliance with the rules that apply to your practice.'),
                 ('How are negative reviews handled?', '3-star reviews arrive as a draft you approve. 1 and 2-star reviews are escalated to you and are never auto-answered.'),
-                ('What does it cost and is there a contract?', 'Plans start at $97/month with no setup fee and no contract. You can cancel anytime.'),
+                ('What does it cost and is there a contract?', 'Plans start at $97/month for review replies and the monthly report; the 3 weekly posts are part of the $157 Presence plan and the Authority plan. No setup fee and no contract. You can cancel anytime.'),
             ],
             'cta_h2': 'New patients are searching for a chiropractor right now. Are they finding you?',
             'cta_p': 'Every day your profile sits idle, a patient ready to book picks another clinic. No contracts. Cancel anytime.',
