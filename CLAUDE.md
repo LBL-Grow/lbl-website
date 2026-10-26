@@ -76,7 +76,7 @@ python3 tools/i18n/remap.py <page>  # after extract.py, if you moved/removed Eng
 - The Spanish pages leave out the unsourced statistics, the "results from clients" blocks and the `aggregateRating` markup
 - `build.py` also adds the `hreflang` tags and the language link to the English pages
 - `tools/` is excluded from the deployment (`.vercelignore`)
-- `/sitemap.xml` is served by the Railway backend (`server.js` in GBP-Agent): new URLs must be added there
+- `/sitemap.xml`: Vercel serves the static `sitemap.xml` of this repo (a file wins over the rewrite to Railway in `vercel.json`), so that is the one Google sees. `tools/pages/build.py` adds the generated pages to it; add other new URLs by hand
 
 ## Page templates: new industry pages (`tools/pages/`)
 
@@ -90,5 +90,5 @@ python3 tools/pages/build.py --check  # fails if a generated file is out of date
 - Content: `tools/pages/industries_data.py` (both languages, one block per industry). No statistics or claims without a source.
 - The template reuses the header, footer and pricing block of `industries/cleaning/index.html` and `es-co/industrias/limpieza/index.html`, so they stay in sync.
 - `tools/i18n/build.py` regenerates `es-co/industrias.html` and drops the hub links: **run `tools/pages/build.py` after it**.
-- New URLs for `/sitemap.xml` (served by the Railway backend, `server.js` in GBP-Agent) are listed in `tools/pages/sitemap-urls.txt`.
+- `tools/pages/build.py` also appends the generated URLs to the static `sitemap.xml` and lists them in `tools/pages/sitemap-urls.txt`.
 - Plan: new page types (comparisons, guides) should use this same approach, then the older hand-written pages can move over one by one.
