@@ -236,9 +236,15 @@
   </url>
   <url>
     <loc>https://localboostlab.com/es-co/blog</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://localboostlab.com/es-co/blog/google-mi-negocio-es-gratis-que-si-cuesta</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localboostlab.com/es-co/blog/como-aparecer-en-google-maps-negocio-local</loc>
