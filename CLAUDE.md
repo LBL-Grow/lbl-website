@@ -77,3 +77,18 @@ python3 tools/i18n/remap.py <page>  # after extract.py, if you moved/removed Eng
 - `build.py` also adds the `hreflang` tags and the language link to the English pages
 - `tools/` is excluded from the deployment (`.vercelignore`)
 - `/sitemap.xml` is served by the Railway backend (`server.js` in GBP-Agent): new URLs must be added there
+
+## Page templates: new industry pages (`tools/pages/`)
+
+New industry landing pages are **generated** (EN + ES-CO) from one data file, not written by hand and not translated by position.
+
+```bash
+python3 tools/pages/build.py          # writes industries/<slug>/ and es-co/industrias/<slug>/ and links them from the industry hubs
+python3 tools/pages/build.py --check  # fails if a generated file is out of date
+```
+
+- Content: `tools/pages/industries_data.py` (both languages, one block per industry). No statistics or claims without a source.
+- The template reuses the header, footer and pricing block of `industries/cleaning/index.html` and `es-co/industrias/limpieza/index.html`, so they stay in sync.
+- `tools/i18n/build.py` regenerates `es-co/industrias.html` and drops the hub links: **run `tools/pages/build.py` after it**.
+- New URLs for `/sitemap.xml` (served by the Railway backend, `server.js` in GBP-Agent) are listed in `tools/pages/sitemap-urls.txt`.
+- Plan: new page types (comparisons, guides) should use this same approach, then the older hand-written pages can move over one by one.
