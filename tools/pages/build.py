@@ -16,8 +16,9 @@ Notas:
   - Las páginas generadas NO deben editarse a mano: cambia `industries_data.py` y vuelve a generar.
   - No se usan estadísticas ni afirmaciones sin fuente (ver el encabezado de `industries_data.py`).
   - El FAQPage se genera desde las preguntas visibles con tools/seo/faq_schema.py.
-  - /sitemap.xml lo sirve el backend (server.js en GBP-Agent): las URLs nuevas hay que agregarlas allí.
+  - sitemap.xml (archivo estático del repo; es el que ve Google) recibe las URLs nuevas desde este script.
 """
+import datetime
 import html
 import json
 import re
@@ -32,6 +33,7 @@ from comparisons_data import COMPARISONS  # noqa: E402
 from faq_schema import faq_schema  # noqa: E402
 
 SITE = 'https://localboostlab.com'
+TODAY = datetime.date.today().isoformat()
 REF = {'en': ROOT / 'industries/cleaning/index.html', 'es': ROOT / 'es-co/industrias/limpieza/index.html'}
 REF_SLUG = {'en': ('/industries/cleaning', 'Cleaning'), 'es': ('/es-co/industrias/limpieza', 'Limpieza')}
 UI = {
@@ -288,6 +290,19 @@ def patch_pricing_links():
     return changed
 
 
+def patch_sitemap(urls):
+    """El sitemap que ve Google es el archivo estático sitemap.xml (Vercel lo sirve antes que la redirección a Railway).
+    Agrega las URLs generadas que falten; no toca las que ya están."""
+    path = ROOT / 'sitemap.xml'
+    text = path.read_text()
+    add = ''
+    for u in urls:
+        if f'<loc>{u}</loc>' not in text:
+            pri = '0.7' if '/compare' in u or '/comparar' in u else '0.6'
+            add += f'  <url>\n    <loc>{u}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{pri}</priority>\n  </url>\n'
+    return {path: text.replace('</urlset>', add + '</urlset>')} if add else {}
+
+
 def render(ind, lang):
     pre, ref_main, post = split_ref(lang)
     data = ind[lang]
@@ -313,7 +328,7 @@ def main():
             else:
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(page)
-    hubs = {**patch_hubs(), **patch_pricing_links()}
+    hubs = {**patch_hubs(), **patch_pricing_links(), **patch_sitemap(urls)}
     if check:
         diffs += [str(p.relative_to(ROOT)) for p in hubs]
         if diffs:
@@ -325,7 +340,7 @@ def main():
         path.write_text(text)
     print(f'{len(hubs)} índice(s) de industrias con enlaces nuevos: {", ".join(str(p.relative_to(ROOT)) for p in hubs) or "ninguno"}')
     (ROOT / 'tools/pages/sitemap-urls.txt').write_text('\n'.join(urls) + '\n')
-    print(f'{len(urls)} páginas escritas. URLs nuevas para el sitemap (server.js), también en tools/pages/sitemap-urls.txt:')
+    print(f'{len(urls)} páginas escritas. URLs generadas (ya agregadas a sitemap.xml), también en tools/pages/sitemap-urls.txt:')
     print('\n'.join(urls))
 
 
