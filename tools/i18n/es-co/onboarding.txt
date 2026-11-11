@@ -33,11 +33,13 @@
 47|Escribe tus zonas de servicio.
 48|Sitio web del negocio
 49|Años de operación
+50|Elige...
 51|Menos de 1 año
 52|1 a 3 años
 53|3 a 10 años
 54|Más de 10 años
 55|Elige una opción.
+57|Pega el enlace de Google Maps de tu negocio.
 58|🔍 Cómo encontrar el enlace de tu Perfil de Negocio de Google
 59|Entra a
 60|Google Maps
@@ -80,6 +82,7 @@
 102|Servicio 3
 103|Servicio 3 (ej.: reparación de urgencia)
 104|El elogio típico de tus clientes
+105|(opcional)
 106|¿Cómo te describen tus mejores clientes? Ej.: «Rápidos, limpios y honestos».
 107|← Atrás
 108|Continuar con las fotos →
@@ -113,6 +116,7 @@
 137|Envíenme una vista previa antes de publicar
 138|Suma entre 2 y 4 horas al tiempo de respuesta, pero ves cada borrador antes de que salga.
 139|¿Algo más que debamos saber?
+140|(opcional)
 141|Instrucciones especiales, temas sensibles o cualquier cosa que debamos tener en cuenta...
 142|Confirmo que soy el propietario de este Perfil de Negocio de Google o que estoy autorizado para administrarlo
 143|He leído y acepto los

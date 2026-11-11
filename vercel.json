@@ -29,6 +29,11 @@
       "permanent": true
     },
     {
+      "source": "/audit",
+      "destination": "/free-audit",
+      "permanent": true
+    },
+    {
       "source": "/pricing",
       "has": [{ "type": "query", "key": "plan" }],
       "destination": "/pricing",

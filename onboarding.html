@@ -277,8 +277,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label for="plan-picker" class="form-label" style="display:block;margin-bottom:8px;">Choose your plan <span class="req">*</span></label>
         <select id="plan-picker" class="form-control">
           <option value="reputation">Reputation — $97/mo · review replies + monthly report</option>
-          <option value="presence">Presence — $157/mo · everything in Reputation + 3 GBP posts/week</option>
-          <option value="authority" selected>Authority — $217/mo · everything in Presence + rank tracking &amp; SEO content</option>
+          <option value="presence">Presence — $157/mo · 3 GBP posts/week + monthly report (no review replies)</option>
+          <option value="authority" selected>Authority — $217/mo · Reputation + Presence, priority support, monthly health audit</option>
         </select>
         <p style="margin:8px 0 0;font-size:0.78rem;color:var(--text-muted);">Not sure? <a href="/pricing" style="color:var(--authority-blue);">Compare plans →</a> · No contract, cancel anytime.</p>
       </div>
@@ -337,7 +337,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="form-group">
           <label class="form-label" for="s1-gbp-url">Google Business Profile URL <span class="req">*</span></label>
           <input id="s1-gbp-url" type="text" class="form-control" placeholder="https://maps.google.com/?cid=..." required>
-          <div class="form-error">Please enter your GBP URL.</div>
+          <div class="form-error">Please paste the Google Maps link to your business.</div>
           <div style="margin-top:10px;padding:12px 14px;background:#EFF6FF;border-radius:8px;border:1px solid #BFDBFE;">
             <p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#1B4FD8;">🔍 How to find your Google Business Profile URL</p>
             <ol style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:1.8;">
@@ -767,6 +767,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 
+  // Maps share links, google.com/maps, a search result, g.page or business.google.com.
+  var GOOGLE_LINK_RE = /^https?:\/\/([a-z0-9-]+\.)*(google\.[a-z.]{2,6}|goo\.gl|g\.page|g\.co|share\.google)(\/|$)/i;
+
   function validateStep(step) {
     var stepEl = document.getElementById('step-' + step);
     var required = stepEl.querySelectorAll('[required]');
@@ -779,6 +782,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // A malformed email silently breaks Stripe checkout AND the prospect↔client
       // match in peter.js, so it has to fail here rather than three steps later.
       if (!bad && f.type === 'email' && !EMAIL_RE.test(f.value.trim())) bad = true;
+      // Anything that is not a Google link cannot be matched to a profile, and
+      // the founder only finds out after the client has paid.
+      if (!bad && f.id === 's1-gbp-url' && !GOOGLE_LINK_RE.test(f.value.trim())) bad = true;
 
       var err = f.parentElement.querySelector('.form-error');
       if (bad) {

@@ -308,18 +308,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="audit-form-card">
         <div id="audit-form-wrap">
           <h2 class="audit-form-card__title">Request your free audit</h2>
-          <p class="audit-form-card__sub">Takes 2 minutes. We'll do the rest and deliver your report within 48 hours.</p>
+          <p class="audit-form-card__sub">Four fields, under a minute. We'll do the rest and deliver your report within 48 hours.</p>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="fa-name">Your Name <span class="req">*</span></label>
-              <input id="fa-name" type="text" class="form-control" placeholder="Mike Martinez" autocomplete="name">
-              <div class="form-error" id="fa-name-err">Please enter your name.</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="fa-phone">Phone <span style="font-weight:400;color:var(--text-muted);">(optional)</span></label>
-              <input id="fa-phone" type="tel" class="form-control" placeholder="(305) 555-0100" autocomplete="tel">
-            </div>
+          <div class="form-group">
+            <label class="form-label" for="fa-name">Your Name <span class="req">*</span></label>
+            <input id="fa-name" type="text" class="form-control" placeholder="Mike Martinez" autocomplete="name">
+            <div class="form-error" id="fa-name-err">Please enter your name.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fa-biz">Business Name <span class="req">*</span></label>
+            <input id="fa-biz" type="text" class="form-control" placeholder="Martinez HVAC" autocomplete="organization">
+            <div class="form-error" id="fa-biz-err">Please enter your business name.</div>
           </div>
 
           <div class="form-group">
@@ -328,54 +328,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="form-error" id="fa-email-err">Please enter a valid email.</div>
           </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="fa-biz">Business Name <span class="req">*</span></label>
-              <input id="fa-biz" type="text" class="form-control" placeholder="Martinez HVAC">
-              <div class="form-error" id="fa-biz-err">Please enter your business name.</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="fa-industry">Industry <span class="req">*</span></label>
-              <select id="fa-industry" class="form-control">
-                <option value="">Select...</option>
-                <option>HVAC</option>
-                <option>Plumbing</option>
-                <option>Dental</option>
-                <option>Legal</option>
-                <option>Cleaning / Janitorial</option>
-                <option>Roofing</option>
-                <option>Landscaping</option>
-                <option>Auto Repair</option>
-                <option>Electrical</option>
-                <option>Real Estate</option>
-                <option>Other</option>
-              </select>
-              <div class="form-error" id="fa-industry-err">Please select your industry.</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="fa-city">City / Service Area <span class="req">*</span></label>
-            <input id="fa-city" type="text" class="form-control" placeholder="Miami, FL">
-            <div class="form-error" id="fa-city-err">Please enter your city.</div>
-          </div>
-
           <div class="form-group">
             <label class="form-label" for="fa-gbp">Google Business Profile URL <span class="req">*</span></label>
             <input id="fa-gbp" type="url" class="form-control" placeholder="https://maps.app.goo.gl/...">
             <p class="form-hint">Find it: Google Maps → search your business → Share → Copy link</p>
-            <div class="form-error" id="fa-gbp-err">Please enter your GBP URL.</div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="fa-website">Website <span style="font-weight:400;color:var(--text-muted);">(optional)</span></label>
-            <input id="fa-website" type="url" class="form-control" placeholder="https://martinezhvac.com">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="fa-challenge">What's your biggest challenge right now? <span class="req">*</span></label>
-            <textarea id="fa-challenge" class="form-control" placeholder="e.g. Not showing up in map results, not enough reviews, competitors outranking us..."></textarea>
-            <div class="form-error" id="fa-challenge-err">Please describe your main challenge.</div>
+            <div class="form-error" id="fa-gbp-err">Please paste the Google Maps link to your business.</div>
           </div>
 
           <button type="button" class="btn btn-primary btn-full btn-lg" id="audit-submit-btn" onclick="submitAudit()">
@@ -488,6 +445,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var _API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
     ? 'http://localhost:3000' : 'https://powerful-balance-production-971d.up.railway.app';
 
+  // A link to the business on Google: Maps share links, google.com/maps, a
+  // search result with the profile, g.page or business.google.com.
+  function isGoogleLink(v) {
+    return /^https?:\/\/([a-z0-9-]+\.)*(google\.[a-z.]{2,6}|goo\.gl|g\.page|g\.co|share\.google)(\/|$)/i.test(v);
+  }
+
   function submitAudit() {
     var errors = false;
 
@@ -504,18 +467,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return el.value.trim();
     }
 
-    var name      = validate('fa-name',      'fa-name-err',      function(v){ return v.length > 0; });
-    var email     = validate('fa-email',     'fa-email-err',     function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
-    var bizName   = validate('fa-biz',       'fa-biz-err',       function(v){ return v.length > 0; });
-    var industry  = validate('fa-industry',  'fa-industry-err',  function(v){ return v.length > 0; });
-    var city      = validate('fa-city',      'fa-city-err',      function(v){ return v.length > 0; });
-    var gbpUrl    = validate('fa-gbp',       'fa-gbp-err',       function(v){ return v.length > 0; });
-    var challenge = validate('fa-challenge', 'fa-challenge-err', function(v){ return v.length > 0; });
+    var name    = validate('fa-name',  'fa-name-err',  function(v){ return v.length > 0; });
+    var bizName = validate('fa-biz',   'fa-biz-err',   function(v){ return v.length > 0; });
+    var email   = validate('fa-email', 'fa-email-err', function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
+    var gbpUrl  = validate('fa-gbp',   'fa-gbp-err',   isGoogleLink);
 
     if (errors) return;
-
-    var phone   = document.getElementById('fa-phone').value.trim();
-    var website = document.getElementById('fa-website').value.trim();
 
     var btn = document.getElementById('audit-submit-btn');
     btn.disabled = true;
@@ -524,14 +481,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     fetch(_API + '/api/free-audit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, phone: phone, bizName: bizName, industry: industry, city: city, gbpUrl: gbpUrl, website: website, challenge: challenge }),
+      body: JSON.stringify({ name: name, email: email, bizName: bizName, gbpUrl: gbpUrl }),
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.ok) {
         document.getElementById('audit-form-wrap').style.display = 'none';
         document.getElementById('audit-success').classList.add('show');
-        if (window.dataLayer) window.dataLayer.push({ event: 'free_audit_submitted', business: bizName, industry: industry });
+        if (window.dataLayer) window.dataLayer.push({ event: 'free_audit_submitted', business: bizName });
       } else {
         btn.disabled = false;
         btn.textContent = 'Send My Free Audit Request →';
