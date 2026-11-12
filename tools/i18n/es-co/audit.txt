@@ -20,41 +20,28 @@
 49|La recibes en 48 horas hábiles
 50|Tu perfil lo revisan personas, no un proceso automático
 51|Pide tu auditoría gratis
-52|Son 2 minutos. Nosotros hacemos el resto y te enviamos el informe en 48 horas.
+52|Son cuatro datos y menos de un minuto. Nosotros hacemos el resto y te enviamos el informe en 48 horas.
 55|Escribe tu nombre.
-56|Teléfono
-57|(opcional)
-60|Escribe un correo válido.
-63|Escribe el nombre de tu negocio.
-65|Elige...
-70|Limpieza y aseo
-75|Inmobiliaria
-77|Elige tu industria.
-78|Ciudad o zona de servicio
-79|Medellín, Antioquia
-80|Escribe tu ciudad.
-81|Enlace de tu Perfil de Negocio de Google
-82|Dónde encontrarlo: Google Maps → busca tu negocio → Compartir → Copiar enlace
-83|Pega el enlace de tu perfil.
-85|(opcional)
-86|¿Cuál es tu mayor problema hoy?
-87|Ej.: no aparecemos en el mapa, tenemos pocas reseñas, la competencia sale primero...
-88|Cuéntanos tu principal problema.
-89|Enviar mi solicitud de auditoría →
-90|Sin spam y sin llamada de ventas. Solo una auditoría de verdad en tu correo.
-91|¡Recibimos tu solicitud!
-92|Analizamos tu Perfil de Negocio de Google y te enviamos el informe completo en
-93|48 horas
-94|Mientras esperas,
-95|mira cómo funciona Local Boost Lab →
-96|Qué pasa después de enviar
-97|Sin respuestas automáticas. Una persona mira tu perfil, hace el análisis y escribe tu informe.
-98|Analizamos tu perfil
-99|En 24 horas revisamos qué tan completo está, la actividad de reseñas, el historial de publicaciones, las categorías, la calidad de las fotos y las búsquedas locales en las que apareces.
-100|Recibes un informe completo
-101|Te enviamos por correo una auditoría hecha para tu negocio, con puntaje, lo que falta y una lista de arreglos ordenada por impacto. No es una lista genérica.
-102|Tú decides qué hacer
-103|Arréglalo por tu cuenta con nuestro informe o deja que nos encarguemos de todo con un plan. Sin presión: la auditoría es tuya.
-104|¿Ya sabes que quieres el servicio completo?
-105|Sáltate la auditoría y empieza con un plan: publicaciones, respuestas a reseñas e informe mensual, todo hecho por nosotros.
-122|Legal
+58|Escribe el nombre de tu negocio.
+61|Escribe un correo válido.
+62|Enlace de tu Perfil de Negocio de Google
+63|Dónde encontrarlo: Google Maps → busca tu negocio → Compartir → Copiar enlace
+64|Pega el enlace de Google Maps de tu negocio.
+65|Enviar mi solicitud de auditoría →
+66|Sin spam y sin llamada de ventas. Solo una auditoría de verdad en tu correo.
+67|¡Recibimos tu solicitud!
+68|Analizamos tu Perfil de Negocio de Google y te enviamos el informe completo en
+69|48 horas
+70|Mientras esperas,
+71|mira cómo funciona Local Boost Lab →
+72|Qué pasa después de enviar
+73|Sin respuestas automáticas. Una persona mira tu perfil, hace el análisis y escribe tu informe.
+74|Analizamos tu perfil
+75|En 24 horas revisamos qué tan completo está, la actividad de reseñas, el historial de publicaciones, las categorías, la calidad de las fotos y las búsquedas locales en las que apareces.
+76|Recibes un informe completo
+77|Te enviamos por correo una auditoría hecha para tu negocio, con puntaje, lo que falta y una lista de arreglos ordenada por impacto. No es una lista genérica.
+78|Tú decides qué hacer
+79|Arréglalo por tu cuenta con nuestro informe o deja que nos encarguemos de todo con un plan. Sin presión: la auditoría es tuya.
+80|¿Ya sabes que quieres el servicio completo?
+81|Sáltate la auditoría y empieza con un plan: publicaciones, respuestas a reseñas e informe mensual, todo hecho por nosotros.
+98|Legal

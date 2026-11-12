@@ -77,12 +77,12 @@
  {
   "i": 15,
   "k": "text",
-  "en": "Presence — $157/mo · everything in Reputation + 3 GBP posts/week"
+  "en": "Presence — $157/mo · 3 GBP posts/week + monthly report (no review replies)"
  },
  {
   "i": 16,
   "k": "text",
-  "en": "Authority — $217/mo · everything in Presence + rank tracking &amp; SEO content"
+  "en": "Authority — $217/mo · Reputation + Presence, priority support, monthly health audit"
  },
  {
   "i": 17,
@@ -287,7 +287,7 @@
  {
   "i": 57,
   "k": "text",
-  "en": "Please enter your GBP URL."
+  "en": "Please paste the Google Maps link to your business."
  },
  {
   "i": 58,

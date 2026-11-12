@@ -262,7 +262,7 @@
  {
   "i": 52,
   "k": "text",
-  "en": "Takes 2 minutes. We'll do the rest and deliver your report within 48 hours."
+  "en": "Four fields, under a minute. We'll do the rest and deliver your report within 48 hours."
  },
  {
   "i": 53,
@@ -282,370 +282,250 @@
  {
   "i": 56,
   "k": "text",
-  "en": "Phone "
- },
- {
-  "i": 57,
-  "k": "text",
-  "en": "(optional)"
- },
- {
-  "i": 58,
-  "k": "text",
-  "en": "Email Address "
- },
- {
-  "i": 59,
-  "k": "attr:placeholder",
-  "en": "mike@martinezhvac.com"
- },
- {
-  "i": 60,
-  "k": "text",
-  "en": "Please enter a valid email."
- },
- {
-  "i": 61,
-  "k": "text",
   "en": "Business Name "
  },
  {
-  "i": 62,
+  "i": 57,
   "k": "attr:placeholder",
   "en": "Martinez HVAC"
  },
  {
-  "i": 63,
+  "i": 58,
   "k": "text",
   "en": "Please enter your business name."
  },
  {
-  "i": 64,
+  "i": 59,
   "k": "text",
-  "en": "Industry "
+  "en": "Email Address "
  },
  {
-  "i": 65,
-  "k": "text",
-  "en": "Select..."
- },
- {
-  "i": 66,
-  "k": "text",
-  "en": "HVAC"
- },
- {
-  "i": 67,
-  "k": "text",
-  "en": "Plumbing"
- },
- {
-  "i": 68,
-  "k": "text",
-  "en": "Dental"
- },
- {
-  "i": 69,
-  "k": "text",
-  "en": "Legal"
- },
- {
-  "i": 70,
-  "k": "text",
-  "en": "Cleaning / Janitorial"
- },
- {
-  "i": 71,
-  "k": "text",
-  "en": "Roofing"
- },
- {
-  "i": 72,
-  "k": "text",
-  "en": "Landscaping"
- },
- {
-  "i": 73,
-  "k": "text",
-  "en": "Auto Repair"
- },
- {
-  "i": 74,
-  "k": "text",
-  "en": "Electrical"
- },
- {
-  "i": 75,
-  "k": "text",
-  "en": "Real Estate"
- },
- {
-  "i": 76,
-  "k": "text",
-  "en": "Other"
- },
- {
-  "i": 77,
-  "k": "text",
-  "en": "Please select your industry."
- },
- {
-  "i": 78,
-  "k": "text",
-  "en": "City / Service Area "
- },
- {
-  "i": 79,
+  "i": 60,
   "k": "attr:placeholder",
-  "en": "Miami, FL"
+  "en": "mike@martinezhvac.com"
  },
  {
-  "i": 80,
+  "i": 61,
   "k": "text",
-  "en": "Please enter your city."
+  "en": "Please enter a valid email."
  },
  {
-  "i": 81,
+  "i": 62,
   "k": "text",
   "en": "Google Business Profile URL "
  },
  {
-  "i": 82,
+  "i": 63,
   "k": "text",
   "en": "Find it: Google Maps → search your business → Share → Copy link"
  },
  {
-  "i": 83,
+  "i": 64,
   "k": "text",
-  "en": "Please enter your GBP URL."
+  "en": "Please paste the Google Maps link to your business."
  },
  {
-  "i": 84,
-  "k": "text",
-  "en": "Website "
- },
- {
-  "i": 85,
-  "k": "text",
-  "en": "(optional)"
- },
- {
-  "i": 86,
-  "k": "text",
-  "en": "What's your biggest challenge right now? "
- },
- {
-  "i": 87,
-  "k": "attr:placeholder",
-  "en": "e.g. Not showing up in map results, not enough reviews, competitors outranking us..."
- },
- {
-  "i": 88,
-  "k": "text",
-  "en": "Please describe your main challenge."
- },
- {
-  "i": 89,
+  "i": 65,
   "k": "text",
   "en": "\n            Send My Free Audit Request →\n          "
  },
  {
-  "i": 90,
+  "i": 66,
   "k": "text",
   "en": "\n            No spam. No sales call. Just a real audit delivered to your inbox.\n          "
  },
  {
-  "i": 91,
+  "i": 67,
   "k": "text",
   "en": "Audit request received!"
  },
  {
-  "i": 92,
+  "i": 68,
   "k": "text",
   "en": "We'll analyze your Google Business Profile and send your full report within "
  },
  {
-  "i": 93,
+  "i": 69,
   "k": "text",
   "en": "48 hours"
  },
  {
-  "i": 94,
+  "i": 70,
   "k": "text",
   "en": "While you wait — "
  },
  {
-  "i": 95,
+  "i": 71,
   "k": "text",
   "en": "see how Local Boost Lab works →"
  },
  {
-  "i": 96,
+  "i": 72,
   "k": "text",
   "en": "What happens after you submit"
  },
  {
-  "i": 97,
+  "i": 73,
   "k": "text",
   "en": "No automated responses. A real person looks at your profile, runs the analysis, and writes your report."
  },
  {
-  "i": 98,
+  "i": 74,
   "k": "text",
   "en": "We analyze your profile"
  },
  {
-  "i": 99,
+  "i": 75,
   "k": "text",
   "en": "We review your GBP completeness, review activity, post history, category selection, photo quality, and local keyword positioning within 24 hours."
  },
  {
-  "i": 100,
+  "i": 76,
   "k": "text",
   "en": "You get a full report"
  },
  {
-  "i": 101,
+  "i": 77,
   "k": "text",
   "en": "We email you a personalized audit with a score, specific gaps, and a prioritized list of fixes ranked by impact — not a generic checklist."
  },
  {
-  "i": 102,
+  "i": 78,
   "k": "text",
   "en": "You decide what to do"
  },
  {
-  "i": 103,
+  "i": 79,
   "k": "text",
   "en": "Fix it yourself with our report, or let us handle everything with an automated plan. No pressure either way — the audit is yours to keep."
  },
  {
-  "i": 104,
+  "i": 80,
   "k": "text",
   "en": "Already know you want the full service?"
  },
  {
-  "i": 105,
+  "i": 81,
   "k": "text",
   "en": "Skip the audit and start with a plan. Automated posting, review management, and monthly reporting — fully done for you."
  },
  {
-  "i": 106,
+  "i": 82,
   "k": "text",
   "en": "See Plans →"
  },
  {
-  "i": 107,
+  "i": 83,
   "k": "attr:alt",
   "en": "Local Boost Lab"
  },
  {
-  "i": 108,
+  "i": 84,
   "k": "text",
   "en": "Your Google Profile. Finally handled."
  },
  {
-  "i": 109,
+  "i": 85,
   "k": "text",
   "en": "hello@localboostlab.com"
  },
  {
-  "i": 110,
+  "i": 86,
   "k": "attr:aria-label",
   "en": "Local Boost Lab on LinkedIn"
  },
  {
-  "i": 111,
+  "i": 87,
   "k": "attr:aria-label",
   "en": "Local Boost Lab on Instagram"
  },
  {
-  "i": 112,
+  "i": 88,
   "k": "attr:aria-label",
   "en": "Local Boost Lab on X"
  },
  {
-  "i": 113,
+  "i": 89,
   "k": "attr:aria-label",
   "en": "Local Boost Lab on Facebook"
  },
  {
-  "i": 114,
+  "i": 90,
   "k": "text",
   "en": "Product"
  },
  {
-  "i": 115,
+  "i": 91,
   "k": "text",
   "en": "How It Works"
  },
  {
-  "i": 116,
+  "i": 92,
   "k": "text",
   "en": "WhatsApp AI"
  },
  {
-  "i": 117,
+  "i": 93,
   "k": "text",
   "en": "Industries"
  },
  {
-  "i": 118,
+  "i": 94,
   "k": "text",
   "en": "Pricing"
  },
  {
-  "i": 119,
+  "i": 95,
   "k": "text",
   "en": "Blog"
  },
  {
-  "i": 120,
+  "i": 96,
   "k": "text",
   "en": "About"
  },
  {
-  "i": 121,
+  "i": 97,
   "k": "text",
   "en": "Contact"
  },
  {
-  "i": 122,
+  "i": 98,
   "k": "text",
   "en": "Legal"
  },
  {
-  "i": 123,
+  "i": 99,
   "k": "text",
   "en": "Privacy Policy"
  },
  {
-  "i": 124,
+  "i": 100,
   "k": "text",
   "en": "Terms of Service"
  },
  {
-  "i": 125,
+  "i": 101,
   "k": "text",
   "en": "Payments secured by"
  },
  {
-  "i": 126,
+  "i": 102,
   "k": "attr:alt",
   "en": "Stripe"
  },
  {
-  "i": 127,
+  "i": 103,
   "k": "text",
   "en": "Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses"
  },
  {
-  "i": 128,
+  "i": 104,
   "k": "text",
   "en": "This site uses only essential cookies. "
  },
  {
-  "i": 129,
+  "i": 105,
   "k": "text",
   "en": "Manage Cookies"
  }

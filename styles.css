@@ -2922,3 +2922,13 @@ a.onboarding-header__logo { text-decoration: none; color: inherit; }
   .about-founder-card { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
   .about-founder-card__photo { width: 88px; height: 88px; }
 }
+
+/* Touch targets on phones (audit 2026-11-11): footer links and the promo-bar
+   controls measured 17–28 px tall; the finger needs about 40. Padding only,
+   so the visual spacing of the list is absorbed by the smaller gap. */
+@media (max-width: 768px) {
+  .footer__links { gap: 0; }
+  .footer__links a { display: block; padding: 10px 0; }
+  .footer__email a { display: inline-block; padding: 10px 0; }
+  .footer__bottom a { display: inline-block; padding: 8px 0; }
+}
