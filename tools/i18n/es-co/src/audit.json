@@ -402,130 +402,210 @@
  {
   "i": 80,
   "k": "text",
-  "en": "Already know you want the full service?"
+  "en": "Free Google Business Profile audit: common questions"
  },
  {
   "i": 81,
   "k": "text",
-  "en": "Skip the audit and start with a plan. Automated posting, review management, and monthly reporting — fully done for you."
+  "en": "What the audit covers, what we need from you and what happens next."
  },
  {
   "i": 82,
   "k": "text",
-  "en": "See Plans →"
+  "en": "What is a Google Business Profile audit? "
  },
  {
   "i": 83,
-  "k": "attr:alt",
-  "en": "Local Boost Lab"
+  "k": "text",
+  "en": "A Google Business Profile audit is a review of the listing that shows up for your business on Google Search and Google Maps. We check how complete it is, how many reviews it has and whether they get answered, how recently you post, your categories and photos, and how you compare with nearby competitors. You get a written report with a prioritized list of fixes."
  },
  {
   "i": 84,
   "k": "text",
-  "en": "Your Google Profile. Finally handled."
+  "en": "Is the audit really free? "
  },
  {
   "i": 85,
   "k": "text",
-  "en": "hello@localboostlab.com"
+  "en": "Yes. It is free, there is no credit card and no commitment. The report is yours to keep whether or not you ever work with us."
  },
  {
   "i": 86,
-  "k": "attr:aria-label",
-  "en": "Local Boost Lab on LinkedIn"
+  "k": "text",
+  "en": "What do you need from me to run it? "
  },
  {
   "i": 87,
-  "k": "attr:aria-label",
-  "en": "Local Boost Lab on Instagram"
+  "k": "text",
+  "en": "Only the four fields in the form: your name, your business name, your email and the Google Maps link to your business. We do not ask for your Google password or for access to your profile to run the audit."
  },
  {
   "i": 88,
-  "k": "attr:aria-label",
-  "en": "Local Boost Lab on X"
+  "k": "text",
+  "en": "How do I find my Google Business Profile link? "
  },
  {
   "i": 89,
-  "k": "attr:aria-label",
-  "en": "Local Boost Lab on Facebook"
+  "k": "text",
+  "en": "Open Google Maps, search for your business, tap Share and copy the link. Paste that link into the form."
  },
  {
   "i": 90,
   "k": "text",
-  "en": "Product"
+  "en": "How long does it take to get the report? "
  },
  {
   "i": 91,
   "k": "text",
-  "en": "How It Works"
+  "en": "We deliver it by email within 48 business hours of your request."
  },
  {
   "i": 92,
   "k": "text",
-  "en": "WhatsApp AI"
+  "en": "Who does the audit? "
  },
  {
   "i": 93,
   "k": "text",
-  "en": "Industries"
+  "en": "A person on our team looks at your profile, runs the analysis and writes the report. It is not an automated score sent by a tool."
  },
  {
   "i": 94,
   "k": "text",
-  "en": "Pricing"
+  "en": "Do I have to buy anything after the audit? "
  },
  {
   "i": 95,
   "k": "text",
-  "en": "Blog"
+  "en": "No. You can fix the items yourself with the report, or have Local Boost Lab handle the work with one of our plans. Either choice is fine."
  },
  {
   "i": 96,
   "k": "text",
-  "en": "About"
+  "en": "Already know you want the full service?"
  },
  {
   "i": 97,
   "k": "text",
-  "en": "Contact"
+  "en": "Skip the audit and start with a plan. Automated posting, review management, and monthly reporting — fully done for you."
  },
  {
   "i": 98,
   "k": "text",
-  "en": "Legal"
+  "en": "See Plans →"
  },
  {
   "i": 99,
-  "k": "text",
-  "en": "Privacy Policy"
+  "k": "attr:alt",
+  "en": "Local Boost Lab"
  },
  {
   "i": 100,
   "k": "text",
-  "en": "Terms of Service"
+  "en": "Your Google Profile. Finally handled."
  },
  {
   "i": 101,
   "k": "text",
-  "en": "Payments secured by"
+  "en": "hello@localboostlab.com"
  },
  {
   "i": 102,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on LinkedIn"
+ },
+ {
+  "i": 103,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Instagram"
+ },
+ {
+  "i": 104,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on X"
+ },
+ {
+  "i": 105,
+  "k": "attr:aria-label",
+  "en": "Local Boost Lab on Facebook"
+ },
+ {
+  "i": 106,
+  "k": "text",
+  "en": "Product"
+ },
+ {
+  "i": 107,
+  "k": "text",
+  "en": "How It Works"
+ },
+ {
+  "i": 108,
+  "k": "text",
+  "en": "WhatsApp AI"
+ },
+ {
+  "i": 109,
+  "k": "text",
+  "en": "Industries"
+ },
+ {
+  "i": 110,
+  "k": "text",
+  "en": "Pricing"
+ },
+ {
+  "i": 111,
+  "k": "text",
+  "en": "Blog"
+ },
+ {
+  "i": 112,
+  "k": "text",
+  "en": "About"
+ },
+ {
+  "i": 113,
+  "k": "text",
+  "en": "Contact"
+ },
+ {
+  "i": 114,
+  "k": "text",
+  "en": "Legal"
+ },
+ {
+  "i": 115,
+  "k": "text",
+  "en": "Privacy Policy"
+ },
+ {
+  "i": 116,
+  "k": "text",
+  "en": "Terms of Service"
+ },
+ {
+  "i": 117,
+  "k": "text",
+  "en": "Payments secured by"
+ },
+ {
+  "i": 118,
   "k": "attr:alt",
   "en": "Stripe"
  },
  {
-  "i": 103,
+  "i": 119,
   "k": "text",
   "en": "Local Boost Lab · Not affiliated with Google LLC · Automated GBP management for US local businesses"
  },
  {
-  "i": 104,
+  "i": 120,
   "k": "text",
   "en": "This site uses only essential cookies. "
  },
  {
-  "i": 105,
+  "i": 121,
   "k": "text",
   "en": "Manage Cookies"
  }

@@ -157,6 +157,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .success-screen.show { display: block; }
     .success-icon { width: 64px; height: 64px; background: #D1FAE5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
 
+    /* FAQ */
+    .faq-section { background: white; padding: 72px 0; border-top: 1px solid var(--border-color); }
+    .faq-section .container { max-width: 760px; }
+    .faq-section h2 { font-size: 1.6rem; margin-bottom: 8px; }
+    .faq-section__sub { color: var(--text-muted); margin-bottom: 28px; }
+    .faq-item { border-bottom: 1px solid var(--border-color); }
+    .faq-question { width: 100%; text-align: left; padding: 20px 0; font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--authority-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: none; border: none; }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 200ms; flex-shrink: 0; }
+    .faq-item.open .faq-question .icon { transform: rotate(45deg); }
+    .faq-answer { display: none; padding: 0 0 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
+    .faq-item.open .faq-answer { display: block; }
+
     @media(max-width: 900px) {
       .audit-body { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 64px; }
     }
@@ -168,6 +180,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
   <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+  <!-- faq-schema:start -->
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a Google Business Profile audit?", "acceptedAnswer": {"@type": "Answer", "text": "A Google Business Profile audit is a review of the listing that shows up for your business on Google Search and Google Maps. We check how complete it is, how many reviews it has and whether they get answered, how recently you post, your categories and photos, and how you compare with nearby competitors. You get a written report with a prioritized list of fixes."}}, {"@type": "Question", "name": "Is the audit really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It is free, there is no credit card and no commitment. The report is yours to keep whether or not you ever work with us."}}, {"@type": "Question", "name": "What do you need from me to run it?", "acceptedAnswer": {"@type": "Answer", "text": "Only the four fields in the form: your name, your business name, your email and the Google Maps link to your business. We do not ask for your Google password or for access to your profile to run the audit."}}, {"@type": "Question", "name": "How do I find my Google Business Profile link?", "acceptedAnswer": {"@type": "Answer", "text": "Open Google Maps, search for your business, tap Share and copy the link. Paste that link into the form."}}, {"@type": "Question", "name": "How long does it take to get the report?", "acceptedAnswer": {"@type": "Answer", "text": "We deliver it by email within 48 business hours of your request."}}, {"@type": "Question", "name": "Who does the audit?", "acceptedAnswer": {"@type": "Answer", "text": "A person on our team looks at your profile, runs the analysis and writes the report. It is not an automated score sent by a tool."}}, {"@type": "Question", "name": "Do I have to buy anything after the audit?", "acceptedAnswer": {"@type": "Answer", "text": "No. You can fix the items yourself with the report, or have Local Boost Lab handle the work with one of our plans. Either choice is fine."}}]}</script>
+  <!-- faq-schema:end -->
   <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-space:nowrap}@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}.nav__lang-m{display:none}@media(max-width:1024px){.nav__lang-m{display:inline-flex;align-items:center;margin-left:auto;margin-right:14px;color:#fff;font-size:.8rem;font-weight:600}}</style>
 </head>
 <body>
@@ -382,6 +397,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2>Free Google Business Profile audit: common questions</h2>
+    <p class="faq-section__sub">What the audit covers, what we need from you and what happens next.</p>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What is a Google Business Profile audit? <span class="icon">+</span></button>
+        <div class="faq-answer">A Google Business Profile audit is a review of the listing that shows up for your business on Google Search and Google Maps. We check how complete it is, how many reviews it has and whether they get answered, how recently you post, your categories and photos, and how you compare with nearby competitors. You get a written report with a prioritized list of fixes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Is the audit really free? <span class="icon">+</span></button>
+        <div class="faq-answer">Yes. It is free, there is no credit card and no commitment. The report is yours to keep whether or not you ever work with us.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What do you need from me to run it? <span class="icon">+</span></button>
+        <div class="faq-answer">Only the four fields in the form: your name, your business name, your email and the Google Maps link to your business. We do not ask for your Google password or for access to your profile to run the audit.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How do I find my Google Business Profile link? <span class="icon">+</span></button>
+        <div class="faq-answer">Open Google Maps, search for your business, tap Share and copy the link. Paste that link into the form.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How long does it take to get the report? <span class="icon">+</span></button>
+        <div class="faq-answer">We deliver it by email within 48 business hours of your request.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Who does the audit? <span class="icon">+</span></button>
+        <div class="faq-answer">A person on our team looks at your profile, runs the analysis and writes the report. It is not an automated score sent by a tool.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Do I have to buy anything after the audit? <span class="icon">+</span></button>
+        <div class="faq-answer">No. You can fix the items yourself with the report, or have Local Boost Lab handle the work with one of our plans. Either choice is fine.</div>
+      </div>
+  </div>
+</section>
+
 <!-- Bottom CTA -->
 <section style="background:var(--authority-blue);padding:64px 0;text-align:center;">
   <div class="container" style="max-width:600px;">
@@ -501,6 +552,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       alert('Something went wrong. Please try again or email hello@localboostlab.com');
     });
   }
+</script>
+<script>
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var item=btn.parentElement, open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-question').setAttribute('aria-expanded','false');});
+    if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+});
 </script>
 <script data-lang-nav>(function(){var p=document.getElementById("promo-bar"),n=document.querySelector("nav.nav");if(!p||!n)return;function f(){n.style.top=(p.offsetParent===null?0:Math.max(0,p.getBoundingClientRect().bottom))+"px"}f();addEventListener("load",f);addEventListener("scroll",f,{passive:true});addEventListener("resize",f);p.addEventListener("click",function(){setTimeout(f,0)})})()</script>
 </body>

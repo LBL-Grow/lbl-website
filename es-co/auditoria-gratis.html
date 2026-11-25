@@ -158,6 +158,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .success-screen.show { display: block; }
     .success-icon { width: 64px; height: 64px; background: #D1FAE5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
 
+    /* FAQ */
+    .faq-section { background: white; padding: 72px 0; border-top: 1px solid var(--border-color); }
+    .faq-section .container { max-width: 760px; }
+    .faq-section h2 { font-size: 1.6rem; margin-bottom: 8px; }
+    .faq-section__sub { color: var(--text-muted); margin-bottom: 28px; }
+    .faq-item { border-bottom: 1px solid var(--border-color); }
+    .faq-question { width: 100%; text-align: left; padding: 20px 0; font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--authority-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: none; border: none; }
+    .faq-question .icon { font-size: 1.2rem; transition: transform 200ms; flex-shrink: 0; }
+    .faq-item.open .faq-question .icon { transform: rotate(45deg); }
+    .faq-answer { display: none; padding: 0 0 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
+    .faq-item.open .faq-answer { display: block; }
+
     @media(max-width: 900px) {
       .audit-body { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 64px; }
     }
@@ -194,6 +206,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <style data-lang-nav>.grid-3>*{min-width:0}.nav__links a{white-space:nowrap}@media(max-width:1600px){.nav__links{gap:14px}.nav__links a{font-size:.84rem}.nav__cta{padding-left:16px;padding-right:16px}}.nav__lang-m{display:none}@media(max-width:1024px){.nav__lang-m{display:inline-flex;align-items:center;margin-left:auto;margin-right:14px;color:#fff;font-size:.8rem;font-weight:600}}</style>
   <style data-es-co>.grid-3:has(> .pricing-card:only-child){grid-template-columns:minmax(0,440px);justify-content:center}</style>
   <link rel="stylesheet" href="/es-co/es-co.css?v=19">
+  <!-- faq-schema:start -->
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué es una auditoría del Perfil de Negocio de Google?", "acceptedAnswer": {"@type": "Answer", "text": "Una auditoría del Perfil de Negocio de Google (antes Google Mi Negocio) es una revisión de la ficha que aparece de tu negocio en la Búsqueda de Google y en Google Maps. Miramos qué tan completa está, cuántas reseñas tiene y si se responden, qué tan seguido publicas, tus categorías y tus fotos, y cómo te comparas con los competidores cercanos. Recibes un informe escrito con una lista de arreglos por prioridad."}}, {"@type": "Question", "name": "¿La auditoría es de verdad gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Es gratis, sin tarjeta de crédito y sin compromiso. El informe es tuyo, trabajes o no trabajes después con nosotros."}}, {"@type": "Question", "name": "¿Qué necesitan de mí para hacerla?", "acceptedAnswer": {"@type": "Answer", "text": "Solo los cuatro campos del formulario: tu nombre, el nombre de tu negocio, tu correo y el enlace de Google Maps de tu negocio. No te pedimos la contraseña de Google ni acceso a tu perfil para hacer la auditoría."}}, {"@type": "Question", "name": "¿Cómo encuentro el enlace de mi Perfil de Negocio de Google?", "acceptedAnswer": {"@type": "Answer", "text": "Abre Google Maps, busca tu negocio, toca Compartir y copia el enlace. Pega ese enlace en el formulario."}}, {"@type": "Question", "name": "¿Cuánto tarda el informe?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo enviamos por correo dentro de las 48 horas hábiles siguientes a tu solicitud."}}, {"@type": "Question", "name": "¿Quién hace la auditoría?", "acceptedAnswer": {"@type": "Answer", "text": "Una persona de nuestro equipo revisa tu perfil, hace el análisis y escribe el informe. No es un puntaje automático que sale de una herramienta."}}, {"@type": "Question", "name": "¿Tengo que comprar algo después de la auditoría?", "acceptedAnswer": {"@type": "Answer", "text": "No. Puedes hacer los arreglos tú mismo con el informe, o dejar que Local Boost Lab se encargue con uno de nuestros planes. Cualquiera de las dos opciones está bien."}}]}</script>
+  <!-- faq-schema:end -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -407,6 +422,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2>Auditoría gratis de tu Perfil de Negocio de Google (Google Mi Negocio): preguntas frecuentes</h2>
+    <p class="faq-section__sub">Qué cubre la auditoría, qué necesitamos de ti y qué pasa después.</p>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">¿Qué es una auditoría del Perfil de Negocio de Google? <span class="icon">+</span></button>
+        <div class="faq-answer">Una auditoría del Perfil de Negocio de Google (antes Google Mi Negocio) es una revisión de la ficha que aparece de tu negocio en la Búsqueda de Google y en Google Maps. Miramos qué tan completa está, cuántas reseñas tiene y si se responden, qué tan seguido publicas, tus categorías y tus fotos, y cómo te comparas con los competidores cercanos. Recibes un informe escrito con una lista de arreglos por prioridad.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">¿La auditoría es de verdad gratis? <span class="icon">+</span></button>
+        <div class="faq-answer">Sí. Es gratis, sin tarjeta de crédito y sin compromiso. El informe es tuyo, trabajes o no trabajes después con nosotros.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">¿Qué necesitan de mí para hacerla? <span class="icon">+</span></button>
+        <div class="faq-answer">Solo los cuatro campos del formulario: tu nombre, el nombre de tu negocio, tu correo y el enlace de Google Maps de tu negocio. No te pedimos la contraseña de Google ni acceso a tu perfil para hacer la auditoría.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">¿Cómo encuentro el enlace de mi Perfil de Negocio de Google? <span class="icon">+</span></button>
+        <div class="faq-answer">Abre Google Maps, busca tu negocio, toca Compartir y copia el enlace. Pega ese enlace en el formulario.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">¿Cuánto tarda el informe? <span class="icon">+</span></button>
+        <div class="faq-answer">Te lo enviamos por correo dentro de las 48 horas hábiles siguientes a tu solicitud.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">¿Quién hace la auditoría? <span class="icon">+</span></button>
+        <div class="faq-answer">Una persona de nuestro equipo revisa tu perfil, hace el análisis y escribe el informe. No es un puntaje automático que sale de una herramienta.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">¿Tengo que comprar algo después de la auditoría? <span class="icon">+</span></button>
+        <div class="faq-answer">No. Puedes hacer los arreglos tú mismo con el informe, o dejar que Local Boost Lab se encargue con uno de nuestros planes. Cualquiera de las dos opciones está bien.</div>
+      </div>
+  </div>
+</section>
+
 <!-- Bottom CTA -->
 <section style="background:var(--authority-blue);padding:64px 0;text-align:center;">
   <div class="container" style="max-width:600px;">
@@ -524,6 +575,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       alert('Algo salió mal. Inténtalo de nuevo o escríbenos a hello@localboostlab.com');
     });
   }
+</script>
+<script>
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var item=btn.parentElement, open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-question').setAttribute('aria-expanded','false');});
+    if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+});
 </script>
 <script data-lang-nav>(function(){var p=document.getElementById("promo-bar"),n=document.querySelector("nav.nav");if(!p||!n)return;function f(){n.style.top=(p.offsetParent===null?0:Math.max(0,p.getBoundingClientRect().bottom))+"px"}f();addEventListener("load",f);addEventListener("scroll",f,{passive:true});addEventListener("resize",f);p.addEventListener("click",function(){setTimeout(f,0)})})()</script>
 </body>
