@@ -42,6 +42,22 @@
 77|Te enviamos por correo una auditoría hecha para tu negocio, con puntaje, lo que falta y una lista de arreglos ordenada por impacto. No es una lista genérica.
 78|Tú decides qué hacer
 79|Arréglalo por tu cuenta con nuestro informe o deja que nos encarguemos de todo con un plan. Sin presión: la auditoría es tuya.
-80|¿Ya sabes que quieres el servicio completo?
-81|Sáltate la auditoría y empieza con un plan: publicaciones, respuestas a reseñas e informe mensual, todo hecho por nosotros.
-98|Legal
+96|¿Ya sabes que quieres el servicio completo?
+97|Sáltate la auditoría y empieza con un plan: publicaciones, respuestas a reseñas e informe mensual, todo hecho por nosotros.
+114|Legal
+80|Auditoría gratis de tu Perfil de Negocio de Google (Google Mi Negocio): preguntas frecuentes
+81|Qué cubre la auditoría, qué necesitamos de ti y qué pasa después.
+82|¿Qué es una auditoría del Perfil de Negocio de Google?
+83|Una auditoría del Perfil de Negocio de Google (antes Google Mi Negocio) es una revisión de la ficha que aparece de tu negocio en la Búsqueda de Google y en Google Maps. Miramos qué tan completa está, cuántas reseñas tiene y si se responden, qué tan seguido publicas, tus categorías y tus fotos, y cómo te comparas con los competidores cercanos. Recibes un informe escrito con una lista de arreglos por prioridad.
+84|¿La auditoría es de verdad gratis?
+85|Sí. Es gratis, sin tarjeta de crédito y sin compromiso. El informe es tuyo, trabajes o no trabajes después con nosotros.
+86|¿Qué necesitan de mí para hacerla?
+87|Solo los cuatro campos del formulario: tu nombre, el nombre de tu negocio, tu correo y el enlace de Google Maps de tu negocio. No te pedimos la contraseña de Google ni acceso a tu perfil para hacer la auditoría.
+88|¿Cómo encuentro el enlace de mi Perfil de Negocio de Google?
+89|Abre Google Maps, busca tu negocio, toca Compartir y copia el enlace. Pega ese enlace en el formulario.
+90|¿Cuánto tarda el informe?
+91|Te lo enviamos por correo dentro de las 48 horas hábiles siguientes a tu solicitud.
+92|¿Quién hace la auditoría?
+93|Una persona de nuestro equipo revisa tu perfil, hace el análisis y escribe el informe. No es un puntaje automático que sale de una herramienta.
+94|¿Tengo que comprar algo después de la auditoría?
+95|No. Puedes hacer los arreglos tú mismo con el informe, o dejar que Local Boost Lab se encargue con uno de nuestros planes. Cualquiera de las dos opciones está bien.
